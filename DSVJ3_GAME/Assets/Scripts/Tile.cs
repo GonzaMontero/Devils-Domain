@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-public class Tile
+﻿public class Tile
 {
     public enum TileType { Empty, Occupied }
 
