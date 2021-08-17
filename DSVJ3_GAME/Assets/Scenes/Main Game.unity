@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf95776529d44c34a983303edefd3f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 100
-  height: 100
+  width: 10
+  height: 10
   offset: 5
   occupiedSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &312399265

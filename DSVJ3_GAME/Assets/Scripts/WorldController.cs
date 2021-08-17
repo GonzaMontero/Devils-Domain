@@ -35,7 +35,7 @@ public class WorldController : MonoBehaviour
                 GameObject tile_go = new GameObject();
                 tile_go.name = "Tile_" + x + "_" + y;
                 tile_go.transform.parent = this.transform;
-                tile_go.transform.position = new Vector3(tile_data.X + offset, tile_data.Y + offset);
+                tile_go.transform.position = new Vector3(tile_data.X, tile_data.Y, 0);
                 
                 SpriteRenderer tile_sprRend= tile_go.AddComponent<SpriteRenderer>();           
 

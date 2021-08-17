@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4765a6cc1943b8648a163af22df99ef6, type: 3}
-  m_Name: MissingnoRoom
+  m_Name: EmptyRoom
   m_EditorClassIdentifier: 
-  maxUpgrades: 99999
-  baseGoldGeneration: 10
+  height: 1
+  width: 1
+  sprite: {fileID: 0}
+  maxUpgrades: 0
+  baseGoldGeneration: 0
   baseCost: 0
-  updgradeCostMod: 1.25
+  updgradeCostMod: 0

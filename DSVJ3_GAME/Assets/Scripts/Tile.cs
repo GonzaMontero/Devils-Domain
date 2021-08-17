@@ -34,7 +34,7 @@ public class Tile
     {
         get
         {
-            return x;
+            return y;
         }
     }
 
