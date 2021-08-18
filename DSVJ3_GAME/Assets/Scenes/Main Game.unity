@@ -152,7 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 10
   height: 10
-  offset: 5
+  sizeX: 0
+  sizeY: 0
   occupiedSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &312399265
 Transform:
@@ -245,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067432111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 5, z: -10}
+  m_LocalPosition: {x: 5, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
