@@ -17,5 +17,5 @@ MonoBehaviour:
   sprite: {fileID: 0}
   maxUpgrades: 5
   baseGoldGeneration: 5
-  baseCost: 100
-  updgradeCostMod: 0.5
+  baseCost: 50
+  updgradeCostMod: 1
