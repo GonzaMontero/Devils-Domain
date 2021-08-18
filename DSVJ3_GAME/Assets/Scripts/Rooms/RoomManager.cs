@@ -11,6 +11,7 @@ public class RoomManager : MonoBehaviour
     public List<RoomController> rooms; //PUBLIC IS TEMPORAL, CHECK LATER
     [SerializeField] int currentGold; //TEMP VARIABLE, JUST FOR PROTO
     [SerializeField] TMPro.TextMeshProUGUI goldUI; //TEMP VARIABLE, JUST FOR PROTO
+    [SerializeField] TMPro.TextMeshProUGUI upgradeUI; //TEMP VARIABLE, JUST FOR PROTO
 
     private void Start()
     {
@@ -18,8 +19,9 @@ public class RoomManager : MonoBehaviour
         InvokeRepeating("GenerateGold", goldGenTime, goldGenTime);
 
         GoldGenerated += OnGoldGenerated; //TEMP
+        upgradeUI.text = "Upgrade\nCost: " + rooms[0].GetUpgradeCost();
     }
-
+    
     #region Methods
     //DateTime is in System
     DateTime logInTime;
@@ -48,7 +50,7 @@ public class RoomManager : MonoBehaviour
         RoomController room = rooms[roomSelected];
         int upgradeCost = room.GetUpgradeCost();
 
-        if (/*gold*/ currentGold > upgradeCost)
+        if (upgradeCost > 0 && currentGold >= upgradeCost)
         {
             currentGold -= upgradeCost;
             room.Upgrade();
@@ -58,6 +60,8 @@ public class RoomManager : MonoBehaviour
         {
             NotEnoughGold?.Invoke();
         }
+
+        upgradeUI.text = "Upgrade\nCost: " + room.GetUpgradeCost();
     }
     void GenerateGold()
     {
@@ -75,6 +79,6 @@ public class RoomManager : MonoBehaviour
     void OnGoldGenerated(int goldGenerated) //TEMP
     {
         currentGold += goldGenerated;
-        goldUI.text = "Gold: " + currentGold.ToString("000");
+        goldUI.text = "Gold: " + currentGold;
     }
 }

@@ -18,4 +18,4 @@ MonoBehaviour:
   maxUpgrades: 5
   baseGoldGeneration: 5
   baseCost: 100
-  updgradeCostMod: 10
+  updgradeCostMod: 0.5

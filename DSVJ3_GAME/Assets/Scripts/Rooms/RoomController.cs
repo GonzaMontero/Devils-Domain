@@ -9,7 +9,7 @@ public class RoomController : MonoBehaviour
 	[SerializeField] RoomData data;
 	int[] roomLimits = new int[4];
 
-    private void Start()
+    private void Awake()
     {
         data.SetCurrents();
     }
@@ -49,13 +49,16 @@ public class RoomController : MonoBehaviour
     }
     public int GetUpgradeCost()
     {
-        return (int)Mathf.Pow(data.so.baseCost * data.so.updgradeCostMod, data.upgradeLvl);
+        if (data.upgradeLvl >= data.so.maxUpgrades) { return -1; }
+        return (int)(data.so.baseCost * data.so.updgradeCostMod * data.upgradeLvl * data.upgradeLvl);
     }
 	public void Upgrade()
     {
+        if (data.upgradeLvl >= data.so.maxUpgrades) { return; }
+
         RoomUpdate?.Invoke();
         data.upgradeLvl++;
-        data.goldGen *= data.so.baseGoldGeneration;
+        data.goldGen = data.so.baseGoldGeneration * data.upgradeLvl * data.upgradeLvl;
     }
 	public int GetGoldGen()
     {
