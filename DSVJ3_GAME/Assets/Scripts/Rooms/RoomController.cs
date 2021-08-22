@@ -11,6 +11,8 @@ public class RoomController : MonoBehaviour
 
     private void Awake()
     {
+        data = new RoomData();
+        data.so = Resources.Load<RoomSO>("Rooms/EmptyRoom");
         data.SetCurrents();
     }
 
@@ -24,22 +26,22 @@ public class RoomController : MonoBehaviour
             //RoomIsBeingDestroyed += tile.OnRoomBeingDestroyed;
             
             //Set Room Limits       OPTIMIZE
-            if (tile.X < roomLimits[0])
-            {
-                roomLimits[0] = tile.X;
-            }
-            if (tile.X > roomLimits[1])
-            {
-                roomLimits[1] = tile.X;
-            }
-            if (tile.Y < roomLimits[2])
-            {
-                roomLimits[2] = tile.Y;
-            }
-            if (tile.Y > roomLimits[3])
-            {
-                roomLimits[3] = tile.Y;
-            }
+            //if (tile.X < roomLimits[0])
+            //{
+            //    roomLimits[0] = tile.X;
+            //}
+            //if (tile.X > roomLimits[1])
+            //{
+            //    roomLimits[1] = tile.X;
+            //}
+            //if (tile.Y < roomLimits[2])
+            //{
+            //    roomLimits[2] = tile.Y;
+            //}
+            //if (tile.Y > roomLimits[3])
+            //{
+            //    roomLimits[3] = tile.Y;
+            //}
         }
 	}
 	public void Destroy()
@@ -63,5 +65,9 @@ public class RoomController : MonoBehaviour
 	public int GetGoldGen()
     {
         return data.goldGen;
+    }
+    public Sprite ReturnSprite()
+    {
+        return data.so.sprite;
     }
 }

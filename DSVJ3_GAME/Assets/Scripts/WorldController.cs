@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class WorldController : MonoBehaviour
 {
@@ -8,10 +9,8 @@ public class WorldController : MonoBehaviour
     [SerializeField] float sizeX;
     [SerializeField] float sizeY;
 
-    [SerializeField] Sprite occupiedSprite;
-
     World world;
-
+    public Action<RoomController> RoomGenerated;
     
     void Start()
     {
@@ -42,19 +41,25 @@ public class WorldController : MonoBehaviour
                 Tile tile_data = world.GetTileAt(x, y);
                 GameObject tile_go = new GameObject();
                 tile_go.name = "Tile_" + x + "_" + y;
-                tile_go.transform.parent = this.transform;              
-                
-                SpriteRenderer tile_sprRend= tile_go.AddComponent<SpriteRenderer>();
-
-                tile_sprRend.sprite = occupiedSprite;                
+                tile_go.transform.parent = this.transform;                                      
 
                 tile_go.layer = LayerMask.NameToLayer("Rooms");
 
+                RoomController rc = tile_go.AddComponent<RoomController>();
+
+                RoomGenerated.Invoke(rc);
+
+                SpriteRenderer tile_sprRend = tile_go.AddComponent<SpriteRenderer>();
+
+                tile_sprRend.sprite = rc.ReturnSprite();
+
+                tile_sprRend.size = new Vector2(sizeX, sizeY);
+
                 BoxCollider2D tile_boxColl = tile_go.AddComponent<BoxCollider2D>();
 
-                tile_go.transform.localScale = new Vector3(sizeX, sizeY, 0);
+                //tile_boxColl.size = new Vector2(sizeX, sizeY);
 
-                tile_go.transform.position = new Vector3(tile_data.X + tile_boxColl.size.x, tile_data.Y * tile_boxColl.size.y, 0);
+                tile_go.transform.position = new Vector3(tile_data.X * tile_boxColl.size.x, tile_data.Y * tile_boxColl.size.y, 0);
             }
         }
     }

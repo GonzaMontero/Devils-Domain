@@ -8,13 +8,16 @@ public class RoomManager : MonoBehaviour
     public Action<int> GoldGenerated;
     [SerializeField] RoomSO roomTemplate;
     [SerializeField] float goldGenTime;
-    public List<RoomController> rooms; //PUBLIC IS TEMPORAL, CHECK LATER
+    [SerializeField] List<RoomController> rooms; //PUBLIC IS TEMPORAL, CHECK LATER
     [SerializeField] int currentGold; //TEMP VARIABLE, JUST FOR PROTO
     [SerializeField] TMPro.TextMeshProUGUI goldUI; //TEMP VARIABLE, JUST FOR PROTO
     [SerializeField] TMPro.TextMeshProUGUI upgradeUI; //TEMP VARIABLE, JUST FOR PROTO
+    [SerializeField] WorldController world;
 
     private void Start()
     {
+        world.RoomGenerated += AddRoomToList;
+
         //invoke Generate Gold every "goldGenTime" seconds
         InvokeRepeating("GenerateGold", goldGenTime, goldGenTime);
 
@@ -80,5 +83,10 @@ public class RoomManager : MonoBehaviour
     {
         currentGold += goldGenerated;
         goldUI.text = "Gold: " + currentGold;
+    }
+
+    void AddRoomToList(RoomController rc)
+    {
+        rooms.Add(rc);
     }
 }
