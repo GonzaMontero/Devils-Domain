@@ -6,66 +6,39 @@ public class RoomManager : MonoBehaviour
 {
     public Action NotEnoughGold;
     public Action<int> GoldGenerated;
-    public Action<Vector3> RoomClicked;
-    [SerializeField] RoomSO roomTemplate;
+    public Action<int> RoomUpdated;
+    public Action<RoomController> RoomClicked;
     [SerializeField] float goldGenTime;
-    [SerializeField] List<RoomController> rooms; //PUBLIC IS TEMPORAL, CHECK LATER
-    [SerializeField] int currentGold; //TEMP VARIABLE, JUST FOR PROTO
-    [SerializeField] TMPro.TextMeshProUGUI goldUI; //TEMP VARIABLE, JUST FOR PROTO
-    [SerializeField] TMPro.TextMeshProUGUI upgradeUI; //TEMP VARIABLE, JUST FOR PROTO
+    [SerializeField] RoomSO[] roomTemplates;
+    [SerializeField] List<RoomController> rooms;
     [SerializeField] WorldController world;
+    [SerializeField] PlayerManager player;
 
     private void Awake()
     {
+        //Load Room Templates
+        roomTemplates = Resources.LoadAll<RoomSO>("Rooms");
+
         world.RoomGenerated += AddRoomToList;
 
         //invoke Generate Gold every "goldGenTime" seconds
         InvokeRepeating("GenerateGold", goldGenTime, goldGenTime);
-
-        GoldGenerated += OnGoldGenerated; //TEMP
-        upgradeUI.text = "Upgrade\nCost: " + rooms[0].GetUpgradeCost();
     }
-    
-    #region Methods
-    //DateTime is in System
-    DateTime logInTime;
-    DateTime logOutTime;
-    void LoadGameplayScene()
-    {
-        logInTime = DateTime.Now;
-    }
-    void ExitGameplayScene()
-    {
-        logOutTime = DateTime.Now;
-    }
-    void CalculateAFKGold()
-    {
-        //TimeSpan is also on System
-        TimeSpan afkTime = logOutTime - logInTime;
-        for (int i = 0; i < afkTime.TotalSeconds; i++)
-        {
-            GenerateAFKGold((float)afkTime.TotalSeconds);
-        }
-    }
-    #endregion
 
     public void UpgradeRoom(int roomSelected = 0)
     {
         RoomController room = rooms[roomSelected];
         int upgradeCost = room.GetUpgradeCost();
 
-        if (upgradeCost > 0 && currentGold >= upgradeCost)
+        if (upgradeCost > 0 && player.playerData.gold >= upgradeCost) //TEMP, REPLACE PLAYERGOLD FOR (ACTION?)
         {
-            currentGold -= upgradeCost;
             room.Upgrade();
-            GoldGenerated.Invoke(0);
+            RoomUpdated.Invoke(upgradeCost);
         }
         else
         {
             NotEnoughGold?.Invoke();
         }
-
-        upgradeUI.text = "Upgrade\nCost: " + room.GetUpgradeCost();
     }
     void GenerateGold()
     {
@@ -78,21 +51,16 @@ public class RoomManager : MonoBehaviour
         {
             totalGoldGen += room.GetGoldGen();
         }
-        GoldGenerated.Invoke((int)(totalGoldGen * secondsPassed));
+        GoldGenerated?.Invoke((int)(totalGoldGen * secondsPassed));
     }
-    void OnGoldGenerated(int goldGenerated) //TEMP
-    {
-        currentGold += goldGenerated;
-        goldUI.text = "Gold: " + currentGold;
-    }
-
     void AddRoomToList(RoomController rc)
     {
+        rc.Build(roomTemplates[0]);
         rooms.Add(rc);
-        rc.RoomClicked += OnRoomClicked; 
+        rc.RoomClicked += OnRoomClicked;
     }
     void OnRoomClicked(RoomController rc)
     {
-        RoomClicked?.Invoke(rc.transform.position);
+        RoomClicked?.Invoke(rc);
     }
 }

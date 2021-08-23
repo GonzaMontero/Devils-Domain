@@ -8,44 +8,51 @@ public class RoomController : MonoBehaviour
 	public Action RoomUpdate;
 	public Action<RoomController> RoomClicked;
 	[SerializeField] RoomData data;
-	int[] roomLimits = new int[4];
+    //int[] roomLimits = new int[4]; //left, right, down, up
 
     private void Awake()
     {
-        data = new RoomData();
-        data.so = Resources.Load<RoomSO>("Rooms/EmptyRoom");
-        data.SetCurrents();
+        //data.so = Resources.Load<RoomSO>("Rooms/EmptyRoom");
     }
 
-    public void Build(List<Tile> roomTiles, RoomSO so)
-	{
-        data.so = so;
+    private void OnDestroy()
+    {
+        Resources.UnloadAsset(data.so); //unload resource
+    }
 
-        foreach (Tile tile in roomTiles)
-        {
-            //Link Action
-            //RoomIsBeingDestroyed += tile.OnRoomBeingDestroyed;
-            
-            //Set Room Limits       OPTIMIZE
-            //if (tile.X < roomLimits[0])
-            //{
-            //    roomLimits[0] = tile.X;
-            //}
-            //if (tile.X > roomLimits[1])
-            //{
-            //    roomLimits[1] = tile.X;
-            //}
-            //if (tile.Y < roomLimits[2])
-            //{
-            //    roomLimits[2] = tile.Y;
-            //}
-            //if (tile.Y > roomLimits[3])
-            //{
-            //    roomLimits[3] = tile.Y;
-            //}
-        }
-	}
-	public void Destroy()
+    public void Build(/*List<Tile> roomTiles,*/ RoomSO so)
+	{
+        //Set Data
+        data = new RoomData();
+        data.so = so;
+        data.SetCurrents();
+
+        //Set Position & Link Tiles
+        //foreach (Tile tile in roomTiles)
+        //{
+        //    //Link Action
+        //    RoomIsBeingDestroyed += tile.OnRoomBeingDestroyed;
+
+        //    //Set Room Limits OPTIMIZE
+        //    if (tile.X < roomLimits[0])
+        //    {
+        //        roomLimits[0] = tile.X;
+        //    }
+        //    if (tile.X > roomLimits[1])
+        //    {
+        //        roomLimits[1] = tile.X;
+        //    }
+        //    if (tile.Y < roomLimits[2])
+        //    {
+        //        roomLimits[2] = tile.Y;
+        //    }
+        //    if (tile.Y > roomLimits[3])
+        //    {
+        //        roomLimits[3] = tile.Y;
+        //    }
+        //}
+    }
+    public void Destroy()
     {
 		RoomDestroy?.Invoke();
         Destroy(gameObject);
