@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public System.Action ZoomingOut;
     [SerializeField] float transitionTimer;
     [SerializeField] Vector3 cameraOffset;
     [SerializeField] Vector3 originalPosition;
@@ -43,10 +44,11 @@ public class CameraController : MonoBehaviour
         isOnTransition = false;
         yield break;
     }
-    void OnRoomClicked(Vector3 roomPosition)
+    void OnRoomClicked(RoomController roomController)
     {
         if (!isOnTransition)
         {
+            Vector3 roomPosition = roomController.transform.position;
             StartCoroutine(UpdatePosition(roomPosition + cameraOffset));
         }
     }
@@ -58,6 +60,8 @@ public class CameraController : MonoBehaviour
         }
 
         StartCoroutine(UpdatePosition(originalPosition));
+
+        ZoomingOut.Invoke();
     }
     #endregion
 }
