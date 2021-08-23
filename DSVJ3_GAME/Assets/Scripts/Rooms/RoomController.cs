@@ -10,16 +10,6 @@ public class RoomController : MonoBehaviour
 	[SerializeField] RoomData data;
     //int[] roomLimits = new int[4]; //left, right, down, up
 
-    private void Awake()
-    {
-        //data.so = Resources.Load<RoomSO>("Rooms/EmptyRoom");
-    }
-
-    private void OnDestroy()
-    {
-        Resources.UnloadAsset(data.so); //unload resource
-    }
-
     public void Build(/*List<Tile> roomTiles,*/ RoomSO so)
 	{
         //Set Data
@@ -62,7 +52,11 @@ public class RoomController : MonoBehaviour
         if (data.upgradeLvl >= data.so.maxUpgrades) { return -1; }
         return (int)(data.so.baseCost * data.so.updgradeCostMod * data.upgradeLvl * data.upgradeLvl);
     }
-	public void Upgrade()
+    public int GetBuildCost()
+    {
+        return data.so.baseCost;
+    }
+    public void Upgrade()
     {
         if (data.upgradeLvl >= data.so.maxUpgrades) { return; }
 

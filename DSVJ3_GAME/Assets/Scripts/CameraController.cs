@@ -44,7 +44,7 @@ public class CameraController : MonoBehaviour
         isOnTransition = false;
         yield break;
     }
-    void OnRoomClicked(RoomController roomController)
+    void OnRoomClicked(RoomController roomController, int buildCost)
     {
         if (!isOnTransition)
         {

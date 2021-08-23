@@ -5,7 +5,7 @@ public class PlayerManager : MonoBehaviourSingleton<PlayerManager>
     public Action<int> GoldUpdated;
     [SerializeField] RoomManager roomManager;
 
-    public struct Data
+    [Serializable] public struct Data
     {
         public int gold;
         public int level;

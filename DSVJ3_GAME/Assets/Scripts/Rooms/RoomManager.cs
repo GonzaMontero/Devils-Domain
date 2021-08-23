@@ -7,10 +7,11 @@ public class RoomManager : MonoBehaviour
     public Action NotEnoughGold;
     public Action<int> GoldGenerated;
     public Action<int> RoomUpdated;
-    public Action<RoomController> RoomClicked;
+    public Action<RoomController, int> RoomClicked; //TEMP, DELETE INT
     [SerializeField] float goldGenTime;
     [SerializeField] RoomSO[] roomTemplates;
     [SerializeField] List<RoomController> rooms;
+    [SerializeField] RoomController roomSelected;
     [SerializeField] WorldController world;
     [SerializeField] PlayerManager player; //TEMP
 
@@ -32,15 +33,28 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    public void UpgradeRoom(int roomSelected = 0)
+    public void UpgradeRoom()
     {
-        RoomController room = rooms[roomSelected];
-        int upgradeCost = room.GetUpgradeCost();
+        int upgradeCost = roomSelected.GetUpgradeCost();
 
         if (upgradeCost > 0 && player.playerData.gold >= upgradeCost) //TEMP, REPLACE PLAYERGOLD FOR (ACTION?)
         {
-            room.Upgrade();
+            roomSelected.Upgrade();
             RoomUpdated.Invoke(upgradeCost);
+        }
+        else
+        {
+            NotEnoughGold?.Invoke();
+        }
+    }
+    public void BuildRoom()
+    {
+        int buildCost = roomTemplates[1].baseCost; //TEMP, MAKE SYSTEM TO SELECT DIFF ROOMS
+
+        if (buildCost > 0 && player.playerData.gold >= buildCost) //TEMP, REPLACE PLAYERGOLD FOR (ACTION?)
+        {
+            roomSelected.Build(roomTemplates[1]);
+            RoomUpdated.Invoke(buildCost);
         }
         else
         {
@@ -68,6 +82,7 @@ public class RoomManager : MonoBehaviour
     }
     void OnRoomClicked(RoomController rc)
     {
-        RoomClicked?.Invoke(rc);
+        roomSelected = rc;
+        RoomClicked?.Invoke(rc, roomTemplates[1].baseCost); //TEMP, DELETE BUILD COST
     }
 }

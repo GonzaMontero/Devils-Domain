@@ -3,41 +3,55 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI goldUI; //TEMP VARIABLE, JUST FOR PROTO
-    [SerializeField] TextMeshProUGUI upgradeUI; //TEMP VARIABLE, JUST FOR PROTO
+    [SerializeField] TextMeshProUGUI goldText;
+    [SerializeField] TextMeshProUGUI upgradeText; 
+    [SerializeField] TextMeshProUGUI buildText; 
     [SerializeField] RoomManager roomManager;
     [SerializeField] PlayerManager player;
-    [SerializeField] CameraController camera;
+    [SerializeField] CameraController mainCamera;
 
     private void Start()
     {
         roomManager.NotEnoughGold += OnNotEnoughGoldForUpgrade;
         roomManager.RoomClicked += OnRoomSelected;
-        //roomManager.RoomUpdated += OnRoomUpdate;
+        roomManager.RoomUpdated += OnRoomUpdate;
         player.GoldUpdated += OnGoldUpdated;
-        camera.ZoomingOut += OnZoomOut;
+        mainCamera.ZoomingOut += OnZoomOut;
     }
 
     void OnRoomUpdate(int newUpgradeCost)
     {
-        upgradeUI.text = "Upgrade\nCost: " + newUpgradeCost;
+        bool roomJustBuilded = buildText.transform.parent.gameObject.activeSelf;
+        if (roomJustBuilded)
+        {
+            buildText.transform.parent.gameObject.SetActive(false); //set button false
+            upgradeText.transform.parent.gameObject.SetActive(true); //set button true
+        }
+
+        upgradeText.text = "Upgrade\nCost: " + newUpgradeCost;
     }
     void OnGoldUpdated(int currentGold)
     {
-        goldUI.text = "Gold: " + currentGold;
+        goldText.text = "Gold: " + currentGold;
     }
     void OnNotEnoughGoldForUpgrade()
     {
         //activate warning
     }
-    void OnRoomSelected(RoomController roomController)
+    void OnRoomSelected(RoomController roomController, int buildCost)
     {
-        int upgradeCost = roomController.GetUpgradeCost();
-        upgradeUI.text = "Upgrade\nCost: " + upgradeCost;
-        upgradeUI.transform.parent.gameObject.SetActive(true); //set button true
+        if (roomController.GetUpgradeCost() == -1)
+        {
+            buildText.text = "Build\nCost: " + buildCost; //TEMP?, REPLACE FOR ACTION?
+            buildText.transform.parent.gameObject.SetActive(true); //set button true
+            return;
+        }
+        upgradeText.text = "Upgrade\nCost: " + roomController.GetUpgradeCost(); //TEMP?, REPLACE FOR ACTION?
+        upgradeText.transform.parent.gameObject.SetActive(true); //set button true
     }
     void OnZoomOut()
     {
-        upgradeUI.transform.parent.gameObject.SetActive(false); //set button false
+        buildText.transform.parent.gameObject.SetActive(false); //set button false
+        upgradeText.transform.parent.gameObject.SetActive(false); //set button false
     }
 }
