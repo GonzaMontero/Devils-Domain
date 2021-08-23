@@ -12,7 +12,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] RoomSO[] roomTemplates;
     [SerializeField] List<RoomController> rooms;
     [SerializeField] WorldController world;
-    [SerializeField] PlayerManager player;
+    [SerializeField] PlayerManager player; //TEMP
 
     private void Awake()
     {
@@ -23,6 +23,13 @@ public class RoomManager : MonoBehaviour
 
         //invoke Generate Gold every "goldGenTime" seconds
         InvokeRepeating("GenerateGold", goldGenTime, goldGenTime);
+    }
+    private void OnDestroy()
+    {
+        foreach (RoomSO template in roomTemplates)
+        {
+            Resources.UnloadAsset(template);
+        }
     }
 
     public void UpgradeRoom(int roomSelected = 0)
