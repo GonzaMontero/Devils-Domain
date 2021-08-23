@@ -6,6 +6,7 @@ public class RoomManager : MonoBehaviour
 {
     public Action NotEnoughGold;
     public Action<int> GoldGenerated;
+    public Action<Vector3> RoomClicked;
     [SerializeField] RoomSO roomTemplate;
     [SerializeField] float goldGenTime;
     [SerializeField] List<RoomController> rooms; //PUBLIC IS TEMPORAL, CHECK LATER
@@ -14,7 +15,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI upgradeUI; //TEMP VARIABLE, JUST FOR PROTO
     [SerializeField] WorldController world;
 
-    private void Start()
+    private void Awake()
     {
         world.RoomGenerated += AddRoomToList;
 
@@ -88,5 +89,10 @@ public class RoomManager : MonoBehaviour
     void AddRoomToList(RoomController rc)
     {
         rooms.Add(rc);
+        rc.RoomClicked += OnRoomClicked; 
+    }
+    void OnRoomClicked(RoomController rc)
+    {
+        RoomClicked?.Invoke(rc.transform.position);
     }
 }

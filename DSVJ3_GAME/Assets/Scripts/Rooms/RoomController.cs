@@ -6,6 +6,7 @@ public class RoomController : MonoBehaviour
 {
 	public Action RoomDestroy;
 	public Action RoomUpdate;
+	public Action<RoomController> RoomClicked;
 	[SerializeField] RoomData data;
 	int[] roomLimits = new int[4];
 
@@ -69,5 +70,12 @@ public class RoomController : MonoBehaviour
     public Sprite ReturnSprite()
     {
         return data.so.sprite;
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("You clicked an object lmao");
+        //hit.transform.GetComponent<UpgradeRoom>().Upgrade()
+        RoomClicked?.Invoke(this);
     }
 }

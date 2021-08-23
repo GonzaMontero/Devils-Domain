@@ -47,7 +47,7 @@ public class WorldController : MonoBehaviour
 
                 RoomController rc = tile_go.AddComponent<RoomController>();
 
-                RoomGenerated.Invoke(rc);
+                RoomGenerated?.Invoke(rc);
 
                 SpriteRenderer tile_sprRend = tile_go.AddComponent<SpriteRenderer>();
 
