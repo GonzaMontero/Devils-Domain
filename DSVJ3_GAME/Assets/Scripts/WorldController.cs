@@ -9,9 +9,12 @@ public class WorldController : MonoBehaviour
     [SerializeField] float sizeX;
     [SerializeField] float sizeY;
 
+    [SerializeField] GameObject roomUIPrefab;
+    [SerializeField] Transform roomUIHolder;
+
     World world;
     public Action<RoomController> RoomGenerated;
-    
+
     void Start()
     {
         if (width <= 0 || height <= 0)
@@ -23,7 +26,7 @@ public class WorldController : MonoBehaviour
             world = new World(width, height);
         }
 
-        if(sizeX <= 0)
+        if (sizeX <= 0)
         {
             sizeX = 5;
         }
@@ -38,29 +41,41 @@ public class WorldController : MonoBehaviour
         {
             for (int y = 0; y < world.Height; y++)
             {
-                Tile tile_data = world.GetTileAt(x, y);
-                GameObject tile_go = new GameObject();
-                tile_go.name = "Tile_" + x + "_" + y;
-                tile_go.transform.parent = this.transform;                                      
-
-                tile_go.layer = LayerMask.NameToLayer("Rooms");
-
-                RoomController rc = tile_go.AddComponent<RoomController>();
-
-                RoomGenerated?.Invoke(rc);
-
-                SpriteRenderer tile_sprRend = tile_go.AddComponent<SpriteRenderer>();
-
-                tile_sprRend.sprite = rc.ReturnSprite();
-
-                tile_sprRend.size = new Vector2(sizeX, sizeY);
-
-                BoxCollider2D tile_boxColl = tile_go.AddComponent<BoxCollider2D>();
-
-                //tile_boxColl.size = new Vector2(sizeX, sizeY);
-
-                tile_go.transform.position = new Vector3(tile_data.X * tile_boxColl.size.x, tile_data.Y * tile_boxColl.size.y, 0);
+                GenerateTile(x, y);
             }
         }
+    }
+
+    void GenerateTile(int x, int y)
+    {
+        //Get Tile
+        Tile tile_data = world.GetTileAt(x, y);
+
+        //Generate GO
+        GameObject tile_go = new GameObject();
+        tile_go.name = "Tile_" + x + "_" + y;
+        tile_go.transform.parent = this.transform;
+        tile_go.layer = LayerMask.NameToLayer("Rooms");
+
+        //Add RoomController
+        RoomController rc = tile_go.AddComponent<RoomController>();
+        RoomGenerated?.Invoke(rc);
+
+        //Add Sprite
+        SpriteRenderer tile_sprRend = tile_go.AddComponent<SpriteRenderer>();
+        tile_sprRend.sprite = rc.ReturnSprite();
+        tile_sprRend.size = new Vector2(sizeX, sizeY);
+
+        //Add Collider
+        BoxCollider2D tile_boxColl = tile_go.AddComponent<BoxCollider2D>();
+        //tile_boxColl.size = new Vector2(sizeX, sizeY);
+
+        //Reset Position
+        tile_go.transform.position = new Vector3(tile_data.X * tile_boxColl.size.x, tile_data.Y * tile_boxColl.size.y, 0);
+    
+        //Add Room UI
+        Transform roomUI = Instantiate(roomUIPrefab, tile_go.transform).transform;
+        roomUI.parent = roomUIHolder; //change parent so pos=tile & parent=canvas
+        roomUI.GetComponent<RoomUI>().controller = rc;
     }
 }

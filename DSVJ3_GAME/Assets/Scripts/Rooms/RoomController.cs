@@ -17,6 +17,7 @@ public class RoomController : MonoBehaviour
         data = new RoomData();
         data.so = so;
         data.SetCurrents();
+        RoomUpdate?.Invoke();
 
         //Set Position & Link Tiles
         //foreach (Tile tile in roomTiles)
@@ -61,9 +62,9 @@ public class RoomController : MonoBehaviour
     {
         if (data.upgradeLvl >= data.so.maxUpgrades) { return; }
 
-        RoomUpdate?.Invoke();
         data.upgradeLvl++;
         data.goldGen = data.so.baseGoldGeneration * data.upgradeLvl * data.upgradeLvl;
+        RoomUpdate?.Invoke();
     }
     public int GetGoldGen()
     {

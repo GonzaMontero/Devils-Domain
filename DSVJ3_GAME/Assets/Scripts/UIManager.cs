@@ -4,8 +4,9 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI goldText;
-    [SerializeField] TextMeshProUGUI upgradeText; 
-    [SerializeField] TextMeshProUGUI buildText; 
+    [SerializeField] TextMeshProUGUI upgradeText;
+    [SerializeField] TextMeshProUGUI buildText;
+    [SerializeField] Canvas roomUIHolder;
     [SerializeField] RoomManager roomManager;
     [SerializeField] PlayerManager player;
     [SerializeField] CameraController mainCamera;
@@ -51,6 +52,8 @@ public class UIManager : MonoBehaviour
     }
     void OnRoomSelected(RoomController roomController, int buildCost)
     {
+        roomUIHolder.enabled = false; //set room data invisible
+
         if (roomController.GetUpgradeCost() == -1)
         {
             buildText.text = "Build\nCost: " + buildCost; //TEMP?, REPLACE FOR ACTION?
@@ -58,11 +61,13 @@ public class UIManager : MonoBehaviour
             upgradeText.transform.parent.gameObject.SetActive(false); //set button from previous room false
             return;
         }
+
         upgradeText.text = "Upgrade\nCost: " + roomController.GetUpgradeCost(); //TEMP?, REPLACE FOR ACTION?
         upgradeText.transform.parent.gameObject.SetActive(true); //set button true
     }
     void OnZoomOut()
     {
+        roomUIHolder.enabled = true; //set room data visible
         buildText.transform.parent.gameObject.SetActive(false); //set button false
         upgradeText.transform.parent.gameObject.SetActive(false); //set button false
     }
