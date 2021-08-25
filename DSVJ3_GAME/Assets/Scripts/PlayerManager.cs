@@ -2,7 +2,7 @@
 using System;
 public class PlayerManager : MonoBehaviourSingleton<PlayerManager>
 {
-    public Action<int> GoldUpdated;
+    public Action<int> GoldChanged;
     [SerializeField] RoomManager roomManager;
 
     [Serializable] public struct Data
@@ -15,8 +15,7 @@ public class PlayerManager : MonoBehaviourSingleton<PlayerManager>
     public Data playerData;
     public void Start()
     {
-        roomManager.GoldGenerated += OnGoldGenerated;
-        roomManager.RoomUpdated += OnRoomUpdate;
+        roomManager.GoldChanged += OnGoldChanged;
         RecieveData();
     }
     public void OnApplicationQuit()
@@ -32,19 +31,14 @@ public class PlayerManager : MonoBehaviourSingleton<PlayerManager>
     }
     public void RecieveData()
     {
-        playerData.gold = PlayerPrefs.GetInt("Gold");
+        playerData.gold = 50;//PlayerPrefs.GetInt("Gold");
         playerData.level = PlayerPrefs.GetInt("Level");
         playerData.logInTime = DateTime.Now;
     }
-    private void OnGoldGenerated(int gold)
+    private void OnGoldChanged(int gold)
     {
         playerData.gold += gold;
-        GoldUpdated?.Invoke(playerData.gold);
-    }
-    void OnRoomUpdate(int goldCost)
-    {
-        playerData.gold -= goldCost;
-        GoldUpdated?.Invoke(playerData.gold);
+        GoldChanged?.Invoke(playerData.gold);
     }
 
 

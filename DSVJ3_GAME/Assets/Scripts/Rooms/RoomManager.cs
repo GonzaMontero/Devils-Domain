@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     public Action NotEnoughGold;
-    public Action<int> GoldGenerated;
+    public Action<int> GoldChanged;
     public Action<int> RoomUpdated;
     public Action<RoomController, int> RoomClicked; //TEMP, DELETE INT
     public BoolAction RoomClickable;
@@ -40,8 +40,9 @@ public class RoomManager : MonoBehaviour
 
         if (upgradeCost > 0 && player.playerData.gold >= upgradeCost) //TEMP, REPLACE PLAYERGOLD FOR (ACTION?)
         {
+            GoldChanged?.Invoke(-roomSelected.GetUpgradeCost());
             roomSelected.Upgrade();
-            RoomUpdated.Invoke(roomSelected.GetUpgradeCost());
+            RoomUpdated?.Invoke(roomSelected.GetUpgradeCost());
         }
         else
         {
@@ -54,6 +55,7 @@ public class RoomManager : MonoBehaviour
 
         if (buildCost > 0 && player.playerData.gold >= buildCost) //TEMP, REPLACE PLAYERGOLD FOR (ACTION?)
         {
+            GoldChanged.Invoke(-buildCost);
             roomSelected.Build(roomTemplates[1]);
             RoomUpdated.Invoke(buildCost);
         }
@@ -73,7 +75,7 @@ public class RoomManager : MonoBehaviour
         {
             totalGoldGen += room.GetGoldGen();
         }
-        GoldGenerated?.Invoke((int)(totalGoldGen * secondsPassed));
+        GoldChanged?.Invoke((int)(totalGoldGen * secondsPassed));
     }
     void AddRoomToList(RoomController rc)
     {

@@ -15,7 +15,7 @@ MonoBehaviour:
   height: 1
   width: 1
   sprite: {fileID: 0}
-  maxUpgrades: 5
+  maxUpgrades: 100
   baseGoldGeneration: 5
   baseCost: 50
-  updgradeCostMod: 1
+  updgradeCostMod: 1.5

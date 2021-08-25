@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
         roomManager.RoomClicked += OnRoomSelected;
         roomManager.RoomUpdated += OnRoomUpdate;
         roomManager.RoomClickable += MouseIsNotOverElement;
-        player.GoldUpdated += OnGoldUpdated;
+        player.GoldChanged += OnGoldUpdated;
         mainCamera.ZoomingOut += OnZoomOut;
     }
 
