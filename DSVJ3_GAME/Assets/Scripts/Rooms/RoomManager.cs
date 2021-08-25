@@ -8,6 +8,7 @@ public class RoomManager : MonoBehaviour
     public Action<int> GoldGenerated;
     public Action<int> RoomUpdated;
     public Action<RoomController, int> RoomClicked; //TEMP, DELETE INT
+    public BoolAction RoomClickable;
     [SerializeField] float goldGenTime;
     [SerializeField] RoomSO[] roomTemplates;
     [SerializeField] List<RoomController> rooms;
@@ -40,7 +41,7 @@ public class RoomManager : MonoBehaviour
         if (upgradeCost > 0 && player.playerData.gold >= upgradeCost) //TEMP, REPLACE PLAYERGOLD FOR (ACTION?)
         {
             roomSelected.Upgrade();
-            RoomUpdated.Invoke(upgradeCost);
+            RoomUpdated.Invoke(roomSelected.GetUpgradeCost());
         }
         else
         {
@@ -79,10 +80,15 @@ public class RoomManager : MonoBehaviour
         rc.Build(roomTemplates[0]);
         rooms.Add(rc);
         rc.RoomClicked += OnRoomClicked;
+        rc.RoomClickable += OnRoomClickable;
     }
     void OnRoomClicked(RoomController rc)
     {
         roomSelected = rc;
         RoomClicked?.Invoke(rc, roomTemplates[1].baseCost); //TEMP, DELETE BUILD COST
+    }
+    bool OnRoomClickable()
+    {
+        return RoomClickable.Invoke();
     }
 }

@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviourSingleton<PlayerManager>
     public void Start()
     {
         roomManager.GoldGenerated += OnGoldGenerated;
+        roomManager.RoomUpdated += OnRoomUpdate;
         RecieveData();
     }
     public void OnApplicationQuit()
@@ -38,6 +39,11 @@ public class PlayerManager : MonoBehaviourSingleton<PlayerManager>
     private void OnGoldGenerated(int gold)
     {
         playerData.gold += gold;
+        GoldUpdated?.Invoke(playerData.gold);
+    }
+    void OnRoomUpdate(int goldCost)
+    {
+        playerData.gold -= goldCost;
         GoldUpdated?.Invoke(playerData.gold);
     }
 

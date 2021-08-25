@@ -15,10 +15,15 @@ public class UIManager : MonoBehaviour
         roomManager.NotEnoughGold += OnNotEnoughGoldForUpgrade;
         roomManager.RoomClicked += OnRoomSelected;
         roomManager.RoomUpdated += OnRoomUpdate;
+        roomManager.RoomClickable += MouseIsNotOverElement;
         player.GoldUpdated += OnGoldUpdated;
         mainCamera.ZoomingOut += OnZoomOut;
     }
 
+    bool MouseIsNotOverElement()
+    {
+        return !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+    }
     void OnRoomUpdate(int newUpgradeCost)
     {
         bool roomJustBuilded = buildText.transform.parent.gameObject.activeSelf;
@@ -26,6 +31,12 @@ public class UIManager : MonoBehaviour
         {
             buildText.transform.parent.gameObject.SetActive(false); //set button false
             upgradeText.transform.parent.gameObject.SetActive(true); //set button true
+        }
+
+        if (newUpgradeCost == -1)
+        {
+            upgradeText.text = "MAX UPGRADE\nREACHED";
+            return;
         }
 
         upgradeText.text = "Upgrade\nCost: " + newUpgradeCost;
@@ -44,6 +55,7 @@ public class UIManager : MonoBehaviour
         {
             buildText.text = "Build\nCost: " + buildCost; //TEMP?, REPLACE FOR ACTION?
             buildText.transform.parent.gameObject.SetActive(true); //set button true
+            upgradeText.transform.parent.gameObject.SetActive(false); //set button from previous room false
             return;
         }
         upgradeText.text = "Upgrade\nCost: " + roomController.GetUpgradeCost(); //TEMP?, REPLACE FOR ACTION?

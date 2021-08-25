@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-	public Action RoomDestroy;
-	public Action RoomUpdate;
-	public Action<RoomController> RoomClicked;
-	[SerializeField] RoomData data;
+    public Action RoomDestroy;
+    public Action RoomUpdate;
+    public Action<RoomController> RoomClicked;
+    public BoolAction RoomClickable;
+    [SerializeField] RoomData data;
     //int[] roomLimits = new int[4]; //left, right, down, up
 
     public void Build(/*List<Tile> roomTiles,*/ RoomSO so)
-	{
+    {
         //Set Data
         data = new RoomData();
         data.so = so;
@@ -44,7 +45,7 @@ public class RoomController : MonoBehaviour
     }
     public void Destroy()
     {
-		RoomDestroy?.Invoke();
+        RoomDestroy?.Invoke();
         Destroy(gameObject);
     }
     public int GetUpgradeCost()
@@ -64,7 +65,7 @@ public class RoomController : MonoBehaviour
         data.upgradeLvl++;
         data.goldGen = data.so.baseGoldGeneration * data.upgradeLvl * data.upgradeLvl;
     }
-	public int GetGoldGen()
+    public int GetGoldGen()
     {
         return data.goldGen;
     }
@@ -75,8 +76,11 @@ public class RoomController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("You clicked an object lmao");
-        //hit.transform.GetComponent<UpgradeRoom>().Upgrade()
-        RoomClicked?.Invoke(this);
+        if (RoomClickable.Invoke())
+        {
+            Debug.Log("You clicked an object lmao");
+            //hit.transform.GetComponent<UpgradeRoom>().Upgrade()
+            RoomClicked?.Invoke(this);
+        }
     }
 }
