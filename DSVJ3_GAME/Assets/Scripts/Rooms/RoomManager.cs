@@ -15,12 +15,15 @@ public class RoomManager : MonoBehaviour
     [SerializeField] RoomController roomSelected;
     [SerializeField] WorldController world;
     [SerializeField] PlayerManager player; //TEMP
+    bool firstRoomBuilded = false;
 
+    //Unity Methods
     private void Awake()
     {
         //Load Room Templates
         roomTemplates = Resources.LoadAll<RoomSO>("Rooms");
 
+        //Link Actions
         world.RoomGenerated += AddRoomToList;
 
         //invoke Generate Gold every "goldGenTime" seconds
@@ -34,6 +37,7 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    //Methods
     public void UpgradeRoom()
     {
         int upgradeCost = roomSelected.GetUpgradeCost();
@@ -58,6 +62,12 @@ public class RoomManager : MonoBehaviour
             GoldChanged.Invoke(-buildCost);
             roomSelected.Build(roomTemplates[1]);
             RoomUpdated.Invoke(buildCost);
+
+            if (!firstRoomBuilded)
+            {
+                firstRoomBuilded = true;
+                SetRoomsPrice();
+            }
         }
         else
         {
@@ -84,6 +94,12 @@ public class RoomManager : MonoBehaviour
         rc.RoomClicked += OnRoomClicked;
         rc.RoomClickable += OnRoomClickable;
     }
+    void SetRoomsPrice()
+    {
+
+    }
+
+    //Action Receivers
     void OnRoomClicked(RoomController rc)
     {
         roomSelected = rc;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
@@ -73,6 +72,15 @@ public class RoomController : MonoBehaviour
     public Sprite ReturnSprite()
     {
         return data.so.sprite;
+    }
+    public void StartRoomRaycast()
+    {
+        RaycastHit2D roomHitted;
+        roomHitted = Physics2D.Raycast(transform.position, );
+    }
+    public void ContinueRoomRaycast()
+    {
+
     }
 
     private void OnMouseDown()
