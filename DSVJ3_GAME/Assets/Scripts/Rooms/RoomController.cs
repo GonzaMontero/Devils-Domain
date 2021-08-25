@@ -52,7 +52,7 @@ public class RoomController : MonoBehaviour
     public int GetUpgradeCost()
     {
         if (data.upgradeLvl >= data.so.maxUpgrades) { return -1; }
-        return (int)(data.so.baseCost * data.so.updgradeCostMod * data.upgradeLvl * data.upgradeLvl);
+        return (int)(data.so.baseCost * data.so.updgradeCostMod * Mathf.Pow(data.upgradeLvl, 3));
     }
     public int GetBuildCost()
     {
@@ -63,7 +63,7 @@ public class RoomController : MonoBehaviour
         if (data.upgradeLvl >= data.so.maxUpgrades) { return; }
 
         data.upgradeLvl++;
-        data.goldGen = data.so.baseGoldGeneration * data.upgradeLvl * data.upgradeLvl;
+        data.goldGen = data.so.baseGoldGeneration * (int)Mathf.Pow(data.upgradeLvl, 2);
         RoomUpdate?.Invoke();
     }
     public int GetGoldGen()
