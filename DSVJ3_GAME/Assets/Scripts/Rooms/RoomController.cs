@@ -51,11 +51,11 @@ public class RoomController : MonoBehaviour
     public int GetUpgradeCost()
     {
         if (data.upgradeLvl >= data.so.maxUpgrades) { return -1; }
-        return (int)(data.so.baseCost * data.so.updgradeCostMod * Mathf.Pow(data.upgradeLvl, 3));
+        return (int)(data.so.baseCost * data.so.updgradeCostMod * Mathf.Pow(data.upgradeLvl, 3) * data.positionCostModifier);
     }
     public int GetBuildCost()
     {
-        return data.so.baseCost;
+        return data.so.baseCost * data.positionCostModifier;
     }
     public void Upgrade()
     {
@@ -73,14 +73,70 @@ public class RoomController : MonoBehaviour
     {
         return data.so.sprite;
     }
-    public void StartRoomRaycast()
+    public void StartRoomRaycast(int posCostMod)
     {
-        RaycastHit2D roomHitted;
-        roomHitted = Physics2D.Raycast(transform.position, );
-    }
-    public void ContinueRoomRaycast()
-    {
+        for (int i = 0; i < 8; i++)
+        {
+            //Raycast
+            Vector2 direction = Directions.directions[(int)(Directions.Direction)i];
 
+            //Start new raycast
+            RoomController nextRoom = GetNextRoom(direction);
+            nextRoom?.UpdatePositionCostModifier(data.positionCostModifier + posCostMod);
+            if (Mathf.Abs(direction.x) + Mathf.Abs(direction.y) == 1)
+            {
+                nextRoom?.ContinuePerpendicularRay((Directions.Direction)i, posCostMod);
+            }
+            else
+            {
+                nextRoom?.ContinueDiagonalRay((Directions.Direction)i, posCostMod);
+            }
+        }
+    }
+    public void ContinuePerpendicularRay(Directions.Direction dir, int posCostMod)
+    {
+        RoomController nextRoom = GetNextRoom(Directions.directions[(int)dir]);
+        nextRoom?.UpdatePositionCostModifier(data.positionCostModifier + posCostMod);
+        nextRoom?.ContinuePerpendicularRay(dir, posCostMod);
+    }
+    public void ContinueDiagonalRay(Directions.Direction dir, int posCostMod)
+    {
+        //Raycast to next diagonal Room
+        Vector2 direction = Directions.directions[(int)dir]; //get dir vec2
+        RoomController nextRoom = GetNextRoom(direction);
+        nextRoom?.UpdatePositionCostModifier(data.positionCostModifier + posCostMod);
+        nextRoom?.ContinueDiagonalRay(dir, posCostMod);
+
+        //Get previous perpendicular room (up from upRight)
+        direction = Directions.directions[(int)dir - 1]; //get dir vec2
+        nextRoom = GetNextRoom(direction);
+        nextRoom?.UpdatePositionCostModifier(data.positionCostModifier + posCostMod);
+        nextRoom?.ContinuePerpendicularRay(dir - 1, posCostMod); //next ray has (up from upRight)
+
+        //Get next perpendicular room (right from upRight)
+        direction = Directions.directions[(int)dir + 1]; //get dir vec2
+        nextRoom = GetNextRoom(direction);
+        nextRoom?.UpdatePositionCostModifier(data.positionCostModifier + posCostMod);
+        nextRoom?.ContinuePerpendicularRay(dir + 1, posCostMod); //next ray has (right from upRight)
+    }
+    public void UpdatePositionCostModifier(int newPosCostMod)
+    {
+        data.positionCostModifier = newPosCostMod;
+    }
+    RoomController GetNextRoom(Vector2 dir)
+    {
+        Vector2 pos = transform.localPosition;
+        Vector2 size = transform.GetComponent<BoxCollider2D>().size;
+        float distance = (size.x + size.y) * 1.1f;
+        RaycastHit2D roomHitted = Physics2D.Raycast(pos, dir, distance, LayerMask.GetMask("Rooms")); //get new room
+        if (roomHitted)
+        {
+            return roomHitted.transform.GetComponent<RoomController>();
+        }
+        else
+        {
+            return null;
+        }
     }
 
     private void OnMouseDown()

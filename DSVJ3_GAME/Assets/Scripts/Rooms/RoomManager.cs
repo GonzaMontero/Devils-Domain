@@ -96,7 +96,7 @@ public class RoomManager : MonoBehaviour
     }
     void SetRoomsPrice()
     {
-
+        roomSelected.StartRoomRaycast(1);
     }
 
     //Action Receivers
