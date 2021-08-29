@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-public class World
+public class RoomGenerator
 {
     Tile[,] tiles;
 
     int width;
     int height;
 
+    #region Getters
     public int Width
     {
         get
@@ -21,39 +22,23 @@ public class World
             return height;
         }
     }
-    public World(int width = 10, int height = 10)
+    #endregion
+
+    public RoomGenerator(int width = 10, int height = 10)
     {
         this.width = width;
         this.height = height;
 
         tiles = new Tile[width, height];
-
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                tiles[x, y] = new Tile(this, x, y);
+                tiles[x, y] = new Tile( x, y);
             }
         }
 
         Debug.Log("World Generated With width=" + width + " || height=" + height);
-    }
-    public void RandomizeTiles()
-    {
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                if (Random.Range(0, 2) == 0)
-                {
-                    tiles[x, y].Type = Tile.TileType.Empty;
-                }
-                else
-                {
-                    tiles[x, y].Type = Tile.TileType.Occupied;
-                }
-            }
-        }
     }
     public Tile GetTileAt(int x, int y)
     {

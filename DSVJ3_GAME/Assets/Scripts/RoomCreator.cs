@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-public class WorldController : MonoBehaviour
+public class RoomCreator : MonoBehaviour
 {
     [SerializeField] int width;
     [SerializeField] int height;
@@ -12,18 +12,18 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject roomUIPrefab;
     [SerializeField] Transform roomUIHolder;
 
-    World world;
+    RoomGenerator room;
     public Action<RoomController> RoomGenerated;
 
     void Start()
     {
         if (width <= 0 || height <= 0)
         {
-            world = new World();
+            room = new RoomGenerator();
         }
         else
         {
-            world = new World(width, height);
+            room = new RoomGenerator(width, height);
         }
 
         if (sizeX <= 0)
@@ -35,11 +35,9 @@ public class WorldController : MonoBehaviour
             sizeY = 1;
         }
 
-        world.RandomizeTiles();
-
-        for (int x = 0; x < world.Width; x++)
+        for (int x = 0; x < room.Width; x++)
         {
-            for (int y = 0; y < world.Height; y++)
+            for (int y = 0; y < room.Height; y++)
             {
                 GenerateTile(x, y);
             }
@@ -49,7 +47,7 @@ public class WorldController : MonoBehaviour
     void GenerateTile(int x, int y)
     {
         //Get Tile
-        Tile tile_data = world.GetTileAt(x, y);
+        Tile tile_data = room.GetTileAt(x, y);
 
         //Generate GO
         GameObject tile_go = new GameObject();

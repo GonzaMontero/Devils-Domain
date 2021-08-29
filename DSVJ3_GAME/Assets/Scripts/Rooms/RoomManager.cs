@@ -13,7 +13,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] RoomSO[] roomTemplates;
     [SerializeField] List<RoomController> rooms;
     [SerializeField] RoomController roomSelected;
-    [SerializeField] WorldController world;
+    [SerializeField] RoomCreator world;
     [SerializeField] PlayerManager player; //TEMP
     bool firstRoomBuilded = false;
 
