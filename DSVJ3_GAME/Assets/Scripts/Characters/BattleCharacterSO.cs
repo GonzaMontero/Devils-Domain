@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //public enum CharaterType {  };
-public enum AttackType { melee, ranged, magic };
+public enum AttackType { melee, both, ranged };
 
 public class BattleCharacterSO : ScriptableObject
 {

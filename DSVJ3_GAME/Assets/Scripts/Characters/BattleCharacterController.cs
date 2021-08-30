@@ -7,7 +7,6 @@ public class BattleCharacterController : MonoBehaviour
     [Serializable] enum States { idle, attacking, dead };
 
     public Action<BattleCharacterController> Attack;
-    public int slotNumber; //TEMP, THINK OF SOMETHING ELSE FOR BATTLE MANAGER
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
     Animator animator;
