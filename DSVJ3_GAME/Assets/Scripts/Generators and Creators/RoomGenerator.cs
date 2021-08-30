@@ -4,6 +4,7 @@ public class RoomGenerator
 {
     Tile[,] tiles;
 
+    [Header("Room Size")]
     int width;
     int height;
 

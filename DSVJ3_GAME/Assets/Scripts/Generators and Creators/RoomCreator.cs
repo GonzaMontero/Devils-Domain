@@ -66,7 +66,6 @@ public class RoomCreator : MonoBehaviour
 
         //Add Collider
         BoxCollider2D tile_boxColl = tile_go.AddComponent<BoxCollider2D>();
-        //tile_boxColl.size = new Vector2(sizeX, sizeY);
 
         //Reset Position
         tile_go.transform.position = new Vector3(tile_data.X * tile_boxColl.size.x, tile_data.Y * tile_boxColl.size.y, 0);
