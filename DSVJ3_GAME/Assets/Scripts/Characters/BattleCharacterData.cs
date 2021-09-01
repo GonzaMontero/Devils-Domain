@@ -1,4 +1,5 @@
-﻿public class BattleCharacterData
+﻿[System.Serializable]
+public class BattleCharacterData
 {
     public BattleCharacterSO so;
     public Stats currentStats;
@@ -7,11 +8,15 @@
     public int currentXpToLevelUp;
     public int merge;
 
-    public void GetCurrents()
+    public void SetLevel0Currents()
     {
         currentStats = so.baseStats;
         currentXP = 0;
         currentXpToLevelUp = so.baseXpToLevelUp;
         merge = 1;
+    }
+    public void SetStartOfBattleCurrents()
+    {
+        health = currentStats.maxHealth;
     }
 }

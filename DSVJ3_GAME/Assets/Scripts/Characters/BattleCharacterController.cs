@@ -17,6 +17,8 @@ public class BattleCharacterController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         current = States.idle;
+        data.SetLevel0Currents();
+        data.SetStartOfBattleCurrents();
     }
     void Update()
     {

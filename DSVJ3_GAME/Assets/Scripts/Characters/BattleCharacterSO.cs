@@ -3,6 +3,7 @@
 //public enum CharaterType {  };
 public enum AttackType { melee, both, ranged };
 
+[CreateAssetMenu(fileName = "CharacterSO", menuName = "Character Scriptable Object")]
 public class BattleCharacterSO : ScriptableObject
 {
     [Header("Meta Variables")]
