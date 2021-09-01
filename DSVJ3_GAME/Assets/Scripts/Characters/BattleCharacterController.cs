@@ -4,9 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class BattleCharacterController : MonoBehaviour
 {
-    [Serializable] enum States { idle, attacking, dead };
+    [Serializable] enum States { idle, selectTarget, attacking, dead };
 
-    public Action<BattleCharacterController> Attack;
+    public Action<BattleCharacterController> SelectTarget;
+    public Action<int> Attack;
+    public BattleCharacterController target;
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
     Animator animator;
@@ -21,13 +23,26 @@ public class BattleCharacterController : MonoBehaviour
         RunStateMachine();
     }
 
+
+    public void OnAttack(int damage)
+    {
+        ReceiveDamage(damage);
+    }
     public AttackType GetAttackType()
     {
         return data.so.attackType;
     }
+    public int GetHealth()
+    {
+        return data.health;
+    }
     public int GetAttackDamage()
     {
         return data.currentStats.damage;
+    }
+    public bool IsAlive()
+    {
+        return data.health > 0;
     }
     public void ReceiveDamage(int damage)
     {
@@ -38,16 +53,25 @@ public class BattleCharacterController : MonoBehaviour
         switch (current)
         {
             case States.idle:
+                current++;
+                break;
+            case States.selectTarget:
+                SelectTarget?.Invoke(this);
+                Attack += target.OnAttack;
+                animator.SetTrigger("Attack");
+                current++;
                 break;
             case States.attacking:
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || !target.IsAlive())
                 {
+                    Attack -= target.OnAttack;
                     current = States.idle;
                     return;
                 }
-                Attack?.Invoke(this);
+                Attack?.Invoke(data.currentStats.damage);
                 break;
             case States.dead:
+                animator.SetTrigger("Die");
                 break;
         }
     }
