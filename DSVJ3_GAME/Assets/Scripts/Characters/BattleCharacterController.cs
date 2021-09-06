@@ -65,26 +65,33 @@ public class BattleCharacterController : MonoBehaviour
                 SelectTarget?.Invoke(this);
                 if (!target) { return; }
                 Attack += target.OnAttack;
-                animator.SetTrigger("Attack");
+                animator.SetBool("Attacking", true);
                 current++;
                 break;
             case States.attacking:
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || !target || !target.IsAlive())
+                if (!target || !target.IsAlive())
                 {
                     Attack -= target.OnAttack;
+                    animator.SetBool("Attacking", false);
                     current = States.idle;
                     return;
                 }
-                Invoke("InvokeAttack", data.currentStats.attackSpeed);
+                InvokeAttack(data.currentStats.attackSpeed * Time.deltaTime);
                 break;
             case States.dead:
                 animator.SetTrigger("Die");
                 break;
         }
     }
-    void InvokeAttack()
+    float attackCooldown = 0;
+    void InvokeAttack(float attackCharge)
     {
-        Attack?.Invoke(data.currentStats.damage);
+        attackCooldown += attackCharge;
+        if (attackCooldown > 1)
+        {
+            Attack?.Invoke(data.currentStats.damage);
+            attackCooldown = 0;
+        }
     }
     void SetAnimatorSpeeds()
     {
