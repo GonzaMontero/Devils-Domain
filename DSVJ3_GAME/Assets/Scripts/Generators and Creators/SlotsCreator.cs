@@ -3,6 +3,8 @@ using System;
 
 public class SlotsCreator : MonoBehaviour
 {
+    public Action<BoxCollider2D> SlotGenerated;
+
     [SerializeField] int width;
     [SerializeField] int height;
 
@@ -67,6 +69,9 @@ public class SlotsCreator : MonoBehaviour
 
         //Reset Position
         tile_go.transform.position = new Vector3(Camera.main.transform.position.x + sizeX + tile_data.X * tile_boxColl.size.x, Camera.main.transform.position.y - sizeY + tile_data.Y * tile_boxColl.size.y, 0);
+
+        //Invoke action Slot Generated and send the boxCollider as ref
+        SlotGenerated?.Invoke(tile_boxColl);
     }
     void GenerateEnemySlot(int x, int y)
     {
@@ -89,5 +94,8 @@ public class SlotsCreator : MonoBehaviour
 
         //Reset Position
         tile_go.transform.position = new Vector3(Camera.main.transform.position.x - sizeX - tile_data.X * tile_boxColl.size.x, Camera.main.transform.position.y - sizeY + tile_data.Y * tile_boxColl.size.y, 0);
+
+        //Invoke action Slot Generated and send the boxCollider as ref
+        SlotGenerated?.Invoke(tile_boxColl); 
     }
 }

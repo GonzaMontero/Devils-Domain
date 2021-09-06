@@ -4,35 +4,66 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    [SerializeField] SlotsCreator slotsCreator;
+    [SerializeField] List<BattleCharacterHolder> holders;
     [SerializeField]
-    BattleCharacterController[] characters = new BattleCharacterController[12]; //first 6 are player
-    //Tile[] characterTiles = new Tile[12]; //second 6 are enemies (same as characters)
-    
+    BattleCharacterController[] characters = new BattleCharacterController[18]; //first 6 are player
+    [SerializeField]
+    BoxCollider2D[] characterTiles = new BoxCollider2D[18]; //second 6 are enemies (same as characters)
+    int midArray;
+
     /*
      * slots are organized in proximity, so matrix would be:
+     * 6 3 0 - 9  12 15
+     * 7 4 1 - 10 13 16
+     * 8 5 2 - 11 14 17
+     * OR
      * 3 0 - 6 9
      * 4 1 - 7 10
      * 5 2 - 8 11
      */
 
-    #region Unity Events
-    private void Start()
+    private void Awake()
     {
-        //Get Characters
+        midArray = characters.Length / 2;
 
-
-        //Link
-        foreach (BattleCharacterController character in characters)
+        //Link Actions
+        slotsCreator.SlotGenerated += OnSlotCreated;
+        foreach (BattleCharacterHolder holder in holders)
         {
-            character.SelectTarget += OnCharacterSelectTarget;
+            holder.CharacterPositioned += OnCharacterPositioned;
         }
     }
-    #endregion
 
     #region Methods
     void OnCharacterSelectTarget(BattleCharacterController attacker)
     {
         attacker.target = GetAttackReceiver(attacker);
+    }
+    void OnSlotCreated(BoxCollider2D collider)
+    {
+        int slotIndex = 0;
+        while (slotIndex < characterTiles.Length && characterTiles[slotIndex])
+        {
+            slotIndex++;
+        }
+        if (slotIndex >= characterTiles.Length) { return; }
+        characterTiles[slotIndex] = collider;
+    }
+    void OnCharacterPositioned(BoxCollider2D slotCollider, BattleCharacterController character)
+    {
+        //delete character from array if existant
+        int characterIndex = Array.IndexOf(characters, character);
+        if (characterIndex >= 0) 
+        {
+            characters[characterIndex].SelectTarget -= OnCharacterSelectTarget;
+            characters[characterIndex] = null;
+        }
+
+        //add character to array
+        int slotIndex = Array.IndexOf(characterTiles, slotCollider);
+        characters[slotIndex] = character;
+        character.SelectTarget += OnCharacterSelectTarget;
     }
     BattleCharacterController GetAttackReceiver(BattleCharacterController attacker)
     {
@@ -59,40 +90,58 @@ public class BattleManager : MonoBehaviour
     }
     BattleCharacterController GetMeleeReciever(int attackerIndex)
     {
-        int receiverIndex = 0;
-        bool characterIsAlly = CharacterIsAlly(attackerIndex);
+        int receiverIndex = 0; //index of character who gets attacked
+        int rowNumber = 1; //how many rows has the character searched for a target?
+        bool characterIsOnRight = CharacterIsOnRight(attackerIndex);
 
         switch (attackerIndex % 3)
         {
             case 0:
-                receiverIndex = characterIsAlly ? 6 : 0; //if attacker is ally, set target to 6
-                while (!characters[receiverIndex].IsAlive())
-                {
-                    receiverIndex++;
-                }
-                break;
             case 1:
-                receiverIndex = characterIsAlly ? 7 : 1; //if attacker is ally, set target to 7
-                while (!characters[receiverIndex].IsAlive())
+                receiverIndex = characterIsOnRight ? midArray : 0; //if attacker is ally, set target to 6
+                while (!characters[receiverIndex] || !characters[receiverIndex].IsAlive())
                 {
                     receiverIndex++;
-                    if (receiverIndex >= characters.Length)
+                    if (characterIsOnRight && receiverIndex >= characters.Length)
                     {
-                        receiverIndex -= 5;
+                        return null;
+                    }
+                    else if (!characterIsOnRight && receiverIndex > midArray)
+                    {
+                        return null;
                     }
                 }
                 break;
             case 2:
-                receiverIndex = characterIsAlly ? 8 : 2; //if attacker is ally, set target to 8
-                while (!characters[receiverIndex].IsAlive())
+                receiverIndex = characterIsOnRight ? midArray + 2 : 2; //if attacker is on right, set target to left down
+                while (!characters[receiverIndex] || !characters[receiverIndex].IsAlive())
                 {
                     receiverIndex--;
+                    if (characterIsOnRight && receiverIndex <= midArray)
+                    {
+                        receiverIndex += 3 * rowNumber;
+                        rowNumber++;
+                        if (receiverIndex > characters.Length)
+                        {
+                            return null;
+                        }
+                    }
+                    else if (!characterIsOnRight && receiverIndex < 0)
+                    {
+                        receiverIndex += 3 * rowNumber;
+                        rowNumber++;
+                        if (receiverIndex > midArray)
+                        {
+                            return null;
+                        }
+                    }
                 }
                 break;
             default:
                 break;
         }
 
+        if(characterIsOnRight == CharacterIsOnRight(receiverIndex)) { return null; }
         return characters[receiverIndex];
     }
     BattleCharacterController GetBothReciever(int attackerIndex)
@@ -100,11 +149,11 @@ public class BattleManager : MonoBehaviour
         int receiverIndex = 0;
         int weakestHealth = int.MaxValue;
 
-        if (CharacterIsAlly(attackerIndex))
+        if (CharacterIsOnRight(attackerIndex))
         {
-            for (int i = 6; i < characters.Length; i++)
+            for (int i = midArray; i < characters.Length; i++)
             {
-                if (characters[i].GetHealth() < weakestHealth)
+                if (characters[i] && characters[i].GetHealth() < weakestHealth)
                 {
                     weakestHealth = characters[i].GetHealth();
                     receiverIndex = i;
@@ -113,9 +162,9 @@ public class BattleManager : MonoBehaviour
         }
         else //attacker is enemy character
         {
-            for (int i = 5; i >= 0; i--)
+            for (int i = midArray - 1; i >= 0; i--)
             {
-                if (characters[i].GetHealth() < weakestHealth)
+                if (characters[i] && characters[i].GetHealth() < weakestHealth)
                 {
                     weakestHealth = characters[i].GetHealth();
                     receiverIndex = i;
@@ -123,49 +172,68 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+        if (CharacterIsOnRight(attackerIndex) == CharacterIsOnRight(receiverIndex)) { return null; }
         return characters[receiverIndex];
     }
     BattleCharacterController GetRangedReciever(int attackerIndex)
     {
         int receiverIndex = 0;
-        bool characterIsAlly = CharacterIsAlly(attackerIndex);
+        int rowNumber = 1;
+        bool characterIsOnRight = CharacterIsOnRight(attackerIndex);
 
         switch (attackerIndex % 3)
         {
             case 0:
-                receiverIndex = characterIsAlly ? 9 : 3; //if attacker is ally, set target to 6
-                while (!characters[receiverIndex].IsAlive())
+            case 1: //if attacker is on right, set target to 9
+                receiverIndex = characterIsOnRight ? characters.Length - 3 : midArray - 3; 
+                while (!characters[receiverIndex] || !characters[receiverIndex].IsAlive())
                 {
                     receiverIndex++;
-                }
-                break;
-            case 1:
-                receiverIndex = characterIsAlly ? 10 : 4; //if attacker is ally, set target to 7
-                while (!characters[receiverIndex].IsAlive())
-                {
-                    receiverIndex++;
-                    if (receiverIndex >= characters.Length)
+                    if (characterIsOnRight && receiverIndex >= characters.Length)
                     {
-                        receiverIndex -= 5;
+                        receiverIndex -= 3 * rowNumber;
+                        rowNumber++;
+                        if (receiverIndex <= midArray)
+                        {
+                            return null;
+                        }
+                    }
+                    else if (!characterIsOnRight && receiverIndex > midArray)
+                    {
+                        receiverIndex -= 3 * rowNumber;
+                        rowNumber++;
+                        if (receiverIndex > midArray)
+                        {
+                            return null;
+                        }
                     }
                 }
                 break;
-            case 2:
-                receiverIndex = characterIsAlly ? 11 : 5; //if attacker is ally, set target to 8
-                while (!characters[receiverIndex].IsAlive())
+            case 2: //if attacker is ally, set target to 11
+                receiverIndex = characterIsOnRight ? characters.Length - 1 : midArray - 1; 
+                while (!characters[receiverIndex] || !characters[receiverIndex].IsAlive())
                 {
                     receiverIndex--;
+                    if (characterIsOnRight && receiverIndex <= midArray)
+                    {
+                        return null;
+                    }
+                    else if (!characterIsOnRight && receiverIndex < 0)
+                    {
+                            return null;
+                    }
                 }
                 break;
             default:
                 break;
         }
 
+        if(characterIsOnRight == CharacterIsOnRight(receiverIndex)) { return null; }
         return characters[receiverIndex];
     }
-    bool CharacterIsAlly(int characterIndex)
+    bool CharacterIsOnRight(int characterIndex)
     {
-        return characterIndex < 6;
+        return characterIndex < characters.Length / 2;
     }
     #endregion
 }

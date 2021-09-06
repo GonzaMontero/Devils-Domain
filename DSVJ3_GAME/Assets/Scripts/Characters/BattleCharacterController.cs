@@ -49,6 +49,10 @@ public class BattleCharacterController : MonoBehaviour
     public void ReceiveDamage(int damage)
     {
         data.health -= damage * ((100 - data.currentStats.armor) / 100); //reduce damage by armor rate
+        if (data.health < 0)
+        {
+            Destroy(gameObject);
+        }
     }
     void RunStateMachine()
     {
@@ -59,23 +63,28 @@ public class BattleCharacterController : MonoBehaviour
                 break;
             case States.selectTarget:
                 SelectTarget?.Invoke(this);
+                if (!target) { return; }
                 Attack += target.OnAttack;
                 animator.SetTrigger("Attack");
                 current++;
                 break;
             case States.attacking:
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || !target.IsAlive())
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || !target || !target.IsAlive())
                 {
                     Attack -= target.OnAttack;
                     current = States.idle;
                     return;
                 }
-                Attack?.Invoke(data.currentStats.damage);
+                Invoke("InvokeAttack", data.currentStats.attackSpeed);
                 break;
             case States.dead:
                 animator.SetTrigger("Die");
                 break;
         }
+    }
+    void InvokeAttack()
+    {
+        Attack?.Invoke(data.currentStats.damage);
     }
     void SetAnimatorSpeeds()
     {

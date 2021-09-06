@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BattleCharacterHolder : MonoBehaviour
 {
+    public Action<BoxCollider2D, BattleCharacterController> CharacterPositioned;
     Vector2 originalPosition;
     Vector2 newPosition;
-    [SerializeField] LayerMask slotsMask;
+    LayerMask slotsMask;
     BoxCollider2D boxCollider;
 
     #region Unity Events
@@ -48,6 +50,11 @@ public class BattleCharacterHolder : MonoBehaviour
         if (slotHitted)
         {
             newPosition = slotHitted.transform.position;
+
+            //Invoke Character Positioned Action
+            BattleCharacterController character = GetComponent<BattleCharacterController>();
+            BoxCollider2D slotCollider = slotHitted.transform.GetComponent<BoxCollider2D>();
+            CharacterPositioned?.Invoke(slotCollider, character);
         }
         else
         {
