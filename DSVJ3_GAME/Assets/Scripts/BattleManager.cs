@@ -7,6 +7,8 @@ public class BattleManager : MonoBehaviour
     public bool readyToStart; //TEMP
     public Action RightPartyWon;
     public Action LeftPartyWon;
+    [SerializeField] GameObject characterPrefab;
+    [SerializeField] Transform enemiesParent;
     [SerializeField] SlotsCreator slotsCreator;
     [SerializeField] List<int> rightParty;
     [SerializeField] List<int> leftParty;
@@ -16,7 +18,6 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     BoxCollider2D[] characterTiles = new BoxCollider2D[18]; //second 6 are enemies (same as characters)
     BattleCharacterSO[] characterSOs;
-    [SerializeField] GameObject characterPrefab;
     int midArray;
 
     /*
@@ -48,18 +49,8 @@ public class BattleManager : MonoBehaviour
     {
         GenerateEnemies();
     }
+
     #region Methods
-    void GenerateEnemies()
-    {
-        for(short i = 0; i < 5; i++)
-        {
-            GenerateRandomEnemies();
-        }
-    }
-    void OnCharacterSelectTarget(BattleCharacterController attacker)
-    {
-        attacker.target = GetAttackReceiver(attacker);
-    }
     void OnSlotCreated(BoxCollider2D collider)
     {
         int slotIndex = 0;
@@ -74,16 +65,28 @@ public class BattleManager : MonoBehaviour
     {
         //delete character from array if existant
         int characterIndex = Array.IndexOf(characters, character);
-        if (characterIndex >= 0) 
+        if (characterIndex >= 0)
         {
-            characters[characterIndex].SelectTarget -= OnCharacterSelectTarget;
+            UnlinkCharacterActions(character);
+            if (CharacterIsOnRight(characterIndex))
+            {
+                rightParty.Add(characterIndex);
+            }
+            else
+            {
+                leftParty.Add(characterIndex);
+            }
             characters[characterIndex] = null;
         }
 
         //add character to array
         int slotIndex = Array.IndexOf(characterTiles, slotCollider);
         characters[slotIndex] = character;
-        character.SelectTarget += OnCharacterSelectTarget;
+        LinkCharacterActions(character);
+    }
+    void OnCharacterSelectTarget(BattleCharacterController attacker)
+    {
+        attacker.target = GetAttackReceiver(attacker);
     }
     void OnCharacterDeath(BattleCharacterController character)
     {
@@ -274,28 +277,44 @@ public class BattleManager : MonoBehaviour
         if(characterIsOnRight == CharacterIsOnRight(receiverIndex)) { return null; }
         return characters[receiverIndex];
     }
-    void GenerateRandomEnemies()
+    void GenerateEnemies()
+    {
+        for(short i = 0; i < 5; i++)
+        {
+            GenerateRandomEnemy();
+        }
+    }
+    void GenerateRandomEnemy()
     {
         int number = UnityEngine.Random.Range(0, characterSOs.Length);
-        int number2 = UnityEngine.Random.Range(midArray, characters.Length);
+        int number2 = UnityEngine.Random.Range(0, midArray);
 
         while (characters[number2])
         {
-            number2 = UnityEngine.Random.Range(midArray, characters.Length);
+            number2 = UnityEngine.Random.Range(0, midArray);
         }
 
-        BattleCharacterController character = Instantiate(characterPrefab,transform).GetComponent<BattleCharacterController>();
+        BattleCharacterController character = Instantiate(characterPrefab, enemiesParent).GetComponent<BattleCharacterController>();
         character.transform.position = characterTiles[number2].transform.position;
 
         character.SetData(characterSOs[number]);
-
-        character.SelectTarget += OnCharacterSelectTarget;
+        LinkCharacterActions(character);
 
         characters[number2] = character;
     }
     bool CharacterIsOnRight(int characterIndex)
     {
         return characterIndex < characters.Length / 2;
+    }
+    void UnlinkCharacterActions(BattleCharacterController character)
+    {
+        character.SelectTarget -= OnCharacterSelectTarget;
+        character.Die -= OnCharacterDeath;
+    }
+    void LinkCharacterActions(BattleCharacterController character)
+    {
+        character.SelectTarget += OnCharacterSelectTarget;
+        character.Die += OnCharacterDeath;
     }
     #endregion
 }
