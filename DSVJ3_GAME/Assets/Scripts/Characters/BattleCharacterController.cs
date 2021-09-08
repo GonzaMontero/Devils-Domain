@@ -27,6 +27,12 @@ public class BattleCharacterController : MonoBehaviour
         RunStateMachine();
     }
 
+    public void SetData(BattleCharacterSO so)
+    {
+        data.so = so;
+        data.SetLevel0Currents();
+        data.SetStartOfBattleCurrents();
+    }
 
     public void OnAttack(int damage)
     {

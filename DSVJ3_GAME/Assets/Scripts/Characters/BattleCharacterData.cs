@@ -10,6 +10,8 @@ public class BattleCharacterData
 
     public void SetLevel0Currents()
     {
+        if (!so)
+            return;
         currentStats = so.baseStats;
         currentXP = 0;
         currentXpToLevelUp = so.baseXpToLevelUp;

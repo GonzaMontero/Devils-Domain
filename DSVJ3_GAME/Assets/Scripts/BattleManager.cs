@@ -15,6 +15,8 @@ public class BattleManager : MonoBehaviour
     BattleCharacterController[] characters = new BattleCharacterController[18]; //first 6 are player
     [SerializeField]
     BoxCollider2D[] characterTiles = new BoxCollider2D[18]; //second 6 are enemies (same as characters)
+    BattleCharacterSO[] characterSOs;
+    [SerializeField] GameObject characterPrefab;
     int midArray;
 
     /*
@@ -38,9 +40,22 @@ public class BattleManager : MonoBehaviour
         {
             holder.CharacterPositioned += OnCharacterPositioned;
         }
-    }
 
+        //Generating enemies
+        characterSOs = Resources.LoadAll<BattleCharacterSO>("Scriptable Objects/Characters");
+    }
+    private void Start()
+    {
+        GenerateEnemies();
+    }
     #region Methods
+    void GenerateEnemies()
+    {
+        for(short i = 0; i < 5; i++)
+        {
+            GenerateRandomEnemies();
+        }
+    }
     void OnCharacterSelectTarget(BattleCharacterController attacker)
     {
         attacker.target = GetAttackReceiver(attacker);
@@ -258,6 +273,25 @@ public class BattleManager : MonoBehaviour
 
         if(characterIsOnRight == CharacterIsOnRight(receiverIndex)) { return null; }
         return characters[receiverIndex];
+    }
+    void GenerateRandomEnemies()
+    {
+        int number = UnityEngine.Random.Range(0, characterSOs.Length);
+        int number2 = UnityEngine.Random.Range(midArray, characters.Length);
+
+        while (characters[number2])
+        {
+            number2 = UnityEngine.Random.Range(midArray, characters.Length);
+        }
+
+        BattleCharacterController character = Instantiate(characterPrefab,transform).GetComponent<BattleCharacterController>();
+        character.transform.position = characterTiles[number2].transform.position;
+
+        character.SetData(characterSOs[number]);
+
+        character.SelectTarget += OnCharacterSelectTarget;
+
+        characters[number2] = character;
     }
     bool CharacterIsOnRight(int characterIndex)
     {

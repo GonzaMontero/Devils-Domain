@@ -18,7 +18,7 @@ public class SlotsCreator : MonoBehaviour
 
     SlotsGeneration slots;
 
-    void Start()
+    void Awake()
     {
         if (width <= 0 || height <= 0)
         {
