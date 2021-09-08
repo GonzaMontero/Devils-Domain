@@ -6,12 +6,14 @@ public class BattleCharacterController : MonoBehaviour
 {
     [Serializable] enum States { idle, selectTarget, attacking, dead };
 
+    public Action<BattleCharacterController> Die;
     public Action<BattleCharacterController> SelectTarget;
     public Action<int> Attack;
     public BattleCharacterController target;
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
     Animator animator;
+    const float despawnTimer = 2;
 
     private void Awake()
     {
@@ -48,10 +50,11 @@ public class BattleCharacterController : MonoBehaviour
     }
     public void ReceiveDamage(int damage)
     {
+        animator.SetTrigger("Receive Damage");
         data.health -= damage * ((100 - data.currentStats.armor) / 100); //reduce damage by armor rate
         if (data.health < 0)
         {
-            Destroy(gameObject);
+            current = States.dead;
         }
     }
     void RunStateMachine()
@@ -76,15 +79,17 @@ public class BattleCharacterController : MonoBehaviour
                     current = States.idle;
                     return;
                 }
-                InvokeAttack(data.currentStats.attackSpeed * Time.deltaTime);
+                ChargeAttack(data.currentStats.attackSpeed * Time.deltaTime);
                 break;
             case States.dead:
                 animator.SetTrigger("Die");
+                Die.Invoke(this);
+                Invoke("DeSpawn", despawnTimer);
                 break;
         }
     }
     float attackCooldown = 0;
-    void InvokeAttack(float attackCharge)
+    void ChargeAttack(float attackCharge)
     {
         attackCooldown += attackCharge;
         if (attackCooldown > 1)
@@ -93,8 +98,8 @@ public class BattleCharacterController : MonoBehaviour
             attackCooldown = 0;
         }
     }
-    void SetAnimatorSpeeds()
+    void DeSpawn()
     {
-
+        Destroy(gameObject);
     }
 }

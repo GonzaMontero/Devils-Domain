@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    public bool readyToStart; //TEMP
+    public Action RightPartyWon;
+    public Action LeftPartyWon;
     [SerializeField] SlotsCreator slotsCreator;
+    [SerializeField] List<int> rightParty;
+    [SerializeField] List<int> leftParty;
     [SerializeField] List<BattleCharacterHolder> holders;
     [SerializeField]
     BattleCharacterController[] characters = new BattleCharacterController[18]; //first 6 are player
@@ -65,8 +70,31 @@ public class BattleManager : MonoBehaviour
         characters[slotIndex] = character;
         character.SelectTarget += OnCharacterSelectTarget;
     }
+    void OnCharacterDeath(BattleCharacterController character)
+    {
+        int deadCharaIndex = Array.IndexOf(characters, character);
+        characters[deadCharaIndex] = null;
+        if (CharacterIsOnRight(deadCharaIndex))
+        {
+            rightParty.Remove(deadCharaIndex);
+            if (rightParty.Count <= 0)
+            {
+                LeftPartyWon?.Invoke();
+            }
+        }
+        else
+        {
+            leftParty.Remove(deadCharaIndex);
+            if (leftParty.Count <= 0)
+            {
+                RightPartyWon?.Invoke();
+            }
+        }
+    }
     BattleCharacterController GetAttackReceiver(BattleCharacterController attacker)
     {
+        if (!readyToStart) { return null; } //TEMP needed to set enemy characters
+
         int attackerIndex = Array.IndexOf(characters, attacker);
         BattleCharacterController reciever = null;
 
