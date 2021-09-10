@@ -5,13 +5,33 @@ using TMPro;
 public class BattleUIManager : MonoBehaviour
 {
 	[SerializeField] BattleManager battleManager;
-	[SerializeField] Image playButtonImage;
+	[SerializeField] GameObject resetButton;
+	[SerializeField] GameObject victoryText;
+	[SerializeField] GameObject defeatText;
+    [SerializeField] Image playButtonImage;
 	[SerializeField] Button playButton;
 
-	public void StartGame()
+    private void Start()
+    {
+        battleManager.LeftPartyWon += OnVictory;
+        battleManager.RightPartyWon += OnDefeat;
+    }
+
+    public void StartGame()
     {
 		playButton.enabled = false;
 		playButtonImage.color = Color.gray;
 		battleManager.readyToStart = true;
+    }
+
+    void OnDefeat()
+    {
+        resetButton.SetActive(true);
+        defeatText.SetActive(true);
+    }
+    void OnVictory()
+    {
+        resetButton.SetActive(true);
+        victoryText.SetActive(true);
     }
 }

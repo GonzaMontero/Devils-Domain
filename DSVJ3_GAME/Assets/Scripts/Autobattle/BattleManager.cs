@@ -5,13 +5,13 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     public bool readyToStart; //TEMP
-    public Action RightPartyWon;
     public Action LeftPartyWon;
+    public Action RightPartyWon;
     [SerializeField] GameObject characterPrefab;
     [SerializeField] Transform enemiesParent;
     [SerializeField] SlotsCreator slotsCreator;
-    [SerializeField] List<int> rightParty;
     [SerializeField] List<int> leftParty;
+    [SerializeField] List<int> rightParty;
     [SerializeField] List<BattleCharacterHolder> holders;
     [SerializeField]
     BattleCharacterController[] characters = new BattleCharacterController[18]; //first 6 are player
@@ -68,13 +68,13 @@ public class BattleManager : MonoBehaviour
         if (characterIndex >= 0)
         {
             UnlinkCharacterActions(character);
-            if (CharacterIsOnRight(characterIndex))
+            if (CharacterIsOnLeft(characterIndex))
             {
-                rightParty.Add(characterIndex);
+                leftParty.Remove(characterIndex);
             }
             else
             {
-                leftParty.Add(characterIndex);
+                rightParty.Remove(characterIndex);
             }
             characters[characterIndex] = null;
         }
@@ -83,6 +83,14 @@ public class BattleManager : MonoBehaviour
         int slotIndex = Array.IndexOf(characterTiles, slotCollider);
         characters[slotIndex] = character;
         LinkCharacterActions(character);
+        if (CharacterIsOnLeft(slotIndex))
+        {
+            leftParty.Add(slotIndex);
+        }
+        else
+        {
+            rightParty.Add(slotIndex);
+        }
     }
     void OnCharacterSelectTarget(BattleCharacterController attacker)
     {
@@ -92,20 +100,20 @@ public class BattleManager : MonoBehaviour
     {
         int deadCharaIndex = Array.IndexOf(characters, character);
         characters[deadCharaIndex] = null;
-        if (CharacterIsOnRight(deadCharaIndex))
-        {
-            rightParty.Remove(deadCharaIndex);
-            if (rightParty.Count <= 0)
-            {
-                LeftPartyWon?.Invoke();
-            }
-        }
-        else
+        if (CharacterIsOnLeft(deadCharaIndex))
         {
             leftParty.Remove(deadCharaIndex);
             if (leftParty.Count <= 0)
             {
                 RightPartyWon?.Invoke();
+            }
+        }
+        else
+        {
+            rightParty.Remove(deadCharaIndex);
+            if (rightParty.Count <= 0)
+            {
+                LeftPartyWon?.Invoke();
             }
         }
     }
@@ -138,7 +146,7 @@ public class BattleManager : MonoBehaviour
     {
         int receiverIndex = 0; //index of character who gets attacked
         int rowNumber = 1; //how many rows has the character searched for a target?
-        bool characterIsOnRight = CharacterIsOnRight(attackerIndex);
+        bool characterIsOnRight = CharacterIsOnLeft(attackerIndex);
 
         switch (attackerIndex % 3)
         {
@@ -187,7 +195,7 @@ public class BattleManager : MonoBehaviour
                 break;
         }
 
-        if(characterIsOnRight == CharacterIsOnRight(receiverIndex)) { return null; }
+        if(characterIsOnRight == CharacterIsOnLeft(receiverIndex)) { return null; }
         return characters[receiverIndex];
     }
     BattleCharacterController GetBothReciever(int attackerIndex)
@@ -195,7 +203,7 @@ public class BattleManager : MonoBehaviour
         int receiverIndex = 0;
         int weakestHealth = int.MaxValue;
 
-        if (CharacterIsOnRight(attackerIndex))
+        if (CharacterIsOnLeft(attackerIndex))
         {
             for (int i = midArray; i < characters.Length; i++)
             {
@@ -218,14 +226,14 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        if (CharacterIsOnRight(attackerIndex) == CharacterIsOnRight(receiverIndex)) { return null; }
+        if (CharacterIsOnLeft(attackerIndex) == CharacterIsOnLeft(receiverIndex)) { return null; }
         return characters[receiverIndex];
     }
     BattleCharacterController GetRangedReciever(int attackerIndex)
     {
         int receiverIndex = 0;
         int rowNumber = 1;
-        bool characterIsOnRight = CharacterIsOnRight(attackerIndex);
+        bool characterIsOnRight = CharacterIsOnLeft(attackerIndex);
 
         switch (attackerIndex % 3)
         {
@@ -274,7 +282,7 @@ public class BattleManager : MonoBehaviour
                 break;
         }
 
-        if(characterIsOnRight == CharacterIsOnRight(receiverIndex)) { return null; }
+        if(characterIsOnRight == CharacterIsOnLeft(receiverIndex)) { return null; }
         return characters[receiverIndex];
     }
     void GenerateEnemies()
@@ -286,25 +294,26 @@ public class BattleManager : MonoBehaviour
     }
     void GenerateRandomEnemy()
     {
-        int number = UnityEngine.Random.Range(0, characterSOs.Length);
-        int number2 = UnityEngine.Random.Range(0, midArray);
+        int soIndex = UnityEngine.Random.Range(0, characterSOs.Length);
+        int characterIndex = UnityEngine.Random.Range(0, midArray);
 
-        while (characters[number2])
+        while (characters[characterIndex])
         {
-            number2 = UnityEngine.Random.Range(0, midArray);
+            characterIndex = UnityEngine.Random.Range(0, midArray);
         }
 
         BattleCharacterController character = Instantiate(characterPrefab, enemiesParent).GetComponent<BattleCharacterController>();
-        character.transform.position = characterTiles[number2].transform.position;
+        character.transform.position = characterTiles[characterIndex].transform.position;
 
-        character.SetData(characterSOs[number]);
+        leftParty.Add(characterIndex);
+        character.SetData(characterSOs[soIndex]);
         LinkCharacterActions(character);
 
-        characters[number2] = character;
+        characters[characterIndex] = character;
     }
-    bool CharacterIsOnRight(int characterIndex)
+    bool CharacterIsOnLeft(int characterIndex)
     {
-        return characterIndex < characters.Length / 2;
+        return characterIndex < midArray;
     }
     void UnlinkCharacterActions(BattleCharacterController character)
     {
