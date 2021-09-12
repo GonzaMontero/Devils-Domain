@@ -711,7 +711,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268042908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.87, y: 4.13, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 14.803, y: 14.803, z: 14.803}
   m_Children: []
   m_Father: {fileID: 0}
@@ -958,8 +958,8 @@ MonoBehaviour:
     type: 3}
   enemiesParent: {fileID: 840246496}
   slotsCreator: {fileID: 1925750634}
-  rightParty: 
   leftParty: 
+  rightParty: 
   holders:
   - {fileID: 715650231}
   - {fileID: 1666984260}
