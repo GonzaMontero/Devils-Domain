@@ -7,6 +7,7 @@ public class BattleCharacterUI : MonoBehaviour
     [SerializeField] BattleCharacterController controller;
     [SerializeField] GameObject damageTextPrefab;
     [SerializeField] Transform canvas;
+    [SerializeField] Transform healthBar;
     Animator animator;
     const float damageTextDuration = 2;
     const float damageXRange = 2;
@@ -23,6 +24,9 @@ public class BattleCharacterUI : MonoBehaviour
     void OnRecievedDamage(int damage)
     {
         animator.SetTrigger("Receive Damage");
+        Vector3 newHealthScale = healthBar.localScale;
+        newHealthScale.x = controller.GetHealthPercentage();
+        healthBar.localScale = newHealthScale;
         StartCoroutine(ActivateDamageText(damage));
     }
     void OnAttack(int notNeeded)

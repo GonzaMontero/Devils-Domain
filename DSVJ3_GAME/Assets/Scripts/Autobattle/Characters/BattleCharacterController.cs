@@ -44,6 +44,10 @@ public class BattleCharacterController : MonoBehaviour
     {
         return data.health;
     }
+    public float GetHealthPercentage()
+    {
+        return (float)data.health / (float)data.currentStats.maxHealth;
+    }
     public int GetAttackDamage()
     {
         return data.currentStats.damage;
@@ -57,7 +61,7 @@ public class BattleCharacterController : MonoBehaviour
         int actualDamage = damage * ((100 - data.currentStats.armor) / 100);
         data.health -= actualDamage; //reduce damage by armor rate
         DamageReceived.Invoke(actualDamage);
-        if (data.health < 0)
+        if (data.health <= 0)
         {
             current = States.dead;
         }
