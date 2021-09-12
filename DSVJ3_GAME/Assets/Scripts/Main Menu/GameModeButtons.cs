@@ -22,6 +22,6 @@ public class GameModeButtons : MonoBehaviour
     }
     public void GoToIdle()
     {
-        SceneManager.LoadScene("ProtoRoom");
+        SceneManager.LoadScene("Rooms");
     }
 }
