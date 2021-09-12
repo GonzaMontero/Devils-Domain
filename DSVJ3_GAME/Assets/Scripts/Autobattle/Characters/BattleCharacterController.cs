@@ -9,15 +9,14 @@ public class BattleCharacterController : MonoBehaviour
     public Action<BattleCharacterController> Die;
     public Action<BattleCharacterController> SelectTarget;
     public Action<int> Attack;
+    public Action<int> DamageReceived;
     public BattleCharacterController target;
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
-    Animator animator;
     const float despawnTimer = 2;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         current = States.idle;
         data.SetLevel0Currents();
         data.SetStartOfBattleCurrents();
@@ -33,7 +32,6 @@ public class BattleCharacterController : MonoBehaviour
         data.SetLevel0Currents();
         data.SetStartOfBattleCurrents();
     }
-
     public void OnAttack(int damage)
     {
         ReceiveDamage(damage);
@@ -56,8 +54,9 @@ public class BattleCharacterController : MonoBehaviour
     }
     public void ReceiveDamage(int damage)
     {
-        animator.SetTrigger("Receive Damage");
-        data.health -= damage * ((100 - data.currentStats.armor) / 100); //reduce damage by armor rate
+        int actualDamage = damage * ((100 - data.currentStats.armor) / 100);
+        data.health -= actualDamage; //reduce damage by armor rate
+        DamageReceived.Invoke(actualDamage);
         if (data.health < 0)
         {
             current = States.dead;
@@ -74,21 +73,18 @@ public class BattleCharacterController : MonoBehaviour
                 SelectTarget?.Invoke(this);
                 if (!target) { return; }
                 Attack += target.OnAttack;
-                animator.SetBool("Attacking", true);
                 current++;
                 break;
             case States.attacking:
                 if (!target || !target.IsAlive())
                 {
                     Attack -= target.OnAttack;
-                    animator.SetBool("Attacking", false);
                     current = States.idle;
                     return;
                 }
                 ChargeAttack(data.currentStats.attackSpeed * Time.deltaTime);
                 break;
             case States.dead:
-                animator.SetTrigger("Die");
                 Die.Invoke(this);
                 Invoke("DeSpawn", despawnTimer);
                 break;
