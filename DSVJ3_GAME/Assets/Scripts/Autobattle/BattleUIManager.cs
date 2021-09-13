@@ -21,7 +21,7 @@ public class BattleUIManager : MonoBehaviour
     {
 		playButton.enabled = false;
 		playButtonImage.color = Color.gray;
-		battleManager.readyToStart = true;
+        battleManager.StartGame();
     }
 
     void OnDefeat()

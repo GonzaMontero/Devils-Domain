@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    public bool readyToStart; //TEMP
     public Action LeftPartyWon;
     public Action RightPartyWon;
     [SerializeField] GameObject characterPrefab;
@@ -18,6 +17,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     BoxCollider2D[] characterTiles = new BoxCollider2D[18]; //second 6 are enemies (same as characters)
     BattleCharacterSO[] characterSOs;
+    bool readyToStart;
     int midArray;
 
     /*
@@ -51,6 +51,14 @@ public class BattleManager : MonoBehaviour
     }
 
     #region Methods
+    public void StartGame()
+    {
+        readyToStart = true;
+        foreach (BattleCharacterHolder holder in holders)
+        {
+            Destroy(holder);
+        }
+    }
     void OnSlotCreated(BoxCollider2D collider)
     {
         int slotIndex = 0;
