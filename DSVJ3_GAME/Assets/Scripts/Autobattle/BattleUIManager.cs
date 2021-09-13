@@ -13,8 +13,8 @@ public class BattleUIManager : MonoBehaviour
 
     private void Start()
     {
-        battleManager.LeftPartyWon += OnVictory;
-        battleManager.RightPartyWon += OnDefeat;
+        battleManager.RightPartyWon += OnVictory;
+        battleManager.LeftPartyWon += OnDefeat;
     }
 
     public void StartGame()
