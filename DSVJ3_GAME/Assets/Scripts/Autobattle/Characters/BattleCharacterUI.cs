@@ -9,6 +9,7 @@ public class BattleCharacterUI : MonoBehaviour
     [SerializeField] Transform canvas;
     [SerializeField] Transform healthBar;
     Animator animator;
+    bool characterPositioned;
     const float damageTextDuration = 2;
     const float damageXRange = 2;
 
@@ -32,6 +33,13 @@ public class BattleCharacterUI : MonoBehaviour
     void OnAttack(int notNeeded)
     {
         animator.SetBool("Attacking", true);
+
+        //Set Sorting layer once battle has started
+        if (!characterPositioned)
+        {
+            transform.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        }
+        characterPositioned = true;
     }
     void OnSelectTarget(BattleCharacterController notNeeded)
     {
