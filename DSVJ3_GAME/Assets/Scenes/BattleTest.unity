@@ -2203,7 +2203,7 @@ GameObject:
   - component: {fileID: 1925750635}
   - component: {fileID: 1925750634}
   m_Layer: 0
-  m_Name: Test 123
+  m_Name: SlotCreator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
