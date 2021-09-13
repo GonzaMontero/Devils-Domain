@@ -7,7 +7,9 @@ public class BattleCharacterHolder : MonoBehaviour
     Vector2 originalPosition;
     Vector2 newPosition;
     LayerMask slotsMask;
+    RaycastHit2D slotHitted;
     BoxCollider2D boxCollider;
+    SpriteRenderer lastSlotSprite;
 
     #region Unity Events
     private void Start()
@@ -30,6 +32,7 @@ public class BattleCharacterHolder : MonoBehaviour
         screenMouseAux.z = -Camera.main.transform.position.z;
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(screenMouseAux);
         transform.position = mousePos;
+        GetSlot();
         //Debug.Log("Dragged Pos! " + mousePos);
     }
     private void OnMouseUp()
@@ -41,12 +44,18 @@ public class BattleCharacterHolder : MonoBehaviour
     }
     #endregion
 
-    #region Methods
-    void GetSlotPos()
+    void GetSlot()
     {
         Vector2 pos = transform.position;
-        RaycastHit2D slotHitted;
+
         slotHitted = Physics2D.BoxCast(pos, boxCollider.size, 0, Vector2.up, 0, slotsMask);
+        if (slotHitted)
+        {
+            UpdateSlotColor(slotHitted);
+        }
+    }
+    void GetSlotPos()
+    {        
         if (slotHitted)
         {
             newPosition = slotHitted.transform.position;
@@ -60,6 +69,16 @@ public class BattleCharacterHolder : MonoBehaviour
         {
             newPosition = originalPosition;
         }
+
+        lastSlotSprite.color = Color.white; //character positioned, so color marking is not needed
     }
-    #endregion
+    void UpdateSlotColor(RaycastHit2D slotHitted)
+    {
+        if (lastSlotSprite)
+        {
+            lastSlotSprite.color = Color.white;
+        }
+        lastSlotSprite = slotHitted.transform.GetComponent<SpriteRenderer>();
+        lastSlotSprite.color = Color.yellow;
+    }
 }
