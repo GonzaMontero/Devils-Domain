@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BattleTest.unity
     guid: 58605ef10f5885e42a02a6dd7714e897
   - enabled: 1
-    path: Assets/Scenes/ProtoRoom.unity
-    guid: 60331840ed6ede743a81b82d0d35e8ff
-  - enabled: 1
     path: Assets/Scenes/Gacha.unity
     guid: 2e9fed5dc2674ee428c5438b466efb04
+  - enabled: 1
+    path: Assets/Scenes/Rooms.unity
+    guid: 688ee961b00094b4cbee78c08e767f99
   m_configObjects: {}
