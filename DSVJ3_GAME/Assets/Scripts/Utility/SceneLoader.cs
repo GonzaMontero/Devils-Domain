@@ -7,4 +7,8 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("BattleTest");
     }
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }

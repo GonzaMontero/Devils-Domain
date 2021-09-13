@@ -70,7 +70,10 @@ public class BattleCharacterHolder : MonoBehaviour
             newPosition = originalPosition;
         }
 
-        lastSlotSprite.color = Color.white; //character positioned, so color marking is not needed
+        if (lastSlotSprite)
+        {
+            lastSlotSprite.color = Color.white; //character positioned, so color marking is not needed
+        }
     }
     void UpdateSlotColor(RaycastHit2D slotHitted)
     {
