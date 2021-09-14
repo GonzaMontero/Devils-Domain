@@ -4,36 +4,24 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    public Action LeftPartyWon;
-    public Action RightPartyWon;
+    public Action EnemyPartyWon;
+    public Action PlayerPartyWon;
+    public Dictionary<int, BattleCharacterController> enemyInTile;
+    public Dictionary<int, BattleCharacterController> allyInTile;
     [SerializeField] GameObject characterPrefab;
     [SerializeField] Transform enemiesParent;
     [SerializeField] SlotsCreator slotsCreator;
-    [SerializeField] List<int> leftParty;
-    [SerializeField] List<int> rightParty;
+    [SerializeField] List<BattleCharacterController> enemies;
+    [SerializeField] List<BattleCharacterController> allies;
     [SerializeField] List<BattleCharacterHolder> holders;
-    [SerializeField]
-    BattleCharacterController[] characters = new BattleCharacterController[18]; //first 6 are player
-    [SerializeField]
-    BoxCollider2D[] characterTiles = new BoxCollider2D[18]; //second 6 are enemies (same as characters)
+    [SerializeField] BoxCollider2D[] characterTiles = new BoxCollider2D[18];
     BattleCharacterSO[] characterSOs;
     bool readyToStart;
-    int midArray;
-
-    /*
-     * slots are organized in proximity, so matrix would be:
-     * 6 3 0 - 9  12 15
-     * 7 4 1 - 10 13 16
-     * 8 5 2 - 11 14 17
-     * OR
-     * 3 0 - 6 9
-     * 4 1 - 7 10
-     * 5 2 - 8 11
-     */
 
     private void Awake()
     {
-        midArray = characters.Length / 2;
+        enemyInTile = new Dictionary<int, BattleCharacterController>();
+        allyInTile = new Dictionary<int, BattleCharacterController>();
 
         //Link Actions
         slotsCreator.SlotGenerated += OnSlotCreated;
@@ -72,32 +60,28 @@ public class BattleManager : MonoBehaviour
     void OnCharacterPositioned(BoxCollider2D slotCollider, BattleCharacterController character)
     {
         //delete character from array if existant
-        int characterIndex = Array.IndexOf(characters, character);
-        if (characterIndex >= 0)
+        if (allies.Contains(character) || enemies.Contains(character))
         {
             UnlinkCharacterActions(character);
-            if (CharacterIsOnLeft(characterIndex))
+            if (CharacterIsAlly(character))
             {
-                leftParty.Remove(characterIndex);
+                enemies.Remove(character);
             }
             else
             {
-                rightParty.Remove(characterIndex);
+                allies.Remove(character);
             }
-            characters[characterIndex] = null;
         }
 
-        //add character to array
-        int slotIndex = Array.IndexOf(characterTiles, slotCollider);
-        characters[slotIndex] = character;
+        //add character to list
         LinkCharacterActions(character);
-        if (CharacterIsOnLeft(slotIndex))
+        if (CharacterIsAlly(character))
         {
-            leftParty.Add(slotIndex);
+            enemies.Add(character);
         }
         else
         {
-            rightParty.Add(slotIndex);
+            allies.Add(character);
         }
     }
     void OnCharacterSelectTarget(BattleCharacterController attacker)
@@ -106,43 +90,37 @@ public class BattleManager : MonoBehaviour
     }
     void OnCharacterDeath(BattleCharacterController character)
     {
-        int deadCharaIndex = Array.IndexOf(characters, character);
-        characters[deadCharaIndex] = null;
-        if (CharacterIsOnLeft(deadCharaIndex))
+        if (CharacterIsAlly(character))
         {
-            leftParty.Remove(deadCharaIndex);
-            if (leftParty.Count <= 0)
+            enemies.Remove(character);
+            if (enemies.Count <= 0)
             {
-                RightPartyWon?.Invoke();
+                PlayerPartyWon?.Invoke();
             }
         }
         else
         {
-            rightParty.Remove(deadCharaIndex);
-            if (rightParty.Count <= 0)
+            allies.Remove(character);
+            if (allies.Count <= 0)
             {
-                LeftPartyWon?.Invoke();
+                EnemyPartyWon?.Invoke();
             }
         }
     }
     BattleCharacterController GetAttackReceiver(BattleCharacterController attacker)
     {
         if (!readyToStart) { return null; } //TEMP needed to set enemy characters
-
-        int attackerIndex = Array.IndexOf(characters, attacker);
         BattleCharacterController reciever = null;
 
         //check if distance is correct and attack
         switch (attacker.GetAttackType())
         {
             case AttackType.melee:
-                reciever = GetMeleeReciever(attackerIndex);
+            case AttackType.ranged:
+                reciever = GetReciever(attacker);
                 break;
             case AttackType.both:
-                reciever = GetBothReciever(attackerIndex);
-                break;
-            case AttackType.ranged:
-                reciever = GetRangedReciever(attackerIndex);
+                reciever = GetWeakestReciever(attacker);
                 break;
             default:
                 break;
@@ -150,148 +128,39 @@ public class BattleManager : MonoBehaviour
 
         return reciever;
     }
-    BattleCharacterController GetMeleeReciever(int attackerIndex)
+    BattleCharacterController GetReciever(BattleCharacterController attacker)
     {
-        int receiverIndex = 0; //index of character who gets attacked
-        int rowNumber = 1; //how many rows has the character searched for a target?
-        bool characterIsOnRight = CharacterIsOnLeft(attackerIndex);
-
-        switch (attackerIndex % 3)
-        {
-            case 0:
-            case 1:
-                receiverIndex = characterIsOnRight ? midArray : 0; //if attacker is ally, set target to 6
-                while (!characters[receiverIndex] || !characters[receiverIndex].IsAlive())
-                {
-                    receiverIndex++;
-                    if (characterIsOnRight && receiverIndex >= characters.Length)
-                    {
-                        return null;
-                    }
-                    else if (!characterIsOnRight && receiverIndex > midArray)
-                    {
-                        return null;
-                    }
-                }
-                break;
-            case 2:
-                receiverIndex = characterIsOnRight ? midArray + 2 : 2; //if attacker is on right, set target to left down
-                while (!characters[receiverIndex] || !characters[receiverIndex].IsAlive())
-                {
-                    receiverIndex--;
-                    if (characterIsOnRight && receiverIndex <= midArray)
-                    {
-                        receiverIndex += 3 * rowNumber;
-                        rowNumber++;
-                        if (receiverIndex > characters.Length)
-                        {
-                            return null;
-                        }
-                    }
-                    else if (!characterIsOnRight && receiverIndex < 0)
-                    {
-                        receiverIndex += 3 * rowNumber;
-                        rowNumber++;
-                        if (receiverIndex > midArray)
-                        {
-                            return null;
-                        }
-                    }
-                }
-                break;
-            default:
-                break;
-        }
-
-        if(characterIsOnRight == CharacterIsOnLeft(receiverIndex)) { return null; }
-        return characters[receiverIndex];
+        return CharacterIsAlly(attacker) ? enemies[0] : allies[0];
     }
-    BattleCharacterController GetBothReciever(int attackerIndex)
+    BattleCharacterController GetWeakestReciever(BattleCharacterController attacker)
     {
-        int receiverIndex = 0;
+        BattleCharacterController receiver = null;
         int weakestHealth = int.MaxValue;
 
-        if (CharacterIsOnLeft(attackerIndex))
+        if (CharacterIsAlly(attacker))
         {
-            for (int i = midArray; i < characters.Length; i++)
+            foreach (BattleCharacterController enemy in enemies)
             {
-                if (characters[i] && characters[i].GetHealth() < weakestHealth)
+                if (enemy.GetHealth() < weakestHealth)
                 {
-                    weakestHealth = characters[i].GetHealth();
-                    receiverIndex = i;
+                    weakestHealth = enemy.GetHealth();
+                    receiver = enemy;
                 }
             }
         }
         else //attacker is enemy character
         {
-            for (int i = midArray - 1; i >= 0; i--)
+            foreach (BattleCharacterController ally in allies)
             {
-                if (characters[i] && characters[i].GetHealth() < weakestHealth)
+                if (ally.GetHealth() < weakestHealth)
                 {
-                    weakestHealth = characters[i].GetHealth();
-                    receiverIndex = i;
+                    weakestHealth = ally.GetHealth();
+                    receiver = ally;
                 }
             }
         }
 
-        if (CharacterIsOnLeft(attackerIndex) == CharacterIsOnLeft(receiverIndex)) { return null; }
-        return characters[receiverIndex];
-    }
-    BattleCharacterController GetRangedReciever(int attackerIndex)
-    {
-        int receiverIndex = 0;
-        int rowNumber = 1;
-        bool characterIsOnRight = CharacterIsOnLeft(attackerIndex);
-
-        switch (attackerIndex % 3)
-        {
-            case 0:
-            case 1: //if attacker is on right, set target to 9
-                receiverIndex = characterIsOnRight ? characters.Length - 3 : midArray - 3; 
-                while (!characters[receiverIndex] || !characters[receiverIndex].IsAlive())
-                {
-                    receiverIndex++;
-                    if (characterIsOnRight && receiverIndex >= characters.Length)
-                    {
-                        receiverIndex -= 3 * rowNumber;
-                        rowNumber++;
-                        if (receiverIndex <= midArray)
-                        {
-                            return null;
-                        }
-                    }
-                    else if (!characterIsOnRight && receiverIndex > midArray)
-                    {
-                        receiverIndex -= 3 * rowNumber;
-                        rowNumber++;
-                        if (receiverIndex > midArray)
-                        {
-                            return null;
-                        }
-                    }
-                }
-                break;
-            case 2: //if attacker is ally, set target to 11
-                receiverIndex = characterIsOnRight ? characters.Length - 1 : midArray - 1; 
-                while (!characters[receiverIndex] || !characters[receiverIndex].IsAlive())
-                {
-                    receiverIndex--;
-                    if (characterIsOnRight && receiverIndex <= midArray)
-                    {
-                        return null;
-                    }
-                    else if (!characterIsOnRight && receiverIndex < 0)
-                    {
-                            return null;
-                    }
-                }
-                break;
-            default:
-                break;
-        }
-
-        if(characterIsOnRight == CharacterIsOnLeft(receiverIndex)) { return null; }
-        return characters[receiverIndex];
+        return receiver;
     }
     void GenerateEnemies()
     {
@@ -303,26 +172,24 @@ public class BattleManager : MonoBehaviour
     void GenerateRandomEnemy()
     {
         int soIndex = UnityEngine.Random.Range(0, characterSOs.Length);
-        int characterIndex = UnityEngine.Random.Range(0, midArray);
+        int tileIndex = UnityEngine.Random.Range(0, characterTiles.Length / 2);
 
-        while (characters[characterIndex])
+        while (enemyInTile.ContainsKey(tileIndex))
         {
-            characterIndex = UnityEngine.Random.Range(0, midArray);
+            tileIndex = UnityEngine.Random.Range(0, characterTiles.Length / 2);
         }
 
         BattleCharacterController character = Instantiate(characterPrefab, enemiesParent).GetComponent<BattleCharacterController>();
-        character.transform.position = characterTiles[characterIndex].transform.position;
+        character.transform.position = characterTiles[tileIndex].transform.position;
         character.GetComponent<SpriteRenderer>().flipX = true;
 
-        leftParty.Add(characterIndex);
+        enemies.Add(character);
         character.SetData(characterSOs[soIndex]);
         LinkCharacterActions(character);
-
-        characters[characterIndex] = character;
     }
-    bool CharacterIsOnLeft(int characterIndex)
+    bool CharacterIsAlly(BattleCharacterController character)
     {
-        return characterIndex < midArray;
+        return allies.Contains(character);
     }
     void UnlinkCharacterActions(BattleCharacterController character)
     {
@@ -335,4 +202,6 @@ public class BattleManager : MonoBehaviour
         character.Die += OnCharacterDeath;
     }
     #endregion
+
+
 }
