@@ -14,6 +14,7 @@ public class BattleCharacterSO : ScriptableObject
     public int baseXpToLevelUp;
     [Tooltip("Used to calculate xp required to lvl up - EXPLAIN BETTER LATER")]
     public int xpToLevelUpModifier;
+    public int numberOfStars;
     //public CharaterType type;
     public AttackType attackType;
 }
