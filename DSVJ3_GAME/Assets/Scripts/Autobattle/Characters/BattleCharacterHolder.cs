@@ -4,7 +4,7 @@ using UnityEngine;
 public class BattleCharacterHolder : MonoBehaviour
 {
     public Action<BoxCollider2D, BattleCharacterController> CharacterPositioned;
-    Vector2 originalPosition;
+    Vector2 originalPosition;   
     Vector2 newPosition;
     LayerMask slotsMask;
     RaycastHit2D slotHitted;
@@ -56,7 +56,7 @@ public class BattleCharacterHolder : MonoBehaviour
     }
     void GetSlotPos()
     {        
-        if (slotHitted)
+        if (slotHitted && !slotHitted.transform.CompareTag("SlotTaken"))
         {
             newPosition = slotHitted.transform.position;
 

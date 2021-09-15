@@ -61,6 +61,7 @@ public class SlotsCreator : MonoBehaviour
         tile_go.name = "Tile_" + x + "_" + y;
         tile_go.transform.parent = this.transform;
         tile_go.layer = LayerMask.NameToLayer("Slots");
+        tile_go.tag = "Slot";
 
         //Add Sprite Renderer
         SpriteRenderer tile_sprRend = tile_go.AddComponent<SpriteRenderer>();

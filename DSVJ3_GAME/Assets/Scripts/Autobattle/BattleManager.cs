@@ -5,9 +5,7 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     public Action EnemyPartyWon;
-    public Action PlayerPartyWon;
-    public Dictionary<int, BattleCharacterController> enemyInTile;
-    public Dictionary<int, BattleCharacterController> allyInTile;
+    public Action PlayerPartyWon;   
     [SerializeField] GameObject characterPrefab;
     [SerializeField] Transform enemiesParent;
     [SerializeField] SlotsCreator slotsCreator;
@@ -16,12 +14,18 @@ public class BattleManager : MonoBehaviour
     [SerializeField] List<BattleCharacterHolder> holders;
     [SerializeField] BoxCollider2D[] characterTiles = new BoxCollider2D[18];
     BattleCharacterSO[] characterSOs;
+    Dictionary<int, BattleCharacterController> enemyInTile;
+    Dictionary<int, BattleCharacterController> allyInTile;
+    Dictionary<BattleCharacterController, int> tileOfEnemy;
+    Dictionary<BattleCharacterController, int> tileOfAlly;
     bool readyToStart;
 
     private void Awake()
     {
         enemyInTile = new Dictionary<int, BattleCharacterController>();
         allyInTile = new Dictionary<int, BattleCharacterController>();
+        tileOfEnemy = new Dictionary<BattleCharacterController, int>();
+        tileOfAlly = new Dictionary<BattleCharacterController, int>();
 
         //Link Actions
         slotsCreator.SlotGenerated += OnSlotCreated;
@@ -38,7 +42,6 @@ public class BattleManager : MonoBehaviour
         GenerateEnemies();
     }
 
-    #region Methods
     public void StartGame()
     {
         readyToStart = true;
@@ -59,30 +62,28 @@ public class BattleManager : MonoBehaviour
     }
     void OnCharacterPositioned(BoxCollider2D slotCollider, BattleCharacterController character)
     {
-        //delete character from array if existant
+        int tileIndex = Array.IndexOf(characterTiles, slotCollider);
+        bool characterIsAlly = tileIndex >= characterTiles.Length / 2;
+
+        //delete character from list if existant
         if (allies.Contains(character) || enemies.Contains(character))
         {
-            UnlinkCharacterActions(character);
-            if (CharacterIsAlly(character))
+            int oldSlotIndex;
+            if (characterIsAlly)
             {
-                enemies.Remove(character);
+                tileOfAlly.TryGetValue(character, out oldSlotIndex);
             }
             else
             {
-                allies.Remove(character);
+                tileOfEnemy.TryGetValue(character, out oldSlotIndex);
             }
+            characterTiles[oldSlotIndex].tag = "Slot";
+            RemoveCharacter(characterIsAlly, character);
         }
 
         //add character to list
-        LinkCharacterActions(character);
-        if (CharacterIsAlly(character))
-        {
-            enemies.Add(character);
-        }
-        else
-        {
-            allies.Add(character);
-        }
+        AddCharacter(characterIsAlly, character, tileIndex);
+        slotCollider.transform.tag = "SlotTaken";
     }
     void OnCharacterSelectTarget(BattleCharacterController attacker)
     {
@@ -92,18 +93,18 @@ public class BattleManager : MonoBehaviour
     {
         if (CharacterIsAlly(character))
         {
-            enemies.Remove(character);
-            if (enemies.Count <= 0)
+            RemoveCharacter(true, character);
+            if (allies.Count <= 0)
             {
-                PlayerPartyWon?.Invoke();
+                EnemyPartyWon?.Invoke();
             }
         }
         else
         {
-            allies.Remove(character);
-            if (allies.Count <= 0)
+            RemoveCharacter(false, character);
+            if (enemies.Count <= 0)
             {
-                EnemyPartyWon?.Invoke();
+                PlayerPartyWon?.Invoke();
             }
         }
     }
@@ -130,6 +131,10 @@ public class BattleManager : MonoBehaviour
     }
     BattleCharacterController GetReciever(BattleCharacterController attacker)
     {
+        if (CharacterIsAlly(attacker) && enemies.Count < 1) { return null; }
+        else if (allies.Count < 1) { return null; }
+        
+
         return CharacterIsAlly(attacker) ? enemies[0] : allies[0];
     }
     BattleCharacterController GetWeakestReciever(BattleCharacterController attacker)
@@ -183,13 +188,40 @@ public class BattleManager : MonoBehaviour
         character.transform.position = characterTiles[tileIndex].transform.position;
         character.GetComponent<SpriteRenderer>().flipX = true;
 
-        enemies.Add(character);
         character.SetData(characterSOs[soIndex]);
-        LinkCharacterActions(character);
+        AddCharacter(false, character, tileIndex);
     }
     bool CharacterIsAlly(BattleCharacterController character)
     {
         return allies.Contains(character);
+    }
+    void AddCharacter(bool isAlly, BattleCharacterController character, int tileIndex)
+    {
+        LinkCharacterActions(character);
+        if (isAlly)
+        {
+            allies.Add(character);
+            SetAllyInTile(tileIndex, character);
+        }
+        else
+        {
+            enemies.Add(character);
+            SetEnemyInTile(tileIndex, character);
+        }
+    }
+    void RemoveCharacter(bool isAlly, BattleCharacterController character = null, int tileIndex = -1)
+    {
+        UnlinkCharacterActions(character);
+        if (isAlly)
+        {
+            allies.Remove(character);
+            RemoveAllyInTile(tileIndex, character);
+        }
+        else
+        {
+            enemies.Remove(character);
+            RemoveEnemyInTile(tileIndex, character);
+        }
     }
     void UnlinkCharacterActions(BattleCharacterController character)
     {
@@ -201,7 +233,56 @@ public class BattleManager : MonoBehaviour
         character.SelectTarget += OnCharacterSelectTarget;
         character.Die += OnCharacterDeath;
     }
-    #endregion
+    void SetEnemyInTile(int tileIndex, BattleCharacterController character)
+    {
+        enemyInTile.Add(tileIndex, character);
+        tileOfEnemy.Add(character, tileIndex);
+    }
+    void SetAllyInTile(int tileIndex, BattleCharacterController character)
+    {
+        allyInTile.Add(tileIndex, character);
+        tileOfAlly.Add(character, tileIndex);
+    }
+    void RemoveEnemyInTile(int tileIndex = -1, BattleCharacterController character = null)
+    {
+        //Get missing values from respective Dictionary
+        if (tileIndex == - 1)
+        {
+            if (!tileOfEnemy.TryGetValue(character, out tileIndex))
+            {
+                return;
+            }
+        }
+        else
+        {
+            if (!enemyInTile.TryGetValue(tileIndex, out character))
+            {
+                return;
+            }
+        }
 
+        enemyInTile.Remove(tileIndex);
+        tileOfEnemy.Remove(character);
+    }
+    void RemoveAllyInTile(int tileIndex = -1, BattleCharacterController character = null)
+    {
+        //Get missing values from respective Dictionary
+        if (tileIndex == -1)
+        {
+            if (!tileOfAlly.TryGetValue(character, out tileIndex))
+            {
+                return;
+            }
+        }
+        else
+        {
+            if (!allyInTile.TryGetValue(tileIndex, out character))
+            {
+                return;
+            }
+        }
 
+        allyInTile.Remove(tileIndex);
+        tileOfAlly.Remove(character);
+    }
 }
