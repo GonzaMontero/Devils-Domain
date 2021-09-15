@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using System.Collections.Generic;
 
 public class GachaRates : MonoBehaviour
 {
     [SerializeField] GameObject[] gachaBoxesShow;
+    [SerializeField] GameObject[] gachaBannerNoShow;
+    [SerializeField] GameObject gachaPanel;
 
     [SerializeField] List<BattleCharacterSO> threeStarCharacters;
     [SerializeField] List<BattleCharacterSO> fourStarCharacters;
@@ -36,41 +40,62 @@ public class GachaRates : MonoBehaviour
         if(randomNumber>=0 && randomNumber <= 10)
         {
             //ganas 5 estrellas aleatorio
-            int r = UnityEngine.Random.Range(0, fiveStarCharacters.Count + 1);
+            int r = UnityEngine.Random.Range(0, fiveStarCharacters.Count);
             SendCharacterToBox(index, fiveStarCharacters[r]);
         }
         if (randomNumber >= 11 && randomNumber <= 50)
         {
             //ganas 4 estrellas aleatorio
-            int r = UnityEngine.Random.Range(0, fourStarCharacters.Count + 1);
+            int r = UnityEngine.Random.Range(0, fourStarCharacters.Count);
             SendCharacterToBox(index, fourStarCharacters[r]);
         }
         if (randomNumber >= 51 && randomNumber <= 100)
         {
             //ganas 3 estrellas aleatorio
-            int r = UnityEngine.Random.Range(0, threeStarCharacters.Count + 1);
+            int r = UnityEngine.Random.Range(0, threeStarCharacters.Count);
             SendCharacterToBox(index, threeStarCharacters[r]);
         }
     }
     public void SendCharacterToBox(int index, BattleCharacterSO character)
     {
-        //Aca se pasa el pj al indice
+        gachaBoxesShow[index].GetComponentInChildren<Image>().sprite = character.sprite;
+        gachaBoxesShow[index].GetComponentInChildren<TextMeshProUGUI>().text = character.name;
     }
 
     #region ButtonPress
     public void PullOnce()
     {
-        int index = 0;
+        int index = 5;
+        gachaPanel.SetActive(true);
+        for (short i = 0; i < gachaBoxesShow.Length; i++)
+        {
+            gachaBoxesShow[index].SetActive(false);
+        }
 
+        for (int i = 0; i < gachaBannerNoShow.Length; i++)
+        {
+            gachaBannerNoShow[i].SetActive(false);
+        }
+        gachaBoxesShow[5].SetActive(true);
         GachaRoll(index);
     }
     public void PullEleven()
     {
         int index = 0;
+        gachaPanel.SetActive(true);
+        for (short i = 0; i < gachaBoxesShow.Length; i++)
+        {
+            gachaBoxesShow[index].SetActive(false);
+        }
 
-        for(short i = 0; i < 11; i++)
+        for (int i = 0; i < gachaBannerNoShow.Length; i++)
+        {
+            gachaBannerNoShow[i].SetActive(false);
+        }
+        for (short i = 0; i < gachaBoxesShow.Length; i++)
         {
             GachaRoll(index);
+            gachaBoxesShow[index].SetActive(true);
             index++;
         }
     }
