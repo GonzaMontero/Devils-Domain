@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using System;
+using System.Collections.Generic;
 
 public class SlotsCreator : MonoBehaviour
 {
-    public Action<BoxCollider2D> SlotGenerated;
+    public List<BoxCollider2D> slotList { get; private set; }
 
     [SerializeField] int width;
     [SerializeField] int height;
@@ -20,6 +20,8 @@ public class SlotsCreator : MonoBehaviour
 
     void Start()
     {
+        slotList = new List<BoxCollider2D>();
+
         if (width <= 0 || height <= 0)
         {
             slots = new SlotsGeneration();
@@ -74,8 +76,8 @@ public class SlotsCreator : MonoBehaviour
         //Reset Position
         tile_go.transform.position = new Vector3(Camera.main.transform.position.x + sizeX + tile_data.X * tile_boxColl.size.x + posOffsetX, Camera.main.transform.position.y - sizeY + tile_data.Y * tile_boxColl.size.y + posOffsetY, 0);
 
-        //Invoke action Slot Generated and send the boxCollider as ref
-        SlotGenerated?.Invoke(tile_boxColl);
+        //Add slot to slot list, public list
+        slotList.Add(tile_boxColl);
     }
     void GenerateEnemySlot(int x, int y)
     {
@@ -99,7 +101,7 @@ public class SlotsCreator : MonoBehaviour
         //Reset Position
         tile_go.transform.position = new Vector3(Camera.main.transform.position.x - sizeX - tile_data.X * tile_boxColl.size.x - posOffsetX, Camera.main.transform.position.y - sizeY + tile_data.Y * tile_boxColl.size.y + posOffsetY, 0);
 
-        //Invoke action Slot Generated and send the boxCollider as ref
-        SlotGenerated?.Invoke(tile_boxColl); 
+        //Add slot to slot list, public list
+        slotList.Add(tile_boxColl);
     }
 }

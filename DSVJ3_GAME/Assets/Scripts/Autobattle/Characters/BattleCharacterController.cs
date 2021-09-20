@@ -11,6 +11,7 @@ public class BattleCharacterController : MonoBehaviour
     public Action<int> Attack;
     public Action<int> DamageReceived;
     public BattleCharacterController target;
+    public BattleCharacterData publicData { get { return data; } }
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
     const float despawnTimer = 2;
@@ -18,7 +19,7 @@ public class BattleCharacterController : MonoBehaviour
     private void Awake()
     {
         current = States.idle;
-        data.SetLevel0Currents();
+        data.SetLevel1Currents();
         data.SetStartOfBattleCurrents();
     }
     void Update()
@@ -29,7 +30,7 @@ public class BattleCharacterController : MonoBehaviour
     public void SetData(BattleCharacterSO so)
     {
         data.so = so;
-        data.SetLevel0Currents();
+        data.SetLevel1Currents();
         data.SetStartOfBattleCurrents();
     }
     public void OnAttack(int damage)
@@ -40,17 +41,9 @@ public class BattleCharacterController : MonoBehaviour
     {
         return data.so.attackType;
     }
-    public int GetHealth()
-    {
-        return data.health;
-    }
     public float GetHealthPercentage()
     {
         return (float)data.health / (float)data.currentStats.maxHealth;
-    }
-    public int GetAttackDamage()
-    {
-        return data.currentStats.damage;
     }
     public bool IsAlive()
     {
@@ -64,6 +57,14 @@ public class BattleCharacterController : MonoBehaviour
         if (data.health <= 0)
         {
             current = States.dead;
+        }
+    }
+    public void ReceiveXP(int xp)
+    {
+        data.currentXP += xp;
+        if (data.currentXP > data.currentXpToLevelUp)
+        {
+            LevelUp();
         }
     }
     void RunStateMachine()
@@ -107,5 +108,27 @@ public class BattleCharacterController : MonoBehaviour
     void DeSpawn()
     {
         Destroy(gameObject);
+    }
+    void LevelUp()
+    {
+        data.currentXP = 0;
+        data.currentXpToLevelUp += data.so.xpToLevelUpModifier;
+        switch (data.so.attackType)
+        {
+            case AttackType.melee:
+                data.currentStats.maxHealth += data.so.baseXpToLevelUp;
+                data.currentStats.armor++;
+                break;
+            case AttackType.both:
+                data.currentStats.attackSpeed++;// += data.so.baseXpToLevelUp;
+                data.currentStats.damage += data.so.baseXpToLevelUp / 5;
+                break;
+            case AttackType.ranged:
+                data.currentStats.damage += data.so.baseXpToLevelUp;
+                data.currentStats.maxHealth += data.so.baseXpToLevelUp / 2;
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -13,22 +13,25 @@ public class BattleManager : MonoBehaviour
     [SerializeField] List<BattleCharacterController> allies;
     [SerializeField] List<BattleCharacterHolder> holders;
     [SerializeField] BoxCollider2D[] characterTiles = new BoxCollider2D[18];
+    [SerializeField] int battleXP;
     BattleCharacterSO[] characterSOs;
     Dictionary<int, BattleCharacterController> enemyInTile;
     Dictionary<int, BattleCharacterController> allyInTile;
     Dictionary<BattleCharacterController, int> tileOfEnemy;
     Dictionary<BattleCharacterController, int> tileOfAlly;
-    bool readyToStart;
+    Player player;
+    bool readyToStart = false;
 
-    private void Awake()
+    private void Start()
     {
+        readyToStart = false;
+
         enemyInTile = new Dictionary<int, BattleCharacterController>();
         allyInTile = new Dictionary<int, BattleCharacterController>();
         tileOfEnemy = new Dictionary<BattleCharacterController, int>();
         tileOfAlly = new Dictionary<BattleCharacterController, int>();
 
         //Link Actions
-        slotsCreator.SlotGenerated += OnSlotCreated;
         foreach (BattleCharacterHolder holder in holders)
         {
             holder.CharacterPositioned += OnCharacterPositioned;
@@ -36,29 +39,46 @@ public class BattleManager : MonoBehaviour
 
         //Generating enemies
         characterSOs = Resources.LoadAll<BattleCharacterSO>("Scriptable Objects/Characters");
-    }
-    private void Start()
-    {
+
+        slotsCreator = FindObjectOfType<SlotsCreator>();
+        AddSlots();
         GenerateEnemies();
+        CalculateXP();
     }
 
     public void StartGame()
     {
+        player = Player.Get();
+        if (player.characters.Count > 0)
+        {
+            int i = 0;
+            foreach (var ally in player.characters)
+            {
+                AddCharacter(true, ally, i); //TEMP, i IS PLACEHOLDER
+                i++;
+            }
+            //for (int i = 0; i < allies.Count; i++)
+            //{
+            //    allies[i].publicData = player.characters[i];
+            //}
+        }
+
         readyToStart = true;
         foreach (BattleCharacterHolder holder in holders)
         {
             Destroy(holder);
         }
     }
-    void OnSlotCreated(BoxCollider2D collider)
+    void AddSlots()
     {
-        int slotIndex = 0;
-        while (slotIndex < characterTiles.Length && characterTiles[slotIndex])
-        {
-            slotIndex++;
-        }
-        if (slotIndex >= characterTiles.Length) { return; }
-        characterTiles[slotIndex] = collider;
+        slotsCreator.slotList.CopyTo(characterTiles);
+        //int slotIndex = 0;
+        //while (slotIndex < characterTiles.Length && characterTiles[slotIndex])
+        //{
+        //    slotIndex++;
+        //}
+        //if (slotIndex >= characterTiles.Length) { return; }
+        //characterTiles[slotIndex] = slotsCreator.slotList[slotIndex]; ;
     }
     void OnCharacterPositioned(BoxCollider2D slotCollider, BattleCharacterController character)
     {
@@ -96,6 +116,7 @@ public class BattleManager : MonoBehaviour
             RemoveCharacter(true, character);
             if (allies.Count <= 0)
             {
+                Destroy(player.gameObject);
                 EnemyPartyWon?.Invoke();
             }
         }
@@ -104,13 +125,19 @@ public class BattleManager : MonoBehaviour
             RemoveCharacter(false, character);
             if (enemies.Count <= 0)
             {
+                GiveXP();
+                player.characters.Clear();
+                foreach (var ally in allies)
+                {
+                    player.characters.Add(ally);
+                }
                 PlayerPartyWon?.Invoke();
             }
         }
     }
     BattleCharacterController GetAttackReceiver(BattleCharacterController attacker)
     {
-        if (!readyToStart) { return null; } //TEMP needed to set enemy characters
+        if (!readyToStart || allies.Count < 1 || enemies.Count < 1) { return null; } //TEMP needed to set enemy characters
         BattleCharacterController reciever = null;
 
         //check if distance is correct and attack
@@ -146,9 +173,9 @@ public class BattleManager : MonoBehaviour
         {
             foreach (BattleCharacterController enemy in enemies)
             {
-                if (enemy.GetHealth() < weakestHealth)
+                if (enemy.publicData.health < weakestHealth)
                 {
-                    weakestHealth = enemy.GetHealth();
+                    weakestHealth = enemy.publicData.health;
                     receiver = enemy;
                 }
             }
@@ -157,9 +184,9 @@ public class BattleManager : MonoBehaviour
         {
             foreach (BattleCharacterController ally in allies)
             {
-                if (ally.GetHealth() < weakestHealth)
+                if (ally.publicData.health < weakestHealth)
                 {
-                    weakestHealth = ally.GetHealth();
+                    weakestHealth = ally.publicData.health;
                     receiver = ally;
                 }
             }
@@ -284,5 +311,19 @@ public class BattleManager : MonoBehaviour
 
         allyInTile.Remove(tileIndex);
         tileOfAlly.Remove(character);
+    }
+    void CalculateXP()
+    {
+        foreach (var enemy in enemies)
+        {
+            battleXP += enemy.publicData.so.baseXpToLevelUp;
+        }
+    }
+    void GiveXP()
+    {
+        foreach (var ally in allies)
+        {
+            ally.ReceiveXP(battleXP);
+        }
     }
 }

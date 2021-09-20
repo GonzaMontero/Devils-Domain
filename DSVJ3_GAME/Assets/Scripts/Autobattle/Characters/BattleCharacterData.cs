@@ -8,7 +8,7 @@ public class BattleCharacterData
     public int currentXpToLevelUp;
     public int merge;
 
-    public void SetLevel0Currents()
+    public void SetLevel1Currents()
     {
         if (!so)
             return;

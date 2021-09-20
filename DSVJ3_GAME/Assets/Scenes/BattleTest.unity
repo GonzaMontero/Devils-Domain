@@ -479,6 +479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 162186392}
+  - component: {fileID: 162186393}
   m_Layer: 0
   m_Name: Allies
   m_TagString: Untagged
@@ -493,7 +494,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162186391}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -28.1, y: -17.2, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -504,8 +505,21 @@ Transform:
   - {fileID: 345863826}
   - {fileID: 308260516}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162186393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162186391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e32a3b2601cc904dbfc10e01d99d4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characters: []
 --- !u!1 &180046628
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +666,7 @@ GameObject:
   - component: {fileID: 214907170}
   - component: {fileID: 214907169}
   m_Layer: 5
-  m_Name: Reset - Button
+  m_Name: Next Level - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,7 +689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 6, y: -26}
+  m_AnchoredPosition: {x: 6, y: -25.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &214907169
@@ -1019,8 +1033,8 @@ MonoBehaviour:
     type: 3}
   enemiesParent: {fileID: 840246496}
   slotsCreator: {fileID: 1925750634}
-  leftParty: 
-  rightParty: 
+  enemies: []
+  allies: []
   holders:
   - {fileID: 715650231}
   - {fileID: 1666984260}
@@ -1028,25 +1042,6 @@ MonoBehaviour:
   - {fileID: 1266331820}
   - {fileID: 345863827}
   - {fileID: 308260517}
-  characters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   characterTiles:
   - {fileID: 0}
   - {fileID: 0}
@@ -1066,6 +1061,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  battleXP: 0
 --- !u!4 &474282604
 Transform:
   m_ObjectHideFlags: 0
@@ -1094,6 +1090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleManager: {fileID: 474282603}
   resetButton: {fileID: 214907167}
+  resetButtonText: {fileID: 52715195}
   victoryText: {fileID: 609783728}
   defeatText: {fileID: 2113487727}
   playButtonImage: {fileID: 657806280}
@@ -1693,12 +1690,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840246495}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1230681174
 GameObject:
@@ -1784,6 +1781,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1797966357}
         m_MethodName: LoadMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 162186393}
+        m_MethodName: DestroyGameobject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
