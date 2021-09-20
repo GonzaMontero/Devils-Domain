@@ -116,8 +116,7 @@ public class BattleManager : MonoBehaviour
             RemoveCharacter(true, character);
             if (allies.Count <= 0)
             {
-                Destroy(player.gameObject);
-                EnemyPartyWon?.Invoke();
+                EnemyWon();
             }
         }
         else
@@ -125,13 +124,7 @@ public class BattleManager : MonoBehaviour
             RemoveCharacter(false, character);
             if (enemies.Count <= 0)
             {
-                GiveXP();
-                player.characters.Clear();
-                foreach (var ally in allies)
-                {
-                    player.characters.Add(ally);
-                }
-                PlayerPartyWon?.Invoke();
+                PlayerWon();
             }
         }
     }
@@ -312,6 +305,17 @@ public class BattleManager : MonoBehaviour
         allyInTile.Remove(tileIndex);
         tileOfAlly.Remove(character);
     }
+    void PlayerWon()
+    {
+        GiveXP();
+        SaveAllies(); //save player characters to play in next stage
+        PlayerPartyWon?.Invoke();
+    }
+    void EnemyWon()
+    {
+        Destroy(player.gameObject); //reset player characters so they CAN appear next stage
+        EnemyPartyWon?.Invoke();
+    }
     void CalculateXP()
     {
         foreach (var enemy in enemies)
@@ -324,6 +328,18 @@ public class BattleManager : MonoBehaviour
         foreach (var ally in allies)
         {
             ally.ReceiveXP(battleXP);
+        }
+    }
+    void SaveAllies()
+    {
+        player.characters.Clear();
+        for (int i = 0; i < characterTiles.Length; i++)
+        {
+            BattleCharacterController ally;
+            if (allyInTile.TryGetValue(i, out ally))
+            {
+                player.characters.Add(ally);
+            }
         }
     }
 }
