@@ -18,7 +18,7 @@ MonoBehaviour:
     maxHealth: 100
     attackSpeed: 1
     armor: 0
-  baseXpToLevelUp: 100
-  xpToLevelUpModifier: 0
+  baseXpToLevelUp: 10
+  xpToLevelUpModifier: 1
   numberOfStars: 4
   attackType: 2

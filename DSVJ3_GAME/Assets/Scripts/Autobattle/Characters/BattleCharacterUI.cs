@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BattleCharacterUI : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class BattleCharacterUI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         controller.DamageReceived += OnRecievedDamage;
+        controller.HealthChanged += OnHealthChanged;
         controller.SelectTarget += OnSelectTarget;
         controller.Attack += OnAttack;
         controller.Die += OnDeath;
@@ -25,10 +27,14 @@ public class BattleCharacterUI : MonoBehaviour
     void OnRecievedDamage(int damage)
     {
         animator.SetTrigger("Receive Damage");
+        OnHealthChanged();
+        StartCoroutine(ActivateDamageText(damage));
+    }
+    void OnHealthChanged()
+    {
         Vector3 newHealthScale = healthBar.localScale;
         newHealthScale.x = controller.GetHealthPercentage();
         healthBar.localScale = newHealthScale;
-        StartCoroutine(ActivateDamageText(damage));
     }
     void OnAttack(int notNeeded)
     {
@@ -49,6 +55,24 @@ public class BattleCharacterUI : MonoBehaviour
     {
         animator.SetTrigger("Die");
     }
+
+    //void SetSpriteAndAnimations()
+    //{
+    //    if (controller.publicData.so.sprite)
+    //    {
+    //        GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;            
+    //    }
+    //    if (controller.publicData.so.idle)
+    //    {
+    //        GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;
+    //        AnimatorOverrideController aoc = new AnimatorOverrideController(animator.runtimeAnimatorController);
+    //        var anims = new List<KeyValuePair<AnimationClip, AnimationClip>>();
+    //        foreach (var a in aoc.animationClips)
+    //            anims.Add(new KeyValuePair<AnimationClip, AnimationClip>(a, anim));
+    //        aoc.ApplyOverrides(anims);
+    //        animator.runtimeAnimatorController = aoc;
+    //    }
+    //}
 
     IEnumerator ActivateDamageText(int damage)
     {

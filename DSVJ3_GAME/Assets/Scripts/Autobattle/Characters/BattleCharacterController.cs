@@ -10,11 +10,13 @@ public class BattleCharacterController : MonoBehaviour
     public Action<BattleCharacterController> SelectTarget;
     public Action<int> Attack;
     public Action<int> DamageReceived;
+    public Action HealthChanged;
     public BattleCharacterController target;
     public BattleCharacterData publicData { get { return data; } }
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
     const float despawnTimer = 2;
+    const int defaultAttackTime = 1; //attack time in seconds, without attack speed
 
     private void Awake()
     {
@@ -51,7 +53,7 @@ public class BattleCharacterController : MonoBehaviour
     }
     public void ReceiveDamage(int damage)
     {
-        int actualDamage = damage * ((100 - data.currentStats.armor) / 100);
+        int actualDamage = (int)(damage * ((100 - data.currentStats.armor) / 100));
         data.health -= actualDamage; //reduce damage by armor rate
         DamageReceived.Invoke(actualDamage);
         if (data.health <= 0)
@@ -99,7 +101,7 @@ public class BattleCharacterController : MonoBehaviour
     void ChargeAttack(float attackCharge)
     {
         attackCooldown += attackCharge;
-        if (attackCooldown > 1)
+        if (attackCooldown > defaultAttackTime)
         {
             Attack?.Invoke(data.currentStats.damage);
             attackCooldown = 0;
@@ -111,24 +113,33 @@ public class BattleCharacterController : MonoBehaviour
     }
     void LevelUp()
     {
-        data.currentXP = 0;
+        data.currentXP -= data.currentXpToLevelUp;
         data.currentXpToLevelUp += data.so.xpToLevelUpModifier;
         switch (data.so.attackType)
         {
             case AttackType.melee:
                 data.currentStats.maxHealth += data.so.baseXpToLevelUp;
-                data.currentStats.armor++;
+                data.currentStats.armor += 0.25f;
                 break;
-            case AttackType.both:
-                data.currentStats.attackSpeed++;// += data.so.baseXpToLevelUp;
+            case AttackType.assasin:
+                data.currentStats.attackSpeed += data.so.baseXpToLevelUp / 20;
                 data.currentStats.damage += data.so.baseXpToLevelUp / 5;
                 break;
             case AttackType.ranged:
-                data.currentStats.damage += data.so.baseXpToLevelUp;
-                data.currentStats.maxHealth += data.so.baseXpToLevelUp / 2;
+                data.currentStats.damage += data.so.baseXpToLevelUp / 2;
+                data.currentStats.maxHealth += data.so.baseXpToLevelUp / 5;
                 break;
             default:
                 break;
         }
+
+        //Keep Leveling Up until character doesn't have any more xp
+        if (data.currentXP >= data.currentXpToLevelUp)
+        {
+            LevelUp();
+        }
+
+        data.health = data.currentStats.maxHealth;
+        HealthChanged?.Invoke();
     }
 }

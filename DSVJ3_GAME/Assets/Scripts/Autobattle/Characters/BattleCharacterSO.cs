@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 
 //public enum CharaterType {  };
-public enum AttackType { melee, both, ranged };
+public enum AttackType { melee, assasin, ranged };
 
 [CreateAssetMenu(fileName = "CharacterSO", menuName = "Character Scriptable Object")]
 public class BattleCharacterSO : ScriptableObject
 {
     [Header("Meta Variables")]
     public Sprite sprite;
+    public Animation idle;
+    public Sprite attack;
 
     [Header("In-game Variables")]
     public Stats baseStats;

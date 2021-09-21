@@ -19,7 +19,7 @@ public class BattleManager : MonoBehaviour
     Dictionary<int, BattleCharacterController> allyInTile;
     Dictionary<BattleCharacterController, int> tileOfEnemy;
     Dictionary<BattleCharacterController, int> tileOfAlly;
-    Player player;
+    BattlePlayer player;
     bool readyToStart = false;
 
     private void Start()
@@ -48,7 +48,7 @@ public class BattleManager : MonoBehaviour
 
     public void StartGame()
     {
-        player = Player.Get();
+        player = BattlePlayer.Get();
         if (player.characters.Count > 0)
         {
             int i = 0;
@@ -140,7 +140,7 @@ public class BattleManager : MonoBehaviour
             case AttackType.ranged:
                 reciever = GetReciever(attacker);
                 break;
-            case AttackType.both:
+            case AttackType.assasin:
                 reciever = GetWeakestReciever(attacker);
                 break;
             default:
