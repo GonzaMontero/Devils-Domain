@@ -1,17 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class Player : MonoBehaviourSingleton<Player>
 {
-    public List<BattleCharacterController> characters;
+    public List<BattleCharacterData> characters;
     private void Start()
     {
-        characters = new List<BattleCharacterController>();
-    }
-
-    public void DestroyGameobject()
-    {
-        Destroy(gameObject);
+        characters = new List<BattleCharacterData>();
     }
 }
