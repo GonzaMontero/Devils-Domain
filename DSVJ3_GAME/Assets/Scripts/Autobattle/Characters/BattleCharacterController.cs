@@ -10,7 +10,7 @@ public class BattleCharacterController : MonoBehaviour
     public Action<BattleCharacterController> SelectTarget;
     public Action<int> Attack;
     public Action<int> DamageReceived;
-    public Action HealthChanged;
+    public Action LeveledUp;
     public BattleCharacterController target;
     public BattleCharacterData publicData { get { return data; } }
     [SerializeField] States current;
@@ -115,6 +115,7 @@ public class BattleCharacterController : MonoBehaviour
     {
         data.currentXP -= data.currentXpToLevelUp;
         data.currentXpToLevelUp += data.so.xpToLevelUpModifier;
+        data.level++;
         switch (data.so.attackType)
         {
             case AttackType.melee:
@@ -140,6 +141,6 @@ public class BattleCharacterController : MonoBehaviour
         }
 
         data.health = data.currentStats.maxHealth;
-        HealthChanged?.Invoke();
+        LeveledUp?.Invoke();
     }
 }

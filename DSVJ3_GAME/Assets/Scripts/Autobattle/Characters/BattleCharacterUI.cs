@@ -9,6 +9,7 @@ public class BattleCharacterUI : MonoBehaviour
     [SerializeField] GameObject damageTextPrefab;
     [SerializeField] Transform canvas;
     [SerializeField] Transform healthBar;
+    [SerializeField] TextMeshProUGUI levelText;
     Animator animator;
     bool characterPositioned;
     const float damageTextDuration = 2;
@@ -16,12 +17,18 @@ public class BattleCharacterUI : MonoBehaviour
 
     private void Start()
     {
+        //Get Components
         animator = GetComponent<Animator>();
+        
+        //Link Actions
         controller.DamageReceived += OnRecievedDamage;
-        controller.HealthChanged += OnHealthChanged;
+        controller.LeveledUp += OnLevelUp;
         controller.SelectTarget += OnSelectTarget;
         controller.Attack += OnAttack;
         controller.Die += OnDeath;
+
+        //Set Defaults
+        levelText.text = "LVL " + controller.publicData.level;
     }
 
     void OnRecievedDamage(int damage)
@@ -29,6 +36,11 @@ public class BattleCharacterUI : MonoBehaviour
         animator.SetTrigger("Receive Damage");
         OnHealthChanged();
         StartCoroutine(ActivateDamageText(damage));
+    }
+    void OnLevelUp()
+    {
+        levelText.text = "LVL " + controller.publicData.level;
+        OnHealthChanged();
     }
     void OnHealthChanged()
     {

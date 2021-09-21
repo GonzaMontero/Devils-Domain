@@ -6,6 +6,7 @@ public class BattleCharacterData
     public int health;
     public int currentXP;
     public int currentXpToLevelUp;
+    public int level;
     public int merge;
 
     public void SetLevel1Currents()
@@ -15,6 +16,7 @@ public class BattleCharacterData
         currentStats = so.baseStats;
         currentXP = 0;
         currentXpToLevelUp = so.baseXpToLevelUp;
+        level = 1;
         merge = 1;
     }
     public void SetStartOfBattleCurrents()
