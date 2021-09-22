@@ -10,6 +10,7 @@ public class BattleCharacterUI : MonoBehaviour
     [SerializeField] Transform canvas;
     [SerializeField] Transform healthBar;
     [SerializeField] TextMeshProUGUI levelText;
+    //AnimationClipOverrider animationOverride;
     Animator animator;
     bool characterPositioned;
     const float damageTextDuration = 2;
@@ -19,7 +20,13 @@ public class BattleCharacterUI : MonoBehaviour
     {
         //Get Components
         animator = GetComponent<Animator>();
-        
+
+        //Set Animator
+        //animatorOverride = new AnimatorOverrideController(animator.runtimeAnimatorController);
+        //animator.runtimeAnimatorController = animatorOverride; //set runtime animator as animatorOverride
+        //animationOverride = new AnimationClipOverrider(animatorOverride.overridesCount);
+        //animatorOverride.GetOverrides(animationOverride);
+
         //Link Actions
         controller.DamageReceived += OnRecievedDamage;
         controller.LeveledUp += OnLevelUp;
@@ -29,6 +36,7 @@ public class BattleCharacterUI : MonoBehaviour
 
         //Set Defaults
         levelText.text = "LVL " + controller.publicData.level;
+        SetSpriteAndAnimations();
     }
 
     void OnRecievedDamage(int damage)
@@ -68,23 +76,17 @@ public class BattleCharacterUI : MonoBehaviour
         animator.SetTrigger("Die");
     }
 
-    //void SetSpriteAndAnimations()
-    //{
-    //    if (controller.publicData.so.sprite)
-    //    {
-    //        GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;            
-    //    }
-    //    if (controller.publicData.so.idle)
-    //    {
-    //        GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;
-    //        AnimatorOverrideController aoc = new AnimatorOverrideController(animator.runtimeAnimatorController);
-    //        var anims = new List<KeyValuePair<AnimationClip, AnimationClip>>();
-    //        foreach (var a in aoc.animationClips)
-    //            anims.Add(new KeyValuePair<AnimationClip, AnimationClip>(a, anim));
-    //        aoc.ApplyOverrides(anims);
-    //        animator.runtimeAnimatorController = aoc;
-    //    }
-    //}
+    void SetSpriteAndAnimations()
+    {
+        if (controller.publicData.so.sprite)
+        {
+            GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;
+        }
+        if (controller.publicData.so.animatorOverride)
+        {
+            animator.runtimeAnimatorController = controller.publicData.so.animatorOverride;
+        }
+    }
 
     IEnumerator ActivateDamageText(int damage)
     {

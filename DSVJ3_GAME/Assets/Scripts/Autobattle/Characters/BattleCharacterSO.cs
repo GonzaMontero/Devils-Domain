@@ -8,8 +8,7 @@ public class BattleCharacterSO : ScriptableObject
 {
     [Header("Meta Variables")]
     public Sprite sprite;
-    public Animation idle;
-    public Sprite attack;
+    public AnimatorOverrideController animatorOverride;
 
     [Header("In-game Variables")]
     public Stats baseStats;
