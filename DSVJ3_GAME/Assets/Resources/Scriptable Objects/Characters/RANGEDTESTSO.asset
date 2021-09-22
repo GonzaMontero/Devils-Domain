@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RANGEDTESTSO
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 70240c42bff03914a864638597729028, type: 3}
+  animatorOverride: {fileID: 22100000, guid: 572aa3b90573e774593f1c4b2732c3f7, type: 2}
   baseStats:
     damage: 4
     maxHealth: 100
