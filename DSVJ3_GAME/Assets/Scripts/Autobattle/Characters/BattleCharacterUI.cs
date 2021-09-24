@@ -9,6 +9,7 @@ public class BattleCharacterUI : MonoBehaviour
     [SerializeField] GameObject damageTextPrefab;
     [SerializeField] Transform canvas;
     [SerializeField] Transform healthBar;
+    [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI levelText;
     //AnimationClipOverrider animationOverride;
     Animator animator;
@@ -21,12 +22,6 @@ public class BattleCharacterUI : MonoBehaviour
         //Get Components
         animator = GetComponent<Animator>();
 
-        //Set Animator
-        //animatorOverride = new AnimatorOverrideController(animator.runtimeAnimatorController);
-        //animator.runtimeAnimatorController = animatorOverride; //set runtime animator as animatorOverride
-        //animationOverride = new AnimationClipOverrider(animatorOverride.overridesCount);
-        //animatorOverride.GetOverrides(animationOverride);
-
         //Link Actions
         controller.DamageReceived += OnRecievedDamage;
         controller.LeveledUp += OnLevelUp;
@@ -35,7 +30,7 @@ public class BattleCharacterUI : MonoBehaviour
         controller.Die += OnDeath;
 
         //Set Defaults
-        levelText.text = "LVL " + controller.publicData.level;
+        OnLevelUp();
         SetSpriteAndAnimations();
     }
 
@@ -55,6 +50,7 @@ public class BattleCharacterUI : MonoBehaviour
         Vector3 newHealthScale = healthBar.localScale;
         newHealthScale.x = controller.GetHealthPercentage();
         healthBar.localScale = newHealthScale;
+        healthText.text = controller.publicData.health.ToString();
     }
     void OnAttack(int notNeeded)
     {
