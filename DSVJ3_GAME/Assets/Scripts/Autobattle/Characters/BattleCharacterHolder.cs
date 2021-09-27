@@ -4,6 +4,7 @@ using UnityEngine;
 public class BattleCharacterHolder : MonoBehaviour
 {
     public Action<BoxCollider2D, BattleCharacterController> CharacterPositioned;
+    public Action<BattleCharacterController> CharacterRemoved;
     Vector2 originalPosition;   
     Vector2 newPosition;
     LayerMask slotsMask;
@@ -55,19 +56,21 @@ public class BattleCharacterHolder : MonoBehaviour
         }
     }
     void GetSlotPos()
-    {        
+    {
+        //Invoke Character Positioned Action
+        BattleCharacterController character = GetComponent<BattleCharacterController>();
+
         if (slotHitted && !slotHitted.transform.CompareTag("SlotTaken"))
         {
             newPosition = slotHitted.transform.position;
-
-            //Invoke Character Positioned Action
-            BattleCharacterController character = GetComponent<BattleCharacterController>();
+            
             BoxCollider2D slotCollider = slotHitted.transform.GetComponent<BoxCollider2D>();
             CharacterPositioned?.Invoke(slotCollider, character);
         }
         else
         {
             newPosition = originalPosition;
+            CharacterRemoved(character);
         }
 
         if (lastSlotSprite)

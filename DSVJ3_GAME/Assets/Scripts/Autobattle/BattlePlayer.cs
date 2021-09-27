@@ -21,6 +21,7 @@ public class BattlePlayer : MonoBehaviourSingleton<BattlePlayer>
     {
         if (newScene.name != sceneName)
         {
+            SceneManager.activeSceneChanged -= OnSceneChange;
             Destroy(gameObject);
         }
     }

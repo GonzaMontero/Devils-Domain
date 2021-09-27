@@ -35,6 +35,7 @@ public class BattleManager : MonoBehaviour
         foreach (BattleCharacterHolder holder in holders)
         {
             holder.CharacterPositioned += OnCharacterPositioned;
+            holder.CharacterRemoved += OnCharacterRemoved;
         }
 
         //Generating enemies
@@ -72,13 +73,6 @@ public class BattleManager : MonoBehaviour
     void AddSlots()
     {
         slotsCreator.slotList.CopyTo(characterTiles);
-        //int slotIndex = 0;
-        //while (slotIndex < characterTiles.Length && characterTiles[slotIndex])
-        //{
-        //    slotIndex++;
-        //}
-        //if (slotIndex >= characterTiles.Length) { return; }
-        //characterTiles[slotIndex] = slotsCreator.slotList[slotIndex]; ;
     }
     void OnCharacterPositioned(BoxCollider2D slotCollider, BattleCharacterController character)
     {
@@ -104,6 +98,25 @@ public class BattleManager : MonoBehaviour
         //add character to list
         AddCharacter(characterIsAlly, character, tileIndex);
         slotCollider.transform.tag = "SlotTaken";
+    }
+    void OnCharacterRemoved(BattleCharacterController character)
+    {
+        //delete character from list it is existant
+        int oldSlotIndex = -1;
+
+        if (allies.Contains(character))
+        {
+            tileOfAlly.TryGetValue(character, out oldSlotIndex);
+
+            RemoveCharacter(true, character);
+        }
+        else if (enemies.Contains(character))
+        {
+            tileOfEnemy.TryGetValue(character, out oldSlotIndex);
+            RemoveCharacter(false, character);
+        }
+
+        characterTiles[oldSlotIndex].tag = "Slot";
     }
     void OnCharacterSelectTarget(BattleCharacterController attacker)
     {
