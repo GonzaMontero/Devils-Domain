@@ -24,4 +24,8 @@ public class GameModeButtons : MonoBehaviour
     {
         SceneManager.LoadScene("Rooms");
     }
+    public void GoToLineup()
+    {
+        SceneManager.LoadScene("Lineup");
+    }
 }
