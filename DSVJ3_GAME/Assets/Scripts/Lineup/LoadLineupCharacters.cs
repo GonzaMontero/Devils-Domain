@@ -1,0 +1,16 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+public class LoadLineupCharacters : MonoBehaviour
+{
+    [SerializeField] GameObject[] lineupCharacters;
+
+    void Start()
+    {
+        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        for(short i = 0; i < lineupCharacters.Length; i++)
+        {
+            lineupCharacters[i].GetComponent<Image>().sprite = player.lineup[i].so.sprite;
+        }
+    }
+}
