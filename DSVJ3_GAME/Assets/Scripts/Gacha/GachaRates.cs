@@ -61,28 +61,36 @@ public class GachaRates : MonoBehaviour
         gachaBoxesShow[index].GetComponentInChildren<Image>().sprite = character.sprite;
         gachaBoxesShow[index].GetComponentInChildren<TextMeshProUGUI>().text = character.name;
     }
+    private void FindAndLoadBoxes()
+    {
+        GameObject[] gachaBox = GameObject.FindGameObjectsWithTag("Gacha Boxes");
+        gachaBoxesShow = gachaBox;
+    }
 
     #region ButtonPress
     public void PullOnce()
     {
-        int index = 5;
+        int index = Mathf.RoundToInt(gachaBoxesShow.Length / 2);
         gachaPanel.SetActive(true);
+        FindAndLoadBoxes();
         for (short i = 0; i < gachaBoxesShow.Length; i++)
         {
-            gachaBoxesShow[index].SetActive(false);
+           gachaBoxesShow[i].SetActive(false);
         }
 
         for (int i = 0; i < gachaBannerNoShow.Length; i++)
         {
             gachaBannerNoShow[i].SetActive(false);
         }
-        gachaBoxesShow[5].SetActive(true);
+
+        gachaBoxesShow[index].SetActive(true);
         GachaRoll(index);
     }
     public void PullEleven()
     {
         int index = 0;
         gachaPanel.SetActive(true);
+        FindAndLoadBoxes();
         for (short i = 0; i < gachaBoxesShow.Length; i++)
         {
             gachaBoxesShow[index].SetActive(false);

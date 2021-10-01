@@ -5,7 +5,8 @@ public class GenerateGachaBoxes : MonoBehaviour
     [SerializeField] GameObject gachaHolderPrefab;
     [SerializeField] GameObject gachaAnchor;
 
-    private void Awake()
+
+    private void OnEnable()
     {
         float sizeX = GetComponent<RectTransform>().rect.width / 11;
         float sizeY = GetComponent<RectTransform>().rect.height;
@@ -23,8 +24,10 @@ public class GenerateGachaBoxes : MonoBehaviour
             gachaBox.transform.localScale = Vector3.one;
 
             //Move box to Location
-            Vector3 spawnLocation = new Vector3(((gachaAnchor.transform.position.x + rectTransform.width) * i), transform.position.y);
+            Vector3 spawnLocation = new Vector3((gachaAnchor.transform.position.x + (rectTransform.width / 2) + (rectTransform.width * i)), transform.position.y);
             gachaBox.transform.position = spawnLocation;
+
+            gachaBox.transform.tag = "Gacha Boxes";
         }
     }
 }
