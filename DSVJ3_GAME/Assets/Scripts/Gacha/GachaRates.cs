@@ -77,12 +77,10 @@ public class GachaRates : MonoBehaviour
         {
            gachaBoxesShow[i].SetActive(false);
         }
-
         for (int i = 0; i < gachaBannerNoShow.Length; i++)
         {
             gachaBannerNoShow[i].SetActive(false);
         }
-
         gachaBoxesShow[index].SetActive(true);
         GachaRoll(index);
     }
@@ -95,7 +93,6 @@ public class GachaRates : MonoBehaviour
         {
             gachaBoxesShow[index].SetActive(false);
         }
-
         for (int i = 0; i < gachaBannerNoShow.Length; i++)
         {
             gachaBannerNoShow[i].SetActive(false);

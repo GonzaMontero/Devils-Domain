@@ -1,16 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ReturnToSummon : MonoBehaviour
 {
     [SerializeField] GameObject gachaPanel;
-    [SerializeField] GameObject[] gachaSummonsScreen;
-
-    private void OnMouseDown()
+    [SerializeField] GameObject gachaSummonsScreen;
+    private void Update()
     {
-        gachaPanel.SetActive(false);
-        for(short i = 0; i < gachaSummonsScreen.Length; i++)
+        if (Input.GetMouseButtonDown(0))
         {
-            gachaSummonsScreen[i].SetActive(true);
+            gachaPanel.SetActive(false);
+            gachaSummonsScreen.SetActive(true);
         }
     }
 }

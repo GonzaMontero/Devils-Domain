@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 16543932}
   - component: {fileID: 16543931}
   - component: {fileID: 16543930}
-  - component: {fileID: 16543933}
   m_Layer: 5
   m_Name: Mixed Button
   m_TagString: Untagged
@@ -168,7 +167,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16543928}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -203,18 +202,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 16543931}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 16543933}
-        m_MethodName: ModifyBannerImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &16543931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,20 +240,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16543928}
   m_CullTransparentMesh: 0
---- !u!114 &16543933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16543928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b4fce30d290ee49bd470a637680081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gachaBannerTexture: {fileID: 2800000, guid: 45e0b46e58781c34880fdb4d26813638, type: 3}
-  gachaBannerImage: {fileID: 955250861}
 --- !u!1 &270623390
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +395,6 @@ GameObject:
   - component: {fileID: 278222987}
   - component: {fileID: 278222986}
   - component: {fileID: 278222985}
-  - component: {fileID: 278222988}
   m_Layer: 5
   m_Name: Ranged Button
   m_TagString: Untagged
@@ -456,7 +429,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278222983}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -491,18 +464,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 278222986}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 278222988}
-        m_MethodName: ModifyBannerImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &278222986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,20 +502,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278222983}
   m_CullTransparentMesh: 0
---- !u!114 &278222988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278222983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b4fce30d290ee49bd470a637680081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gachaBannerTexture: {fileID: 2800000, guid: 7cdc57bde087d474cb224d97ee0d38cb, type: 3}
-  gachaBannerImage: {fileID: 955250861}
 --- !u!1 &357357516
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +648,7 @@ GameObject:
   - component: {fileID: 544517168}
   m_Layer: 5
   m_Name: Gacha Settings Panel
-  m_TagString: Untagged
+  m_TagString: Gacha Holder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1279,7 +1227,7 @@ GameObject:
   - component: {fileID: 892267724}
   m_Layer: 5
   m_Name: Summon Settings Panel
-  m_TagString: Untagged
+  m_TagString: Gacha Holder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1476,7 +1424,7 @@ GameObject:
   - component: {fileID: 955250861}
   m_Layer: 5
   m_Name: Gacha Image
-  m_TagString: Untagged
+  m_TagString: Gacha Holder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1519,7 +1467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4341c022849fef646951d6a2246bac0b, type: 3}
+  m_Texture: {fileID: 2800000, guid: 1e742ab301c02544988da2665388e746, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1546,9 +1494,10 @@ GameObject:
   - component: {fileID: 1250647663}
   - component: {fileID: 1250647662}
   - component: {fileID: 1250647664}
+  - component: {fileID: 1250647665}
   m_Layer: 5
   m_Name: Gacha Summon Panel
-  m_TagString: Untagged
+  m_TagString: Gacha Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1625,6 +1574,20 @@ MonoBehaviour:
   gachaHolderPrefab: {fileID: 4998331078283617856, guid: af48a6730954a674397fed4edd864cc3,
     type: 3}
   gachaAnchor: {fileID: 1275903445}
+--- !u!114 &1250647665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250647660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3250c2bff58894488c37fb263b30d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gachaPanel: {fileID: 1250647660}
+  gachaSummonsScreen: {fileID: 1737345182}
 --- !u!1 &1275903445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,7 +1637,7 @@ GameObject:
   - component: {fileID: 1279581453}
   m_Layer: 5
   m_Name: 1 Summon Button
-  m_TagString: Untagged
+  m_TagString: Gacha Holder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1868,7 +1831,6 @@ GameObject:
   - component: {fileID: 1323100036}
   - component: {fileID: 1323100035}
   - component: {fileID: 1323100034}
-  - component: {fileID: 1323100037}
   m_Layer: 5
   m_Name: 'All Button '
   m_TagString: Untagged
@@ -1903,7 +1865,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323100032}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -1938,18 +1900,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1323100035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1323100037}
-        m_MethodName: ModifyBannerImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1323100035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1987,20 +1938,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323100032}
   m_CullTransparentMesh: 0
---- !u!114 &1323100037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323100032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b4fce30d290ee49bd470a637680081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gachaBannerTexture: {fileID: 2800000, guid: 4341c022849fef646951d6a2246bac0b, type: 3}
-  gachaBannerImage: {fileID: 955250861}
 --- !u!1 &1548772370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,7 +1950,6 @@ GameObject:
   - component: {fileID: 1548772374}
   - component: {fileID: 1548772373}
   - component: {fileID: 1548772372}
-  - component: {fileID: 1548772375}
   m_Layer: 5
   m_Name: Melee Button
   m_TagString: Untagged
@@ -2048,7 +1984,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548772370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -2083,18 +2019,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1548772373}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1548772375}
-        m_MethodName: ModifyBannerImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1548772373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,20 +2057,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548772370}
   m_CullTransparentMesh: 0
---- !u!114 &1548772375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548772370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b4fce30d290ee49bd470a637680081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gachaBannerTexture: {fileID: 2800000, guid: 4341c022849fef646951d6a2246bac0b, type: 3}
-  gachaBannerImage: {fileID: 955250861}
 --- !u!1 &1709263594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,7 +2284,7 @@ GameObject:
   - component: {fileID: 1737345183}
   m_Layer: 5
   m_Name: Gacha Holder
-  m_TagString: Untagged
+  m_TagString: Gacha Holder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2680,7 +2591,7 @@ GameObject:
   - component: {fileID: 2130439603}
   m_Layer: 5
   m_Name: 11 Summon Button
-  m_TagString: Untagged
+  m_TagString: Gacha Holder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
