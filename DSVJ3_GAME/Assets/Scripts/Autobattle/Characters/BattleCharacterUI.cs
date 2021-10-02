@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
-using System.Collections.Generic;
 
 public class BattleCharacterUI : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class BattleCharacterUI : MonoBehaviour
     [SerializeField] Transform healthBar;
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI levelText;
-    //AnimationClipOverrider animationOverride;
     Animator animator;
     bool characterPositioned;
     const float damageTextDuration = 2;
