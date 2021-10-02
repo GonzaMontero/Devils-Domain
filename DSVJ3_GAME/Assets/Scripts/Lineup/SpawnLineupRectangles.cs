@@ -12,7 +12,7 @@ public class SpawnLineupRectangles : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Player player1 = player.GetComponent<Player>();
 
-        float sizeX = GetComponent<RectTransform>().rect.width / 11;
+        float sizeX = GetComponent<RectTransform>().rect.width / 7;
         float sizeY = GetComponent<RectTransform>().rect.height;
 
         for (short i = 0; i < player1.characters.Count; i++)
@@ -27,7 +27,7 @@ public class SpawnLineupRectangles : MonoBehaviour
             characterHover.transform.localScale = Vector3.one;
 
             //Move box to Location
-            Vector3 spawnLocation = new Vector3((characterLineupHover.transform.position.x + (rectTransform.width / 2) + (rectTransform.width * i)), transform.position.y);
+            Vector3 spawnLocation = new Vector3(characterLineupHover.transform.position.x + (rectTransform.width / 2) + (rectTransform.width * i), transform.position.y);
             characterHover.transform.position = spawnLocation;
 
             characterHover.GetComponent<Image>().sprite = player1.characters[i].so.sprite;
