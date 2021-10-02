@@ -10,7 +10,10 @@ public class LoadLineupCharacters : MonoBehaviour
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         for(short i = 0; i < lineupCharacters.Length; i++)
         {
-            lineupCharacters[i].GetComponent<Image>().sprite = player.lineup[i].so.sprite;
+            if(lineupCharacters[i] != null)
+            {
+                lineupCharacters[i].GetComponent<Image>().sprite = player.lineup[i].so.sprite;
+            }
         }
     }
 }
