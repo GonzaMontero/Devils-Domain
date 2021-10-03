@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8717a493b9d68fe438e2938fc51d1135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetX: 10
+  offsetX: 50
   characterLineupAnchor: {fileID: 2101227568}
   characterLineupHover: {fileID: 7134690113466075794, guid: a3a052c8d45a44f488de9f1fd9ec8660,
     type: 3}
