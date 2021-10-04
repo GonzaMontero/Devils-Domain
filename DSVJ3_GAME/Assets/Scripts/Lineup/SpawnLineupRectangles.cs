@@ -10,11 +10,28 @@ public class SpawnLineupRectangles : MonoBehaviour
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        for(short i=0; i < player.GetComponent<Player>().characters.Count; i++)
+        Player player1 = player.GetComponent<Player>();
+
+        float sizeX = GetComponent<RectTransform>().rect.width / 7;
+        float sizeY = GetComponent<RectTransform>().rect.height;
+
+        for (short i = 0; i < player1.characters.Count; i++)
         {
-            Vector3 spawnLocation = new Vector3((characterLineupAnchor.transform.position.x * i) + offsetX, 0);
-            GameObject CharacterHolder = Instantiate(characterLineupHover, spawnLocation, Quaternion.identity, transform);
-            CharacterHolder.GetComponent<Image>().sprite = player.GetComponent<Player>().characters[i].so.sprite;
+            //Instanciate objects
+            GameObject characterHover = Instantiate(characterLineupHover, Vector3.zero, Quaternion.identity, transform);
+            Rect rectTransform = characterHover.GetComponent<RectTransform>().rect;
+
+            //Modify box prefab
+            rectTransform.width = sizeX;
+            rectTransform.height = sizeY;
+            characterHover.transform.localScale = Vector3.one;
+
+            //Move box to Location
+            Vector3 spawnLocation = new Vector3(characterLineupHover.transform.position.x + (rectTransform.width / 2) + (rectTransform.width * i), transform.position.y);
+            characterHover.transform.position = spawnLocation;
+
+            characterHover.GetComponent<Image>().sprite = player1.characters[i].so.sprite;
         }
+        transform.gameObject.GetComponent<SpawnLineupRectangles>().enabled = false;
     }
 }
