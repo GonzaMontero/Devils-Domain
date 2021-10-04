@@ -30,13 +30,13 @@ public class UIPopUpMaker : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void TurnOnPopUp()
     {
-        StopCoroutine(Fade(false)); //stop fade off before anything else
+        StopAllCoroutines(); //stop fade off before anything else
 
         StartCoroutine(Fade(true));
     }
     void TurnOffPopUp()
     {
-        StopCoroutine(Fade(true)); //stop fade in before anything else
+        StopAllCoroutines(); //stop fade off before anything else
 
         StartCoroutine(Fade(false));
     }
@@ -52,7 +52,7 @@ public class UIPopUpMaker : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         float originalTextAlpha = popUpText.color.a;
         //Set timers
         float timer = 0;
-        float timerMax = 2;
+        float timerMax = 1;
 
         if (fadeIn)
         {
