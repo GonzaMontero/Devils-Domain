@@ -7,7 +7,7 @@ public class SpawnLineupRectangles : MonoBehaviour
     [SerializeField] GameObject characterLineupAnchor;
     [SerializeField] GameObject characterLineupHover;
 
-    void Start()
+    void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Player player1 = player.GetComponent<Player>();
@@ -30,7 +30,10 @@ public class SpawnLineupRectangles : MonoBehaviour
             Vector3 spawnLocation = new Vector3(characterLineupHover.transform.position.x + (rectTransform.width / 2) + (rectTransform.width * i), transform.position.y);
             characterHover.transform.position = spawnLocation;
 
+            characterHover.AddComponent<LineupHoverActivate>();
+
             characterHover.GetComponent<Image>().sprite = player1.characters[i].so.sprite;
+            characterHover.transform.GetComponent<LineupHoverActivate>().LoadData(player1.characters[i].so.sprite, player1.characters[i].so.name);
         }
         transform.gameObject.GetComponent<SpawnLineupRectangles>().enabled = false;
     }
