@@ -21,7 +21,7 @@ public class LineupHoverActivate : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("You entered the square!");
+        Debug.Log("Hi!");
         StartCoroutine(OnMouseHover());   
     }
 

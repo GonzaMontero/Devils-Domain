@@ -1,24 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnLineupRectangles : MonoBehaviour
+public class LoadTeamLineup : MonoBehaviour
 {
     [SerializeField] float offsetX;
     [SerializeField] GameObject characterLineupAnchor;
-    [SerializeField] GameObject characterLineupHover;
+    [SerializeField] GameObject teamLineup;
 
     void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Player player1 = player.GetComponent<Player>();
 
-        float sizeX = GetComponent<RectTransform>().rect.width / 7;
+        float sizeX = GetComponent<RectTransform>().rect.width / player1.lineup.Length;
         float sizeY = GetComponent<RectTransform>().rect.height;
 
-        for (short i = 0; i < player1.characters.Count; i++)
+        for (short i = 0; i < player1.lineup.Length; i++)
         {
             //Instanciate objects
-            GameObject characterHover = Instantiate(characterLineupHover, Vector3.zero, Quaternion.identity, transform);
+            GameObject characterHover = Instantiate(teamLineup, Vector3.zero, Quaternion.identity, transform);
             Rect rectTransform = characterHover.GetComponent<RectTransform>().rect;
 
             //Modify box prefab
@@ -32,9 +32,9 @@ public class SpawnLineupRectangles : MonoBehaviour
 
             characterHover.AddComponent<LineupHoverActivate>();
 
-            characterHover.GetComponent<Image>().sprite = player1.characters[i].so.sprite;
-            characterHover.transform.GetComponent<LineupHoverActivate>().LoadData(player1.characters[i].so.sprite, player1.characters[i].so.name);
+            characterHover.GetComponent<Image>().sprite = player1.lineup[i].so.sprite;
+            characterHover.transform.GetComponent<LineupHoverActivate>().LoadData(player1.lineup[i].so.sprite, player1.lineup[i].so.name);
         }
-        transform.gameObject.GetComponent<SpawnLineupRectangles>().enabled = false;
+        transform.gameObject.GetComponent<LoadTeamLineup>().enabled = false;
     }
 }
