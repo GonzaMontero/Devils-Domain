@@ -13,6 +13,7 @@ public class LoadLineupCharacters : MonoBehaviour
             if(lineupCharacters[i] != null)
             {
                 lineupCharacters[i].GetComponent<Image>().sprite = player.lineup[i].so.sprite;
+                lineupCharacters[i].GetComponent<LineupHoverActivate>().LoadData(player.lineup[i].so.sprite, player.lineup[i].so.name);
             }
         }
     }

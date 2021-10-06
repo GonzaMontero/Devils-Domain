@@ -9,6 +9,8 @@ TagManager:
   - Gacha Boxes
   - Gacha Panel
   - Gacha Holder
+  - Lineup Holder Hover
+  - Lineup Hover Holder
   layers:
   - Default
   - TransparentFX
