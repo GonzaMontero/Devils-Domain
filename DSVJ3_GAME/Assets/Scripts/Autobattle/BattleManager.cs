@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -116,7 +116,10 @@ public class BattleManager : MonoBehaviour
             RemoveCharacter(false, character);
         }
 
-        characterTiles[oldSlotIndex].tag = "Slot";
+        if (oldSlotIndex != -1)
+        {
+            characterTiles[oldSlotIndex].tag = "Slot";
+        }
     }
     void OnCharacterSelectTarget(BattleCharacterController attacker)
     {

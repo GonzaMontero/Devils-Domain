@@ -50,7 +50,7 @@ public class BattleCharacterHolder : MonoBehaviour
         Vector2 pos = transform.position;
 
         slotHitted = Physics2D.BoxCast(pos, boxCollider.size, 0, Vector2.up, 0, slotsMask);
-        if (slotHitted)
+        if (slotHitted && !slotHitted.transform.CompareTag("SlotTaken"))
         {
             UpdateSlotColor(slotHitted);
         }

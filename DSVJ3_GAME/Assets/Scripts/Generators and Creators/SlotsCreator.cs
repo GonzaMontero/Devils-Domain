@@ -42,18 +42,18 @@ public class SlotsCreator : MonoBehaviour
         {
             for (int y = 0; y < slots.PlayerHeight; y++)
             {
-                GenerateAllySlot(x, y);
+                GenerateEnemySlot(x, y);
             }
         }
         for (int x = 0; x < slots.EnemyWidth; x++)
         {
             for (int y = 0; y < slots.EnemyHeight; y++)
             {
-                GenerateEnemySlot(x, y);
+                GenerateAllySlot(x, y);
             }
         }
     }
-    void GenerateAllySlot(int x, int y)
+    void GenerateEnemySlot(int x, int y)
     {
         //Get Tile
         Tile tile_data = slots.GetPlayerTileAt(x, y);
@@ -63,7 +63,7 @@ public class SlotsCreator : MonoBehaviour
         tile_go.name = "Tile_" + x + "_" + y;
         tile_go.transform.parent = this.transform;
         tile_go.layer = LayerMask.NameToLayer("Slots");
-        tile_go.tag = "Slot";
+        tile_go.tag = "SlotTaken";
 
         //Add Sprite Renderer
         SpriteRenderer tile_sprRend = tile_go.AddComponent<SpriteRenderer>();
@@ -79,7 +79,7 @@ public class SlotsCreator : MonoBehaviour
         //Add slot to slot list, public list
         slotList.Add(tile_boxColl);
     }
-    void GenerateEnemySlot(int x, int y)
+    void GenerateAllySlot(int x, int y)
     {
         //Get Tile
         Tile tile_data = slots.GetPlayerTileAt(x, y);
@@ -89,7 +89,7 @@ public class SlotsCreator : MonoBehaviour
         tile_go.name = "Tile_" + x + "_" + y;
         tile_go.transform.parent = this.transform;
         tile_go.layer = LayerMask.NameToLayer("Slots");
-        tile_go.tag = "SlotTaken";
+        tile_go.tag = "Slot";
 
         //Add Sprite Renderer
         SpriteRenderer tile_sprRend = tile_go.AddComponent<SpriteRenderer>();

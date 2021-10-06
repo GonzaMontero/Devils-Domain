@@ -4959,6 +4959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656233552}
   - component: {fileID: 1656233553}
+  - component: {fileID: 1656233554}
   m_Layer: 0
   m_Name: Main Menu Holder
   m_TagString: Untagged
@@ -4997,6 +4998,20 @@ MonoBehaviour:
   - {fileID: 1454115508}
   - {fileID: 1964601917}
   - {fileID: 8857898420075848559}
+--- !u!114 &1656233554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656233551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1059f453d05cca6498fe3591fdef961b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldText: {fileID: 1797138467}
+  gemsText: {fileID: 1244450811}
 --- !u!1 &1686784662
 GameObject:
   m_ObjectHideFlags: 0
