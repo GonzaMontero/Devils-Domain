@@ -30,8 +30,6 @@ public class SpawnLineupRectangles : MonoBehaviour
             Vector3 spawnLocation = new Vector3(characterLineupAnchor.transform.position.x + (rectTransform.width / 2) + (rectTransform.width * i), transform.position.y);
             characterHover.transform.position = spawnLocation;
 
-            characterHover.AddComponent<LineupHoverActivate>();
-
             characterHover.GetComponent<Image>().sprite = player1.characters[i].so.sprite;
             characterHover.transform.GetComponent<LineupHoverActivate>().LoadData(player1.characters[i].so.sprite, player1.characters[i].so.name);
         }

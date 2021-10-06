@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LineupHoverActivate : MonoBehaviour
 {
-    private GameObject[] lineupHover;
+    [SerializeField] GameObject[] lineupHover;
     private Sprite CharacterSprite;
     private string CharacterName;
 
@@ -14,18 +15,18 @@ public class LineupHoverActivate : MonoBehaviour
         CharacterName = str;
     }
 
-    private void Start()
+    private void Awake()
     {
         lineupHover = GameObject.FindGameObjectsWithTag("Lineup Hover Holder");
     }
 
-    private void OnMouseEnter()
+    public void EnterMouse()
     {
         Debug.Log("Hi!");
-        StartCoroutine(OnMouseHover());   
+        StartCoroutine(OnMouseHover());
     }
 
-    private void OnMouseExit()
+    public void ExitMouse()
     {
         StopCoroutine(OnMouseHover());
         for(short i = 0; i < lineupHover.Length; i++)
@@ -41,15 +42,15 @@ public class LineupHoverActivate : MonoBehaviour
 
         if (transform.position.x < Camera.main.transform.position.x)
         {
-            lineupHover[2].SetActive(true);
-            lineupHover[2].GetComponentInChildren<Image>().sprite = CharacterSprite;
-            lineupHover[2].GetComponentInChildren<Text>().text = CharacterName;
-        }
-        else
-        {
             lineupHover[1].SetActive(true);
             lineupHover[1].GetComponentInChildren<Image>().sprite = CharacterSprite;
             lineupHover[1].GetComponentInChildren<Text>().text = CharacterName;
+        }
+        else
+        {
+            lineupHover[0].SetActive(true);
+            lineupHover[0].GetComponentInChildren<Image>().sprite = CharacterSprite;
+            lineupHover[0].GetComponentInChildren<Text>().text = CharacterName;
         }
     }
 }
