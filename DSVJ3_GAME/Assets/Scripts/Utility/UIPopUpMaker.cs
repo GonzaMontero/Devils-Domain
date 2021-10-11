@@ -16,6 +16,8 @@ public class UIPopUpMaker : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         popUpText = popUp.GetComponentInChildren<TextMeshProUGUI>();
         popUpPanel = popUp.GetComponent<Image>();
     }
+
+    //Detect when Cursor enters the GameObject
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         TurnOnPopUp();

@@ -4,11 +4,12 @@ using TMPro;
 public class RoomsUIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI goldText;
+    [SerializeField] TextMeshProUGUI gemsText;
     [SerializeField] TextMeshProUGUI upgradeText;
     [SerializeField] TextMeshProUGUI buildText;
     [SerializeField] Canvas roomUIHolder;
     [SerializeField] RoomManager roomManager;
-    [SerializeField] PlayerManager player;
+    [SerializeField] RoomPlayer player;
     [SerializeField] CameraController mainCamera;
 
     private void Start()
@@ -18,6 +19,7 @@ public class RoomsUIManager : MonoBehaviour
         roomManager.RoomUpdated += OnRoomUpdate;
         roomManager.RoomClickable += MouseIsNotOverElement;
         player.GoldChanged += OnGoldUpdated;
+        player.GemsChanged += OnGemsUpdated;
         mainCamera.ZoomingOut += OnZoomOut;
     }
 
@@ -46,6 +48,10 @@ public class RoomsUIManager : MonoBehaviour
     {
         goldText.text = "Gold: " + currentGold;
     }
+    void OnGemsUpdated(int currentGems)
+    {
+        gemsText.text = "Gems: " + currentGems;
+    }
     void OnNotEnoughGoldForUpgrade()
     {
         //activate warning
@@ -63,6 +69,7 @@ public class RoomsUIManager : MonoBehaviour
         }
 
         upgradeText.text = "Upgrade\nCost: " + roomController.GetUpgradeCost(); //TEMP?, REPLACE FOR ACTION?
+        buildText.transform.parent.gameObject.SetActive(false); //set button from previous room false
         upgradeText.transform.parent.gameObject.SetActive(true); //set button true
     }
     void OnZoomOut()

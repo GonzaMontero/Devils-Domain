@@ -10,6 +10,15 @@ public class RoomController : MonoBehaviour
     [SerializeField] RoomData data;
     //int[] roomLimits = new int[4]; //left, right, down, up
 
+    public RoomData GetData()
+    {
+        return data;
+    }
+    public void LoadData(RoomData newData)
+    {
+        data = newData;
+        RoomUpdate?.Invoke();
+    }
     public void Build(/*List<Tile> roomTiles,*/ RoomSO so)
     {
         //Set Data
@@ -23,7 +32,6 @@ public class RoomController : MonoBehaviour
         //{
         //    //Link Action
         //    RoomIsBeingDestroyed += tile.OnRoomBeingDestroyed;
-
         //    //Set Room Limits OPTIMIZE
         //    if (tile.X < roomLimits[0])
         //    {
@@ -51,7 +59,7 @@ public class RoomController : MonoBehaviour
     public int GetUpgradeCost()
     {
         if (data.upgradeLvl >= data.so.maxUpgrades) { return -1; }
-        return (int)(data.so.baseCost * data.so.updgradeCostMod * Mathf.Pow(data.upgradeLvl, 3) * data.positionCostModifier);
+        return (int)(data.so.baseCost * data.so.updgradeCostMod * data.upgradeLvl * data.positionCostModifier);
     }
     public int GetBuildCost()
     {
@@ -62,12 +70,12 @@ public class RoomController : MonoBehaviour
         if (data.upgradeLvl >= data.so.maxUpgrades) { return; }
 
         data.upgradeLvl++;
-        data.goldGen = data.so.baseGoldGeneration * (int)Mathf.Pow(data.upgradeLvl, 2);
+        data.gemGen = data.so.baseGemGeneration * (2 * data.upgradeLvl);
         RoomUpdate?.Invoke();
     }
-    public int GetGoldGen()
+    public int GetGemGen()
     {
-        return data.goldGen;
+        return data.gemGen;
     }
     public Sprite ReturnSprite()
     {

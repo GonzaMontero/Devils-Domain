@@ -16,6 +16,6 @@ MonoBehaviour:
   width: 1
   sprite: {fileID: 0}
   maxUpgrades: 100
-  baseGoldGeneration: 5
+  baseGemGeneration: 1
   baseCost: 50
   updgradeCostMod: 1.5

@@ -6,15 +6,16 @@ public class RoomManager : MonoBehaviour
 {
     public Action NotEnoughGold;
     public Action<int> GoldChanged;
+    public Action<int> GemsChanged;
     public Action<int> RoomUpdated;
     public Action<RoomController, int> RoomClicked; //TEMP, DELETE INT
     public BoolAction RoomClickable;
-    [SerializeField] float goldGenTime;
+    [SerializeField] float gemGenTime;
     [SerializeField] RoomSO[] roomTemplates;
     [SerializeField] List<RoomController> rooms;
     [SerializeField] RoomController roomSelected;
     [SerializeField] RoomCreator world;
-    [SerializeField] PlayerManager player; //TEMP
+    [SerializeField] RoomPlayer player; //TEMP
     bool firstRoomBuilded = false;
 
     //Unity Methods
@@ -26,8 +27,8 @@ public class RoomManager : MonoBehaviour
         //Link Actions
         world.RoomGenerated += AddRoomToList;
 
-        //invoke Generate Gold every "goldGenTime" seconds
-        InvokeRepeating("GenerateGold", goldGenTime, goldGenTime);
+        //invoke Generate Gems every "goldGenTime" seconds, multiplied by 60 to get minutes
+        InvokeRepeating("GenerateGems", gemGenTime * 60, gemGenTime * 60);
     }
     private void OnDestroy()
     {
@@ -38,6 +39,24 @@ public class RoomManager : MonoBehaviour
     }
 
     //Methods
+    public List<RoomData> GetRooms()
+    {
+        List<RoomData> roomDatas = new List<RoomData>();
+        foreach (RoomController room in rooms)
+        {
+            roomDatas.Add(room.GetData());
+        }
+        return roomDatas;
+    }
+    public void LoadRooms(List<RoomData> roomDatas)
+    {
+        for (int i = 0; i < roomDatas.Count; i++)
+        {
+            rooms[i].RoomClicked += OnRoomClicked;
+            rooms[i].RoomClickable += OnRoomClickable;
+            rooms[i].LoadData(roomDatas[i]);
+        }
+    }
     public void UpgradeRoom()
     {
         int upgradeCost = roomSelected.GetUpgradeCost();
@@ -74,18 +93,18 @@ public class RoomManager : MonoBehaviour
             NotEnoughGold?.Invoke();
         }
     }
-    void GenerateGold()
+    void GenerateGems()
     {
-        GenerateAFKGold(goldGenTime);
+        GenerateAFKGems(gemGenTime);
     }
-    void GenerateAFKGold(float secondsPassed)
+    void GenerateAFKGems(float secondsPassed)
     {
-        int totalGoldGen = 0;
+        int totalGemGen = 0;
         foreach (RoomController room in rooms)
         {
-            totalGoldGen += room.GetGoldGen();
+            totalGemGen += room.GetGemGen();
         }
-        GoldChanged?.Invoke((int)(totalGoldGen * secondsPassed));
+        GemsChanged?.Invoke((int)(totalGemGen * secondsPassed));
     }
     void AddRoomToList(RoomController rc)
     {

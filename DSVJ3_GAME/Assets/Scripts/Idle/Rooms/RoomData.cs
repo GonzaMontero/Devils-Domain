@@ -2,13 +2,13 @@
 public class RoomData
 {
     public RoomSO so;
-    public int goldGen;
+    public int gemGen;
     public int upgradeLvl;
     public int positionCostModifier = 1; //the cost modifier affected by pos of first room
 
     public void SetCurrents()
     {
-        goldGen = so.baseGoldGeneration;
+        gemGen = so.baseGemGeneration;
         upgradeLvl = 1;
     }
 }

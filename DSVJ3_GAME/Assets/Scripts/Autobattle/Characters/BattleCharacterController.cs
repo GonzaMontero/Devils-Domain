@@ -29,6 +29,11 @@ public class BattleCharacterController : MonoBehaviour
         RunStateMachine();
     }
 
+    public BattleCharacterController() { }
+    public BattleCharacterController(BattleCharacterData newData)
+    {
+        data = newData;
+    }
     public void SetData(BattleCharacterSO so)
     {
         data.so = so;

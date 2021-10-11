@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
     public Action EnemyPartyWon;
-    public Action PlayerPartyWon;   
+    public Action PlayerPartyWon;
     [SerializeField] GameObject characterPrefab;
     [SerializeField] Transform enemiesParent;
     [SerializeField] SlotsCreator slotsCreator;
@@ -14,6 +14,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] List<BattleCharacterHolder> holders;
     [SerializeField] BoxCollider2D[] characterTiles = new BoxCollider2D[18];
     [SerializeField] int battleXP;
+    [SerializeField] int battleGold;
     BattleCharacterSO[] characterSOs;
     Dictionary<int, BattleCharacterController> enemyInTile;
     Dictionary<int, BattleCharacterController> allyInTile;
@@ -44,7 +45,7 @@ public class BattleManager : MonoBehaviour
         slotsCreator = FindObjectOfType<SlotsCreator>();
         AddSlots();
         GenerateEnemies();
-        CalculateXP();
+        CalculateRewards();
     }
 
     public void StartGame()
@@ -169,7 +170,7 @@ public class BattleManager : MonoBehaviour
     {
         if (CharacterIsAlly(attacker) && enemies.Count < 1) { return null; }
         else if (allies.Count < 1) { return null; }
-        
+
 
         return CharacterIsAlly(attacker) ? enemies[0] : allies[0];
     }
@@ -205,7 +206,7 @@ public class BattleManager : MonoBehaviour
     }
     void GenerateEnemies()
     {
-        for(short i = 0; i < 5; i++)
+        for (short i = 0; i < 5; i++)
         {
             GenerateRandomEnemy();
         }
@@ -282,7 +283,7 @@ public class BattleManager : MonoBehaviour
     void RemoveEnemyInTile(int tileIndex = -1, BattleCharacterController character = null)
     {
         //Get missing values from respective Dictionary
-        if (tileIndex == - 1)
+        if (tileIndex == -1)
         {
             if (!tileOfEnemy.TryGetValue(character, out tileIndex))
             {
@@ -323,7 +324,7 @@ public class BattleManager : MonoBehaviour
     }
     void PlayerWon()
     {
-        GiveXP();
+        GiveRewards();
         SaveAllies(); //save player characters to play in next stage
         PlayerPartyWon?.Invoke();
     }
@@ -332,19 +333,21 @@ public class BattleManager : MonoBehaviour
         Destroy(player.gameObject); //reset player characters so they CAN appear next stage
         EnemyPartyWon?.Invoke();
     }
-    void CalculateXP()
+    void CalculateRewards()
     {
         foreach (var enemy in enemies)
         {
             battleXP += enemy.publicData.so.baseXpToLevelUp;
         }
+        battleGold = battleXP / 2;
     }
-    void GiveXP()
+    void GiveRewards()
     {
         foreach (var ally in allies)
         {
             ally.ReceiveXP(battleXP);
         }
+        player.AddGold(battleGold);
     }
     void SaveAllies()
     {

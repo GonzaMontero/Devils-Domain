@@ -51,7 +51,7 @@ public class RoomCreator : MonoBehaviour
 
         //Generate GO
         GameObject tile_go = new GameObject();
-        tile_go.name = "Tile_" + x + "_" + y;
+        tile_go.name = "Room_" + x + "_" + y;
         tile_go.transform.parent = this.transform;
         tile_go.layer = LayerMask.NameToLayer("Rooms");
 
@@ -72,6 +72,7 @@ public class RoomCreator : MonoBehaviour
     
         //Add Room UI
         Transform roomUI = Instantiate(roomUIPrefab, tile_go.transform).transform;
+        roomUI.name = "Room_" + x + "_" + y;
         roomUI.parent = roomUIHolder; //change parent so pos=tile & parent=canvas
         roomUI.GetComponent<RoomUI>().controller = rc;
     }

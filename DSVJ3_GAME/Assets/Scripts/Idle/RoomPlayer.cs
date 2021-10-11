@@ -1,61 +1,80 @@
 ﻿using UnityEngine;
 using System;
-public class PlayerManager : MonoBehaviourSingleton<PlayerManager>
+using System.Collections.Generic;
+
+public class RoomPlayer : MonoBehaviour
 {
     public Action<int> GoldChanged;
+    public Action<int> GemsChanged;
     [SerializeField] RoomManager roomManager;
+    Player player;
 
     [Serializable] public struct Data
     {
         public int gold;
-        public int level;
+        public int gems;
         public DateTime logInTime;
         public DateTime logOutTime;
+        public List<RoomData> rooms;
     }
     public Data playerData;
+
     public void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
         roomManager.GoldChanged += OnGoldChanged;
+        roomManager.GemsChanged += OnGemsChanged;
         RecieveData();
     }
-    public void OnApplicationQuit()
+    private void OnDestroy()
     {
         SaveData();
     }
     public void SaveData()
     {
         playerData.logOutTime = DateTime.Now;
-        PlayerPrefs.SetInt("Gold", playerData.gold);
-        PlayerPrefs.SetInt("Level", playerData.level);
-        PlayerPrefs.Save();
+        player.gems += playerData.gems;
+        player.gold = playerData.gold;
+        playerData.rooms = roomManager.GetRooms();
+        string dataJSON = JsonUtility.ToJson(playerData);
+        FileManager<string>.SaveDataToFile(dataJSON, Application.persistentDataPath + " data.bin");
     }
     public void RecieveData()
     {
-        playerData.gold = 50;//PlayerPrefs.GetInt("Gold");
-        playerData.level = PlayerPrefs.GetInt("Level");
+        string dataJSON;
+        dataJSON = FileManager<string>.LoadDataFromFile(Application.persistentDataPath + " data.bin");
+        JsonUtility.FromJsonOverwrite(dataJSON, playerData);
+        OnGoldChanged(player.gold);
         playerData.logInTime = DateTime.Now;
+        roomManager.LoadRooms(playerData.rooms);
     }
+
     private void OnGoldChanged(int gold)
     {
         playerData.gold += gold;
         GoldChanged?.Invoke(playerData.gold);
     }
+    private void OnGemsChanged(int gems)
+    {
+        playerData.gems += gems;
+        GemsChanged?.Invoke(playerData.gems);
+    }
 
 
     //CHECK LATER
     #region MethodsForAFK
-    //DateTime is in System
+    //DateTime is on System
     DateTime logInTime;
     DateTime logOutTime;
-    void LoadGameplayScene()
+    void LoadIdleScene()
     {
         logInTime = DateTime.Now;
     }
-    void ExitGameplayScene()
+    void ExitIdleScene()
     {
         logOutTime = DateTime.Now;
     }
-    public void CalculateAFKGold() //this may go on roomManager
+    public void CalculateAFKGems() //this may go on roomManager
     {
         //TimeSpan is also on System
         TimeSpan afkTime = logOutTime - logInTime;
