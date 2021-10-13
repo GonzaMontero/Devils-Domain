@@ -44,9 +44,11 @@ public class RoomPlayer : MonoBehaviour
         string dataJSON;
         dataJSON = FileManager<string>.LoadDataFromFile(Application.persistentDataPath + " data.bin");
         JsonUtility.FromJsonOverwrite(dataJSON, playerData);
-        OnGoldChanged(player.gold);
+        OnGoldChanged(0);
+        OnGoldChanged(0);
         playerData.logInTime = DateTime.Now;
         roomManager.LoadRooms(playerData.rooms);
+        CalculateAFKGems();
     }
 
     private void OnGoldChanged(int gold)
@@ -63,25 +65,11 @@ public class RoomPlayer : MonoBehaviour
 
     //CHECK LATER
     #region MethodsForAFK
-    //DateTime is on System
-    DateTime logInTime;
-    DateTime logOutTime;
-    void LoadIdleScene()
-    {
-        logInTime = DateTime.Now;
-    }
-    void ExitIdleScene()
-    {
-        logOutTime = DateTime.Now;
-    }
     public void CalculateAFKGems() //this may go on roomManager
     {
         //TimeSpan is also on System
-        TimeSpan afkTime = logOutTime - logInTime;
-        for (int i = 0; i < afkTime.TotalSeconds; i++)
-        {
-            //GenerateAFKGold((float)afkTime.TotalSeconds);
-        }
+        TimeSpan afkTime = playerData.logOutTime - playerData.logInTime;
+        roomManager.GenerateAFKGems((float)afkTime.TotalSeconds / 60); //calculate in minutes
     }
     #endregion 
 }

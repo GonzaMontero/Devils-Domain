@@ -93,11 +93,7 @@ public class RoomManager : MonoBehaviour
             NotEnoughGold?.Invoke();
         }
     }
-    void GenerateGems()
-    {
-        GenerateAFKGems(gemGenTime);
-    }
-    void GenerateAFKGems(float secondsPassed)
+    public void GenerateAFKGems(float secondsPassed)
     {
         int totalGemGen = 0;
         foreach (RoomController room in rooms)
@@ -105,6 +101,10 @@ public class RoomManager : MonoBehaviour
             totalGemGen += room.GetGemGen();
         }
         GemsChanged?.Invoke((int)(totalGemGen * secondsPassed));
+    }
+    void GenerateGems()
+    {
+        GenerateAFKGems(gemGenTime);
     }
     void AddRoomToList(RoomController rc)
     {

@@ -982,8 +982,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomManager: {fileID: 1062010024}
   playerData:
-    gold: 100
+    gold: 0
     gems: 0
+    rooms: []
 --- !u!4 &852639016
 Transform:
   m_ObjectHideFlags: 0
