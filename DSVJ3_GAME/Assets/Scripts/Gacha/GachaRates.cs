@@ -5,10 +5,15 @@ using System.Collections.Generic;
 
 public class GachaRates : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] GameObject[] gachaBoxesShow;
     [SerializeField] GameObject[] gachaBannerNoShow;
     [SerializeField] GameObject gachaPanel;
 
+    [Header("Scripts")]
+    [SerializeField] GachaPlayer player;
+
+    [Header("Character SOs")]
     [SerializeField] List<BattleCharacterSO> threeStarCharacters;
     [SerializeField] List<BattleCharacterSO> fourStarCharacters;
     [SerializeField] List<BattleCharacterSO> fiveStarCharacters;
@@ -68,8 +73,10 @@ public class GachaRates : MonoBehaviour
     }
 
     #region ButtonPress
-    public void PullOnce()
+    public void PullOnce(int price)
     {
+        if (!player.ReduceGems(price)) { return; }
+
         int index = Mathf.RoundToInt(gachaBoxesShow.Length / 2);
         gachaPanel.SetActive(true);
         FindAndLoadBoxes();
@@ -84,8 +91,10 @@ public class GachaRates : MonoBehaviour
         gachaBoxesShow[index].SetActive(true);
         GachaRoll(index);
     }
-    public void PullEleven()
+    public void PullEleven(int price)
     {
+        if (!player.ReduceGems(price)) { return; }
+
         int index = 0;
         gachaPanel.SetActive(true);
         FindAndLoadBoxes();
