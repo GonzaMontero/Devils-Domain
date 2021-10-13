@@ -11,10 +11,15 @@ public class UIPlayerData : MonoBehaviour
 
     private void Start()
     {
+        //Player
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
         //Scene
         sceneName = SceneManager.GetActiveScene().name;
         SceneManager.activeSceneChanged += OnSceneChange;
+
+        //Set values
+        UpdateData();
     }
 
     
@@ -22,8 +27,13 @@ public class UIPlayerData : MonoBehaviour
     {
         if (newScene.name != sceneName)
         {
-            goldText.text = player.gold.ToString();
-            gemsText.text = player.gems.ToString();
+            UpdateData();
         }
+    }
+
+    void UpdateData()
+    {
+        if (player.gold > 0) goldText.text = player.gold.ToString();
+        if (player.gems > 0) gemsText.text = player.gems.ToString();
     }
 }
