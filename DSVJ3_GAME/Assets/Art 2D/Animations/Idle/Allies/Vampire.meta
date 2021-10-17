@@ -1,5 +1,8 @@
 fileFormatVersion: 2
 guid: 43b6bdc0cd026ad4f9f2ec5b8321b903
+labels:
+- Animation
+- IdleAnimation
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

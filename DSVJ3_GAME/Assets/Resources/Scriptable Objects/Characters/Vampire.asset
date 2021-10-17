@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad30f2dfc9857d5428e997aefdf2c97a, type: 3}
-  m_Name: RANGEDTESTSO
+  m_Name: Vampire
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 0bc426f191cd6a448abcedd5622e09d0, type: 3}
-  animatorOverride: {fileID: 22100000, guid: 572aa3b90573e774593f1c4b2732c3f7, type: 2}
+  sprite: {fileID: 21300000, guid: e24d77e76829b954c8d992f7799fc851, type: 3}
+  animatorOverride: {fileID: 22100000, guid: 6dca4277a093e7343a1c80268443fa8d, type: 2}
   baseStats:
     damage: 4
     maxHealth: 100
@@ -21,5 +21,5 @@ MonoBehaviour:
     armor: 0
   baseXpToLevelUp: 10
   xpToLevelUpModifier: 1
-  numberOfStars: 4
+  numberOfStars: 5
   attackType: 2

@@ -21,5 +21,5 @@ MonoBehaviour:
     armor: 0
   baseXpToLevelUp: 10
   xpToLevelUpModifier: 2
-  numberOfStars: 5
+  numberOfStars: 4
   attackType: 1

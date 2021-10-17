@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 572aa3b90573e774593f1c4b2732c3f7
+labels:
+- Animation
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 22100000

@@ -1,5 +1,8 @@
 fileFormatVersion: 2
 guid: e9f9bb1f6b55f274683edef4854ee4ab
+labels:
+- Animation
+- AttackAnimation
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
