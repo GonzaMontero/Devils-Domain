@@ -1,8 +1,10 @@
 fileFormatVersion: 2
-guid: f9335712f3dd9314bba641cc31f198ef
+guid: 4ba1042a619ed6e41ac8f78c084b0906
+labels:
+- Animation
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 11400000
+  mainObjectFileID: 22100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

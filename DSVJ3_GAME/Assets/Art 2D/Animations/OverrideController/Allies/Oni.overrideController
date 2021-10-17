@@ -6,14 +6,14 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Witch
+  m_Name: Oni
   m_Controller: {fileID: 9100000, guid: 2ac3c64f7d007814bbc156be5ac9dd00, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 358a7de4fb364d24b886097128bd6d5b, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 40727d82f3a80fd4aa0221328e8077e0, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 126f4e849420ffe4f8dc8aa28a838298, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 126f4e849420ffe4f8dc8aa28a838298, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 9baa9088479402944bcabbf9c411f23c, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: f0c457287832ebe45a5520a24616b853, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4e09561ec9866014a942a2ec232154e5, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 41d82b583151ed44ea262be4407657e9, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 41d82b583151ed44ea262be4407657e9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 358a7de4fb364d24b886097128bd6d5b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 358a7de4fb364d24b886097128bd6d5b, type: 2}

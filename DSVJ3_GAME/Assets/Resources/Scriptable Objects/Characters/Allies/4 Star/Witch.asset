@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad30f2dfc9857d5428e997aefdf2c97a, type: 3}
-  m_Name: BOTHTESTSO
+  m_Name: Witch
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: e24d77e76829b954c8d992f7799fc851, type: 3}
-  animatorOverride: {fileID: 22100000, guid: 6dca4277a093e7343a1c80268443fa8d, type: 2}
+  sprite: {fileID: 21300000, guid: 0fa783e88b4c4a14e964a831a4488bc0, type: 3}
+  animatorOverride: {fileID: 22100000, guid: a512b34f16af47f4592a4d1fd3ba2b78, type: 2}
   baseStats:
-    damage: 15
-    maxHealth: 50
+    damage: 4
+    maxHealth: 80
     attackSpeed: 1
     armor: 0
   baseXpToLevelUp: 10
-  xpToLevelUpModifier: 2
+  xpToLevelUpModifier: 1
   numberOfStars: 4
-  attackType: 1
+  attackType: 2
