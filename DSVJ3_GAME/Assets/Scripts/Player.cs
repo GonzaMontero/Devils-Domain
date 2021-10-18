@@ -17,4 +17,9 @@ public class Player : MonoBehaviourSingleton<Player>
     {
         playerName = name;
     }
+
+    public void SwapPositions(int positionInArray, BattleCharacterData characterToSwap)
+    {
+        lineup[positionInArray] = characterToSwap;
+    }
 }

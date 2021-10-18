@@ -33,6 +33,7 @@ public class SpawnLineupRectangles : MonoBehaviour
             if (characterHover != null)
             {
                 characterHover.GetComponent<Image>().sprite = player1.characters[i].so.sprite;
+                characterHover.GetComponent<DragDropScript>().SetValues(spawnLocation, i);
             }
         }
         transform.gameObject.GetComponent<SpawnLineupRectangles>().enabled = false;
