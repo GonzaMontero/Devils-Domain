@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad30f2dfc9857d5428e997aefdf2c97a, type: 3}
-  m_Name: Zombie
+  m_Name: Oni
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: e2c1f112ccdddbe45803ea624cfeaca3, type: 3}
-  animatorOverride: {fileID: 22100000, guid: 196172bf99f4dfe42840e2778bedd053, type: 2}
+  sprite: {fileID: 21300000, guid: d3e471264d114254884abe39b9b629fd, type: 3}
+  animatorOverride: {fileID: 22100000, guid: 4ba1042a619ed6e41ac8f78c084b0906, type: 2}
   baseStats:
     damage: 2
-    maxHealth: 200
+    maxHealth: 250
     attackSpeed: 1
     armor: 0
   baseXpToLevelUp: 10
   xpToLevelUpModifier: 1
-  numberOfStars: 3
+  numberOfStars: 4
   attackType: 0
