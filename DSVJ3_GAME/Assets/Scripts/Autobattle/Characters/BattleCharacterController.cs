@@ -18,26 +18,28 @@ public class BattleCharacterController : MonoBehaviour
     const float despawnTimer = 2;
     const int defaultAttackTime = 1; //attack time in seconds, without attack speed
 
-    private void Awake()
+    private void Start()
     {
         current = States.idle;
-        data.SetLevel1Currents();
-        data.SetStartOfBattleCurrents();
     }
     void Update()
     {
         RunStateMachine();
     }
 
-    public BattleCharacterController() { }
-    public BattleCharacterController(BattleCharacterData newData)
+    public void InitCharacter()
     {
-        data = newData;
+        data.SetStartOfBattleCurrents();
     }
     public void SetData(BattleCharacterSO so)
     {
         data.so = so;
         data.SetLevel1Currents();
+        data.SetStartOfBattleCurrents();
+    }
+    public void SetData(BattleCharacterData data)
+    {
+        this.data = data;
         data.SetStartOfBattleCurrents();
     }
     public void OnAttack(int damage)

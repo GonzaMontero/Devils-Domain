@@ -5,12 +5,15 @@ public class BattleCharacterHolder : MonoBehaviour
 {
     public Action<BoxCollider2D, BattleCharacterController> CharacterPositioned;
     public Action<BattleCharacterController> CharacterRemoved;
+    [SerializeField] Transform top;
+    [SerializeField] Transform bottom;
     Vector2 originalPosition;   
     Vector2 newPosition;
     LayerMask slotsMask;
     RaycastHit2D slotHitted;
     BoxCollider2D boxCollider;
     SpriteRenderer lastSlotSprite;
+    GameObject boxCast;
 
     #region Unity Events
     private void Start()
@@ -47,12 +50,19 @@ public class BattleCharacterHolder : MonoBehaviour
 
     void GetSlot()
     {
-        Vector2 pos = transform.position;
+        Vector2 pos = (Vector2)transform.position + boxCollider.size.y / 2 * Vector2.down;
+        //Vector2 hitPos = pos + Vector2.up * 4;
 
-        slotHitted = Physics2D.BoxCast(pos, boxCollider.size, 0, Vector2.up, 0, slotsMask);
+        
+        slotHitted = Physics2D.BoxCast(pos, Vector2.one, 0, Vector2.up, 0.1f, slotsMask);
         if (slotHitted && !slotHitted.transform.CompareTag("SlotTaken"))
         {
+            Debug.Log("Collided");
             UpdateSlotColor(slotHitted);
+        }
+        else
+        {
+            Debug.Log("Not Collided");
         }
     }
     void GetSlotPos()
@@ -85,6 +95,6 @@ public class BattleCharacterHolder : MonoBehaviour
             lastSlotSprite.color = Color.white;
         }
         lastSlotSprite = slotHitted.transform.GetComponent<SpriteRenderer>();
-        lastSlotSprite.color = Color.yellow;
+        lastSlotSprite.color = Color.red;
     }
 }
