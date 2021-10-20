@@ -51,19 +51,15 @@ public class BattleManager : MonoBehaviour
     public void StartGame()
     {
         player = BattlePlayer.Get();
-        if (player.characters.Count > 0)
-        {
-            int i = 0;
-            foreach (var ally in player.characters)
-            {
-                AddCharacter(true, ally, i); //TEMP, i IS PLACEHOLDER
-                i++;
-            }
-            //for (int i = 0; i < allies.Count; i++)
-            //{
-            //    allies[i].publicData = player.characters[i];
-            //}
-        }
+        //if (player.characters.Count > 0)
+        //{
+        //    int i = 0;
+        //    foreach (var ally in player.characters)
+        //    {
+        //        AddCharacter(true, ally, i); //TEMP, i IS PLACEHOLDER
+        //        i++;
+        //    }
+        //}
 
         readyToStart = true;
         foreach (BattleCharacterHolder holder in holders)

@@ -31,16 +31,20 @@ public class BattleCharacterController : MonoBehaviour
     {
         data.SetStartOfBattleCurrents();
     }
+    public void InitCharacterFromZero()
+    {
+        data.SetLevel1Currents();
+        data.SetStartOfBattleCurrents();
+    }
     public void SetData(BattleCharacterSO so)
     {
         data.so = so;
-        data.SetLevel1Currents();
-        data.SetStartOfBattleCurrents();
+        InitCharacterFromZero();
     }
     public void SetData(BattleCharacterData data)
     {
         this.data = data;
-        data.SetStartOfBattleCurrents();
+        InitCharacter();
     }
     public void OnAttack(int damage)
     {

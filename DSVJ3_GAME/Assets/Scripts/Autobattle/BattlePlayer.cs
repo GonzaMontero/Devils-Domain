@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System;
 
 public class BattlePlayer : MonoBehaviourSingleton<BattlePlayer>
 {
     public List<BattleCharacterController> characters;
+    public Action NewCharactersAdded;
     Player player;
     string sceneName;
 
     private void Start()
     {
         //Player
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = Player.Get();
 
         //Get Characters
         GetCharacters();
@@ -34,8 +36,16 @@ public class BattlePlayer : MonoBehaviourSingleton<BattlePlayer>
             BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
             characters[i].SetData(player.lineup[i]);
             characterController = characters[i];
-            characterController.InitCharacter();
+            if (characterController.publicData.level >= 1)
+            {
+                characterController.InitCharacter();
+            }
+            else
+            {
+                characterController.InitCharacterFromZero();
+            }
         }
+        NewCharactersAdded?.Invoke();
     }
 
     void OnSceneChange(Scene oldScene, Scene newScene)
