@@ -13,7 +13,6 @@ public class BattleCharacterHolder : MonoBehaviour
     RaycastHit2D slotHitted;
     BoxCollider2D boxCollider;
     SpriteRenderer lastSlotSprite;
-    GameObject boxCast;
 
     #region Unity Events
     private void Start()
@@ -50,19 +49,22 @@ public class BattleCharacterHolder : MonoBehaviour
 
     void GetSlot()
     {
-        Vector2 pos = (Vector2)transform.position + boxCollider.size.y / 2 * Vector2.down;
-        //Vector2 hitPos = pos + Vector2.up * 4;
+        Vector2 pos = transform.position;// + boxCollider.size.y / 2 * Vector2.down;
 
-        
-        slotHitted = Physics2D.BoxCast(pos, Vector2.one, 0, Vector2.up, 0.1f, slotsMask);
+        slotHitted = Physics2D.Raycast(pos, Vector2.down, boxCollider.size.y / 4, slotsMask);
         if (slotHitted && !slotHitted.transform.CompareTag("SlotTaken"))
         {
-            Debug.Log("Collided");
+            //Debug.Log("Collided");
             UpdateSlotColor(slotHitted);
         }
         else
         {
-            Debug.Log("Not Collided");
+            //Debug.Log("Not Collided");
+            
+            if (lastSlotSprite)
+            {
+                lastSlotSprite.color = Color.white; //character is not touching any slot, so color marking is not needed
+            }
         }
     }
     void GetSlotPos()
@@ -81,12 +83,7 @@ public class BattleCharacterHolder : MonoBehaviour
         {
             newPosition = originalPosition;
             CharacterRemoved(character);
-        }
-
-        if (lastSlotSprite)
-        {
-            lastSlotSprite.color = Color.white; //character positioned, so color marking is not needed
-        }
+        }        
     }
     void UpdateSlotColor(RaycastHit2D slotHitted)
     {
