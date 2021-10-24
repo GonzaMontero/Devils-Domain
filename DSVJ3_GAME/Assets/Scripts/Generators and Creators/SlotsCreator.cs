@@ -74,7 +74,7 @@ public class SlotsCreator : MonoBehaviour
         BoxCollider2D tile_boxColl = tile_go.AddComponent<BoxCollider2D>();
 
         //Reset Position
-        tile_go.transform.position = new Vector3(Camera.main.transform.position.x + sizeX + tile_data.X * tile_boxColl.size.x + posOffsetX, Camera.main.transform.position.y - sizeY + tile_data.Y * tile_boxColl.size.y + posOffsetY, 0);
+        tile_go.transform.position = new Vector3(Camera.main.transform.position.x + sizeX + tile_data.X * tile_boxColl.size.x + posOffsetX, Camera.main.transform.position.y - sizeY + tile_data.Y * tile_boxColl.size.y + posOffsetY, y);
 
         //Add slot to slot list, public list
         slotList.Add(tile_boxColl);
@@ -100,7 +100,7 @@ public class SlotsCreator : MonoBehaviour
         BoxCollider2D tile_boxColl = tile_go.AddComponent<BoxCollider2D>();
 
         //Reset Position
-        tile_go.transform.position = new Vector3(Camera.main.transform.position.x - sizeX - tile_data.X * tile_boxColl.size.x - posOffsetX, Camera.main.transform.position.y - sizeY + tile_data.Y * tile_boxColl.size.y + posOffsetY, 0);
+        tile_go.transform.position = new Vector3(Camera.main.transform.position.x - sizeX - tile_data.X * tile_boxColl.size.x - posOffsetX, Camera.main.transform.position.y - sizeY + tile_data.Y * tile_boxColl.size.y + posOffsetY, y);
 
         //Add slot to slot list, public list
         slotList.Add(tile_boxColl);

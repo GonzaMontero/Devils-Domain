@@ -7,8 +7,8 @@ public class BattleCharacterHolder : MonoBehaviour
     public Action<BattleCharacterController> CharacterRemoved;
     [SerializeField] Transform top;
     [SerializeField] Transform bottom;
-    Vector2 originalPosition;   
-    Vector2 newPosition;
+    Vector3 originalPosition;   
+    Vector3 newPosition;
     LayerMask slotsMask;
     RaycastHit2D slotHitted;
     BoxCollider2D boxCollider;
@@ -42,7 +42,7 @@ public class BattleCharacterHolder : MonoBehaviour
     {
         GetSlotPos(); //check if there is a slot under character and return slotPos, if not, leave ogPos
         transform.position = newPosition;
-        transform.localPosition = (Vector2)transform.localPosition; //set local Z to 0
+        //transform.localPosition = (Vector2)transform.localPosition; //set local Z to 0
         Debug.Log("Moved Pos To Target Pos!");
     }
     #endregion
