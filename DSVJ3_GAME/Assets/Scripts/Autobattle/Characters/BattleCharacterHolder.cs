@@ -5,9 +5,7 @@ public class BattleCharacterHolder : MonoBehaviour
 {
     public Action<BoxCollider2D, BattleCharacterController> CharacterPositioned;
     public Action<BattleCharacterController> CharacterRemoved;
-    [SerializeField] Transform top;
-    [SerializeField] Transform bottom;
-    Vector3 originalPosition;   
+    Vector3 originalPosition;
     Vector3 newPosition;
     LayerMask slotsMask;
     RaycastHit2D slotHitted;
@@ -43,6 +41,7 @@ public class BattleCharacterHolder : MonoBehaviour
         GetSlotPos(); //check if there is a slot under character and return slotPos, if not, leave ogPos
         transform.position = newPosition;
         //transform.localPosition = (Vector2)transform.localPosition; //set local Z to 0
+        ResetOldSlotColor(); //character is either on a slot or in the og position, no need for color
         Debug.Log("Moved Pos To Target Pos!");
     }
     #endregion
@@ -60,11 +59,6 @@ public class BattleCharacterHolder : MonoBehaviour
         else
         {
             //Debug.Log("Not Collided");
-            
-            if (lastSlotSprite)
-            {
-                lastSlotSprite.color = Color.white; //character is not touching any slot, so color marking is not needed
-            }
         }
     }
     void GetSlotPos()
@@ -75,7 +69,7 @@ public class BattleCharacterHolder : MonoBehaviour
         if (slotHitted && !slotHitted.transform.CompareTag("SlotTaken"))
         {
             newPosition = slotHitted.transform.position;
-            
+
             BoxCollider2D slotCollider = slotHitted.transform.GetComponent<BoxCollider2D>();
             CharacterPositioned?.Invoke(slotCollider, character);
         }
@@ -83,15 +77,19 @@ public class BattleCharacterHolder : MonoBehaviour
         {
             newPosition = originalPosition;
             CharacterRemoved(character);
-        }        
+        }
     }
     void UpdateSlotColor(RaycastHit2D slotHitted)
+    {
+        ResetOldSlotColor();
+        lastSlotSprite = slotHitted.transform.GetComponent<SpriteRenderer>();
+        lastSlotSprite.color = Color.red;
+    }
+    void ResetOldSlotColor()
     {
         if (lastSlotSprite)
         {
             lastSlotSprite.color = Color.white;
         }
-        lastSlotSprite = slotHitted.transform.GetComponent<SpriteRenderer>();
-        lastSlotSprite.color = Color.red;
     }
 }
