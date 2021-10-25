@@ -43,4 +43,9 @@ public class SwapLineupSpot : MonoBehaviour, IPointerDownHandler
     {
         positionOnArray = val;
     }
+
+    public Sprite GetSprite()
+    {
+        return player.lineup[positionOnArray].so.sprite;
+    }
 }

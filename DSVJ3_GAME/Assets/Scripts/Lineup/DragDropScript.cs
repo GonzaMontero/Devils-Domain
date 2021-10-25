@@ -11,21 +11,22 @@ public class DragDropScript : MonoBehaviour, IPointerDownHandler
     private LayerMask mask;*/
 
     private int positionOnCharacterCount;
-    public Player player;
+    public Player player1;
     private GameObject characterThatWillBeSwapped;
 
     private void Start()
     {
         //box = GetComponent<BoxCollider2D>();
-        player = Player.Get();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player1 = player.GetComponent<Player>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (characterThatWillBeSwapped != null)
         {
-            characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().swapPositionOnArray(player.characters[positionOnCharacterCount]);
-            this.GetComponent<Image>().sprite = player.characters[positionOnCharacterCount].so.sprite;
+            characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().swapPositionOnArray(player1.characters[positionOnCharacterCount]);
+            this.GetComponent<Image>().sprite = characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().GetSprite();
         }
     }
 
