@@ -30,10 +30,16 @@ public class SpawnLineupRectangles : MonoBehaviour
             Vector3 spawnLocation = new Vector3(characterLineupAnchor.transform.position.x + (rectTransform.width / 2) + (rectTransform.width * i), transform.position.y);
             characterHover.transform.position = spawnLocation;
 
+
+            BoxCollider2D box = characterHover.AddComponent<BoxCollider2D>();
+            box.size = new Vector2(sizeX, sizeY);
+
             if (characterHover != null)
             {
                 characterHover.GetComponent<Image>().sprite = player1.characters[i].so.sprite;
-                characterHover.GetComponent<DragDropScript>().SetValues(spawnLocation, i);
+                characterHover.tag = "Player Team List";
+                characterHover.GetComponent<DragDropScript>().SetValue(i);
+                //characterHover.GetComponent<DragDropScript>().SetValues(spawnLocation, i);
             }
         }
         transform.gameObject.GetComponent<SpawnLineupRectangles>().enabled = false;

@@ -1,26 +1,50 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DragDropScript : MonoBehaviour, IEndDragHandler, IDragHandler{
-
-    private Vector3 startPos;
+public class DragDropScript : MonoBehaviour, IPointerDownHandler
+{
+    /*private Vector3 startPos;
     private Vector3 newPos;
+    private BoxCollider2D box;
+    private RaycastHit2D slotHitted;
+    private LayerMask mask;*/
 
     private int positionOnCharacterCount;
-    private Player player;
-    private bool endDrag;
+    public Player player;
+    private GameObject characterThatWillBeSwapped;
 
     private void Start()
     {
+        //box = GetComponent<BoxCollider2D>();
         player = Player.Get();
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (characterThatWillBeSwapped != null)
+        {
+            characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().swapPositionOnArray(player.characters[positionOnCharacterCount]);
+            this.GetComponent<Image>().sprite = player.characters[positionOnCharacterCount].so.sprite;
+        }
+    }
+
+    public void SetCharacterToSwap(GameObject characterToSwap)
+    {
+        characterThatWillBeSwapped = characterToSwap;
+    }
+
+    public void SetValue(int val)
+    {
+        positionOnCharacterCount = val;
+    }
+
+    /*Todo esto se bugea
     public void SetValues(Vector3 startPosSet, int positionOnCharacterCountD)
     {
         startPos = startPosSet;
         positionOnCharacterCount = positionOnCharacterCountD;
     }
-
     public void OnDrag(PointerEventData eventData)
     {
         newPos.x = Input.mousePosition.x;
@@ -29,29 +53,25 @@ public class DragDropScript : MonoBehaviour, IEndDragHandler, IDragHandler{
 
         transform.position = newPos;
     }
-
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnMouseUp()
     {
-        endDrag = true;
+        GetSlot();
     }
-
-    public void OnCollisionEnter2D(Collision2D collision)
+    void GetSlot()
     {
-        if (collision.gameObject.tag == ("Lineup"))
+        Vector2 pos = (Vector2)transform.position + box.size.y / 2 * Vector2.down;
+        //Vector2 hitPos = pos + Vector2.up * 4;
+
+        slotHitted = Physics2D.BoxCast(pos, Vector2.one, 0, Vector2.up, 0.1f, mask);
+
+        if (slotHitted && !slotHitted.transform.CompareTag("Character Team Holder"))
         {
-            if (endDrag)
-            {
-                collision.gameObject.GetComponent<SwapLineupSpot>().swapPositionOnArray(player.characters[positionOnCharacterCount]);
-                transform.position = startPos;
-            }
-            else
-            {
-                transform.position = startPos;
-            }
+            Debug.Log("Collided");
         }
         else
         {
-            transform.position = startPos;
+            Debug.Log("Not Collided");
         }
     }
+    */
 }

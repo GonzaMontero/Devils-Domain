@@ -9,8 +9,9 @@ TagManager:
   - Gacha Boxes
   - Gacha Panel
   - Gacha Holder
-  - Lineup Holder Hover
   - Lineup Hover Holder
+  - Character Team Holder
+  - Player Team List
   layers:
   - Default
   - TransparentFX

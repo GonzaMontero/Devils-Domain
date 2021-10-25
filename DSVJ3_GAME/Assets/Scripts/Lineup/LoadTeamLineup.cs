@@ -30,10 +30,15 @@ public class LoadTeamLineup : MonoBehaviour
             Vector3 spawnLocation = new Vector3(characterLineupAnchor.transform.position.x + (rectTransform.width / 2) + (rectTransform.width * i), transform.position.y);
             characterHover.transform.position = spawnLocation;
 
+            BoxCollider2D box = characterHover.AddComponent<BoxCollider2D>();
+            box.size = new Vector2(sizeX, sizeY);
+
             if (characterHover != null)
             {
                 characterHover.GetComponent<Image>().sprite = player1.lineup[i].so.sprite;
-            }          
+                characterHover.GetComponent<SwapLineupSpot>().SetPosInArray(i);
+            }
+            characterHover.tag = "Character Team Holder";
         }
         transform.gameObject.GetComponent<LoadTeamLineup>().enabled = false;
     }

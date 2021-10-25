@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4100077688581655803}
   - component: {fileID: 8953018553051206833}
   - component: {fileID: 4921727874270603821}
+  - component: {fileID: 5493308776627767048}
   m_Layer: 0
   m_Name: Lineup Hover Image
   m_TagString: Untagged
@@ -87,3 +88,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338aeee561f39ef448fc4fad85dca622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5493308776627767048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134690113466075794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
