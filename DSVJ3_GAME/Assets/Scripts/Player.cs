@@ -10,7 +10,8 @@ public class Player : MonoBehaviourSingleton<Player>
 
     private void Start()
     {
-        characters = new List<BattleCharacterData>();    }
+        //characters = new List<BattleCharacterData>();  
+    }
 
     public void OnNameEdit(string name)
     {

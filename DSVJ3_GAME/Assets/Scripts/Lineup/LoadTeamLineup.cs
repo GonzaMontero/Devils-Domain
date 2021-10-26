@@ -9,13 +9,12 @@ public class LoadTeamLineup : MonoBehaviour
 
     void Awake()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Player player1 = player.GetComponent<Player>();
+        Player player = Player.Get();
 
-        float sizeX = GetComponent<RectTransform>().rect.width / player1.lineup.Length;
+        float sizeX = GetComponent<RectTransform>().rect.width / player.lineup.Length;
         float sizeY = GetComponent<RectTransform>().rect.height;
 
-        for (short i = 0; i < player1.lineup.Length; i++)
+        for (short i = 0; i < player.lineup.Length; i++)
         {
             //Instanciate objects
             GameObject characterHover = Instantiate(teamLineup, Vector3.zero, Quaternion.identity, transform);
@@ -35,7 +34,7 @@ public class LoadTeamLineup : MonoBehaviour
 
             if (characterHover != null)
             {
-                characterHover.GetComponent<Image>().sprite = player1.lineup[i].so.sprite;
+                characterHover.GetComponent<Image>().sprite = player.lineup[i].so.sprite;
                 characterHover.GetComponent<SwapLineupSpot>().SetPosInArray(i);
             }
             characterHover.tag = "Character Team Holder";
