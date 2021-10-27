@@ -11,7 +11,7 @@ public class LoadTeamLineup : MonoBehaviour
     {
         Player player = Player.Get();
 
-        float sizeX = GetComponent<RectTransform>().rect.width / player.lineup.Length;
+        float sizeX = GetComponent<RectTransform>().rect.width / 5;
         float sizeY = GetComponent<RectTransform>().rect.height;
 
         for (short i = 0; i < player.lineup.Length; i++)
@@ -32,7 +32,7 @@ public class LoadTeamLineup : MonoBehaviour
             BoxCollider2D box = characterHover.AddComponent<BoxCollider2D>();
             box.size = new Vector2(sizeX, sizeY);
 
-            if (characterHover != null)
+            if (player.lineup[i].so != null)
             {
                 characterHover.GetComponent<Image>().sprite = player.lineup[i].so.sprite;
                 characterHover.GetComponent<SwapLineupSpot>().SetPosInArray(i);
