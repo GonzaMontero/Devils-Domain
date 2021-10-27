@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class BattleCharacterController : MonoBehaviour
 {
     [Serializable] enum States { idle, selectTarget, attacking, dead };
