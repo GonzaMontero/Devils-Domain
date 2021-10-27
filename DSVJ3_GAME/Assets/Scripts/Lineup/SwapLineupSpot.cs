@@ -19,9 +19,9 @@ public class SwapLineupSpot : MonoBehaviour, IPointerDownHandler
     }
 
     public void swapPositionOnArray(BattleCharacterData characterToSwap)
-    {
-        player.SwapPositions(positionOnArray, characterToSwap);
+    {       
         this.GetComponent<Image>().sprite = player.lineup[positionOnArray].so.sprite;
+        player.SwapPositions(positionOnArray, characterToSwap);
         foreach (GameObject charater in characterList)
         {
             charater.GetComponent<DragDropScript>().SetCharacterToSwap(null);

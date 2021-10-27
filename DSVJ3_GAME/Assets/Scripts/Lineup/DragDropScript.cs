@@ -4,21 +4,13 @@ using UnityEngine.EventSystems;
 
 public class DragDropScript : MonoBehaviour, IPointerDownHandler
 {
-    /*private Vector3 startPos;
-    private Vector3 newPos;
-    private BoxCollider2D box;
-    private RaycastHit2D slotHitted;
-    private LayerMask mask;*/
-
     private int positionOnCharacterCount;
     public Player player1;
     private GameObject characterThatWillBeSwapped;
 
     private void Start()
     {
-        //box = GetComponent<BoxCollider2D>();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player1 = player.GetComponent<Player>();
+        player1 = Player.Get();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -26,7 +18,7 @@ public class DragDropScript : MonoBehaviour, IPointerDownHandler
         if (characterThatWillBeSwapped != null)
         {
             characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().swapPositionOnArray(player1.characters[positionOnCharacterCount]);
-            this.GetComponent<Image>().sprite = characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().GetSprite();
+            //this.GetComponent<Image>().sprite = characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().GetSprite();
         }
     }
 

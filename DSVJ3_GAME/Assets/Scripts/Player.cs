@@ -8,11 +8,6 @@ public class Player : MonoBehaviourSingleton<Player>
     public int gems;
     string playerName;
 
-    private void Start()
-    {
-        //characters = new List<BattleCharacterData>();  
-    }
-
     public void OnNameEdit(string name)
     {
         playerName = name;
@@ -20,6 +15,10 @@ public class Player : MonoBehaviourSingleton<Player>
 
     public void SwapPositions(int positionInArray, BattleCharacterData characterToSwap)
     {
+        BattleCharacterData placeHolder;
+        placeHolder = lineup[positionInArray];
         lineup[positionInArray] = characterToSwap;
+        characters.Remove(characterToSwap);
+        characters.Add(placeHolder);
     }
 }
