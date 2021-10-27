@@ -17,8 +17,9 @@ public class DragDropScript : MonoBehaviour, IPointerDownHandler
     {
         if (characterThatWillBeSwapped != null)
         {
+            Sprite placeHolder = characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().GetSprite();
             characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().swapPositionOnArray(player1.characters[positionOnCharacterCount]);
-            //this.GetComponent<Image>().sprite = characterThatWillBeSwapped.GetComponent<SwapLineupSpot>().GetSprite();
+            this.GetComponent<Image>().sprite = placeHolder;
         }
     }
 

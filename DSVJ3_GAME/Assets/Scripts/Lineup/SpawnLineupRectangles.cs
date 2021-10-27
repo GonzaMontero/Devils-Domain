@@ -12,8 +12,8 @@ public class SpawnLineupRectangles : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Player player1 = player.GetComponent<Player>();
 
-        float sizeX = GetComponent<RectTransform>().rect.width / 7;
-        float sizeY = GetComponent<RectTransform>().rect.height;
+        float sizeX = GetComponent<RectTransform>().rect.width / 5;
+        float sizeY = (GetComponent<RectTransform>().rect.height / 4) * 3;
 
         for (short i = 0; i < player1.characters.Count; i++)
         {
@@ -23,7 +23,7 @@ public class SpawnLineupRectangles : MonoBehaviour
 
             //Modify box prefab
             rectTransform.width = sizeX;
-            rectTransform.height = sizeY;
+            rectTransform.height = sizeY / 3;
             characterHover.transform.localScale = Vector3.one;
 
             //Move box to Location
@@ -39,7 +39,6 @@ public class SpawnLineupRectangles : MonoBehaviour
                 characterHover.GetComponent<Image>().sprite = player1.characters[i].so.sprite;
                 characterHover.tag = "Player Team List";
                 characterHover.GetComponent<DragDropScript>().SetValue(i);
-                //characterHover.GetComponent<DragDropScript>().SetValues(spawnLocation, i);
             }
         }
         transform.gameObject.GetComponent<SpawnLineupRectangles>().enabled = false;

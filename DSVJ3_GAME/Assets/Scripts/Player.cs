@@ -16,9 +16,17 @@ public class Player : MonoBehaviourSingleton<Player>
     public void SwapPositions(int positionInArray, BattleCharacterData characterToSwap)
     {
         BattleCharacterData placeHolder;
-        placeHolder = lineup[positionInArray];
+        placeHolder = lineup[positionInArray];      
         lineup[positionInArray] = characterToSwap;
-        characters.Remove(characterToSwap);
-        characters.Add(placeHolder);
+
+        if (placeHolder.so != null)
+        {
+            var index = characters.IndexOf(characterToSwap);
+            characters[index] = placeHolder;
+        }
+        else
+        {
+            characters.Remove(characterToSwap);
+        }
     }
 }
