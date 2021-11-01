@@ -2395,7 +2395,7 @@ MonoBehaviour:
   sizeY: 3
   posOffsetX: 5
   posOffsetY: -5
-  baseSprite: {fileID: 21300000, guid: ee096ff038c93f9408ad51190e0d1be2, type: 3}
+  baseSprite: {fileID: 21300000, guid: fa12640b404a5164b9a46f66abf7c350, type: 3}
 --- !u!4 &1925750635
 Transform:
   m_ObjectHideFlags: 0
