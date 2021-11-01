@@ -10,7 +10,7 @@ public class GenerateGachaBoxes : MonoBehaviour
             float sizeX = GetComponent<RectTransform>().rect.width / 11;
             float sizeY = GetComponent<RectTransform>().rect.height;
 
-            for (short i = 0; i < 11; i++)
+            for (short i = 0; i < 4; i++)
             {
                 //Instanciate objects
                 GameObject gachaBox = Instantiate(gachaHolderPrefab, Vector3.zero, Quaternion.identity, transform);

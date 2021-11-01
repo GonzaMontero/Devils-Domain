@@ -9,6 +9,7 @@ public class GachaRates : MonoBehaviour
     [SerializeField] GameObject[] gachaBoxesShow;
     [SerializeField] GameObject[] gachaBannerNoShow;
     [SerializeField] GameObject gachaPanel;
+    [SerializeField] bool isShowLoaded;
 
     [Header("Scripts")]
     [SerializeField] GachaPlayer player;
@@ -20,6 +21,7 @@ public class GachaRates : MonoBehaviour
 
     private void Start()
     {
+        isShowLoaded = false;
         BattleCharacterSO[] allCharacters = Resources.LoadAll<BattleCharacterSO>("Scriptable Objects/Characters");
 
         for (int i = 0; i < allCharacters.Length; i++)
@@ -70,6 +72,7 @@ public class GachaRates : MonoBehaviour
     {
         GameObject[] gachaBox = GameObject.FindGameObjectsWithTag("Gacha Boxes");
         gachaBoxesShow = gachaBox;
+        isShowLoaded = true;
     }
 
     #region ButtonPress
@@ -79,7 +82,10 @@ public class GachaRates : MonoBehaviour
 
         int index = Mathf.RoundToInt(gachaBoxesShow.Length / 2);
         gachaPanel.SetActive(true);
-        FindAndLoadBoxes();
+        if (!isShowLoaded)
+        {
+            FindAndLoadBoxes();
+        }
         for (short i = 0; i < gachaBoxesShow.Length; i++)
         {
            gachaBoxesShow[i].SetActive(false);
@@ -97,7 +103,10 @@ public class GachaRates : MonoBehaviour
 
         int index = 0;
         gachaPanel.SetActive(true);
-        FindAndLoadBoxes();
+        if(!isShowLoaded)
+        {
+            FindAndLoadBoxes();
+        }
         for (short i = 0; i < gachaBoxesShow.Length; i++)
         {
             gachaBoxesShow[index].SetActive(false);

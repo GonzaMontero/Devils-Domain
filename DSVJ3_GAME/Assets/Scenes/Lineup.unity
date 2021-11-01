@@ -635,7 +635,7 @@ MonoBehaviour:
     level: 0
     merge: 0
   lineup:
-  - so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
+  - so: {fileID: 0}
     currentStats:
       damage: 0
       maxHealth: 0
@@ -646,7 +646,7 @@ MonoBehaviour:
     currentXpToLevelUp: 0
     level: 0
     merge: 0
-  - so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
+  - so: {fileID: 0}
     currentStats:
       damage: 0
       maxHealth: 0
@@ -657,7 +657,7 @@ MonoBehaviour:
     currentXpToLevelUp: 0
     level: 0
     merge: 0
-  - so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
+  - so: {fileID: 0}
     currentStats:
       damage: 0
       maxHealth: 0
@@ -668,7 +668,7 @@ MonoBehaviour:
     currentXpToLevelUp: 0
     level: 0
     merge: 0
-  - so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
+  - so: {fileID: 0}
     currentStats:
       damage: 0
       maxHealth: 0
@@ -679,7 +679,7 @@ MonoBehaviour:
     currentXpToLevelUp: 0
     level: 0
     merge: 0
-  - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+  - so: {fileID: 0}
     currentStats:
       damage: 0
       maxHealth: 0
@@ -690,7 +690,7 @@ MonoBehaviour:
     currentXpToLevelUp: 0
     level: 0
     merge: 0
-  - so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
+  - so: {fileID: 0}
     currentStats:
       damage: 0
       maxHealth: 0
