@@ -1,12 +1,34 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Player : MonoBehaviourSingleton<Player>
 {
-    public List<BattleCharacterData> characters;
-    public BattleCharacterData[] lineup = new BattleCharacterData[6];
-    public int gold;
-    public int gems;
-    string playerName;
+    public List<BattleCharacterData> characters
+    {
+        get { return data.characters; }
+        set { data.characters = value; }
+    }
+    public BattleCharacterData[] lineup
+    {
+        get { return data.lineup; }
+        set { data.lineup = value; }
+    }
+    public int gold
+    {
+        get { return data.gold; }
+        set { data.gold = value; if (data.gold < 0) data.gold = 0; }
+    }
+    public int gems
+    {
+        get { return data.gems; }
+        set { data.gems = value; if (data.gems < 0) data.gems = 0; }
+    }
+    [SerializeField] PlayerData data;
+    string playerName
+    {
+        get { return data.name; }
+        set { data.name = value; }
+    }
 
     public void OnNameEdit(string name)
     {
