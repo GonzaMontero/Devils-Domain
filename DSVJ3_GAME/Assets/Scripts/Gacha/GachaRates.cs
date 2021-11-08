@@ -6,10 +6,10 @@ using System.Collections.Generic;
 public class GachaRates : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] GameObject[] gachaBoxesShow;
-    [SerializeField] GameObject[] gachaBannerNoShow;
+    [SerializeField] GameObject[] singleSummonLoad;
+    [SerializeField] GameObject[] multiSummonLoad;
+
     [SerializeField] GameObject gachaPanel;
-    [SerializeField] bool isShowLoaded;
 
     [Header("Scripts")]
     [SerializeField] GachaPlayer player;
@@ -21,7 +21,6 @@ public class GachaRates : MonoBehaviour
 
     private void Start()
     {
-        isShowLoaded = false;
         BattleCharacterSO[] allCharacters = Resources.LoadAll<BattleCharacterSO>("Scriptable Objects/Characters");
 
         for (int i = 0; i < allCharacters.Length; i++)
@@ -40,7 +39,7 @@ public class GachaRates : MonoBehaviour
             }
         }
     }
-    private void GachaRoll(int index)
+    private BattleCharacterSO GachaRoll()
     {
         int randomNumber = UnityEngine.Random.Range(0, 101);
 
@@ -48,78 +47,44 @@ public class GachaRates : MonoBehaviour
         {
             //ganas 5 estrellas aleatorio
             int r = UnityEngine.Random.Range(0, fiveStarCharacters.Count);
-            SendCharacterToBox(index, fiveStarCharacters[r]);
+            return fiveStarCharacters[r];
         }
         if (randomNumber >= 11 && randomNumber <= 50)
         {
             //ganas 4 estrellas aleatorio
             int r = UnityEngine.Random.Range(0, fourStarCharacters.Count);
-            SendCharacterToBox(index, fourStarCharacters[r]);
+            return fourStarCharacters[r];
         }
         if (randomNumber >= 51 && randomNumber <= 100)
         {
             //ganas 3 estrellas aleatorio
             int r = UnityEngine.Random.Range(0, threeStarCharacters.Count);
-            SendCharacterToBox(index, threeStarCharacters[r]);
+            return threeStarCharacters[r];
         }
-    }
-    public void SendCharacterToBox(int index, BattleCharacterSO character)
-    {
-        gachaBoxesShow[index].GetComponentInChildren<Image>().sprite = character.sprite;
-        gachaBoxesShow[index].GetComponentInChildren<TextMeshProUGUI>().text = character.name;
-    }
-    private void FindAndLoadBoxes()
-    {
-        GameObject[] gachaBox = GameObject.FindGameObjectsWithTag("Gacha Boxes");
-        gachaBoxesShow = gachaBox;
-        isShowLoaded = true;
+
+        return null;
     }
 
     #region ButtonPress
     public void PullOnce(int price)
     {
         if (!player.ReduceGems(price)) { return; }
-
-        int index = Mathf.RoundToInt(gachaBoxesShow.Length / 2);
-        gachaPanel.SetActive(true);
-        if (!isShowLoaded)
+        for(short i = 0; i < singleSummonLoad.Length; i++)
         {
-            FindAndLoadBoxes();
+            singleSummonLoad[i].SetActive(true);
         }
-        for (short i = 0; i < gachaBoxesShow.Length; i++)
-        {
-           gachaBoxesShow[i].SetActive(false);
-        }
-        for (int i = 0; i < gachaBannerNoShow.Length; i++)
-        {
-            gachaBannerNoShow[i].SetActive(false);
-        }
-        gachaBoxesShow[index].SetActive(true);
-        GachaRoll(index);
+        singleSummonLoad[1].GetComponentInChildren<Image>().sprite=GachaRoll().gachaSprite;
     }
     public void PullEleven(int price)
     {
         if (!player.ReduceGems(price)) { return; }
-
-        int index = 0;
-        gachaPanel.SetActive(true);
-        if(!isShowLoaded)
+        for (short i = 0; i < multiSummonLoad.Length; i++)
         {
-            FindAndLoadBoxes();
+            multiSummonLoad[i].SetActive(true);
         }
-        for (short i = 0; i < gachaBoxesShow.Length; i++)
+        for(short i = 1; i < multiSummonLoad.Length; i++)
         {
-            gachaBoxesShow[index].SetActive(false);
-        }
-        for (int i = 0; i < gachaBannerNoShow.Length; i++)
-        {
-            gachaBannerNoShow[i].SetActive(false);
-        }
-        for (short i = 0; i < gachaBoxesShow.Length; i++)
-        {
-            GachaRoll(index);
-            gachaBoxesShow[index].SetActive(true);
-            index++;
+            multiSummonLoad[i].GetComponentInChildren<Image>().sprite = GachaRoll().gachaSprite;
         }
     }
     #endregion

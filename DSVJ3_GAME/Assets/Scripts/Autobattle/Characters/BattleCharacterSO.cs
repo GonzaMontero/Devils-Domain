@@ -8,6 +8,7 @@ public class BattleCharacterSO : ScriptableObject
 {
     [Header("Meta Variables")]
     public Sprite sprite;
+    public Sprite gachaSprite;
     public AnimatorOverrideController animatorOverride;
 
     [Header("In-game Variables")]
