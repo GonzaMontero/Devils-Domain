@@ -78,7 +78,7 @@ public class GachaRates : MonoBehaviour
 
         for(short i = 0; i < p.lineup.Length; i++)
         {
-            if (p.lineup[i] == null)
+            if (p.lineup[i].so == null)
             {
                 p.lineup[i] = newData;
                 return;
