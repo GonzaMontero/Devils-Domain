@@ -22,10 +22,6 @@ public class SwapLineupSpot : MonoBehaviour, IPointerDownHandler
     {       
         this.GetComponent<Image>().sprite = characterToSwap.so.sprite;
         player.SwapPositions(positionOnArray, characterToSwap);
-        foreach (GameObject charater in characterList)
-        {
-            charater.GetComponent<DragDropScript>().SetCharacterToSwap(null);
-        }
         this.GetComponent<Image>().color = Color.white;
     }
 
@@ -33,10 +29,6 @@ public class SwapLineupSpot : MonoBehaviour, IPointerDownHandler
     {
         lineupChosenCharacter = player.lineup[positionOnArray];
         this.GetComponent<Image>().color = Color.green;
-        foreach (GameObject charater in characterList)
-        {
-            charater.GetComponent<DragDropScript>().SetCharacterToSwap(this.gameObject);
-        }
     }
 
     public void SetPosInArray(int val)
