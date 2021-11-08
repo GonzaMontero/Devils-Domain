@@ -14,6 +14,7 @@ public class GachaRates : MonoBehaviour
 
     [Header("Scripts")]
     [SerializeField] GachaPlayer player;
+    [SerializeField] Player p;
 
     [Header("Character SOs")]
     [SerializeField] List<BattleCharacterSO> threeStarCharacters;
@@ -22,6 +23,7 @@ public class GachaRates : MonoBehaviour
 
     private void Start()
     {
+        p = Player.Get();
         BattleCharacterSO[] allCharacters = Resources.LoadAll<BattleCharacterSO>("Scriptable Objects/Characters");
 
         for (int i = 0; i < allCharacters.Length; i++)
@@ -69,6 +71,22 @@ public class GachaRates : MonoBehaviour
     {
         panelToHide.SetActive(false);
     }
+    private void AddToPlayer(BattleCharacterSO roll)
+    {
+        BattleCharacterData newData = new BattleCharacterData();
+        newData.so = roll;
+
+        for(short i = 0; i < p.lineup.Length; i++)
+        {
+            if (p.lineup[i] == null)
+            {
+                p.lineup[i] = newData;
+                return;
+            }
+        }
+
+        p.characters.Add(newData);
+    }
     #region ButtonPress
     public void PullOnce(int price)
     {
@@ -78,7 +96,9 @@ public class GachaRates : MonoBehaviour
         {
             singleSummonLoad[i].SetActive(true);
         }
-        singleSummonLoad[1].GetComponentInChildren<Image>().sprite=GachaRoll().gachaSprite;
+        BattleCharacterSO roll = GachaRoll();
+        singleSummonLoad[1].GetComponentInChildren<Image>().sprite=roll.gachaSprite;
+        AddToPlayer(roll);
     }
     public void PullEleven(int price)
     {
@@ -90,7 +110,9 @@ public class GachaRates : MonoBehaviour
         }
         for(short i = 1; i < multiSummonLoad.Length; i++)
         {
-            multiSummonLoad[i].GetComponentInChildren<Image>().sprite = GachaRoll().gachaSprite;
+            BattleCharacterSO roll = GachaRoll();
+            multiSummonLoad[i].GetComponentInChildren<Image>().sprite = roll.gachaSprite;
+            AddToPlayer(roll);
         }
     }
     #endregion
