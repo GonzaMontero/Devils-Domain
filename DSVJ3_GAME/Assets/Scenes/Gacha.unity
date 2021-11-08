@@ -460,7 +460,7 @@ PrefabInstance:
     - target: {fileID: 4998331078283617857, guid: af48a6730954a674397fed4edd864cc3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4998331078283617857, guid: af48a6730954a674397fed4edd864cc3,
         type: 3}
@@ -601,7 +601,7 @@ PrefabInstance:
     - target: {fileID: 4998331078283617857, guid: af48a6730954a674397fed4edd864cc3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4998331078283617857, guid: af48a6730954a674397fed4edd864cc3,
         type: 3}
@@ -2226,6 +2226,7 @@ MonoBehaviour:
   - {fileID: 1231582624}
   - {fileID: 1952753738}
   gachaPanel: {fileID: 1250647660}
+  panelToHide: {fileID: 1737345182}
   player: {fileID: 1743231946}
   threeStarCharacters: []
   fourStarCharacters: []
@@ -2732,7 +2733,7 @@ PrefabInstance:
     - target: {fileID: 4998331078283617857, guid: af48a6730954a674397fed4edd864cc3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 4998331078283617857, guid: af48a6730954a674397fed4edd864cc3,
         type: 3}
@@ -4063,7 +4064,7 @@ PrefabInstance:
     - target: {fileID: 4998331078283617857, guid: af48a6730954a674397fed4edd864cc3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 4998331078283617857, guid: af48a6730954a674397fed4edd864cc3,
         type: 3}

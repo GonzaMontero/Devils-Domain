@@ -10,6 +10,7 @@ public class GachaRates : MonoBehaviour
     [SerializeField] GameObject[] multiSummonLoad;
 
     [SerializeField] GameObject gachaPanel;
+    [SerializeField] GameObject panelToHide;
 
     [Header("Scripts")]
     [SerializeField] GachaPlayer player;
@@ -64,11 +65,15 @@ public class GachaRates : MonoBehaviour
 
         return null;
     }
-
+    private void HidePanel()
+    {
+        panelToHide.SetActive(false);
+    }
     #region ButtonPress
     public void PullOnce(int price)
     {
         if (!player.ReduceGems(price)) { return; }
+        HidePanel();
         for(short i = 0; i < singleSummonLoad.Length; i++)
         {
             singleSummonLoad[i].SetActive(true);
@@ -78,6 +83,7 @@ public class GachaRates : MonoBehaviour
     public void PullEleven(int price)
     {
         if (!player.ReduceGems(price)) { return; }
+        HidePanel();
         for (short i = 0; i < multiSummonLoad.Length; i++)
         {
             multiSummonLoad[i].SetActive(true);

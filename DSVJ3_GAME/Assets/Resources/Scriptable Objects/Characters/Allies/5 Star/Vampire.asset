@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Vampire
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: e24d77e76829b954c8d992f7799fc851, type: 3}
+  gachaSprite: {fileID: 21300000, guid: 3dbd19160eed0b34382ce85b1767870f, type: 3}
   animatorOverride: {fileID: 22100000, guid: 6dca4277a093e7343a1c80268443fa8d, type: 2}
   baseStats:
     damage: 4
