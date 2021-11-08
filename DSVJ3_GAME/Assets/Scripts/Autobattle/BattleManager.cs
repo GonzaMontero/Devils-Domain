@@ -8,7 +8,7 @@ public class BattleManager : MonoBehaviour
     public Action PlayerPartyWon;
     [SerializeField] GameObject characterPrefab;
     [SerializeField] Transform enemiesParent;
-    [SerializeField] SlotsCreator slotsCreator;
+    //[SerializeField] SlotsCreator slotsCreator;
     [SerializeField] List<BattleCharacterController> enemies;
     [SerializeField] List<BattleCharacterController> allies;
     [SerializeField] List<BattleCharacterHolder> holders;
@@ -42,8 +42,8 @@ public class BattleManager : MonoBehaviour
         //Generating enemies
         characterSOs = Resources.LoadAll<BattleCharacterSO>("Scriptable Objects/Characters");
 
-        slotsCreator = FindObjectOfType<SlotsCreator>();
-        AddSlots();
+        //slotsCreator = FindObjectOfType<SlotsCreator>();
+        //AddSlots();
         GenerateEnemies();
         CalculateRewards();
     }
@@ -67,10 +67,10 @@ public class BattleManager : MonoBehaviour
             Destroy(holder);
         }
     }
-    void AddSlots()
+    /*void AddSlots()
     {
         slotsCreator.slotList.CopyTo(characterTiles);
-    }
+    }*/
     void OnCharacterPositioned(BoxCollider2D slotCollider, BattleCharacterController character)
     {
         int tileIndex = Array.IndexOf(characterTiles, slotCollider);
