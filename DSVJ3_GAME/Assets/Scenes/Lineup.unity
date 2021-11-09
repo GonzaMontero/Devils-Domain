@@ -489,6 +489,8 @@ GameObject:
   - component: {fileID: 108565912}
   - component: {fileID: 108565914}
   - component: {fileID: 108565913}
+  - component: {fileID: 108565915}
+  - component: {fileID: 108565916}
   m_Layer: 0
   m_Name: Lineup Character 2
   m_TagString: Untagged
@@ -553,6 +555,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108565911}
   m_CullTransparentMesh: 0
+--- !u!114 &108565915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108565911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141c9fd460605084488464e03713d416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapSlots: []
+  canvasToDeactivate: {fileID: 362765306}
+  canvasToActivate: {fileID: 1885845866}
+  slotOnArray: 0
+--- !u!61 &108565916
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108565911}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &184631816
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,9 +608,10 @@ GameObject:
   - component: {fileID: 184631817}
   - component: {fileID: 184631819}
   - component: {fileID: 184631818}
+  - component: {fileID: 184631821}
   m_Layer: 5
   m_Name: Excess Panel 8
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -628,6 +673,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184631816}
   m_CullTransparentMesh: 0
+--- !u!114 &184631821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184631816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &230550933
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &362765307
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1290,9 +1349,10 @@ GameObject:
   - component: {fileID: 543779040}
   - component: {fileID: 543779042}
   - component: {fileID: 543779041}
+  - component: {fileID: 543779043}
   m_Layer: 5
   m_Name: Excess Panel 5
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1354,6 +1414,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543779039}
   m_CullTransparentMesh: 0
+--- !u!114 &543779043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543779039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &590253481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,9 +1439,10 @@ GameObject:
   - component: {fileID: 590253482}
   - component: {fileID: 590253484}
   - component: {fileID: 590253483}
+  - component: {fileID: 590253485}
   m_Layer: 5
   m_Name: Excess Panel 3
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1429,6 +1504,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590253481}
   m_CullTransparentMesh: 0
+--- !u!114 &590253485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590253481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &609032480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,9 +1529,10 @@ GameObject:
   - component: {fileID: 609032481}
   - component: {fileID: 609032483}
   - component: {fileID: 609032482}
+  - component: {fileID: 609032484}
   m_Layer: 5
   m_Name: Excess Panel 2
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1504,6 +1594,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609032480}
   m_CullTransparentMesh: 0
+--- !u!114 &609032484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609032480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &655770656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1619,8 @@ GameObject:
   - component: {fileID: 655770657}
   - component: {fileID: 655770659}
   - component: {fileID: 655770658}
+  - component: {fileID: 655770660}
+  - component: {fileID: 655770661}
   m_Layer: 0
   m_Name: Lineup Character 4
   m_TagString: Untagged
@@ -1579,6 +1685,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655770656}
   m_CullTransparentMesh: 0
+--- !u!114 &655770660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655770656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141c9fd460605084488464e03713d416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapSlots: []
+  canvasToDeactivate: {fileID: 362765306}
+  canvasToActivate: {fileID: 1885845866}
+  slotOnArray: 0
+--- !u!61 &655770661
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655770656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &709454041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,9 +1982,10 @@ GameObject:
   - component: {fileID: 852156194}
   - component: {fileID: 852156196}
   - component: {fileID: 852156195}
+  - component: {fileID: 852156197}
   m_Layer: 5
   m_Name: Excess Panel 4
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1898,6 +2047,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852156193}
   m_CullTransparentMesh: 0
+--- !u!114 &852156197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852156193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &907178309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,6 +2072,8 @@ GameObject:
   - component: {fileID: 907178310}
   - component: {fileID: 907178312}
   - component: {fileID: 907178311}
+  - component: {fileID: 907178313}
+  - component: {fileID: 907178314}
   m_Layer: 0
   m_Name: Lineup Character 3
   m_TagString: Untagged
@@ -1973,6 +2138,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907178309}
   m_CullTransparentMesh: 0
+--- !u!114 &907178313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907178309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141c9fd460605084488464e03713d416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapSlots: []
+  canvasToDeactivate: {fileID: 362765306}
+  canvasToActivate: {fileID: 1885845866}
+  slotOnArray: 0
+--- !u!61 &907178314
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907178309}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &937664561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,9 +2265,10 @@ GameObject:
   - component: {fileID: 939836961}
   - component: {fileID: 939836963}
   - component: {fileID: 939836962}
+  - component: {fileID: 939836964}
   m_Layer: 5
   m_Name: Excess Panel 7
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2122,6 +2330,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939836960}
   m_CullTransparentMesh: 0
+--- !u!114 &939836964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939836960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &968700192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,9 +2355,10 @@ GameObject:
   - component: {fileID: 968700193}
   - component: {fileID: 968700195}
   - component: {fileID: 968700194}
+  - component: {fileID: 968700196}
   m_Layer: 5
   m_Name: Excess Panel 9
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2197,6 +2420,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968700192}
   m_CullTransparentMesh: 0
+--- !u!114 &968700196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968700192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &1023865128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2477,8 @@ GameObject:
   - component: {fileID: 1066116237}
   - component: {fileID: 1066116239}
   - component: {fileID: 1066116238}
+  - component: {fileID: 1066116240}
+  - component: {fileID: 1066116241}
   m_Layer: 0
   m_Name: Lineup Character 1
   m_TagString: Untagged
@@ -2304,6 +2543,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066116236}
   m_CullTransparentMesh: 0
+--- !u!114 &1066116240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066116236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141c9fd460605084488464e03713d416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapSlots: []
+  canvasToDeactivate: {fileID: 362765306}
+  canvasToActivate: {fileID: 1885845866}
+  slotOnArray: 0
+--- !u!61 &1066116241
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066116236}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1101217596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,9 +2916,10 @@ GameObject:
   - component: {fileID: 1332040339}
   - component: {fileID: 1332040341}
   - component: {fileID: 1332040340}
+  - component: {fileID: 1332040342}
   m_Layer: 5
   m_Name: Excess Panel 1
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2699,6 +2981,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332040338}
   m_CullTransparentMesh: 0
+--- !u!114 &1332040342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332040338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &1465456667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,6 +3210,8 @@ GameObject:
   - component: {fileID: 1561245461}
   - component: {fileID: 1561245463}
   - component: {fileID: 1561245462}
+  - component: {fileID: 1561245464}
+  - component: {fileID: 1561245465}
   m_Layer: 0
   m_Name: Lineup Character 5
   m_TagString: Untagged
@@ -2978,6 +3276,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561245460}
   m_CullTransparentMesh: 0
+--- !u!114 &1561245464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561245460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141c9fd460605084488464e03713d416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapSlots: []
+  canvasToDeactivate: {fileID: 362765306}
+  canvasToActivate: {fileID: 1885845866}
+  slotOnArray: 0
+--- !u!61 &1561245465
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561245460}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1626810511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3081,9 +3421,10 @@ GameObject:
   - component: {fileID: 1641816100}
   - component: {fileID: 1641816102}
   - component: {fileID: 1641816101}
+  - component: {fileID: 1641816103}
   m_Layer: 5
   m_Name: Excess Panel 6
-  m_TagString: Untagged
+  m_TagString: Player Team List
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3145,6 +3486,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641816099}
   m_CullTransparentMesh: 0
+--- !u!114 &1641816103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641816099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bf9c597fe6464aa9a747f8d22b462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToDeactivate: {fileID: 1885845866}
+  canvasToActivate: {fileID: 362765306}
 --- !u!1 &1700655873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3638,6 +3993,8 @@ GameObject:
   - component: {fileID: 1949569087}
   - component: {fileID: 1949569089}
   - component: {fileID: 1949569088}
+  - component: {fileID: 1949569090}
+  - component: {fileID: 1949569091}
   m_Layer: 0
   m_Name: Lineup Character 6
   m_TagString: Untagged
@@ -3702,6 +4059,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949569086}
   m_CullTransparentMesh: 0
+--- !u!114 &1949569090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949569086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141c9fd460605084488464e03713d416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swapSlots: []
+  canvasToDeactivate: {fileID: 362765306}
+  canvasToActivate: {fileID: 1885845866}
+  slotOnArray: 0
+--- !u!61 &1949569091
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949569086}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2004750252
 GameObject:
   m_ObjectHideFlags: 0
