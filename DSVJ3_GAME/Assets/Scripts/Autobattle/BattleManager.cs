@@ -220,6 +220,7 @@ public class BattleManager : MonoBehaviour
         BattleCharacterController character = Instantiate(characterPrefab, enemiesParent).GetComponent<BattleCharacterController>();
         character.transform.position = characterTiles[tileIndex].transform.position;
         character.GetComponent<SpriteRenderer>().flipX = true;
+        character.GetComponent<SpriteRenderer>().sortingOrder = -(int)character.transform.position.z;
 
         character.SetData(characterSOs[soIndex]);
         AddCharacter(false, character, tileIndex);

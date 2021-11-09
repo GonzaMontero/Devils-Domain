@@ -59,8 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb43b430d95a204893632ad29249604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  top: {fileID: 0}
-  bottom: {fileID: 0}
 --- !u!1001 &914882280706555385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,13 +173,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6663487252438842772, guid: 456aa7bd25ad842428b6e4a80537c690,
         type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663487252438842772, guid: 456aa7bd25ad842428b6e4a80537c690,
+        type: 3}
       propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663487252438842772, guid: 456aa7bd25ad842428b6e4a80537c690,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1216058733
+      objectReference: {fileID: 0}
+    - target: {fileID: 7110675700846166469, guid: 456aa7bd25ad842428b6e4a80537c690,
+        type: 3}
+      propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7110675700846166469, guid: 456aa7bd25ad842428b6e4a80537c690,
         type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7110675700846166469, guid: 456aa7bd25ad842428b6e4a80537c690,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1216058733
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 456aa7bd25ad842428b6e4a80537c690, type: 3}
