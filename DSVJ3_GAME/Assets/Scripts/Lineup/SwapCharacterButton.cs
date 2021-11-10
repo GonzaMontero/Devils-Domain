@@ -36,13 +36,13 @@ public class SwapCharacterButton : MonoBehaviour, IPointerDownHandler
     {
         if (player.lineup[indexSlot].so != null)
         {
-            this.GetComponentInChildren<Image>().sprite = player.lineup[indexSlot].so.lineupFaceSprite;
+            this.transform.GetChild(0).GetComponent<Image>().sprite = player.lineup[indexSlot].so.lineupFaceSprite;
         }
         else
         {
-            this.GetComponentInChildren<Image>().sprite = emptyFace;
+            this.transform.GetChild(0).GetComponent<Image>().sprite = emptyFace;
         }
-        lineupSlot.GetComponentInChildren<Image>().sprite = player.characters[slotOnList].so.lineupFaceSprite;
+        lineupSlot.transform.GetChild(0).GetComponent<Image>().sprite = player.characters[slotOnList].so.lineupFaceSprite;
         player.SwapPositions(indexSlot, player.characters[slotOnList]);
         canvasToDeactivate.SetActive(false);
         canvasToActivate.SetActive(true);
