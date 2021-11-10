@@ -34,10 +34,22 @@ public class SwapCharacterButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        lineupSlot.transform.GetChild(0).GetComponent<Image>().sprite = player.characters[slotOnList].so.lineupFaceSprite;
-        player.SwapPositions(indexSlot, player.characters[slotOnList]);
-        canvasToDeactivate.SetActive(false);
-        canvasToActivate.SetActive(true);
+        if(player.characters.Count > slotOnList)
+        {
+            if(player.characters[slotOnList] != null)
+            {
+                lineupSlot.transform.GetChild(0).GetComponent<Image>().sprite = player.characters[slotOnList].so.lineupFaceSprite;
+                player.SwapPositions(indexSlot, player.characters[slotOnList]);
+                canvasToDeactivate.SetActive(false);
+                canvasToActivate.SetActive(true);
+            }
+        }
+        else
+        {
+            canvasToDeactivate.SetActive(false);
+            canvasToActivate.SetActive(true);
+        }
+        
     }
 
     private void OnDisable()
