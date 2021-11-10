@@ -18,8 +18,7 @@ public class LoadExcessCharacters : MonoBehaviour
             {
                 if (player.characters[i].so != null)
                 {
-                    excessImages[i].GetComponent<Image>().sprite = player.characters[i].so.lineupFaceSprite;
-                    excessImages[i].GetComponentInParent<SwapCharacterButton>().GiveSlotOnList(i);
+                    excessImages[i].GetComponent<Image>().sprite = player.characters[i].so.lineupFaceSprite;                    
                 }
                 else
                 {
@@ -30,9 +29,8 @@ public class LoadExcessCharacters : MonoBehaviour
             {
                 excessImages[i].GetComponent<Image>().sprite = emptyFace;
             }
-            
+            excessImages[i].GetComponentInParent<SwapCharacterButton>().GiveSlotOnList(i);
         }
-
         this.gameObject.SetActive(false);
     }
 }
