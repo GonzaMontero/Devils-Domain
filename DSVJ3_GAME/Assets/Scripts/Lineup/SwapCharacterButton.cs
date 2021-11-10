@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class SwapCharacterButton : MonoBehaviour
+public class SwapCharacterButton : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] GameObject canvasToDeactivate;
     [SerializeField] GameObject canvasToActivate;
@@ -31,22 +32,19 @@ public class SwapCharacterButton : MonoBehaviour
         lineupSlot = gm;
     }
 
-    private void Update()
+    public void OnPointerDown(PointerEventData pointerEventData)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (player.lineup[indexSlot].so != null)
         {
-            if (player.lineup[indexSlot].so != null)
-            {
-                this.GetComponentInChildren<Image>().sprite = player.lineup[indexSlot].so.lineupFaceSprite;
-            }
-            else
-            {
-                this.GetComponentInChildren<Image>().sprite = emptyFace;
-            }
-            lineupSlot.GetComponentInChildren<Image>().sprite = player.characters[slotOnList].so.lineupFaceSprite;
-            player.SwapPositions(indexSlot, player.characters[slotOnList]);
-            canvasToDeactivate.SetActive(false);
-            canvasToActivate.SetActive(true);
+            this.GetComponentInChildren<Image>().sprite = player.lineup[indexSlot].so.lineupFaceSprite;
         }
+        else
+        {
+            this.GetComponentInChildren<Image>().sprite = emptyFace;
+        }
+        lineupSlot.GetComponentInChildren<Image>().sprite = player.characters[slotOnList].so.lineupFaceSprite;
+        player.SwapPositions(indexSlot, player.characters[slotOnList]);
+        canvasToDeactivate.SetActive(false);
+        canvasToActivate.SetActive(true);
     }
 }

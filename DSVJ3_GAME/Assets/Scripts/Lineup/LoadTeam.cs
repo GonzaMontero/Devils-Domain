@@ -25,7 +25,6 @@ public class LoadTeam : MonoBehaviour
             {
                 lineupFaceImage[i].GetComponent<Image>().sprite = emptyPlayerSprite;
             }
-
             lineupFaceImage[i].GetComponentInParent<StartSwap>().slotOnArray = i;
         }
     }

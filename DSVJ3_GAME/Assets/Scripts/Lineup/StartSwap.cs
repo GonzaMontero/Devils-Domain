@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class StartSwap : MonoBehaviour
+public class StartSwap : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] GameObject[] swapSlots;
     [SerializeField] GameObject canvasToDeactivate;
@@ -12,17 +13,14 @@ public class StartSwap : MonoBehaviour
         swapSlots = GameObject.FindGameObjectsWithTag("Player Team List");
     }
 
-    private void Update()
+    public void OnPointerDown(PointerEventData pointerEventData)
     {
-        if (Input.GetMouseButtonDown(0))
+        foreach (GameObject item in swapSlots)
         {
-            foreach (GameObject item in swapSlots)
-            {
-                item.GetComponent<SwapCharacterButton>().GiveSlotOnArray(slotOnArray - 1);
-                item.GetComponent<SwapCharacterButton>().GiveLineupSlot(this.gameObject);
-            }
-            canvasToDeactivate.SetActive(false);
-            canvasToActivate.SetActive(true);
+            item.GetComponent<SwapCharacterButton>().GiveSlotOnArray(slotOnArray);
+            item.GetComponent<SwapCharacterButton>().GiveLineupSlot(this.gameObject);
         }
+        canvasToDeactivate.SetActive(false);
+        canvasToActivate.SetActive(true);
     }
 }
