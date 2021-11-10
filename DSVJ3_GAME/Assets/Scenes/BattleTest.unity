@@ -1921,8 +1921,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 840246496}
+  - component: {fileID: 840246497}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: Level Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1942,6 +1943,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &840246497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840246495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548b6cd866be0e4499e67cdc01481f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySlots:
+  - {fileID: 1562521213}
+  - {fileID: 879213029}
+  - {fileID: 1978151880}
+  - {fileID: 2028819605}
+  - {fileID: 1393276221}
+  - {fileID: 1881713775}
+  - {fileID: 835836691}
+  - {fileID: 2123969460}
+  - {fileID: 2035093843}
 --- !u!1 &840878673
 GameObject:
   m_ObjectHideFlags: 0
