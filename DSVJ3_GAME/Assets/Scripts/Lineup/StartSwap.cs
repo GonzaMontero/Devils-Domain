@@ -18,7 +18,7 @@ public class StartSwap : MonoBehaviour
         {
             foreach (GameObject item in swapSlots)
             {
-                item.GetComponent<SwapCharacterButton>().GiveSlotOnArray(slotOnArray);
+                item.GetComponent<SwapCharacterButton>().GiveSlotOnArray(slotOnArray - 1);
                 item.GetComponent<SwapCharacterButton>().GiveLineupSlot(this.gameObject);
             }
             canvasToDeactivate.SetActive(false);

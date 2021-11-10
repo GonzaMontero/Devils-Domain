@@ -5,6 +5,7 @@ public class SwapCharacterButton : MonoBehaviour
 {
     [SerializeField] GameObject canvasToDeactivate;
     [SerializeField] GameObject canvasToActivate;
+    [SerializeField] Sprite emptyFace;
     Player player;
     int indexSlot;
     int slotOnList;
@@ -37,7 +38,11 @@ public class SwapCharacterButton : MonoBehaviour
             if (player.lineup[indexSlot].so != null)
             {
                 this.GetComponentInChildren<Image>().sprite = player.lineup[indexSlot].so.lineupFaceSprite;
-            }           
+            }
+            else
+            {
+                this.GetComponentInChildren<Image>().sprite = emptyFace;
+            }
             lineupSlot.GetComponentInChildren<Image>().sprite = player.characters[slotOnList].so.lineupFaceSprite;
             player.SwapPositions(indexSlot, player.characters[slotOnList]);
             canvasToDeactivate.SetActive(false);
