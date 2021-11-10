@@ -461,7 +461,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 130659800}
+      - m_Target: {fileID: 1656233555}
         m_MethodName: GoToIdle
         m_Mode: 1
         m_Arguments:
@@ -533,7 +533,6 @@ GameObject:
   - component: {fileID: 130659797}
   - component: {fileID: 130659799}
   - component: {fileID: 130659798}
-  - component: {fileID: 130659800}
   m_Layer: 0
   m_Name: Game Mode Panel
   m_TagString: Untagged
@@ -606,20 +605,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130659796}
   m_CullTransparentMesh: 0
---- !u!114 &130659800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130659796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314c76461a240e646a84f2b72c7a5453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  underMainteinanceBanner: {fileID: 1057733383}
-  mainMenuBanner: {fileID: 1656233551}
 --- !u!1 &139078140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1310,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 130659800}
+      - m_Target: {fileID: 0}
         m_MethodName: GoToUnderManteinance
         m_Mode: 1
         m_Arguments:
@@ -1957,7 +1942,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 130659800}
+      - m_Target: {fileID: 1656233555}
         m_MethodName: GoToAdventure
         m_Mode: 1
         m_Arguments:
@@ -2745,7 +2730,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 130659800}
+      - m_Target: {fileID: 0}
         m_MethodName: GoToUnderManteinance
         m_Mode: 1
         m_Arguments:
@@ -3363,7 +3348,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 130659800}
+      - m_Target: {fileID: 1656233555}
         m_MethodName: GoToLineup
         m_Mode: 1
         m_Arguments:
@@ -3983,6 +3968,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 617d50c29f2cce04085de6abd7917067, type: 3}
+--- !u!1 &1253529821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1253529823}
+  - component: {fileID: 1253529822}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1253529822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253529821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28c730df93abed4c980fcdf0d567460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: 8a764f4350bc17c4f91513c91b1b5273,
+    type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  engineLogging: 0
+--- !u!4 &1253529823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253529821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255187772 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4429034367193340982, guid: a19c9dd41f60fd24f833a82a7fe8702f,
@@ -4855,6 +4897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1587037664}
   - component: {fileID: 1587037663}
+  - component: {fileID: 1587037665}
   - component: {fileID: 1587037662}
   m_Layer: 0
   m_Name: Main Camera
@@ -4863,14 +4906,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1587037662
-AudioListener:
+--- !u!114 &1587037662
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587037661}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027307e16dabce24ca861626c903765b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
 --- !u!20 &1587037663
 Camera:
   m_ObjectHideFlags: 0
@@ -4928,6 +4977,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1587037665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587037661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0190f0a2003518d4bbd1199133b7c14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &1616902513
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,6 +5369,7 @@ GameObject:
   - component: {fileID: 1656233552}
   - component: {fileID: 1656233553}
   - component: {fileID: 1656233554}
+  - component: {fileID: 1656233555}
   m_Layer: 0
   m_Name: Main Menu Holder
   m_TagString: Untagged
@@ -5351,6 +5423,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldText: {fileID: 1797138467}
   gemsText: {fileID: 1244450811}
+--- !u!114 &1656233555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656233551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314c76461a240e646a84f2b72c7a5453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  underMainteinanceBanner: {fileID: 1057733383}
+  mainMenuBanner: {fileID: 1656233551}
 --- !u!1 &1686784662
 GameObject:
   m_ObjectHideFlags: 0
@@ -6515,7 +6601,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1654373965}
+      - m_Target: {fileID: 1656233555}
         m_MethodName: GoToGacha
         m_Mode: 1
         m_Arguments:
@@ -6630,76 +6716,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3176963c389f34ca36df3ff2b05496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters: []
-  lineup:
-  - so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
-    currentStats:
-      damage: 0
-      maxHealth: 0
-      attackSpeed: 0
-      armor: 0
-    health: 0
-    currentXP: 0
-    currentXpToLevelUp: 0
-    level: 0
-    merge: 0
-  - so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
-    currentStats:
-      damage: 0
-      maxHealth: 0
-      attackSpeed: 0
-      armor: 0
-    health: 0
-    currentXP: 0
-    currentXpToLevelUp: 0
-    level: 0
-    merge: 0
-  - so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
-    currentStats:
-      damage: 0
-      maxHealth: 0
-      attackSpeed: 0
-      armor: 0
-    health: 0
-    currentXP: 0
-    currentXpToLevelUp: 0
-    level: 0
-    merge: 0
-  - so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
-    currentStats:
-      damage: 0
-      maxHealth: 0
-      attackSpeed: 0
-      armor: 0
-    health: 0
-    currentXP: 0
-    currentXpToLevelUp: 0
-    level: 0
-    merge: 0
-  - so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
-    currentStats:
-      damage: 0
-      maxHealth: 0
-      attackSpeed: 0
-      armor: 0
-    health: 0
-    currentXP: 0
-    currentXpToLevelUp: 0
-    level: 0
-    merge: 0
-  - so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
-    currentStats:
-      damage: 0
-      maxHealth: 0
-      attackSpeed: 0
-      armor: 0
-    health: 0
-    currentXP: 0
-    currentXpToLevelUp: 0
-    level: 0
-    merge: 0
-  gold: 0
-  gems: 50
+  data:
+    characters: []
+    lineup:
+    - so: {fileID: 0}
+      currentStats:
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
+        armor: 0
+      health: 0
+      currentXP: 0
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
+    - so: {fileID: 0}
+      currentStats:
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
+        armor: 0
+      health: 0
+      currentXP: 0
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
+    - so: {fileID: 0}
+      currentStats:
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
+        armor: 0
+      health: 0
+      currentXP: 0
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
+    - so: {fileID: 0}
+      currentStats:
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
+        armor: 0
+      health: 0
+      currentXP: 0
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
+    - so: {fileID: 0}
+      currentStats:
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
+        armor: 0
+      health: 0
+      currentXP: 0
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
+    - so: {fileID: 0}
+      currentStats:
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
+        armor: 0
+      health: 0
+      currentXP: 0
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
+    gold: 0
+    gems: 0
+    name: 
 --- !u!1 &2140698147
 GameObject:
   m_ObjectHideFlags: 0

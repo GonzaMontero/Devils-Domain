@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIPlayerData : MonoBehaviour
@@ -7,28 +6,23 @@ public class UIPlayerData : MonoBehaviour
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI gemsText;
 	Player player;
-    string sceneName;
 
     private void Start()
     {
         //Player
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        //Scene
-        sceneName = SceneManager.GetActiveScene().name;
-        SceneManager.activeSceneChanged += OnSceneChange;
-
         //Set values
         UpdateData();
     }
 
-    
-    void OnSceneChange(Scene oldScene, Scene newScene)
+    private void OnDisable()
     {
-        if (newScene.name != sceneName)
-        {
-            UpdateData();
-        }
+        UpdateData();
+    }
+    private void OnEnable()
+    {
+        UpdateData();
     }
 
     void UpdateData()
