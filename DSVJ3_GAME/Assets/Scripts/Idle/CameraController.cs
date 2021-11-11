@@ -44,13 +44,12 @@ public class CameraController : MonoBehaviour
         isOnTransition = false;
         yield break;
     }
-    void OnRoomClicked(RoomController roomController, int buildCost)
+    void OnRoomClicked(RoomController roomController)
     {
-        if (!isOnTransition)
-        {
-            Vector3 roomPosition = roomController.transform.position;
-            StartCoroutine(UpdatePosition(roomPosition + cameraOffset));
-        }
+        if (isOnTransition) return;
+
+        Vector3 roomPosition = roomController.transform.position;
+        StartCoroutine(UpdatePosition(roomPosition + cameraOffset));
     }
     void ZoomOut()
     {

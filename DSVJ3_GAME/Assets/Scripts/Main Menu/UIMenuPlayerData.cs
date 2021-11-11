@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class UIPlayerData : MonoBehaviour
+public class UIMenuPlayerData : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI gemsText;

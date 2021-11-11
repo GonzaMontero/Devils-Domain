@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class RoomsUIManager : MonoBehaviour
+public class UIRoomsManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI gemsText;
@@ -9,24 +9,31 @@ public class RoomsUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI buildText;
     [SerializeField] Canvas roomUIHolder;
     [SerializeField] RoomManager roomManager;
-    [SerializeField] RoomPlayer player;
     [SerializeField] CameraController mainCamera;
+    Player player;
 
     private void Start()
     {
+        //Get Player
+        player = Player.Get();
+        //Link Actions
+        player.GoldChanged += OnGoldUpdated;
+        player.GemsChanged += OnGemsUpdated;
         roomManager.NotEnoughGold += OnNotEnoughGoldForUpgrade;
         roomManager.RoomClicked += OnRoomSelected;
         roomManager.RoomUpdated += OnRoomUpdate;
-        roomManager.RoomClickable += MouseIsNotOverElement;
-        player.GoldChanged += OnGoldUpdated;
-        player.GemsChanged += OnGemsUpdated;
+        //roomManager.RoomClickable += MouseIsNotOverElement;
         mainCamera.ZoomingOut += OnZoomOut;
+
+        //Set UI values
+        OnGoldUpdated();
+        OnGemsUpdated();
     }
 
-    bool MouseIsNotOverElement()
-    {
-        return !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
-    }
+    //bool MouseIsNotOverElement()
+    //{
+    //    return !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+    //}
     void OnRoomUpdate(int newUpgradeCost)
     {
         bool roomJustBuilded = buildText.transform.parent.gameObject.activeSelf;
@@ -44,31 +51,31 @@ public class RoomsUIManager : MonoBehaviour
 
         upgradeText.text = "Upgrade\nCost: " + newUpgradeCost;
     }
-    void OnGoldUpdated(int currentGold)
+    void OnGoldUpdated()
     {
-        goldText.text = "Gold: " + currentGold;
+        goldText.text = "Gold: " + player.gold;
     }
-    void OnGemsUpdated(int currentGems)
+    void OnGemsUpdated()
     {
-        gemsText.text = "Gems: " + currentGems;
+        gemsText.text = "Gems: " + player.gems;
     }
     void OnNotEnoughGoldForUpgrade()
     {
         //activate warning
     }
-    void OnRoomSelected(RoomController roomController, int buildCost)
+    void OnRoomSelected(RoomController roomController)
     {
         roomUIHolder.enabled = false; //set room data invisible
 
         if (roomController.GetUpgradeCost() == -1)
         {
-            buildText.text = "Build\nCost: " + buildCost; //TEMP?, REPLACE FOR ACTION?
+            buildText.text = "Build\nCost: " + roomController.GetBuildCost();
             buildText.transform.parent.gameObject.SetActive(true); //set button true
             upgradeText.transform.parent.gameObject.SetActive(false); //set button from previous room false
             return;
         }
 
-        upgradeText.text = "Upgrade\nCost: " + roomController.GetUpgradeCost(); //TEMP?, REPLACE FOR ACTION?
+        upgradeText.text = "Upgrade\nCost: " + roomController.GetUpgradeCost();
         buildText.transform.parent.gameObject.SetActive(false); //set button from previous room false
         upgradeText.transform.parent.gameObject.SetActive(true); //set button true
     }

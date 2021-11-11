@@ -1,8 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviourSingleton<Player>
 {
+    //Actions
+    public Action GoldChanged;
+    public Action GemsChanged;
+    //Rooms
+    public List<RoomData> rooms
+    {
+        get { return data.rooms; }
+        set { data.rooms = value; }
+    }
+    //Characters
     public List<BattleCharacterData> characters
     {
         get { return data.characters; }
@@ -13,15 +24,16 @@ public class Player : MonoBehaviourSingleton<Player>
         get { return data.lineup; }
         set { data.lineup = value; }
     }
+    //General
     public int gold
     {
         get { return data.gold; }
-        set { data.gold = value; if (data.gold < 0) data.gold = 0; }
+        set { data.gold = value; if (data.gold < 0) data.gold = 0; GoldChanged.Invoke(); }
     }
     public int gems
     {
         get { return data.gems; }
-        set { data.gems = value; if (data.gems < 0) data.gems = 0; }
+        set { data.gems = value; if (data.gems < 0) data.gems = 0; GemsChanged.Invoke(); }
     }
     [SerializeField] PlayerData data;
     string playerName
@@ -30,6 +42,43 @@ public class Player : MonoBehaviourSingleton<Player>
         set { data.name = value; }
     }
 
+    //Unity Events
+    private void Start()
+    {
+        //RecieveData();
+    }
+    private void OnDestroy()
+    {
+        //SaveData();
+    }
+
+    //Methods
+    public void SaveData()
+    {
+        string dataJSON = JsonUtility.ToJson(data);
+        FileManager<string>.SaveDataToFile(dataJSON, Application.persistentDataPath + " data.bin");
+    }
+    public void RecieveData()
+    {
+        string dataJSON;
+        dataJSON = FileManager<string>.LoadDataFromFile(Application.persistentDataPath + " data.bin");
+        JsonUtility.FromJsonOverwrite(dataJSON, data);
+    }
+    public void SaveLogInDate()
+    {
+        data.roomLogInTime = DateTime.Now;
+    }
+    public void SaveLogOutDate()
+    {
+        data.roomLogOutTime = DateTime.Now;
+    }
+    public float GetAFKMinutes()
+    {
+        TimeSpan afkTime = data.roomLogOutTime - data.roomLogInTime;
+        return((float)afkTime.TotalSeconds / 60); //calculate in minutes
+    }
+
+    //Event Receivers
     public void OnNameEdit(string name)
     {
         playerName = name;

@@ -5,17 +5,15 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     public Action NotEnoughGold;
-    public Action<int> GoldChanged;
-    public Action<int> GemsChanged;
     public Action<int> RoomUpdated;
-    public Action<RoomController, int> RoomClicked; //TEMP, DELETE INT
-    public BoolAction RoomClickable;
+    public Action<RoomController> RoomClicked;
+    //public BoolAction RoomClickable;
     [SerializeField] float gemGenTime;
     [SerializeField] RoomSO[] roomTemplates;
     [SerializeField] List<RoomController> rooms;
     [SerializeField] RoomController roomSelected;
     [SerializeField] RoomCreator world;
-    [SerializeField] RoomPlayer player; //TEMP
+    Player player;
     bool firstRoomBuilded = false;
 
     //Unity Methods
@@ -30,8 +28,15 @@ public class RoomManager : MonoBehaviour
         //invoke Generate Gems every "goldGenTime" seconds, multiplied by 60 to get minutes
         InvokeRepeating("GenerateGems", gemGenTime * 60, gemGenTime * 60);
     }
+    private void Start()
+    {
+        player = Player.Get();
+        LoadRooms(player.rooms);
+        GenerateAFKGems(player.GetAFKMinutes());
+    }
     private void OnDestroy()
     {
+        player.rooms = GetRooms();
         foreach (RoomSO template in roomTemplates)
         {
             Resources.UnloadAsset(template);
@@ -53,17 +58,17 @@ public class RoomManager : MonoBehaviour
         for (int i = 0; i < roomDatas.Count; i++)
         {
             rooms[i].RoomClicked += OnRoomClicked;
-            rooms[i].RoomClickable += OnRoomClickable;
             rooms[i].LoadData(roomDatas[i]);
         }
     }
     public void UpgradeRoom()
     {
         int upgradeCost = roomSelected.GetUpgradeCost();
-
-        if (upgradeCost > 0 && player.playerData.gold >= upgradeCost) //TEMP, REPLACE PLAYERGOLD FOR (ACTION?)
+        if (upgradeCost <= 0) return;
+        
+        if (player.gold >= upgradeCost)
         {
-            GoldChanged?.Invoke(-roomSelected.GetUpgradeCost());
+            player.gold -= roomSelected.GetUpgradeCost();
             roomSelected.Upgrade();
             RoomUpdated?.Invoke(roomSelected.GetUpgradeCost());
         }
@@ -74,11 +79,11 @@ public class RoomManager : MonoBehaviour
     }
     public void BuildRoom()
     {
-        int buildCost = roomTemplates[1].baseCost; //TEMP, MAKE SYSTEM TO SELECT DIFF ROOMS
+        int buildCost = roomTemplates[1].baseCost;
 
-        if (buildCost > 0 && player.playerData.gold >= buildCost) //TEMP, REPLACE PLAYERGOLD FOR (ACTION?)
+        if (buildCost > 0 && player.gold >= buildCost)
         {
-            GoldChanged.Invoke(-buildCost);
+            player.gold -= buildCost;
             roomSelected.Build(roomTemplates[1]);
             RoomUpdated.Invoke(buildCost);
 
@@ -93,14 +98,14 @@ public class RoomManager : MonoBehaviour
             NotEnoughGold?.Invoke();
         }
     }
-    public void GenerateAFKGems(float secondsPassed)
+    public void GenerateAFKGems(float minutesPassed)
     {
         int totalGemGen = 0;
         foreach (RoomController room in rooms)
         {
             totalGemGen += room.GetGemGen();
         }
-        GemsChanged?.Invoke((int)(totalGemGen * secondsPassed));
+        player.gems += (int)(totalGemGen * minutesPassed);
     }
     void GenerateGems()
     {
@@ -111,7 +116,6 @@ public class RoomManager : MonoBehaviour
         rc.Build(roomTemplates[0]);
         rooms.Add(rc);
         rc.RoomClicked += OnRoomClicked;
-        rc.RoomClickable += OnRoomClickable;
     }
     void SetRoomsPrice()
     {
@@ -122,10 +126,6 @@ public class RoomManager : MonoBehaviour
     void OnRoomClicked(RoomController rc)
     {
         roomSelected = rc;
-        RoomClicked?.Invoke(rc, roomTemplates[1].baseCost); //TEMP, DELETE BUILD COST
-    }
-    bool OnRoomClickable()
-    {
-        return RoomClickable.Invoke();
+        RoomClicked?.Invoke(rc);
     }
 }

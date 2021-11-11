@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RoomController : MonoBehaviour
 {
     public Action RoomDestroy;
     public Action RoomUpdate;
     public Action<RoomController> RoomClicked;
-    public BoolAction RoomClickable;
+    //public BoolAction RoomClickable;
     [SerializeField] RoomData data;
     //int[] roomLimits = new int[4]; //left, right, down, up
 
@@ -81,6 +82,7 @@ public class RoomController : MonoBehaviour
     {
         return data.so.sprite;
     }
+    //This is going to get deleted, only one room is needed v
     public void StartRoomRaycast(int posCostMod)
     {
         for (int i = 0; i < 8; i++)
@@ -146,14 +148,11 @@ public class RoomController : MonoBehaviour
             return null;
         }
     }
-
+    //This is going to get deleted, only one room is needed ^
     private void OnMouseDown()
     {
-        if (RoomClickable.Invoke())
-        {
-            Debug.Log("You clicked an object lmao");
-            //hit.transform.GetComponent<UpgradeRoom>().Upgrade()
-            RoomClicked?.Invoke(this);
-        }
+        //hit.transform.GetComponent<UpgradeRoom>().Upgrade()
+        RoomClicked?.Invoke(this);
+        Debug.Log("MOUSE DOWN" + name);
     }
 }
