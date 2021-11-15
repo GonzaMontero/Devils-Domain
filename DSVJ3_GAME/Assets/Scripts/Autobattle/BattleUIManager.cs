@@ -7,8 +7,8 @@ public class BattleUIManager : MonoBehaviour
 	[SerializeField] BattleManager battleManager;
 	[SerializeField] GameObject resetButton;
 	[SerializeField] TextMeshProUGUI resetButtonText;
-	[SerializeField] GameObject victoryText;
-	[SerializeField] GameObject defeatText;
+	[SerializeField] GameObject victoryImage;
+	[SerializeField] GameObject defeatImage;
     [SerializeField] Image playButtonImage;
 	[SerializeField] Button playButton;
 
@@ -24,17 +24,31 @@ public class BattleUIManager : MonoBehaviour
 		playButtonImage.color = Color.gray;
         battleManager.StartGame();
     }
+    public void ResetLevel()
+    {
+        //Disable Game Over UI
+        resetButton.SetActive(false);
+        defeatImage.SetActive(false);
+        victoryImage.SetActive(false);
+        
+        //Reset Battle
+        battleManager.ResetLevel();
+
+        //Enable Start UI
+        playButton.enabled = true;
+        playButtonImage.color = Color.white;
+    }
 
     void OnDefeat()
     {
         resetButtonText.text = "Try Again!";
         resetButton.SetActive(true);
-        defeatText.SetActive(true);
+        defeatImage.SetActive(true);
     }
     void OnVictory()
     {
         resetButtonText.text = "Next Level";
         resetButton.SetActive(true);
-        victoryText.SetActive(true);
+        victoryImage.SetActive(true);
     }
 }

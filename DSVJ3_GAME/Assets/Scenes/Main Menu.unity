@@ -785,7 +785,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1654373965}
+      - m_Target: {fileID: 0}
         m_MethodName: GoToUnderManteinance
         m_Mode: 1
         m_Arguments:
@@ -2121,7 +2121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1654373965}
+      - m_Target: {fileID: 0}
         m_MethodName: GoToUnderManteinance
         m_Mode: 1
         m_Arguments:
@@ -3254,7 +3254,7 @@ PrefabInstance:
     - target: {fileID: 7529764400901940338, guid: 3fa358ed1c0e3384ca85e292f9135186,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa358ed1c0e3384ca85e292f9135186, type: 3}
@@ -3662,7 +3662,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1654373965}
+      - m_Target: {fileID: 0}
         m_MethodName: GoToUnderManteinance
         m_Mode: 1
         m_Arguments:
@@ -4446,7 +4446,7 @@ PrefabInstance:
     - target: {fileID: 7529764400901940338, guid: 3fa358ed1c0e3384ca85e292f9135186,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa358ed1c0e3384ca85e292f9135186, type: 3}
@@ -5272,7 +5272,6 @@ GameObject:
   - component: {fileID: 1654373962}
   - component: {fileID: 1654373964}
   - component: {fileID: 1654373963}
-  - component: {fileID: 1654373965}
   m_Layer: 0
   m_Name: Detail Option Panel
   m_TagString: Untagged
@@ -5344,20 +5343,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654373961}
   m_CullTransparentMesh: 0
---- !u!114 &1654373965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654373961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ab16a4334f00d4ebe66843180c080a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  underMainteinanceBanner: {fileID: 1057733383}
-  mainMenuBanner: {fileID: 1656233551}
 --- !u!1 &1656233551
 GameObject:
   m_ObjectHideFlags: 0
@@ -6718,9 +6703,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
+    gold: 0
+    gems: 100
+    name: 
     characters: []
     lineup:
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -6731,7 +6719,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -6742,7 +6730,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -6753,7 +6741,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -6764,7 +6752,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -6775,7 +6763,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -6786,9 +6774,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    gold: 0
-    gems: 0
-    name: 
+    rooms: []
 --- !u!114 &2040054887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6801,6 +6787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b573ff11a3f1b7c48aa55661e0567871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &2140698147
 GameObject:
   m_ObjectHideFlags: 0
@@ -6994,7 +6981,7 @@ PrefabInstance:
     - target: {fileID: 7529764400901940338, guid: 3fa358ed1c0e3384ca85e292f9135186,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa358ed1c0e3384ca85e292f9135186, type: 3}

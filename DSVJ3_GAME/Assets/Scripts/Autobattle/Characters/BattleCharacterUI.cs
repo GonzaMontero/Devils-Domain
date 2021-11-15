@@ -15,23 +15,44 @@ public class BattleCharacterUI : MonoBehaviour
     const float damageTextDuration = 2;
     const float damageXRange = 2;
 
+    //Unity Events
     private void Start()
     {
         //Get Components
         animator = GetComponent<Animator>();
 
         //Link Actions
+        controller.Set += OnSet;
         controller.DamageReceived += OnRecievedDamage;
         controller.LeveledUp += OnLevelUp;
-        controller.SelectTarget += OnSelectTarget;
+        controller.SearchForTarget += OnSelectTarget;
         controller.Attack += OnAttack;
         controller.Die += OnDeath;
 
         //Set Defaults
-        OnLevelUp();
-        SetSpriteAndAnimations();
+        OnSet();
     }
 
+    //Methods
+    void SetSpriteAndAnimations()
+    {
+        if (controller.publicData.so.sprite)
+        {
+            GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;
+        }
+        if (controller.publicData.so.animatorOverride)
+        {
+            animator.runtimeAnimatorController = controller.publicData.so.animatorOverride;
+        }
+    }
+
+    //Event Recievers
+    void OnSet()
+    {
+        OnLevelUp();
+        SetSpriteAndAnimations();
+        animator.SetTrigger("Set");
+    }
     void OnRecievedDamage(int damage)
     {
         animator.SetTrigger("Receive Damage");
@@ -68,18 +89,6 @@ public class BattleCharacterUI : MonoBehaviour
     void OnDeath(BattleCharacterController notNeeded)
     {
         animator.SetTrigger("Die");
-    }
-
-    void SetSpriteAndAnimations()
-    {
-        if (controller.publicData.so.sprite)
-        {
-            GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;
-        }
-        if (controller.publicData.so.animatorOverride)
-        {
-            animator.runtimeAnimatorController = controller.publicData.so.animatorOverride;
-        }
     }
 
     IEnumerator ActivateDamageText(int damage)
