@@ -461,8 +461,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656233555}
-        m_MethodName: GoToIdle
+      - m_Target: {fileID: 1656233553}
+        m_MethodName: OnStepUsed
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1656233556}
+        m_MethodName: LoadIdle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1942,8 +1953,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656233555}
-        m_MethodName: GoToAdventure
+      - m_Target: {fileID: 1656233556}
+        m_MethodName: LoadAutobattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3348,8 +3359,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656233555}
-        m_MethodName: GoToLineup
+      - m_Target: {fileID: 1656233556}
+        m_MethodName: LoadLineup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5354,7 +5365,7 @@ GameObject:
   - component: {fileID: 1656233552}
   - component: {fileID: 1656233553}
   - component: {fileID: 1656233554}
-  - component: {fileID: 1656233555}
+  - component: {fileID: 1656233556}
   m_Layer: 0
   m_Name: Main Menu Holder
   m_TagString: Untagged
@@ -5393,7 +5404,7 @@ MonoBehaviour:
   - {fileID: 1454115508}
   - {fileID: 1964601917}
   - {fileID: 8857898420075848559}
-  - {fileID: 8857898420075848559}
+  - {fileID: 1705758953}
 --- !u!114 &1656233554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5408,7 +5419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldText: {fileID: 1797138467}
   gemsText: {fileID: 1244450811}
---- !u!114 &1656233555
+--- !u!114 &1656233556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5417,11 +5428,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1656233551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314c76461a240e646a84f2b72c7a5453, type: 3}
+  m_Script: {fileID: 11500000, guid: d0cd7a84f84777c41a9fe2482c7366b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  underMainteinanceBanner: {fileID: 1057733383}
-  mainMenuBanner: {fileID: 1656233551}
 --- !u!1 &1686784662
 GameObject:
   m_ObjectHideFlags: 0
@@ -5691,6 +5700,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1705758951}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1705758953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 508023326098158493, guid: 617d50c29f2cce04085de6abd7917067,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705758951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1739187027
 GameObject:
   m_ObjectHideFlags: 0
@@ -5848,6 +5863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   underMainteinanceBanner: {fileID: 1057733383}
   mainMenuBanner: {fileID: 1656233551}
+  gameManager: {fileID: 0}
 --- !u!1 &1761812008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6586,8 +6602,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656233555}
-        m_MethodName: GoToGacha
+      - m_Target: {fileID: 1656233556}
+        m_MethodName: LoadGacha
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
