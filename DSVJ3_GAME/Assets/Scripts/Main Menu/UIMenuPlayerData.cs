@@ -7,10 +7,10 @@ public class UIMenuPlayerData : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemsText;
 	Player player;
 
-    private void Start()
+    private void Awake()
     {
         //Player
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = Player.Get();
 
         //Set values
         UpdateData();

@@ -28,7 +28,7 @@ public class Player : MonoBehaviourSingleton<Player>
     public int gold
     {
         get { return data.gold; }
-        set { data.gold = value; if (data.gold < 0) data.gold = 0; GoldChanged.Invoke(); }
+        set { data.gold = value; if (data.gold < 0) data.gold = 0; GoldChanged?.Invoke(); }
     }
     public int gems
     {

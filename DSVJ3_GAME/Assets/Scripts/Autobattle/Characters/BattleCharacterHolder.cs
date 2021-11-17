@@ -46,6 +46,14 @@ public class BattleCharacterHolder : MonoBehaviour
     }
     #endregion
 
+    public void ResetPosition()
+    {
+        transform.position = originalPosition;
+        if (slotHitted)
+        {
+            slotHitted.transform.tag = "Slot";
+        }
+    }
     void GetSlot()
     {
         Vector2 pos = transform.position;// + boxCollider.size.y / 2 * Vector2.down;

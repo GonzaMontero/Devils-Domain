@@ -6,15 +6,16 @@ public class BattleCharacterController : MonoBehaviour
     [Serializable] enum States { idle, selectTarget, attacking, dead };
 
     public Action<BattleCharacterController> Die;
-    public Action<BattleCharacterController> SelectTarget;
+    public Action<BattleCharacterController> SearchForTarget;
     public Action<int> Attack;
     public Action<int> DamageReceived;
     public Action LeveledUp;
+    public Action Set;
     public BattleCharacterController target;
     public BattleCharacterData publicData { get { return data; } }
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
-    const float despawnTimer = 2;
+    const float despawnTimer = 1;
     const int defaultAttackTime = 1; //attack time in seconds, without attack speed
 
     private void Start()
@@ -29,11 +30,15 @@ public class BattleCharacterController : MonoBehaviour
     public void InitCharacter()
     {
         data.SetStartOfBattleCurrents();
+        current = States.idle;
+        Set?.Invoke();
     }
     public void InitCharacterFromZero()
     {
         data.SetLevel1Currents();
         data.SetStartOfBattleCurrents();
+        current = States.idle;
+        Set?.Invoke();
     }
     public void SetData(BattleCharacterSO so)
     {
@@ -45,13 +50,9 @@ public class BattleCharacterController : MonoBehaviour
         this.data = data;
         InitCharacter();
     }
-    public void OnAttack(int damage)
+    public void OnAttackReceived(int damage)
     {
         ReceiveDamage(damage);
-    }
-    public AttackType GetAttackType()
-    {
-        return data.so.attackType;
     }
     public float GetHealthPercentage()
     {
@@ -87,15 +88,15 @@ public class BattleCharacterController : MonoBehaviour
                 current++;
                 break;
             case States.selectTarget:
-                SelectTarget?.Invoke(this);
+                SearchForTarget?.Invoke(this);
                 if (!target) { return; }
-                Attack += target.OnAttack;
+                Attack += target.OnAttackReceived;
                 current++;
                 break;
             case States.attacking:
                 if (!target || !target.IsAlive())
                 {
-                    Attack -= target.OnAttack;
+                    Attack -= target.OnAttackReceived;
                     current = States.idle;
                     return;
                 }
@@ -119,7 +120,8 @@ public class BattleCharacterController : MonoBehaviour
     }
     void DeSpawn()
     {
-        Destroy(gameObject);
+        if (IsAlive()) return;
+        gameObject.SetActive(false);
     }
     void LevelUp()
     {
