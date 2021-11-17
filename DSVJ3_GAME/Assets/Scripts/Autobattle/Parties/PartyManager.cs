@@ -20,7 +20,7 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     }
 
     //Methods
-    public List<BattleCharacterController> GetParty()
+    public virtual List<BattleCharacterController> GetParty()
     {
         return characters;
     }

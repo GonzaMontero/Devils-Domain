@@ -19,6 +19,18 @@ public class PlayerParty : PartyManager
     }
 
     //Methods
+    public override List<BattleCharacterController> GetParty()
+    {
+        List<BattleCharacterController> charactersToSave = new List<BattleCharacterController>();
+        Player player = Player.Get();
+        for (int i = 0; i < player.lineup.Length; i++)
+        {
+            GameObject character = holders[i].gameObject;
+            BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
+            charactersToSave.Add(characterController);
+        }
+        return charactersToSave;
+    }
     public override void ResetParty()
     {
         readyToBattle = false;
@@ -30,13 +42,13 @@ public class PlayerParty : PartyManager
         }
 
         //Get New one
-        GetCharacters();
         foreach (BattleCharacterHolder holder in holders)
         {
             holder.enabled = true;
             holder.ResetPosition();
             holder.gameObject.SetActive(true);
         }
+        GetCharacters();
     }
     internal override void SetAdditionalThings()
     {

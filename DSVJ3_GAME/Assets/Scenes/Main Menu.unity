@@ -5783,7 +5783,6 @@ GameObject:
   - component: {fileID: 1756178238}
   - component: {fileID: 1756178240}
   - component: {fileID: 1756178239}
-  - component: {fileID: 1756178241}
   m_Layer: 0
   m_Name: Under Manteinance Panel
   m_TagString: Untagged
@@ -5849,21 +5848,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756178237}
   m_CullTransparentMesh: 0
---- !u!114 &1756178241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756178237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314c76461a240e646a84f2b72c7a5453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  underMainteinanceBanner: {fileID: 1057733383}
-  mainMenuBanner: {fileID: 1656233551}
-  gameManager: {fileID: 0}
 --- !u!1 &1761812008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6470,7 +6454,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1756178241}
+      - m_Target: {fileID: 0}
         m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:

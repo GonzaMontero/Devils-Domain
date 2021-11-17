@@ -58,7 +58,7 @@ public class BattleManager : MonoBehaviour
         if (playerParty.characters.Count < 1) return;
         
         List<BattleCharacterData> charactersToSave = new List<BattleCharacterData>();
-        foreach (var character in playerParty.characters)
+        foreach (var character in playerParty.GetParty())
         {
             charactersToSave.Add(character.publicData);
         }

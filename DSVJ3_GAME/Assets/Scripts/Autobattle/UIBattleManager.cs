@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 
-public class BattleUIManager : MonoBehaviour
+public class UIBattleManager : MonoBehaviour
 {
 	[SerializeField] BattleManager battleManager;
 	[SerializeField] GameObject resetButton;
@@ -16,6 +16,8 @@ public class BattleUIManager : MonoBehaviour
     {
         battleManager.PlayerPartyWon += OnVictory;
         battleManager.EnemyPartyWon += OnDefeat;
+
+        GameManager gameManager = GameManager.Get();
     }
 
     public void StartGame()
