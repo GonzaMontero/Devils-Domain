@@ -1,27 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+[Serializable]
+public class EnemyHolder
+{
+    [Serializable]
+    public struct EnemyInLevel
+    {
+        public BattleCharacterData enemy;
+        public int positionInLevel;
+    }
+
+    public EnemyInLevel[] enemies;
+}
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] List<BattleCharacterData[]> levels;
-    [SerializeField] int[] levelInStage;
+    [SerializeField] EnemyHolder[] levels;
 
-    [SerializeField] GameObject[] enemySlots;
+    [SerializeField] EnemyParty enemyP;
 
     int currentLevel;
 
     private void Start()
     {
-        BattleCharacterData[] levelEnemies = levels[currentLevel];
-
-        for (short i = 0; i < enemySlots.Length; i++)
-        {
-            if (levelEnemies[i] != null)
-            {
-                enemySlots[i].GetComponent<BattleCharacterController>().SetData(levelEnemies[i]);
-                enemySlots[i].GetComponent<BattleCharacterData>().level = levelInStage[currentLevel];                
-            }
-        }
+        enemyP.SetCharacters(levels[currentLevel].enemies);
     }
 }

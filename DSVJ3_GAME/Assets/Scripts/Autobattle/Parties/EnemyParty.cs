@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyParty : PartyManager
 {
@@ -59,9 +60,8 @@ public class EnemyParty : PartyManager
             GenerateRandomEnemy();
         }
     }
-    void GenerateRandomEnemy()
-    {
-        int soIndex = Random.Range(0, characterSOs.Length);
+    void GenerateEnemy(BattleCharacterData data)
+    {       
         int tileIndex = Random.Range(0, characterTiles.Length);
 
         while (characterInTile.ContainsKey(tileIndex))
@@ -75,7 +75,36 @@ public class EnemyParty : PartyManager
         character.GetComponent<SpriteRenderer>().flipX = true;
         character.GetComponent<SpriteRenderer>().sortingOrder = -(int)character.transform.position.z;
 
-        character.SetData(characterSOs[soIndex]);
+        character.SetData(data);
         AddCharacter(character, tileIndex);
+    }
+    void GenerateEnemy(BattleCharacterData data, int tileIndex)
+    {
+        BattleCharacterController character;
+        character = Instantiate(characterPrefab, transform).GetComponent<BattleCharacterController>();
+        character.transform.position = characterTiles[tileIndex].transform.position;
+        character.GetComponent<SpriteRenderer>().flipX = true;
+        character.GetComponent<SpriteRenderer>().sortingOrder = -(int)character.transform.position.z;
+
+        character.SetData(data);
+        for(int i=1; i < data.level;i++)
+        {
+            character.publicData.LevelUp();
+        }
+        AddCharacter(character, tileIndex);
+    }
+    void GenerateRandomEnemy()
+    {
+        int soIndex = Random.Range(0, characterSOs.Length);
+        BattleCharacterData data = new BattleCharacterData(characterSOs[soIndex]);
+        GenerateEnemy(data);
+    }
+    public void SetCharacters(EnemyHolder.EnemyInLevel[] enemies)
+    {
+        foreach(EnemyHolder.EnemyInLevel enemy in enemies)
+        {
+            enemy.enemy.SetLevel1Currents();
+            GenerateEnemy(enemy.enemy, enemy.positionInLevel);
+        }        
     }
 }
