@@ -16,7 +16,7 @@ public class TutorialManager : MonoBehaviour
         currentStep = player.tutorialStep;
 
         //Activate current step
-        LoadNextStep();
+        steps[currentStep - 1].SetActive(true);
     }
     private void OnDestroy()
     {

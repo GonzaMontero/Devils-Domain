@@ -52,4 +52,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         currentScene = SceneLoader.Scenes.credits;
         SceneLoader.LoadScene(currentScene);
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

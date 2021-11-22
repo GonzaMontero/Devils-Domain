@@ -114,6 +114,7 @@ public class BattleCharacterController : MonoBehaviour
         attackCooldown += attackCharge;
         if (attackCooldown > defaultAttackTime)
         {
+            AkSoundEngine.PostEvent("Attack", gameObject);
             Attack?.Invoke(data.currentStats.damage);
             attackCooldown = 0;
         }
@@ -121,6 +122,7 @@ public class BattleCharacterController : MonoBehaviour
     void DeSpawn()
     {
         if (IsAlive()) return;
+        AkSoundEngine.PostEvent("Die", gameObject);
         gameObject.SetActive(false);
     }
     void LevelUp()

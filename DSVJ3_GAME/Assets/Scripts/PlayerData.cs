@@ -15,6 +15,7 @@ public class PlayerData
     //Autobattle Data
     public List<BattleCharacterData> characters;
     public BattleCharacterData[] lineup = new BattleCharacterData[6];
+    public int level;
 
     //Room Data
     public DateTime roomLogInTime;

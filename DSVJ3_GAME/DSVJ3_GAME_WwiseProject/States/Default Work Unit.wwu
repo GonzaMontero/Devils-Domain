@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}" SchemaVersion="103">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Music" ID="{8A8A6EA9-F629-4E3B-8932-5A85885D1050}">
+					<ChildrenList>
+						<State Name="None" ID="{FE00CF8A-F6E0-437E-BDAC-682864366DFE}"/>
+						<State Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}"/>
+						<State Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}"/>
+							<EndState Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}"/>
+							<Time>1</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}"/>
+							<EndState Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}"/>
+							<Time>1</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+				<StateGroup Name="Autobattle" ID="{989A9B35-61A7-4154-A6DA-334F96C5453E}">
+					<ChildrenList>
+						<State Name="None" ID="{0C23F0FE-A55D-4A9A-9981-12C4DDF7EDBD}"/>
+						<State Name="Combat" ID="{4EE82B39-1591-4F56-BC05-87F411800783}"/>
+						<State Name="Win" ID="{36616048-D203-40B9-B980-6AF8637E73B8}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

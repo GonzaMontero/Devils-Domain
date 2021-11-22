@@ -33,4 +33,8 @@ public class UIGameManager : MonoBehaviour
     {
         gameManager.LoadCredits();
     }
+    public void QuitGame()
+    {
+        gameManager.QuitGame();
+    }
 }

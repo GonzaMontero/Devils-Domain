@@ -23,15 +23,19 @@ public class Player : MonoBehaviourSingleton<Player>
     {
         get { return data.lineup; }
         set { data.lineup = value; }
+    }    
+    public int level
+    {
+        get { return data.level; }
+        set { if (value < 0) value = 0; data.level = value; }
     }
     //Menu
     public int tutorialStep
     {
         get { return data.tutorialStep; }
-        set { if (value < 0) value = 1; data.tutorialStep = value;  }
+        set { if (value < 1) value = 1; data.tutorialStep = value;  }
     }
     //General
-    public int level;
     public int gold
     {
         get { return data.gold; }

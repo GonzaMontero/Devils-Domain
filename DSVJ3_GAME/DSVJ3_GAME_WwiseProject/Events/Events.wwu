@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{485D7C3E-FB02-4EC9-999A-5AC5C2004FDF}" SchemaVersion="103" RootDocumentID="{4052A4CD-1009-4FDD-B25A-ECB1FA1E7443}" ParentDocumentID="{4052A4CD-1009-4FDD-B25A-ECB1FA1E7443}">
+	<Events>
+		<WorkUnit Name="Events" ID="{485D7C3E-FB02-4EC9-999A-5AC5C2004FDF}" OwnerID="{4052A4CD-1009-4FDD-B25A-ECB1FA1E7443}" PersistMode="Nested">
+			<ChildrenList>
+				<Folder Name="Buttons" ID="{77F93D4B-2F28-447B-A9A9-67BC6BEB574D}" ShortID="768550011">
+					<ChildrenList>
+						<Event Name="GoToAutobattleButton" ID="{27E534BA-783F-4249-9292-6DD309B5237F}">
+							<ChildrenList>
+								<Action Name="" ID="{ACC0D5F6-3D1C-4F4C-B532-6079EF96297F}" ShortID="299813561">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UIFX_SCIMisc-003" ID="{7F204C04-F21D-4FCB-AAA5-B2AA21ABBEBB}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{32F07D15-66B4-4EFC-8312-21968D71E3B4}" ShortID="378527249">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Menu" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GoToMenuButton" ID="{0AF8BE1C-0BB9-4791-B0A6-6A9B97291282}">
+							<ChildrenList>
+								<Action Name="" ID="{1BD4B463-5E8D-4B22-87AF-3D9C4E6FB3E4}" ShortID="700164774">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UIFX_SCIMisc-018" ID="{47485595-FE27-4E45-B770-953BD54165E1}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{91BD744D-1A38-4F89-B4B6-3F2A24B52BAF}" ShortID="509127140">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}" WorkUnitID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GoToGachaButton" ID="{CED4CA24-5A94-412F-AD14-5C41D86BA41C}">
+							<ChildrenList>
+								<Action Name="" ID="{866A33F6-57A2-4821-915B-D7BF836CF102}" ShortID="837779703">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UIFX_SCIMisc-018" ID="{47485595-FE27-4E45-B770-953BD54165E1}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{A4297976-9D54-40B3-B7E8-433E506C9C76}" ShortID="83792709">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}" WorkUnitID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GoToLineupButton" ID="{93AC7D75-575A-46B0-865E-FDA7F92FEFF7}">
+							<ChildrenList>
+								<Action Name="" ID="{B182F18B-FED3-4F78-9AC4-DE3198599912}" ShortID="98547013">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UIFX_SCIMisc-018" ID="{47485595-FE27-4E45-B770-953BD54165E1}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7265AAC0-D4C8-4882-B5FB-4DD8C38161A8}" ShortID="46746935">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}" WorkUnitID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GoToIdleButton" ID="{5DD9AAC2-8780-4EC0-80C0-E735C8718DC6}">
+							<ChildrenList>
+								<Action Name="" ID="{0DCE358B-34EA-4F5E-9F6F-1CCC0500D4E7}" ShortID="254104194">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UIFX_SCIMisc-018" ID="{47485595-FE27-4E45-B770-953BD54165E1}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3927A6CB-62FF-409E-80C9-8C3060B7D6BF}" ShortID="827360886">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}" WorkUnitID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ConfirmationButton" ID="{A5A2B9BD-A46B-4A10-ACCC-344FCBED38C2}">
+							<ChildrenList>
+								<Action Name="" ID="{CB48F9EC-D7EB-4DDF-9B97-CBB1632CC686}" ShortID="216587022">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UIFX_SCIMisc-018" ID="{47485595-FE27-4E45-B770-953BD54165E1}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ExitBackButton" ID="{B635EED3-8AD9-4E95-B4BD-C717AD5486AB}">
+							<ChildrenList>
+								<Action Name="" ID="{E2ABF332-4FB2-45A9-B762-6B99D3BA5867}" ShortID="792386970">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UIFX_SCIMisc-022" ID="{F06C1FC5-A4F6-4836-A2F4-1C93E948751C}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Gacha" ID="{8A47C7C7-FEA9-4F84-8B55-A53A999EFC2F}" ShortID="614534039">
+					<ChildrenList>
+						<Event Name="Win" ID="{DA210A76-CD56-418C-AD81-8A977CCB07DD}">
+							<ChildrenList>
+								<Action Name="" ID="{EB95BB70-A35C-456B-9137-A34AC6FF60E1}" ShortID="378658979">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MenuexplosionColor1" ID="{EB555DE0-2710-4C41-B2FB-D0F74FE1A78B}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Lineup" ID="{F568D600-EFB5-439E-AE9E-7B1A2977D647}" ShortID="418495540"/>
+				<Folder Name="Autobattle" ID="{53C3069A-4BAC-4F79-AF8F-ADAB9D57E0FB}" ShortID="41791775">
+					<ChildrenList>
+						<Event Name="Attack" ID="{941FA8FC-3421-4AAD-8887-B496C295CE7F}">
+							<ChildrenList>
+								<Action Name="" ID="{2C988701-135E-4337-A763-1B79B16C517F}" ShortID="454583009">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Attack" ID="{46BDBAAB-F522-47A5-AF9F-2E6776F74EED}" WorkUnitID="{3F7D5DFA-7437-427E-A27E-594D0A8976A7}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Die" ID="{1E60C4E2-936C-49F8-818F-F1348580CF79}">
+							<ChildrenList>
+								<Action Name="" ID="{DAD57191-9FB9-4844-87C4-5881572459CF}" ShortID="602995191">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Die" ID="{A6E7A0D8-91BC-4CFE-8332-6085A6FB18FA}" WorkUnitID="{3F7D5DFA-7437-427E-A27E-594D0A8976A7}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Music" ID="{7646D7E2-F0A4-4199-A32C-26442F5243AE}" ShortID="858881127">
+					<ChildrenList>
+						<Event Name="LineupMusic" ID="{A883DC54-8B5E-431D-B096-16CCB19003D6}">
+							<ChildrenList>
+								<Action Name="" ID="{DB6A3424-0148-490A-89CE-A3E25623BFF2}" ShortID="276423735">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}" WorkUnitID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="MenuMusic" ID="{671F0FE3-9BB4-4F4E-B8A9-A698F91E6F9C}">
+							<ChildrenList>
+								<Action Name="" ID="{BDBE18C8-8829-45A4-BAAD-4B12DFB4CC68}" ShortID="13502177">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Menu" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="AutobattleMusic" ID="{48D955ED-4458-4DA9-B672-A9D8B06ACCD3}">
+							<ChildrenList>
+								<Action Name="" ID="{FA017B39-890B-4464-91A5-4A179F78882A}" ShortID="419909275">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Menu" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GachaMusic" ID="{9A20BE3A-CE36-4D7A-A048-8E5C228B12F8}"/>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
