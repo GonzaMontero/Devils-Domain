@@ -29,4 +29,8 @@ public class UIGameManager : MonoBehaviour
     {
         gameManager.LoadLineup();
     }
+    public void LoadCredits()
+    {
+        gameManager.LoadCredits();
+    }
 }

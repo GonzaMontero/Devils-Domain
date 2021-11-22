@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public static class SceneLoader
 {
-    public enum Scenes { menu, autobattle, idle, gacha, lineup }
+    public enum Scenes { menu, credits, autobattle, idle, gacha, lineup }
     public static Scenes GetCurrentScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -23,25 +23,31 @@ public static class SceneLoader
                 return Scenes.menu;
         }
     }
-    public static void LoadMenu()
+    public static void LoadScene(Scenes sceneToLoad)
     {
+        switch (sceneToLoad)
+        {
+            case Scenes.menu:
         SceneManager.LoadScene("Main Menu");
-    }
-    public static void LoadAutobattle()
-    {
+                break;
+            case Scenes.credits:
+                SceneManager.LoadScene("Credits");
+                break;
+            case Scenes.autobattle:
         SceneManager.LoadScene("BattleTest");
-    }
-    public static void LoadIdle()
-    {
+                break;
+            case Scenes.idle:
         SceneManager.LoadScene("Rooms");
-    }
-    public static void LoadGacha()
-    {
+                break;
+            case Scenes.gacha:
         SceneManager.LoadScene("Gacha");
-    }
-    public static void LoadLineup()
-    {
+                break;
+            case Scenes.lineup:
         SceneManager.LoadScene("Lineup");
+                break;
+            default:
+                break;
+        }
     }
     //public static void LoadSettings()
     //{
