@@ -25,6 +25,7 @@ public class Player : MonoBehaviourSingleton<Player>
         set { data.lineup = value; }
     }
     //General
+    public int level;
     public int gold
     {
         get { return data.gold; }

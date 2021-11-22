@@ -22,9 +22,21 @@ public class LevelManager : MonoBehaviour
     [SerializeField] EnemyParty enemyP;
 
     int currentLevel;
+    Player player;
 
     private void Start()
     {
-        enemyP.SetCharacters(levels[currentLevel].enemies);
+        player = Player.Get();
+
+        currentLevel = player.level;
+
+        if (currentLevel > levels.Length)
+        {
+            enemyP.SetCharacters(levels[currentLevel].enemies);
+        }
+        else
+        {
+            enemyP.generateRandomEnemies = true;
+        }
     }
 }
