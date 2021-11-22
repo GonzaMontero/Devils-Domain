@@ -20,18 +20,16 @@ public class EnemyParty : PartyManager
 
     //Unity Events
     private void Start()
-    {
-        if (!generateRandomEnemies) return;
-        
+    {                
         //Set Path according to the correct tier;
         SetSOsPath();
 
         //Get character SOs to generate enemies
         characterSOs = Resources.LoadAll<BattleCharacterSO>(SOsPath);
 
-        GenerateEnemies();
+        //if (!generateRandomEnemies) return;
+        //GenerateEnemies();
     }
-
     //Methods
     public override void ResetParty()
     {
@@ -45,15 +43,12 @@ public class EnemyParty : PartyManager
             RemoveCharacter(characters[0]);
             Destroy(characterToRemove.gameObject);
         }
-
-        //Generate new one
-        GenerateEnemies();
     }
     void SetSOsPath()
     {
         SOsPath = "Scriptable Objects/Characters/Allies/" + charactersTier + " Star";
     }
-    void GenerateEnemies()
+    public void GenerateEnemies()
     {
         for (short i = 0; i < 5; i++)
         {

@@ -1188,6 +1188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerParty: {fileID: 162186393}
   enemyParty: {fileID: 2026957188}
+  levelM: {fileID: 840246497}
   battleXP: 0
   battleGold: 0
 --- !u!4 &474282604

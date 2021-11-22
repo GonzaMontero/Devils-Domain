@@ -36,7 +36,21 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            enemyP.generateRandomEnemies = true;
+            enemyP.GenerateEnemies();
+        }
+    }
+
+    public void ResetLevel()
+    {
+        currentLevel = player.level;
+
+        if (currentLevel < levels.Length)
+        {
+            enemyP.SetCharacters(levels[currentLevel].enemies);
+        }
+        else
+        {
+            enemyP.GenerateEnemies();
         }
     }
 }
