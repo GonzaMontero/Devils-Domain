@@ -70,6 +70,7 @@ public class BattleManager : MonoBehaviour
     {
         GiveRewards();
         SaveAllies(); //save player characters to play in next stage
+        player.level++;
         PlayerPartyWon?.Invoke();
     }
     void OnEnemyWon()

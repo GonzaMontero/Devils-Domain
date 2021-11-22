@@ -3030,6 +3030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3176963c389f34ca36df3ff2b05496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
   data:
     gold: 0
     gems: 0

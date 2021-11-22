@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
 
         currentLevel = player.level;
 
-        if (currentLevel > levels.Length)
+        if (currentLevel < levels.Length)
         {
             enemyP.SetCharacters(levels[currentLevel].enemies);
         }
