@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyParty : PartyManager
 {
     [SerializeField] GameObject characterPrefab;
-    [SerializeField] bool generateRandomEnemies = true;
+    public bool generateRandomEnemies = true;
     [SerializeField] int charactersTierSetter = 3;
     BattleCharacterSO[] characterSOs;
     string SOsPath;

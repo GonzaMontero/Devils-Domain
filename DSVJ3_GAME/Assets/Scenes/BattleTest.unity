@@ -1909,7 +1909,7 @@ MonoBehaviour:
   levels:
   - enemies:
     - enemy:
-        so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
         currentStats:
           damage: 0
           maxHealth: 0
@@ -1918,18 +1918,273 @@ MonoBehaviour:
         health: 0
         currentXP: 0
         currentXpToLevelUp: 0
-        level: 10
+        level: 1
+        merge: 0
+      positionInLevel: 0
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 1
         merge: 0
       positionInLevel: 1
-  - enemies: []
-  - enemies: []
-  - enemies: []
-  - enemies: []
-  - enemies: []
-  - enemies: []
-  - enemies: []
-  - enemies: []
-  - enemies: []
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 1
+        merge: 0
+      positionInLevel: 2
+  - enemies:
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 2
+        merge: 0
+      positionInLevel: 0
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 2
+        merge: 0
+      positionInLevel: 1
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 2
+        merge: 0
+      positionInLevel: 2
+    - enemy:
+        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 2
+        merge: 0
+      positionInLevel: 4
+  - enemies:
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 3
+        merge: 0
+      positionInLevel: 0
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 3
+        merge: 0
+      positionInLevel: 1
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 3
+        merge: 0
+      positionInLevel: 2
+    - enemy:
+        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 3
+        merge: 0
+      positionInLevel: 3
+    - enemy:
+        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 3
+        merge: 0
+      positionInLevel: 5
+  - enemies:
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 4
+        merge: 0
+      positionInLevel: 0
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 4
+        merge: 0
+      positionInLevel: 1
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 4
+        merge: 0
+      positionInLevel: 2
+    - enemy:
+        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 3
+        merge: 0
+      positionInLevel: 3
+    - enemy:
+        so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 3
+        merge: 0
+      positionInLevel: 4
+    - enemy:
+        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 4
+        merge: 0
+      positionInLevel: 5
+  - enemies:
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 6
+        merge: 0
+      positionInLevel: 0
+    - enemy:
+        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 6
+        merge: 0
+      positionInLevel: 2
+    - enemy:
+        so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
+        currentStats:
+          damage: 0
+          maxHealth: 0
+          attackSpeed: 0
+          armor: 0
+        health: 0
+        currentXP: 0
+        currentXpToLevelUp: 0
+        level: 7
+        merge: 0
+      positionInLevel: 4
   enemyP: {fileID: 2026957188}
 --- !u!1 &840878673
 GameObject:
@@ -2775,6 +3030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3176963c389f34ca36df3ff2b05496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
   data:
     gold: 0
     gems: 0
