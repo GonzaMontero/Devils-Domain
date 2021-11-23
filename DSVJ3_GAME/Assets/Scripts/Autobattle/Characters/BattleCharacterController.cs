@@ -18,6 +18,7 @@ public class BattleCharacterController : MonoBehaviour
     const float despawnTimer = 1;
     const int defaultAttackTime = 1; //attack time in seconds, without attack speed
 
+    //Unity Events
     private void Start()
     {
         current = States.idle;
@@ -27,6 +28,7 @@ public class BattleCharacterController : MonoBehaviour
         RunStateMachine();
     }
 
+    //Methods
     public void InitCharacter()
     {
         data.SetStartOfBattleCurrents();
@@ -49,10 +51,6 @@ public class BattleCharacterController : MonoBehaviour
     {
         this.data = data;
         InitCharacter();
-    }
-    public void OnAttackReceived(int damage)
-    {
-        ReceiveDamage(damage);
     }
     public float GetHealthPercentage()
     {
@@ -90,13 +88,11 @@ public class BattleCharacterController : MonoBehaviour
             case States.selectTarget:
                 SearchForTarget?.Invoke(this);
                 if (!target) { return; }
-                Attack += target.OnAttackReceived;
                 current++;
                 break;
             case States.attacking:
                 if (!target || !target.IsAlive())
                 {
-                    Attack -= target.OnAttackReceived;
                     current = States.idle;
                     return;
                 }
@@ -114,6 +110,7 @@ public class BattleCharacterController : MonoBehaviour
         attackCooldown += attackCharge;
         if (attackCooldown > defaultAttackTime)
         {
+            target.ReceiveDamage(data.currentStats.damage);
             Attack?.Invoke(data.currentStats.damage);
             attackCooldown = 0;
         }

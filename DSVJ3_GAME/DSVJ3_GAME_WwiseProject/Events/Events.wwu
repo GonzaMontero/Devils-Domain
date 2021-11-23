@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{485D7C3E-FB02-4EC9-999A-5AC5C2004FDF}" SchemaVersion="103" RootDocumentID="{4052A4CD-1009-4FDD-B25A-ECB1FA1E7443}" ParentDocumentID="{4052A4CD-1009-4FDD-B25A-ECB1FA1E7443}">
+	<Events>
+		<WorkUnit Name="Events" ID="{485D7C3E-FB02-4EC9-999A-5AC5C2004FDF}" OwnerID="{4052A4CD-1009-4FDD-B25A-ECB1FA1E7443}" PersistMode="Nested">
+			<ChildrenList>
+				<Folder Name="Buttons" ID="{77F93D4B-2F28-447B-A9A9-67BC6BEB574D}" ShortID="768550011">
+					<ChildrenList>
+						<Event Name="GoToAutobattleButton" ID="{27E534BA-783F-4249-9292-6DD309B5237F}"/>
+						<Event Name="GoToMenuButton" ID="{0AF8BE1C-0BB9-4791-B0A6-6A9B97291282}"/>
+						<Event Name="GoToGachaButton" ID="{CED4CA24-5A94-412F-AD14-5C41D86BA41C}"/>
+						<Event Name="GoToLineupButton" ID="{93AC7D75-575A-46B0-865E-FDA7F92FEFF7}"/>
+						<Event Name="GoToIdleButton" ID="{5DD9AAC2-8780-4EC0-80C0-E735C8718DC6}"/>
+						<Event Name="ConfirmationButton" ID="{A5A2B9BD-A46B-4A10-ACCC-344FCBED38C2}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Gacha" ID="{8A47C7C7-FEA9-4F84-8B55-A53A999EFC2F}" ShortID="614534039">
+					<ChildrenList>
+						<Event Name="Win" ID="{DA210A76-CD56-418C-AD81-8A977CCB07DD}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Lineup" ID="{F568D600-EFB5-439E-AE9E-7B1A2977D647}" ShortID="418495540"/>
+				<Folder Name="Autobattle" ID="{53C3069A-4BAC-4F79-AF8F-ADAB9D57E0FB}" ShortID="41791775">
+					<ChildrenList>
+						<Event Name="Attack" ID="{941FA8FC-3421-4AAD-8887-B496C295CE7F}"/>
+						<Event Name="Die" ID="{1E60C4E2-936C-49F8-818F-F1348580CF79}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Music" ID="{7646D7E2-F0A4-4199-A32C-26442F5243AE}" ShortID="858881127">
+					<ChildrenList>
+						<Event Name="LineupMusic" ID="{A883DC54-8B5E-431D-B096-16CCB19003D6}"/>
+						<Event Name="MenuMusic" ID="{671F0FE3-9BB4-4F4E-B8A9-A698F91E6F9C}"/>
+						<Event Name="AutobattleMusic" ID="{48D955ED-4458-4DA9-B672-A9D8B06ACCD3}"/>
+						<Event Name="GachaMusic" ID="{9A20BE3A-CE36-4D7A-A048-8E5C228B12F8}"/>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
