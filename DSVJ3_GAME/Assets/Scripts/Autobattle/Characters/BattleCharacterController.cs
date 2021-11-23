@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BattleCharacterController : MonoBehaviour
 {
@@ -15,8 +16,11 @@ public class BattleCharacterController : MonoBehaviour
     public BattleCharacterData publicData { get { return data; } }
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
-    const float despawnTimer = 1;
-    const int defaultAttackTime = 1; //attack time in seconds, without attack speed
+    [SerializeField] float despawnTimer;
+    [SerializeField] float minAttackChargeMod;
+    [SerializeField] float maxAttackChargeMod;
+    [SerializeField] int defaultAttackTime; //attack time in seconds, without attack speed
+    float attackCooldown = 0;
 
     //Unity Events
     private void Start()
@@ -96,7 +100,8 @@ public class BattleCharacterController : MonoBehaviour
                     current = States.idle;
                     return;
                 }
-                ChargeAttack(data.currentStats.attackSpeed * Time.deltaTime);
+                float attackCharge = (data.currentStats.attackSpeed * Time.deltaTime);
+                ChargeAttack(Random.Range(minAttackChargeMod, maxAttackChargeMod) * attackCharge);
                 break;
             case States.dead:
                 Die.Invoke(this);
@@ -104,7 +109,6 @@ public class BattleCharacterController : MonoBehaviour
                 break;
         }
     }
-    float attackCooldown = 0;
     void ChargeAttack(float attackCharge)
     {
         attackCooldown += attackCharge;

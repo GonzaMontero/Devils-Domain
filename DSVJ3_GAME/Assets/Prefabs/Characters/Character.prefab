@@ -519,6 +519,10 @@ MonoBehaviour:
     currentXpToLevelUp: 0
     level: 0
     merge: 0
+  despawnTimer: 2
+  minAttackChargeMod: 0
+  maxAttackChargeMod: 5
+  defaultAttackTime: 1
 --- !u!114 &6085384551429086137
 MonoBehaviour:
   m_ObjectHideFlags: 0
