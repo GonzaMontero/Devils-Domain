@@ -73,8 +73,7 @@ public class GachaRates : MonoBehaviour
     }
     private void AddToPlayer(BattleCharacterSO roll)
     {
-        BattleCharacterData newData = new BattleCharacterData();
-        newData.so = roll;
+        BattleCharacterData newData = new BattleCharacterData(roll);
 
         for(short i = 0; i < p.lineup.Length; i++)
         {
@@ -87,6 +86,27 @@ public class GachaRates : MonoBehaviour
 
         p.characters.Add(newData);
     }
+    private bool SearchForCopy(BattleCharacterSO roll)
+    {
+        for (int i = 0; i < p.characters.Count; i++)
+        {
+            if(p.characters[i].so == roll)
+            {
+                p.characters[i].LevelUp();
+                return true;
+            }
+        }
+        for (int i = 0; i < p.lineup.Length; i++)
+        {
+            if (p.lineup[i].so == roll)
+            {
+                p.lineup[i].LevelUp();
+                return true;
+            }
+        }
+        return false;
+    }
+    //primero buscar copia y subir un nivel
     #region ButtonPress
     public void PullOnce(int price)
     {
@@ -98,7 +118,10 @@ public class GachaRates : MonoBehaviour
         }
         BattleCharacterSO roll = GachaRoll();
         singleSummonLoad[1].GetComponentInChildren<Image>().sprite=roll.gachaSprite;
-        AddToPlayer(roll);
+        if (!SearchForCopy(roll))
+        {
+            AddToPlayer(roll);
+        }
     }
     public void PullEleven(int price)
     {
@@ -112,7 +135,10 @@ public class GachaRates : MonoBehaviour
         {
             BattleCharacterSO roll = GachaRoll();
             multiSummonLoad[i].GetComponentInChildren<Image>().sprite = roll.gachaSprite;
-            AddToPlayer(roll);
+            if (!SearchForCopy(roll))
+            {
+                AddToPlayer(roll);
+            }
         }
     }
     #endregion

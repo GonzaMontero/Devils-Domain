@@ -9,9 +9,13 @@ public class PlayerData
     public int gems;
     public string name;
 
+    //Menu Data
+    public int tutorialStep = 1;
+
     //Autobattle Data
     public List<BattleCharacterData> characters;
     public BattleCharacterData[] lineup = new BattleCharacterData[6];
+    public int level;
 
     //Room Data
     public DateTime roomLogInTime;

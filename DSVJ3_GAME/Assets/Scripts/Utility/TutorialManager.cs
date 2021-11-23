@@ -2,37 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-public class TutorialManager : MonoBehaviourSingleton<TutorialManager>
+public class TutorialManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> steps;
-    string sceneName;
+    [SerializeField] int currentStep;
+    Player player;
 
+    //Unity Events
     private void Start()
     {
-        //Get Scene name and link action
-        sceneName = SceneManager.GetActiveScene().name;
-        SceneManager.activeSceneChanged += OnSceneChange;
+        //Get Player and load data
+        player = Player.Get();
+        currentStep = player.tutorialStep;
 
-        //Set Step 1
-        steps[0].SetActive(true);
+        //Activate current step
+        steps[currentStep - 1].SetActive(true);
+    }
+    private void OnDestroy()
+    {
+        player.tutorialStep = currentStep;
     }
 
+    //Methods
+    void LoadNextStep()
+    {
+        if (!steps[currentStep - 1].activeSelf) { return; }
+
+        steps[currentStep - 1].SetActive(false); //Deactivate current step
+        steps[currentStep]?.SetActive(true); //Activate next step if existant
+    }
+
+    //Event Receiver
     public void OnStepUsed(int stepNumber)
     {
-        if (!steps[stepNumber - 1].activeSelf) { return; }
-        
-        steps[stepNumber - 1].SetActive(false); //Deactivate current step
-        steps[stepNumber]?.SetActive(true); //Activate next step if existant
-    }
-    void OnSceneChange(Scene oldScene, Scene newScene) //old scene not used, required for action compatibility
-    {
-        if (newScene.name != sceneName)
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-        }
-        else
-        {
-            transform.GetChild(0).gameObject.SetActive(true);
-        }
+        currentStep++;
+        LoadNextStep();
     }
 }

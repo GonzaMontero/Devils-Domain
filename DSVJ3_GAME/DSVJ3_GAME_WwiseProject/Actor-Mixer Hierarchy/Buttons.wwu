@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}" SchemaVersion="103" RootDocumentID="{2FFE681A-C3B3-4A99-93E9-D10BA3B509A1}" ParentDocumentID="{2FFE681A-C3B3-4A99-93E9-D10BA3B509A1}">
+	<AudioObjects>
+		<WorkUnit Name="Buttons" ID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}" OwnerID="{2FFE681A-C3B3-4A99-93E9-D10BA3B509A1}" PersistMode="Nested">
+			<ChildrenList>
+				<Folder Name="SFX" ID="{DAF441E4-CD4A-4A47-A4B6-F44477B01B77}" ShortID="1061986930">
+					<ChildrenList>
+						<Sound Name="UIFX_SCIMisc-018" ID="{47485595-FE27-4E45-B770-953BD54165E1}" ShortID="312532918">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UIFX_SCIMisc-018" ID="{B5890B74-14E5-4851-BADC-56D640897291}">
+									<Language>SFX</Language>
+									<AudioFile>UIFX_SCIMisc-018.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="259561782"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="UIFX_SCIMisc-018" ID="{B5890B74-14E5-4851-BADC-56D640897291}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UIFX_SCIMisc-022" ID="{F06C1FC5-A4F6-4836-A2F4-1C93E948751C}" ShortID="150659761">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UIFX_SCIMisc-022" ID="{CE3771D9-3C6C-4AD8-B33A-8F5265032163}">
+									<Language>SFX</Language>
+									<AudioFile>UIFX_SCIMisc-022.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="788373785"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="UIFX_SCIMisc-022" ID="{CE3771D9-3C6C-4AD8-B33A-8F5265032163}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UIFX_SCIMisc-003" ID="{7F204C04-F21D-4FCB-AAA5-B2AA21ABBEBB}" ShortID="296286645">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UIFX_SCIMisc-003" ID="{0480F63D-6B9D-4745-A9AA-EBCF87AFE53D}">
+									<Language>SFX</Language>
+									<AudioFile>UIFX_SCIMisc-003.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="668235751"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="UIFX_SCIMisc-003" ID="{0480F63D-6B9D-4745-A9AA-EBCF87AFE53D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="02-210916_1816" ID="{C93EE8E0-ED88-44B4-A528-4D84D81A54D5}" ShortID="522243768">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="02-210916_1816" ID="{5211E331-FD83-4D72-B901-8B3F032B52E3}">
+									<Language>SFX</Language>
+									<AudioFile>02-210916_1816.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="494878410"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="02-210916_1816" ID="{5211E331-FD83-4D72-B901-8B3F032B52E3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="MenuexplosionColor1" ID="{EB555DE0-2710-4C41-B2FB-D0F74FE1A78B}" ShortID="738704719">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="MenuexplosionColor1" ID="{A372ED22-BBA4-4655-A67C-9928DD40C718}">
+									<Language>SFX</Language>
+									<AudioFile>MenuexplosionColor1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="937682212"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="MenuexplosionColor1" ID="{A372ED22-BBA4-4655-A67C-9928DD40C718}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

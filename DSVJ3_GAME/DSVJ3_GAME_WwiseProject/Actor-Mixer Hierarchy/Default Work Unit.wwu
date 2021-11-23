@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{79D9A230-B6B4-4B7D-866D-32B4C6074931}" SchemaVersion="103">
+<WwiseDocument Type="WorkUnit" ID="{2FFE681A-C3B3-4A99-93E9-D10BA3B509A1}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{79D9A230-B6B4-4B7D-866D-32B4C6074931}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{2FFE681A-C3B3-4A99-93E9-D10BA3B509A1}" PersistMode="Standalone">
+			<ChildrenList>
+				<WorkUnit Name="Buttons" ID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}" PersistMode="Reference"/>
+				<WorkUnit Name="Characters" ID="{3F7D5DFA-7437-427E-A27E-594D0A8976A7}" PersistMode="Reference"/>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

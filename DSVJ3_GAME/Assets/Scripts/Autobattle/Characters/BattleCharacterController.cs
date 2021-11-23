@@ -114,6 +114,7 @@ public class BattleCharacterController : MonoBehaviour
         attackCooldown += attackCharge;
         if (attackCooldown > defaultAttackTime)
         {
+            AkSoundEngine.PostEvent("Attack", gameObject);
             target.ReceiveDamage(data.currentStats.damage);
             Attack?.Invoke(data.currentStats.damage);
             attackCooldown = 0;
@@ -122,6 +123,7 @@ public class BattleCharacterController : MonoBehaviour
     void DeSpawn()
     {
         if (IsAlive()) return;
+        AkSoundEngine.PostEvent("Die", gameObject);
         gameObject.SetActive(false);
     }
     void LevelUp()
@@ -129,23 +131,7 @@ public class BattleCharacterController : MonoBehaviour
         data.currentXP -= data.currentXpToLevelUp;
         data.currentXpToLevelUp += data.so.xpToLevelUpModifier;
         data.level++;
-        switch (data.so.attackType)
-        {
-            case AttackType.melee:
-                data.currentStats.maxHealth += data.so.baseXpToLevelUp;
-                data.currentStats.armor += 0.25f;
-                break;
-            case AttackType.assasin:
-                data.currentStats.attackSpeed += data.so.baseXpToLevelUp / 20;
-                data.currentStats.damage += data.so.baseXpToLevelUp / 5;
-                break;
-            case AttackType.ranged:
-                data.currentStats.damage += data.so.baseXpToLevelUp / 2;
-                data.currentStats.maxHealth += data.so.baseXpToLevelUp / 5;
-                break;
-            default:
-                break;
-        }
+        data.LevelUp();
 
         //Keep Leveling Up until character doesn't have any more xp
         if (data.currentXP >= data.currentXpToLevelUp)

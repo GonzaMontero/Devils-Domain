@@ -24,27 +24,36 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 break;
         }
         currentScene = SceneLoader.Scenes.menu;
-        SceneLoader.LoadMenu();
+        SceneLoader.LoadScene(currentScene);
     }
     public void LoadAutobattle()
     {
         currentScene = SceneLoader.Scenes.autobattle;
-        SceneLoader.LoadAutobattle();
+        SceneLoader.LoadScene(currentScene);
     }
     public void LoadIdle()
     {
         currentScene = SceneLoader.Scenes.idle;
         player.SaveLogInDate();
-        SceneLoader.LoadIdle();
+        SceneLoader.LoadScene(currentScene);
     }
     public void LoadGacha()
     {
         currentScene = SceneLoader.Scenes.gacha;
-        SceneLoader.LoadGacha();
+        SceneLoader.LoadScene(currentScene);
     }
     public void LoadLineup()
     {
         currentScene = SceneLoader.Scenes.lineup;
-        SceneLoader.LoadLineup();
+        SceneLoader.LoadScene(currentScene);
+    }
+    public void LoadCredits()
+    {
+        currentScene = SceneLoader.Scenes.credits;
+        SceneLoader.LoadScene(currentScene);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

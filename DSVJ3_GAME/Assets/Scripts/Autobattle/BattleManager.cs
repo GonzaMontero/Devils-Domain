@@ -8,6 +8,7 @@ public class BattleManager : MonoBehaviour
     public Action PlayerPartyWon;
     [SerializeField] PartyManager playerParty;
     [SerializeField] PartyManager enemyParty;
+    [SerializeField] LevelManager levelM;
     [SerializeField] int battleXP;
     [SerializeField] int battleGold;
     Player player;
@@ -42,6 +43,7 @@ public class BattleManager : MonoBehaviour
     {
         enemyParty.ResetParty();
         playerParty.ResetParty();
+        levelM.ResetLevel();
     }
     void CalculateRewards()
     {
@@ -70,6 +72,7 @@ public class BattleManager : MonoBehaviour
     {
         GiveRewards();
         SaveAllies(); //save player characters to play in next stage
+        player.level++;
         PlayerPartyWon?.Invoke();
     }
     void OnEnemyWon()
