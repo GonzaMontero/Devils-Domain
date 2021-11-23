@@ -30,7 +30,7 @@ public class UIBattleCharacter : MonoBehaviour
         InitDamagePopUps();
 
         //Set Defaults
-        OnLevelUp();
+        //OnLevelUp();
         Debug.Log(this);
     }
     private void OnDisable()
@@ -129,8 +129,10 @@ public class UIBattleCharacter : MonoBehaviour
         
         //Activate damage text and get text
         TextMeshProUGUI damageText = ActivateDamagePopUp().GetComponent<TextMeshProUGUI>();
-        
+
         //Set og pos
+        damageText.transform.position = levelText.transform.position;
+        damageText.transform.Translate(Vector2.up);
         damageText.transform.Translate(Vector2.right * Random.Range(-damageXRange, damageXRange));
         
         //Set text
