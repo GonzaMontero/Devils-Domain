@@ -39,18 +39,6 @@ public class BattleCharacterController : MonoBehaviour
         current = States.idle;
         Set?.Invoke();
     }
-    public void InitCharacterFromZero()
-    {
-        data.SetLevel1Currents();
-        data.SetStartOfBattleCurrents();
-        current = States.idle;
-        Set?.Invoke();
-    }
-    public void SetData(BattleCharacterSO so)
-    {
-        data.so = so;
-        InitCharacterFromZero();
-    }
     public void SetData(BattleCharacterData data)
     {
         this.data = data;
@@ -105,6 +93,7 @@ public class BattleCharacterController : MonoBehaviour
                 break;
             case States.dead:
                 Die.Invoke(this);
+                AkSoundEngine.PostEvent("Die", gameObject);
                 Invoke("DeSpawn", despawnTimer);
                 break;
         }
@@ -123,7 +112,6 @@ public class BattleCharacterController : MonoBehaviour
     void DeSpawn()
     {
         if (IsAlive()) return;
-        AkSoundEngine.PostEvent("Die", gameObject);
         gameObject.SetActive(false);
     }
     void LevelUp()

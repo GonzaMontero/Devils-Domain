@@ -38,12 +38,12 @@ public class BattleCharacterSpriteManager : MonoBehaviour
     //Event Recievers
     void OnSet()
     {
-        Debug.Log(gameObject.name + "Set Animation");
+        //Debug.Log(gameObject.name + "Set Animation");
         if (controller.publicData.so.sprite)
         {
             GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;
         }
-        animator.SetTrigger("Set");
+        animator.SetBool("Dead", false);
     }
     void OnRecievedDamage(int damage)
     {
@@ -67,6 +67,6 @@ public class BattleCharacterSpriteManager : MonoBehaviour
     }
     void OnDeath(BattleCharacterController notNeeded)
     {
-        animator.SetTrigger("Die");
+        animator.SetBool("Dead", true);
     }
 }

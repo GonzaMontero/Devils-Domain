@@ -31,7 +31,7 @@ public class UIBattleCharacter : MonoBehaviour
 
         //Set Defaults
         //OnLevelUp();
-        Debug.Log(this);
+        //Debug.Log(this);
     }
     private void OnDisable()
     {

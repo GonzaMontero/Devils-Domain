@@ -112,14 +112,7 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     {
         foreach (var character in characters)
         {
-            if (character.publicData.level >= 1)
-            {
-                character.InitCharacter();
-            }
-            else
-            {
-                character.InitCharacterFromZero();
-            }
+            character.InitCharacter();
         }
     }
     void LinkCharacterActions(BattleCharacterController character)

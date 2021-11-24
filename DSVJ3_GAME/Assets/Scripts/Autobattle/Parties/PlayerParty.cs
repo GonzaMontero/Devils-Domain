@@ -67,14 +67,7 @@ public class PlayerParty : PartyManager
             BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
             //characters.Add(characterController);
             characterController.SetData(player.lineup[i]);
-            if (characterController.publicData.level >= 1)
-            {
                 characterController.InitCharacter();
-            }
-            else
-            {
-                characterController.InitCharacterFromZero();
-            }
         }
         //NewCharactersAdded?.Invoke();
     }
