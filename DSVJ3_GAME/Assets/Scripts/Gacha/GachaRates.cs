@@ -116,11 +116,15 @@ public class GachaRates : MonoBehaviour
         {
             singleSummonLoad[i].SetActive(true);
         }
-        BattleCharacterSO roll = GachaRoll();
-        singleSummonLoad[1].GetComponentInChildren<Image>().sprite=roll.gachaSprite;
+        BattleCharacterSO roll = GachaRoll();      
         if (!SearchForCopy(roll))
         {
             AddToPlayer(roll);
+            singleSummonLoad[1].GetComponentInChildren<Image>().sprite = roll.gachaSprite;
+        }
+        else
+        {
+            singleSummonLoad[1].GetComponentInChildren<Image>().sprite = roll.gachaLVLUpSprite;
         }
     }
     public void PullEleven(int price)
@@ -133,11 +137,15 @@ public class GachaRates : MonoBehaviour
         }
         for(short i = 1; i < multiSummonLoad.Length; i++)
         {
-            BattleCharacterSO roll = GachaRoll();
-            multiSummonLoad[i].GetComponentInChildren<Image>().sprite = roll.gachaSprite;
+            BattleCharacterSO roll = GachaRoll();            
             if (!SearchForCopy(roll))
             {
                 AddToPlayer(roll);
+                multiSummonLoad[i].GetComponentInChildren<Image>().sprite = roll.gachaSprite;
+            }
+            else
+            {
+                multiSummonLoad[i].GetComponentInChildren<Image>().sprite = roll.gachaLVLUpSprite;
             }
         }
     }
