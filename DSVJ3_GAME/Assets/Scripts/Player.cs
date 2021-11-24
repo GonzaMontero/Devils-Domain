@@ -8,10 +8,10 @@ public class Player : MonoBehaviourSingleton<Player>
     public Action GoldChanged;
     public Action GemsChanged;
     //Rooms
-    public List<RoomData> rooms
+    public RoomData room
     {
-        get { return data.rooms; }
-        set { data.rooms = value; }
+        get { return data.room; }
+        set { data.room = value; }
     }
     //Characters
     public List<BattleCharacterData> characters

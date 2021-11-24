@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class RoomUI : MonoBehaviour
+public class UIRoom : MonoBehaviour
 {
     public RoomController controller;
     [SerializeField] TextMeshProUGUI gemText;

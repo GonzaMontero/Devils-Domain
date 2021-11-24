@@ -20,5 +20,5 @@ public class PlayerData
     //Room Data
     public DateTime roomLogInTime;
     public DateTime roomLogOutTime;
-    public List<RoomData> rooms;
+    public RoomData room;
 }

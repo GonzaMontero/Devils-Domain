@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4765a6cc1943b8648a163af22df99ef6, type: 3}
-  m_Name: EmptyRoom
+  m_Name: DemonTreasury
   m_EditorClassIdentifier: 
   height: 1
   width: 1
-  sprite: {fileID: 21300000, guid: 456eb6f8a67647c408f5f8a00196cfec, type: 3}
-  maxUpgrades: 0
-  baseGoldGeneration: 0
-  baseCost: 0
-  updgradeCostMod: 0
+  sprite: {fileID: 0}
+  maxUpgrades: 100
+  baseGemGeneration: 1
+  baseCost: 50
+  updgradeCostMod: 1.5
