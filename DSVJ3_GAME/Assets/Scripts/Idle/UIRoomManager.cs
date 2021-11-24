@@ -3,13 +3,16 @@ using TMPro;
 
 public class UIRoomManager : MonoBehaviour
 {
+    [SerializeField] RoomManager roomManager;
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI gemsText;
     [SerializeField] TextMeshProUGUI upgradeText;
     [SerializeField] TextMeshProUGUI buildText;
-    [SerializeField] RoomManager roomManager;
+    [SerializeField] TextMeshProUGUI gemGenText;
+    [SerializeField] float noGoldWarningDuration;
     Player player;
 
+    //Unity Events
     private void Start()
     {
         //Get Player
@@ -26,6 +29,15 @@ public class UIRoomManager : MonoBehaviour
         OnGemsUpdated();
     }
 
+    //Methods
+    void SetOffNotEnoughGoldWarning()
+    {
+        buildText.color = Color.black;
+        upgradeText.color = Color.black;
+        goldText.color = Color.white;
+    }
+
+    //Event Receivers
     void OnRoomInit(int newCost, bool roomBuilded)
     {
         if (!roomBuilded)
@@ -38,6 +50,7 @@ public class UIRoomManager : MonoBehaviour
         {
             buildText.transform.parent.gameObject.SetActive(false); //set button false
             upgradeText.transform.parent.gameObject.SetActive(true); //set button true
+            gemGenText.text = "Gems per Minute\n" + player.room.gemGen;
             upgradeText.text = "Upgrade\nCost: " + newCost;
         }
     }
@@ -45,6 +58,7 @@ public class UIRoomManager : MonoBehaviour
     {
         buildText.transform.parent.gameObject.SetActive(false); //set button false
         upgradeText.transform.parent.gameObject.SetActive(true); //set button true
+        gemGenText.text = "Gems per Minute\n" + player.room.gemGen;
 
         if (newUpgradeCost == -1)
         {
@@ -64,6 +78,10 @@ public class UIRoomManager : MonoBehaviour
     }
     void OnNotEnoughGoldForUpgrade()
     {
-        //activate warning
+        buildText.color = Color.red;
+        upgradeText.color = Color.red;
+        goldText.color = Color.red;
+        StopAllCoroutines();
+        Invoke("SetOffNotEnoughGoldWarning", noGoldWarningDuration);
     }
 }

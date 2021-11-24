@@ -39,6 +39,7 @@ public class RoomManager : MonoBehaviour
         {
             player.gold -= room.GetUpgradeCost();
             room.Upgrade();
+            player.room = room.GetData();
             RoomUpdate?.Invoke(room.GetUpgradeCost());
         }
         else
@@ -54,6 +55,7 @@ public class RoomManager : MonoBehaviour
         {
             player.gold -= buildCost;
             room.Build(roomTemplate);
+            player.room = room.GetData();
             RoomUpdate.Invoke(room.GetUpgradeCost());
         }
         else
