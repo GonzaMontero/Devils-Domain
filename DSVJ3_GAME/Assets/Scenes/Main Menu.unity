@@ -7526,7 +7526,7 @@ MonoBehaviour:
     tutorialStep: 1
     characters: []
     lineup:
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -7537,7 +7537,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -7548,7 +7548,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -7559,7 +7559,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -7570,7 +7570,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
         damage: 0
         maxHealth: 0
@@ -7581,7 +7581,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
         damage: 0
         maxHealth: 0

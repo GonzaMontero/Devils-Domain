@@ -7,13 +7,11 @@ public class UIGachaPlayer : MonoBehaviour
 	[SerializeField] GachaPlayer player;
 
 
-    #region Unity Events
+    //Unity Events
     private void Start()
     {
         player.GemsChanged += OnGemsChanged;
-        OnGemsChanged();
     }
-    #endregion
 
     void OnGemsChanged()
     {

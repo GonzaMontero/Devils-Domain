@@ -44,7 +44,7 @@ public class Player : MonoBehaviourSingleton<Player>
     public int gems
     {
         get { return data.gems; }
-        set { data.gems = value; if (data.gems < 0) data.gems = 0; GemsChanged.Invoke(); }
+        set { data.gems = value; if (data.gems < 0) data.gems = 0; GemsChanged?.Invoke(); }
     }
     [SerializeField] PlayerData data;
     string playerName

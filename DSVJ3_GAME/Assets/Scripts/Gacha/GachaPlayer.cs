@@ -4,28 +4,21 @@ using UnityEngine;
 public class GachaPlayer : MonoBehaviour
 {
     public Action GemsChanged;
-    public int publicGems { get { return gems; } }
-    [SerializeField] int gems;
+    public int publicGems { get { return player.gems; } }
 	Player player;
 
-    #region Unity Events
     private void Start()
     {
         //Get Player
         player = Player.Get();
-        gems = player.gems;
+        GemsChanged?.Invoke();
     }
-    private void OnDestroy()
-    {
-        player.gems = gems;
-    }
-    #endregion
 
     public bool ReduceGems(int price)
     {
-        if (gems < price) { return false; }
-        gems -= price;
-        GemsChanged.Invoke();
+        if (player.gems < price) { return false; }
+        player.gems -= price;
+        GemsChanged?.Invoke();
         return true;
     }
 }
