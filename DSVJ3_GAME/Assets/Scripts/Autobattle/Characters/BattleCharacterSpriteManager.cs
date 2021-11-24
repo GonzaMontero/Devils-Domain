@@ -25,6 +25,8 @@ public class BattleCharacterSpriteManager : MonoBehaviour
     //Methods
     void SetSpriteAndAnimations()
     {
+        if (!controller.publicData.so) return; //if character not initialized, return
+
         if (controller.publicData.so.sprite)
         {
             GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;

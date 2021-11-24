@@ -29,6 +29,10 @@ public class BattleCharacterController : MonoBehaviour
     }
     void Update()
     {
+        if (publicData.so == null)
+        {
+            Destroy(gameObject);
+        }
         RunStateMachine();
     }
 

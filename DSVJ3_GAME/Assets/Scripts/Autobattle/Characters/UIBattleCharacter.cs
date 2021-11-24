@@ -116,7 +116,7 @@ public class UIBattleCharacter : MonoBehaviour
     }
     void OnHealthChanged()
     {
-        if (!healthBar) return;
+        if (!controller.publicData.so) return;
         Vector3 newHealthScale = healthBar.localScale;
         newHealthScale.x = controller.GetHealthPercentage();
         healthBar.localScale = newHealthScale;

@@ -27,7 +27,10 @@ public class PlayerParty : PartyManager
         {
             GameObject character = holders[i].gameObject;
             BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
-            charactersToSave.Add(characterController);
+            if (characterController.publicData != null)
+            {
+                charactersToSave.Add(characterController);
+            }
         }
         return charactersToSave;
     }
