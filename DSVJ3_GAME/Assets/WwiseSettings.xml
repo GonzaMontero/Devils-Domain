@@ -10,7 +10,7 @@
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <WwiseInstallationPathMac />
   <WwiseInstallationPathWindows>D:\Programas\Wwise\Wwise 2021.1.4.7707</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../DSVJ3_GAME_WwiseProject/DSVJ3_GAME_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseProjectPath>../../DSVJ3_GAME/DSVJ3_GAME_WwiseProject/DSVJ3_GAME_WwiseProject.wproj</WwiseProjectPath>
   <UseWaapi>true</UseWaapi>
   <WaapiPort>8080</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>

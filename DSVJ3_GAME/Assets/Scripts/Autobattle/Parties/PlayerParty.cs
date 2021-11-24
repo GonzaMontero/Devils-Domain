@@ -50,7 +50,7 @@ public class PlayerParty : PartyManager
         }
         GetCharacters();
     }
-    internal override void SetAdditionalThings()
+    internal override void PostReadyPartyForBattle()
     {
         foreach (BattleCharacterHolder holder in holders)
         {
@@ -67,17 +67,12 @@ public class PlayerParty : PartyManager
             BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
             //characters.Add(characterController);
             characterController.SetData(player.lineup[i]);
-            if (characterController.publicData.level >= 1)
-            {
                 characterController.InitCharacter();
-            }
-            else
-            {
-                characterController.InitCharacterFromZero();
-            }
         }
         //NewCharactersAdded?.Invoke();
     }
+
+    //Event Receivers
     void OnCharacterPositioned(BoxCollider2D slotCollider, BattleCharacterController character)
     {
         int tileIndex = Array.IndexOf(characterTiles, slotCollider);
@@ -93,7 +88,11 @@ public class PlayerParty : PartyManager
 
         //add character to list
         AddCharacter(character, tileIndex);
-        slotCollider.transform.tag = "SlotTaken";
+        slotCollider.tag = "SlotTaken";
+
+        //update character sorting order
+        int slotSortNumber = slotCollider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+        character.GetComponent<SpriteRenderer>().sortingOrder = slotSortNumber + 1;
     }
     void OnCharacterRemoved(BattleCharacterController character)
     {
@@ -111,5 +110,9 @@ public class PlayerParty : PartyManager
         {
             characterTiles[oldSlotIndex].tag = "Slot";
         }
+    }
+    void OnCharacterDeath(BattleCharacterController character)
+    {
+
     }
 }

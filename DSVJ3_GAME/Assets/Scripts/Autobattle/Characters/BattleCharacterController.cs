@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BattleCharacterController : MonoBehaviour
 {
@@ -15,9 +16,13 @@ public class BattleCharacterController : MonoBehaviour
     public BattleCharacterData publicData { get { return data; } }
     [SerializeField] States current;
     [SerializeField] BattleCharacterData data;
-    const float despawnTimer = 1;
-    const int defaultAttackTime = 1; //attack time in seconds, without attack speed
+    [SerializeField] float despawnTimer;
+    [SerializeField] float minAttackChargeMod;
+    [SerializeField] float maxAttackChargeMod;
+    [SerializeField] int defaultAttackTime; //attack time in seconds, without attack speed
+    float attackCooldown = 0;
 
+    //Unity Events
     private void Start()
     {
         current = States.idle;
@@ -27,32 +32,17 @@ public class BattleCharacterController : MonoBehaviour
         RunStateMachine();
     }
 
+    //Methods
     public void InitCharacter()
     {
         data.SetStartOfBattleCurrents();
         current = States.idle;
         Set?.Invoke();
     }
-    public void InitCharacterFromZero()
-    {
-        data.SetLevel1Currents();
-        data.SetStartOfBattleCurrents();
-        current = States.idle;
-        Set?.Invoke();
-    }
-    public void SetData(BattleCharacterSO so)
-    {
-        data.so = so;
-        InitCharacterFromZero();
-    }
     public void SetData(BattleCharacterData data)
     {
         this.data = data;
         InitCharacter();
-    }
-    public void OnAttackReceived(int damage)
-    {
-        ReceiveDamage(damage);
     }
     public float GetHealthPercentage()
     {
@@ -90,31 +80,31 @@ public class BattleCharacterController : MonoBehaviour
             case States.selectTarget:
                 SearchForTarget?.Invoke(this);
                 if (!target) { return; }
-                Attack += target.OnAttackReceived;
                 current++;
                 break;
             case States.attacking:
                 if (!target || !target.IsAlive())
                 {
-                    Attack -= target.OnAttackReceived;
                     current = States.idle;
                     return;
                 }
-                ChargeAttack(data.currentStats.attackSpeed * Time.deltaTime);
+                float attackCharge = (data.currentStats.attackSpeed * Time.deltaTime);
+                ChargeAttack(Random.Range(minAttackChargeMod, maxAttackChargeMod) * attackCharge);
                 break;
             case States.dead:
                 Die.Invoke(this);
+                AkSoundEngine.PostEvent("Die", gameObject);
                 Invoke("DeSpawn", despawnTimer);
                 break;
         }
     }
-    float attackCooldown = 0;
     void ChargeAttack(float attackCharge)
     {
         attackCooldown += attackCharge;
         if (attackCooldown > defaultAttackTime)
         {
             AkSoundEngine.PostEvent("Attack", gameObject);
+            target.ReceiveDamage(data.currentStats.damage);
             Attack?.Invoke(data.currentStats.damage);
             attackCooldown = 0;
         }
@@ -122,7 +112,6 @@ public class BattleCharacterController : MonoBehaviour
     void DeSpawn()
     {
         if (IsAlive()) return;
-        AkSoundEngine.PostEvent("Die", gameObject);
         gameObject.SetActive(false);
     }
     void LevelUp()

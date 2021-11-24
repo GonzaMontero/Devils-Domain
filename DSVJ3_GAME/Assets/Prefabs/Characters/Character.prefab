@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &845912962761722642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8076928020559257878}
+  m_Layer: 5
+  m_Name: Damage Texts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8076928020559257878
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845912962761722642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4955506217156245458}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2829774426849092474
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +416,7 @@ GameObject:
   - component: {fileID: 5004787969717414148}
   - component: {fileID: 8154024679617839259}
   - component: {fileID: 8803764220502072335}
-  - component: {fileID: 3754934517412020197}
+  - component: {fileID: 6085384551429086137}
   - component: {fileID: 4028989915697434103}
   - component: {fileID: 3927954836641333715}
   - component: {fileID: 7144394666335340997}
@@ -485,7 +520,11 @@ MonoBehaviour:
     currentXpToLevelUp: 0
     level: 0
     merge: 0
---- !u!114 &3754934517412020197
+  despawnTimer: 2
+  minAttackChargeMod: 0
+  maxAttackChargeMod: 5
+  defaultAttackTime: 1
+--- !u!114 &6085384551429086137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -494,16 +533,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4804374048576133144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce8fc807bda7c5b408ea8c578a2b1836, type: 3}
+  m_Script: {fileID: 11500000, guid: d23e7db521d718f4ab1f57d53adcdbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 8803764220502072335}
-  damageTextPrefab: {fileID: 6402686976368950304, guid: 04d9158fa0fb27444b375bbea7326b6f,
-    type: 3}
-  canvas: {fileID: 4955506217156245458}
-  healthBar: {fileID: 6305374785248402995}
-  healthText: {fileID: 1126222648538537768}
-  levelText: {fileID: 2413510801035675824}
 --- !u!95 &4028989915697434103
 Animator:
   serializedVersion: 3
@@ -606,6 +639,7 @@ GameObject:
   - component: {fileID: 6726195615351318477}
   - component: {fileID: 1806321665427229675}
   - component: {fileID: 2152551978283616935}
+  - component: {fileID: 2918061987100537975}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -626,6 +660,7 @@ RectTransform:
   m_Children:
   - {fileID: 5268725980820344727}
   - {fileID: 2219724327010049745}
+  - {fileID: 8076928020559257878}
   m_Father: {fileID: 5004787969717414148}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -694,6 +729,29 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2918061987100537975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7319032583739268750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8fc807bda7c5b408ea8c578a2b1836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 8803764220502072335}
+  damageTextPrefab: {fileID: 6402686976368950304, guid: 04d9158fa0fb27444b375bbea7326b6f,
+    type: 3}
+  healthBar: {fileID: 6305374785248402995}
+  damageTextEmpty: {fileID: 8076928020559257878}
+  healthText: {fileID: 1126222648538537768}
+  levelText: {fileID: 2413510801035675824}
+  damageTextQuantity: 50
+  damageTextSpeed: 5
+  damageTextDuration: 2
+  damageXRange: 2
 --- !u!1 &7773030781509195178
 GameObject:
   m_ObjectHideFlags: 0

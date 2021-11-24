@@ -10,7 +10,7 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     internal Dictionary<int, BattleCharacterController> characterInTile;
     internal Dictionary<BattleCharacterController, int> tileOfCharacter;
     internal bool readyToBattle = false;
-    PartyManager enemyManager;
+    PartyManager oponentManager;
 
     //Unity Events
     internal void Awake()
@@ -51,7 +51,7 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     }
     public void SetEnemyManager(PartyManager newEnemyManager)
     {
-        enemyManager = newEnemyManager;
+        oponentManager = newEnemyManager;
     }
     public virtual void ResetParty() { }
     public void ReadyPartyForBattle()
@@ -62,12 +62,12 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
         }
         SortCharacters();
         SetStartOfBattleStats();
-        SetAdditionalThings();
+        PostReadyPartyForBattle();
 
 
         readyToBattle = true;
     }
-    internal virtual void SetAdditionalThings() { }
+    internal virtual void PostReadyPartyForBattle() { }
     internal void AddCharacter(BattleCharacterController character, int tileIndex)
     {
         characters.Add(character);
@@ -112,24 +112,17 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     {
         foreach (var character in characters)
         {
-            if (character.publicData.level >= 1)
-            {
-                character.InitCharacter();
-            }
-            else
-            {
-                character.InitCharacterFromZero();
-            }
+            character.InitCharacter();
         }
     }
     void LinkCharacterActions(BattleCharacterController character)
     {
-        character.SearchForTarget += enemyManager.GetAttackReceiver;
+        character.SearchForTarget += oponentManager.GetAttackReceiver;
         character.Die += OnCharacterDeath;
     }
     void UnlinkCharacterActions(BattleCharacterController character)
     {
-        character.SearchForTarget -= enemyManager.GetAttackReceiver;
+        character.SearchForTarget -= oponentManager.GetAttackReceiver;
         character.Die -= OnCharacterDeath;
     }
     void SetCharacterInTile(int tileIndex, BattleCharacterController character)
