@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 0b1b8540dace2204b96592dbe56dfdd3, type: 3}
   gachaSprite: {fileID: 21300000, guid: 47727d13d033fd847a9b3540f6e55a2e, type: 3}
+  gachaLVLUpSprite: {fileID: 21300000, guid: a260a5eb998b8de43ae6dd152a96e185, type: 3}
   lineupFaceSprite: {fileID: 21300000, guid: 881888ac3f778a04090f1345f9f7cb29, type: 3}
   animatorOverride: {fileID: 22100000, guid: bd46079787aed444aae93dea3e064a2d, type: 2}
   baseStats:

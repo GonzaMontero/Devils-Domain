@@ -9,6 +9,7 @@ public class BattleCharacterSO : ScriptableObject
     [Header("Meta Variables")]
     public Sprite sprite;
     public Sprite gachaSprite;
+    public Sprite gachaLVLUpSprite;
     public Sprite lineupFaceSprite;
     public AnimatorOverrideController animatorOverride;
 
