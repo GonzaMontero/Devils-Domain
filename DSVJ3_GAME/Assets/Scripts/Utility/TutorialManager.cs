@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -35,6 +34,8 @@ public class TutorialManager : MonoBehaviour
     //Event Receiver
     public void OnStepUsed(int stepNumber)
     {
+        if (stepNumber != player.tutorialStep) return;
+
         currentStep++;
         LoadNextStep();
     }
