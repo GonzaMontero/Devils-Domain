@@ -3134,7 +3134,7 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+    - so: {fileID: 0}
       currentStats:
         damage: 2
         maxHealth: 250
@@ -3145,10 +3145,10 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
-        damage: 15
-        maxHealth: 50
+        damage: 2
+        maxHealth: 250
         attackSpeed: 1
         armor: 0
       health: 0
@@ -3156,10 +3156,10 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
-        damage: 15
-        maxHealth: 50
+        damage: 2
+        maxHealth: 250
         attackSpeed: 1
         armor: 0
       health: 0
@@ -3167,10 +3167,10 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
+    - so: {fileID: 0}
       currentStats:
-        damage: 15
-        maxHealth: 50
+        damage: 2
+        maxHealth: 250
         attackSpeed: 1
         armor: 0
       health: 0
@@ -3178,10 +3178,10 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
+    - so: {fileID: 0}
       currentStats:
-        damage: 4
-        maxHealth: 100
+        damage: 2
+        maxHealth: 250
         attackSpeed: 1
         armor: 0
       health: 0
@@ -3190,7 +3190,11 @@ MonoBehaviour:
       level: 1
       merge: 1
     level: 0
-    rooms: []
+    room:
+      so: {fileID: 0}
+      gemGen: 0
+      upgradeLvl: 0
+      positionCostModifier: 1
 --- !u!4 &1495553235
 Transform:
   m_ObjectHideFlags: 0
@@ -3233,6 +3237,10 @@ MonoBehaviour:
   player: {fileID: 1495553234}
   setLevel1Character: 0
   level1CharacterLineupIndex: 5
+  addGold: 0
+  addGoldQuantity: 0
+  addGems: 0
+  addGemsQuantity: 0
 --- !u!1 &1544676437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,6 +3415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerCharacter 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041086488962479164, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
+        type: 3}
+      propertyPath: m_listeners.initialListenerList.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8547568743633510902, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
         type: 3}
@@ -3733,7 +3746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1696246032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3748,10 +3761,10 @@ RectTransform:
   m_Father: {fileID: 558978736}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: 11}
-  m_SizeDelta: {x: 1113.4282, y: 559.5362}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -2.600006, y: -0.7400055}
+  m_SizeDelta: {x: 10.234924, y: 10.1814575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696246033
 MonoBehaviour:
@@ -4833,7 +4846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2085284964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4885,10 +4898,10 @@ RectTransform:
   m_Father: {fileID: 558978736}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: 11}
-  m_SizeDelta: {x: 1113.4282, y: 559.5362}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -2.600006, y: -0.7400055}
+  m_SizeDelta: {x: 10.234924, y: 10.1814575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2094771420
 GameObject:
