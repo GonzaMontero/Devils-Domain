@@ -1361,6 +1361,7 @@ MonoBehaviour:
   defeatImage: {fileID: 1696246031}
   playButtonImage: {fileID: 657806280}
   playButton: {fileID: 657806279}
+  noCharactersWarningDuration: 1
 --- !u!114 &558978738
 MonoBehaviour:
   m_ObjectHideFlags: 0

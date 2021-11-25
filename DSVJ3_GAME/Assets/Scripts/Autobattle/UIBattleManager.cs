@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class UIBattleManager : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class UIBattleManager : MonoBehaviour
 	[SerializeField] GameObject defeatImage;
     [SerializeField] Image playButtonImage;
 	[SerializeField] Button playButton;
+    [SerializeField] float noCharactersWarningDuration;
 
+    //Unity Events
     private void Start()
     {
         battleManager.PlayerPartyWon += OnVictory;
@@ -20,9 +23,18 @@ public class UIBattleManager : MonoBehaviour
         GameManager gameManager = GameManager.Get();
     }
 
+    //Methods
     public void StartGame()
     {
-		playButton.enabled = false;
+        if(!battleManager.ReadyForBattle())
+        {
+            playButtonImage.color = Color.red;
+            StopAllCoroutines();
+            StartCoroutine(ResetButtonColor(playButtonImage));
+            return;
+        }
+
+        playButton.enabled = false;
 		playButtonImage.color = Color.gray;
         battleManager.StartGame();
     }
@@ -40,7 +52,20 @@ public class UIBattleManager : MonoBehaviour
         playButton.enabled = true;
         playButtonImage.color = Color.white;
     }
+    IEnumerator ResetButtonColor(Image buttonImage)
+    {
+        float timer = 0;
+        while (timer < noCharactersWarningDuration)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
+        buttonImage.color = Color.white;
+        yield break;
+    }
 
+    //Event Receivers
     void OnDefeat()
     {
         resetButtonText.text = "Try Again!";

@@ -41,6 +41,10 @@ public class BattleManager : MonoBehaviour
         playerParty.ResetParty();
         levelM.ResetLevel();
     }
+    public bool ReadyForBattle()
+    {
+        return playerParty.characters.Count > 0 && enemyParty.characters.Count > 0;
+    }
     void CalculateRewards()
     {
         battleXP = enemyParty.GetPartyXPValue();   
