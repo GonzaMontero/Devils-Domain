@@ -3337,8 +3337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 39.38, y: -6.9700003}
-  m_SizeDelta: {x: 89.20248, y: 18.00088}
+  m_AnchoredPosition: {x: 43.16, y: -6.9700003}
+  m_SizeDelta: {x: 81.64544, y: 18.00088}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035159707
 MonoBehaviour:
@@ -5909,6 +5909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldText: {fileID: 1797138467}
   gemsText: {fileID: 1244450811}
+  nameText: {fileID: 382366828}
 --- !u!114 &1616902520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5926,7 +5927,6 @@ MonoBehaviour:
   - {fileID: 1964601917}
   - {fileID: 8857898420075848559}
   - {fileID: 1705758953}
-  currentStep: 0
 --- !u!1001 &1647257694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7593,7 +7593,11 @@ MonoBehaviour:
       level: 0
       merge: 0
     level: 0
-    rooms: []
+    room:
+      so: {fileID: 0}
+      gemGen: 0
+      upgradeLvl: 0
+      positionCostModifier: 1
 --- !u!114 &2040054887
 MonoBehaviour:
   m_ObjectHideFlags: 0

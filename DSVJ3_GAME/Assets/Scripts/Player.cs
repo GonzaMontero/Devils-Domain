@@ -46,12 +46,13 @@ public class Player : MonoBehaviourSingleton<Player>
         get { return data.gems; }
         set { data.gems = value; if (data.gems < 0) data.gems = 0; GemsChanged?.Invoke(); }
     }
-    [SerializeField] PlayerData data;
-    string playerName
+    public string playerName
     {
         get { return data.name; }
-        set { data.name = value; }
+        private set { data.name = value; }
     }
+    [SerializeField] PlayerData data;
+    
 
     //Unity Events
     private void Start()
