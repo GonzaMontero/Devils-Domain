@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> steps;
-    [SerializeField] int currentStep;
     Player player;
 
     //Unity Events
@@ -12,31 +11,28 @@ public class TutorialManager : MonoBehaviour
     {
         //Get Player and load data
         player = Player.Get();
-        currentStep = player.tutorialStep;
 
         //Activate current step
-        steps[currentStep - 1].SetActive(true);
-    }
-    private void OnDestroy()
-    {
-        player.tutorialStep = currentStep;
+        if (player.tutorialStep >= steps.Count) return; //if final step, return
+        steps[player.tutorialStep - 1].SetActive(true);
     }
 
     //Methods
     void LoadNextStep()
     {
-        if (!steps[currentStep - 1].activeSelf) { return; }
+        if (!steps[player.tutorialStep - 1].activeSelf) { return; }
 
-        steps[currentStep - 1].SetActive(false); //Deactivate current step
-        steps[currentStep]?.SetActive(true); //Activate next step if existant
+        steps[player.tutorialStep - 1].SetActive(false); //Deactivate current step
+        steps[player.tutorialStep]?.SetActive(true); //Activate next step if existant
     }
 
     //Event Receiver
     public void OnStepUsed(int stepNumber)
     {
-        if (stepNumber != player.tutorialStep) return;
+        if (stepNumber >= steps.Count) return; //if final step, return
+        if (stepNumber != player.tutorialStep) return; //if not current step, return
 
-        currentStep++;
+        player.tutorialStep = stepNumber+1;
         LoadNextStep();
     }
 }
