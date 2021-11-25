@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class BattleCharacterController : MonoBehaviour
 {
-    [Serializable] enum States { idle, selectTarget, attacking, dead };
+    [Serializable] enum States { idle, selectTarget, attacking, dying, dead };
 
     public Action<BattleCharacterController> Die;
     public Action<BattleCharacterController> SearchForTarget;
@@ -63,7 +63,7 @@ public class BattleCharacterController : MonoBehaviour
         DamageReceived.Invoke(actualDamage);
         if (data.health <= 0)
         {
-            current = States.dead;
+            current = States.dying;
         }
     }
     public void ReceiveXP(int xp)
@@ -95,10 +95,13 @@ public class BattleCharacterController : MonoBehaviour
                 float attackCharge = (data.currentStats.attackSpeed * Time.deltaTime);
                 ChargeAttack(Random.Range(minAttackChargeMod, maxAttackChargeMod) * attackCharge);
                 break;
-            case States.dead:
+            case States.dying:
                 Die.Invoke(this);
-                AkSoundEngine.PostEvent("Die", gameObject);
+                //AkSoundEngine.PostEvent("Die", gameObject);
                 Invoke("DeSpawn", despawnTimer);
+                current = States.dead;
+                break;
+            case States.dead:
                 break;
         }
     }
