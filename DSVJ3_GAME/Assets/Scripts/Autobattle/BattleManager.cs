@@ -28,10 +28,6 @@ public class BattleManager : MonoBehaviour
         //Calculate battle rewards
         CalculateRewards();
     }
-    private void OnDestroy()
-    {
-        SaveAllies();
-    }
 
     //Methods
     public void StartGame()
@@ -59,12 +55,20 @@ public class BattleManager : MonoBehaviour
     {
         if (playerParty.characters.Count < 1) return;
         
-        List<BattleCharacterData> charactersToSave = new List<BattleCharacterData>();
-        foreach (var character in playerParty.GetParty())
+        //Init lists
+        BattleCharacterData[] charactersToSave = new BattleCharacterData[6];
+        List<BattleCharacterController> characters = playerParty.GetParty();
+        
+        //get datas
+        for (int i = 0; i < charactersToSave.Length; i++)
         {
-            charactersToSave.Add(character.publicData);
+            if (characters.Count <= i) break; //if i is bigger than list, break loop
+            if (!characters[i]) continue; //if there is no character, skip iteration
+
+            charactersToSave[i] = characters[i].publicData; //save character data
         }
-        player.lineup = charactersToSave.ToArray();
+
+        player.lineup = charactersToSave;
     }
 
     //Event Receivers

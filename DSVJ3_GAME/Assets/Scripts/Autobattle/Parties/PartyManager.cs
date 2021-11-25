@@ -11,6 +11,8 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     internal Dictionary<BattleCharacterController, int> tileOfCharacter;
     internal bool readyToBattle = false;
     PartyManager oponentManager;
+    const float partyXPValueMod = 2;
+    const float partyGoldValueMod = 0.75f;
 
     //Unity Events
     internal void Awake()
@@ -31,7 +33,7 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
         {
             battleXP += character.publicData.so.baseXpToLevelUp;
         }
-        return battleXP;
+        return (int)(battleXP * partyXPValueMod);
     }
     public int GetPartyGoldValue()
     {
@@ -40,13 +42,13 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
         {
             battleXP += character.publicData.so.baseXpToLevelUp;
         }
-        return battleXP / 2; //battle gold = battle xp/2
+        return (int)(battleXP * partyGoldValueMod); //battle gold = battle xp/modifier
     }
     public void GiveXPToParty(int xpForEachCharacter)
     {
         foreach (var character in characters)
         {
-            character.ReceiveXP(xpForEachCharacter);
+            character.ReceiveXP(xpForEachCharacter / characters.Count);
         }
     }
     public void SetEnemyManager(PartyManager newEnemyManager)

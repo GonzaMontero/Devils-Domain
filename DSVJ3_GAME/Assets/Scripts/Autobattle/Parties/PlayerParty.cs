@@ -25,6 +25,9 @@ public class PlayerParty : PartyManager
         Player player = Player.Get();
         for (int i = 0; i < player.lineup.Length; i++)
         {
+            if (holders.Count <= i) break; //if i is bigger than list, break loop
+            if (!holders[i]) continue; //if there is no holder, skip iteration
+            
             GameObject character = holders[i].gameObject;
             BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
             if (characterController.publicData != null)
@@ -55,9 +58,20 @@ public class PlayerParty : PartyManager
     }
     internal override void PostReadyPartyForBattle()
     {
-        foreach (BattleCharacterHolder holder in holders)
+        for (int i = 0; i < holders.Count; i++)
         {
-            holder.enabled = false;
+            if (holders[i]) //if there is holder
+            {                
+                holders[i].enabled = false; //disable holder
+                continue; //skip iteration
+            }
+
+            //Remove null holders
+            do
+            {
+                holders.RemoveAt(i);
+                if (i >= holders.Count) break; //if i is equal or bigger than list size, end while
+            } while (!holders[i]);
         }
     }
     void GetCharacters()
@@ -66,13 +80,14 @@ public class PlayerParty : PartyManager
 
         for (int i = 0; i < player.lineup.Length; i++)
         {
+            if (holders.Count <= i) break; //if i is bigger than list, break loop
+            if (!holders[i]) continue; //if there is no holder, skip iteration
+
             GameObject character = holders[i].gameObject;
             BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
-            //characters.Add(characterController);
             characterController.SetData(player.lineup[i]);
-                characterController.InitCharacter();
+            characterController.InitCharacter();
         }
-        //NewCharactersAdded?.Invoke();
     }
 
     //Event Receivers
@@ -113,9 +128,5 @@ public class PlayerParty : PartyManager
         {
             characterTiles[oldSlotIndex].tag = "Slot";
         }
-    }
-    void OnCharacterDeath(BattleCharacterController character)
-    {
-
     }
 }
