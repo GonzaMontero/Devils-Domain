@@ -21,11 +21,15 @@ public class BattleCharacterHolder : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (!this.isActiveAndEnabled) return;
+
         newPosition = transform.position; //newPosition equal original position
         Debug.Log("Saved Original Pos!");
     }
     private void OnMouseDrag()
     {
+        if (!this.isActiveAndEnabled) return;
+
         //Adapt mousePos to worldSpace
         Vector3 screenMouseAux = new Vector3();
         screenMouseAux.x = Input.mousePosition.x;
@@ -38,6 +42,8 @@ public class BattleCharacterHolder : MonoBehaviour
     }
     private void OnMouseUp()
     {
+        if (!this.isActiveAndEnabled) return;
+
         GetSlotPos(); //check if there is a slot under character and return slotPos, if not, leave ogPos
         transform.position = newPosition;
         //transform.localPosition = (Vector2)transform.localPosition; //set local Z to 0

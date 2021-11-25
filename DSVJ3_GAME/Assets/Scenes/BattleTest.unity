@@ -3134,10 +3134,10 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
       currentStats:
-        damage: 2
-        maxHealth: 250
+        damage: 15
+        maxHealth: 50
         attackSpeed: 1
         armor: 0
       health: 0
@@ -3147,15 +3147,15 @@ MonoBehaviour:
       merge: 1
     - so: {fileID: 0}
       currentStats:
-        damage: 2
-        maxHealth: 250
-        attackSpeed: 1
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
         armor: 0
       health: 0
       currentXP: 0
-      currentXpToLevelUp: 10
-      level: 1
-      merge: 1
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
     - so: {fileID: 0}
       currentStats:
         damage: 2
@@ -3236,7 +3236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1495553234}
   setLevel1Character: 0
-  level1CharacterLineupIndex: 5
+  level1CharacterLineupIndex: 1
   addGold: 0
   addGoldQuantity: 0
   addGems: 0
@@ -3746,7 +3746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1696246032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4846,7 +4846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2085284964
 MonoBehaviour:
   m_ObjectHideFlags: 0
