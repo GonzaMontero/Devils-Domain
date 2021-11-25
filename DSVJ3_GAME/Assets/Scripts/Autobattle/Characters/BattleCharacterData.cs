@@ -9,6 +9,14 @@ public class BattleCharacterData
     public int level;
     public int merge;
 
+    //Level up values
+    const float meleeMaxHealthMod = 1;
+    const float meleeArmor = 0.25f;
+    const float rangedMaxHealthMod = 1/5;
+    const float rangedDamageMod = 0.5f;
+    const float assassinDamageMod = 1/20;
+    const float assassinSpeedMod = 1/5;
+
     public BattleCharacterData(BattleCharacterSO newSO, int level)
     {
         so = newSO;
@@ -26,13 +34,13 @@ public class BattleCharacterData
     }
     public void SetLevel1Currents()
     {
-        if (!so)
-            return;
+        if (!so) return; //If there is no so (no character template), return
+
         currentStats = so.baseStats;
         currentXP = 0;
         currentXpToLevelUp = so.baseXpToLevelUp;
-        if (level < 1)      level = 1;
-        if (merge < 1)      merge = 1;
+        if (level < 1) level = 1;
+        if (merge < 1) merge = 1;
     }
     public void SetStartOfBattleCurrents()
     {
@@ -43,16 +51,16 @@ public class BattleCharacterData
         switch (so.attackType)
         {
             case AttackType.melee:
-                currentStats.maxHealth += so.baseXpToLevelUp;
-                currentStats.armor += 0.25f;
-                break;
-            case AttackType.assasin:
-                currentStats.attackSpeed += so.baseXpToLevelUp / 20;
-                currentStats.damage += so.baseXpToLevelUp / 5;
+                currentStats.maxHealth += (int)(so.baseXpToLevelUp * meleeMaxHealthMod);
+                currentStats.armor += (int)meleeArmor;
                 break;
             case AttackType.ranged:
-                currentStats.damage += so.baseXpToLevelUp / 2;
-                currentStats.maxHealth += so.baseXpToLevelUp / 5;
+                currentStats.maxHealth += (int)(so.baseXpToLevelUp * rangedMaxHealthMod);
+                currentStats.damage += (int)(so.baseXpToLevelUp * rangedDamageMod);
+                break;
+            case AttackType.assasin:
+                currentStats.attackSpeed += (int)(so.baseXpToLevelUp * assassinSpeedMod);
+                currentStats.damage += (int)(so.baseXpToLevelUp * assassinDamageMod);
                 break;
             default:
                 break;

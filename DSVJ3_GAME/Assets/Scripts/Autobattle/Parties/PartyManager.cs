@@ -11,8 +11,8 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     internal Dictionary<BattleCharacterController, int> tileOfCharacter;
     internal bool readyToBattle = false;
     PartyManager oponentManager;
-    const float partyXPValueMod = 2;
-    const float partyGoldValueMod = 0.75f;
+    const float partyXPValueMod = 1;
+    const float partyGoldValueMod = 0.5f;
 
     //Unity Events
     internal void Awake()
