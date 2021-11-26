@@ -97,7 +97,6 @@ public class BattleCharacterController : MonoBehaviour
                 break;
             case States.dying:
                 Die.Invoke(this);
-                //AkSoundEngine.PostEvent("Die", gameObject);
                 Invoke("DeSpawn", despawnTimer);
                 current = States.dead;
                 break;
@@ -110,10 +109,9 @@ public class BattleCharacterController : MonoBehaviour
         attackCooldown += attackCharge;
         if (attackCooldown > defaultAttackTime)
         {
-            AkSoundEngine.PostEvent("Attack", gameObject);
-            target.ReceiveDamage(data.currentStats.damage);
-            Attack?.Invoke(data.currentStats.damage);
-            attackCooldown = 0;
+            target.ReceiveDamage(data.currentStats.damage); //damage enemy
+            Attack?.Invoke(data.currentStats.damage); //invoke attack action
+            attackCooldown = 0; //reset timer
         }
     }
     void DeSpawn()

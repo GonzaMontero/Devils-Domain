@@ -12,6 +12,7 @@ public class BattleCharacterSO : ScriptableObject
     public Sprite gachaLVLUpSprite;
     public Sprite lineupFaceSprite;
     public AnimatorOverrideController animatorOverride;
+    public bool isMale;
 
     [Header("In-game Variables")]
     public Stats baseStats;

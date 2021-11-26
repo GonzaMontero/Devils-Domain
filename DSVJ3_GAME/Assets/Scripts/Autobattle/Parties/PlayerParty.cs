@@ -82,6 +82,11 @@ public class PlayerParty : PartyManager
         {
             if (holders.Count <= i) break; //if i is bigger than list, break loop
             if (!holders[i]) continue; //if there is no holder, skip iteration
+            if (!player.lineup[i].so) //if there is no data, destroy character and skip iteration
+            {
+                Destroy(holders[i].gameObject);
+                continue; 
+            }
 
             GameObject character = holders[i].gameObject;
             BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
