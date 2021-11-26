@@ -58,6 +58,7 @@ public class UIBattleManager : MonoBehaviour
         defeatScreen.SetActive(false);
 
         //Enable Start UI
+        exitButton.SetActive(true);
         playButton.enabled = true;
         playButtonImage.color = Color.white;
 	    playButton.gameObject.SetActive(true);
