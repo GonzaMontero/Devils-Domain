@@ -2182,6 +2182,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1baa1e2e1d9fa945b65c005f7be3b5e, type: 2}
   - {fileID: 11400000, guid: dd8017bbe267e4449a6cfd313aebc9c9, type: 2}
   - {fileID: 11400000, guid: b6597ae6277c7fa43b1c482b277fcd42, type: 2}
+  - {fileID: 11400000, guid: e6d54af93f387d44786dae1bbecf6e1f, type: 2}
+  - {fileID: 11400000, guid: 2d2127f4633b0794d8917e8c6e63bc60, type: 2}
+  - {fileID: 11400000, guid: d58b4cf230317b74494f6f32764a82ae, type: 2}
+  - {fileID: 11400000, guid: 18cbfd525e5013946905475b3e8b6ee8, type: 2}
   enemyP: {fileID: 2026957188}
   playerP: {fileID: 162186393}
 --- !u!1 &840878673
@@ -3344,7 +3348,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    level: 1
+    level: 0
     room:
       so: {fileID: 0}
       gemGen: 0
@@ -3396,6 +3400,7 @@ MonoBehaviour:
   addGoldQuantity: 0
   addGems: 0
   addGemsQuantity: 0
+  deleteData: 0
 --- !u!1 &1544676437
 GameObject:
   m_ObjectHideFlags: 0

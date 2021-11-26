@@ -6,20 +6,25 @@ public class CHEATS : MonoBehaviour
 
     #region Editor Things
 #if UNITY_EDITOR//||true
-    
-    //Character Set Level 1
+
+    [Header("Character Set Level 1")]
     [Tooltip("Press this to set the character in the lineup index to level 1")]
     [SerializeField] bool setLevel1Character = false;
     [SerializeField] int level1CharacterLineupIndex;
 
-    //Add Gold
+    [Header("Add Gold")]    
     [Tooltip("Press this to add as much gold as indicated")]
     [SerializeField] bool addGold = false;
     [SerializeField] int addGoldQuantity;
 
+    [Header("Add Gems")]
     [Tooltip("Press this to add as much gems as indicated")]
     [SerializeField] bool addGems = false;
     [SerializeField] int addGemsQuantity;
+
+    [Header("Delete Player Data")]
+    [Tooltip("Press this to delete player data - WARNING, DATA IS LOST FOREVER")]
+    [SerializeField] bool deleteData = false;
 
     //Unity Events
     private void OnValidate() //You can have multiple booleans here
@@ -57,6 +62,18 @@ public class CHEATS : MonoBehaviour
             //When its done set this bool to false
             //This is useful if you want to do some stuff only when clicking this "button"
             addGems = false;
+            return;
+        }
+
+        //DELETE PLAYER DATA
+        if (deleteData)
+        {
+            // Your function here
+            player.DeleteData();
+
+            //When its done set this bool to false
+            //This is useful if you want to do some stuff only when clicking this "button"
+            deleteData = false;
             return;
         }
     }

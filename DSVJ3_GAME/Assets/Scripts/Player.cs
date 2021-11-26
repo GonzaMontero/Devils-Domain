@@ -76,6 +76,10 @@ public class Player : MonoBehaviourSingleton<Player>
         dataJSON = FileManager<string>.LoadDataFromFile(Application.persistentDataPath + " data.bin");
         JsonUtility.FromJsonOverwrite(dataJSON, data);
     }
+    public void DeleteData()
+    {
+        FileManager<string>.DeleteFile(Application.persistentDataPath + " data.bin");
+    }
     public void SaveLogInDate()
     {
         data.roomLogInTime = DateTime.Now;
