@@ -9,6 +9,7 @@ public class UIBattleManager : MonoBehaviour
 	[SerializeField] GameObject victoryScreen;
 	[SerializeField] GameObject defeatScreen;
 	[SerializeField] GameObject exitButton;
+	[SerializeField] GameObject pauseButton;
     [SerializeField] Image playButtonImage;
 	[SerializeField] Button playButton;
     [SerializeField] float noCharactersWarningDuration;
@@ -59,9 +60,16 @@ public class UIBattleManager : MonoBehaviour
 
         //Enable Start UI
         exitButton.SetActive(true);
+        pauseButton.SetActive(true);
         playButton.enabled = true;
         playButtonImage.color = Color.white;
 	    playButton.gameObject.SetActive(true);
+    }
+    void RemoveGameplayUI()
+    {
+        playButton.gameObject.SetActive(false);
+        exitButton.SetActive(false);
+        pauseButton.SetActive(false);
     }
     IEnumerator ResetButtonColor(Image buttonImage)
     {
@@ -79,15 +87,15 @@ public class UIBattleManager : MonoBehaviour
     //Event Receivers
     void OnDefeat()
     {
-	    playButton.gameObject.SetActive(false);
-        exitButton.SetActive(false);
+        RemoveGameplayUI();
+
         victoryScreen.SetActive(false);
         defeatScreen.SetActive(true);
     }
     void OnVictory()
     {
-	    playButton.gameObject.SetActive(false);
-        exitButton.SetActive(false);
+        RemoveGameplayUI();
+
         victoryScreen.SetActive(true);
         defeatScreen.SetActive(false);
     }
