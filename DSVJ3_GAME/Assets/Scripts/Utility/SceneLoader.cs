@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public static class SceneLoader
 {
-    public enum Scenes { menu, credits, autobattle, idle, gacha, lineup }
+    public enum Scenes { menu, credits, autobattle, idle, gacha, lineup, settings }
     public static Scenes GetCurrentScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -45,12 +45,11 @@ public static class SceneLoader
             case Scenes.lineup:
         SceneManager.LoadScene("Lineup");
                 break;
+            case Scenes.settings:
+                SceneManager.LoadScene("Settings");
+                break;
             default:
                 break;
         }
     }
-    //public static void LoadSettings()
-    //{
-    //    SceneManager.LoadScene("BattleTest");
-    //}
 }

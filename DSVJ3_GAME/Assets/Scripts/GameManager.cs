@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] Player player;
     SceneLoader.Scenes currentScene;
 
-    #region Unity Events
+    //Unity Events
     private void Start()
     {
         player = Player.Get();
@@ -33,12 +33,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             case SceneLoader.Scenes.lineup:
                 AkSoundEngine.PostEvent("MenuMusic", gameObject);
                 break;
+            case SceneLoader.Scenes.settings:
+                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                break;
             default:
                 break;
         }
     }
-    #endregion
 
+    //Methods
     public void LoadMenu()
     {
         switch (currentScene)
@@ -88,6 +91,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public void LoadCredits()
     {
         currentScene = SceneLoader.Scenes.credits;
+        SceneLoader.LoadScene(currentScene);
+    }
+    public void LoadSettings()
+    {
+        currentScene = SceneLoader.Scenes.settings;
         SceneLoader.LoadScene(currentScene);
     }
     public void QuitGame()
