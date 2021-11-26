@@ -50,9 +50,12 @@ public class PlayerParty : PartyManager
         //Get New one
         foreach (BattleCharacterHolder holder in holders)
         {
-            holder.enabled = true;
-            holder.ResetPosition();
-            holder.gameObject.SetActive(true);
+            if (holder != null)
+            {
+                holder.enabled = true;
+                holder.ResetPosition();
+                holder.gameObject.SetActive(true);
+            }
         }
         GetCharacters();
     }
