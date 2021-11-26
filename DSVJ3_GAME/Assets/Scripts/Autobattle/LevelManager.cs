@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
-[Serializable]
-public class EnemyHolder
+[CreateAssetMenu(fileName = "LevelSO", menuName = "Level Scriptable Object")]
+public class EnemyHolder : ScriptableObject
 {
     [Serializable]
     public struct EnemyInLevel

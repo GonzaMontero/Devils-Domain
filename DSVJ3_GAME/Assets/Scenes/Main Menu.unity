@@ -7456,9 +7456,9 @@ MonoBehaviour:
     tutorialStep: 1
     characters: []
     lineup:
-    - so: {fileID: 11400000, guid: 1e1fdeb973bc42148adf9a4075969558, type: 2}
+    - so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
       currentStats:
-        damage: 3
+        damage: 4
         maxHealth: 80
         attackSpeed: 1
         armor: 0
@@ -7478,10 +7478,10 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
+    - so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
       currentStats:
         damage: 2
-        maxHealth: 250
+        maxHealth: 200
         attackSpeed: 1
         armor: 0
       health: 0
@@ -7555,7 +7555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2040054886}
   setLevel1Character: 0
-  level1CharacterLineupIndex: 0
+  level1CharacterLineupIndex: 3
   addGold: 0
   addGoldQuantity: 0
   addGems: 0

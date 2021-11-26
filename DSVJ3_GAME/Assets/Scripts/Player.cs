@@ -57,11 +57,11 @@ public class Player : MonoBehaviourSingleton<Player>
     //Unity Events
     private void Start()
     {
-        //RecieveData();
+        RecieveData();
     }
     private void OnDestroy()
     {
-        //SaveData();
+        SaveData();
     }
 
     //Methods

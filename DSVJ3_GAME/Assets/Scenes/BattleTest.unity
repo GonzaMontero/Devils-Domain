@@ -1612,7 +1612,7 @@ GameObject:
   - component: {fileID: 835836693}
   m_Layer: 9
   m_Name: Slot (9)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1859,285 +1859,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - enemies:
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 1
-        merge: 0
-      positionInLevel: 0
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 1
-        merge: 0
-      positionInLevel: 1
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 1
-        merge: 0
-      positionInLevel: 2
-  - enemies:
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 2
-        merge: 0
-      positionInLevel: 0
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 2
-        merge: 0
-      positionInLevel: 1
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 2
-        merge: 0
-      positionInLevel: 2
-    - enemy:
-        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 2
-        merge: 0
-      positionInLevel: 4
-  - enemies:
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 3
-        merge: 0
-      positionInLevel: 0
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 3
-        merge: 0
-      positionInLevel: 1
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 3
-        merge: 0
-      positionInLevel: 2
-    - enemy:
-        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 3
-        merge: 0
-      positionInLevel: 3
-    - enemy:
-        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 3
-        merge: 0
-      positionInLevel: 5
-  - enemies:
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 4
-        merge: 0
-      positionInLevel: 0
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 4
-        merge: 0
-      positionInLevel: 1
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 4
-        merge: 0
-      positionInLevel: 2
-    - enemy:
-        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 3
-        merge: 0
-      positionInLevel: 3
-    - enemy:
-        so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 3
-        merge: 0
-      positionInLevel: 4
-    - enemy:
-        so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 4
-        merge: 0
-      positionInLevel: 5
-  - enemies:
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 6
-        merge: 0
-      positionInLevel: 0
-    - enemy:
-        so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 6
-        merge: 0
-      positionInLevel: 2
-    - enemy:
-        so: {fileID: 11400000, guid: 28ea1a88893f09a45957fdb6d853f0b0, type: 2}
-        currentStats:
-          damage: 0
-          maxHealth: 0
-          attackSpeed: 0
-          armor: 0
-        health: 0
-        currentXP: 0
-        currentXpToLevelUp: 0
-        level: 7
-        merge: 0
-      positionInLevel: 4
+  - {fileID: 11400000, guid: fcc6481922b9d154f8b93afa8ccf0d96, type: 2}
+  - {fileID: 11400000, guid: 857d00e1bfd3ab14ca4836bb574fe684, type: 2}
+  - {fileID: 11400000, guid: 2447b7e663505a6498b91a0bc28161d1, type: 2}
+  - {fileID: 11400000, guid: f1baa1e2e1d9fa945b65c005f7be3b5e, type: 2}
+  - {fileID: 11400000, guid: dd8017bbe267e4449a6cfd313aebc9c9, type: 2}
+  - {fileID: 11400000, guid: b6597ae6277c7fa43b1c482b277fcd42, type: 2}
   enemyP: {fileID: 2026957188}
+  playerP: {fileID: 162186393}
 --- !u!1 &840878673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,7 +1988,7 @@ GameObject:
   - component: {fileID: 879213031}
   m_Layer: 9
   m_Name: Slot (4)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2916,7 +2645,7 @@ GameObject:
   - component: {fileID: 1393276223}
   m_Layer: 9
   m_Name: Slot (5)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3049,28 +2778,6 @@ MonoBehaviour:
     tutorialStep: 1
     characters: []
     lineup:
-    - so: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779, type: 2}
-      currentStats:
-        damage: 2
-        maxHealth: 250
-        attackSpeed: 1
-        armor: 0
-      health: 0
-      currentXP: 0
-      currentXpToLevelUp: 10
-      level: 1
-      merge: 1
-    - so: {fileID: 11400000, guid: ff1e9cf2a6b166947a6a033af7f208b2, type: 2}
-      currentStats:
-        damage: 15
-        maxHealth: 50
-        attackSpeed: 1
-        armor: 0
-      health: 0
-      currentXP: 0
-      currentXpToLevelUp: 10
-      level: 1
-      merge: 1
     - so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
       currentStats:
         damage: 4
@@ -3082,10 +2789,21 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: b6ac5d75dcebbaf499c38734032816bb, type: 2}
       currentStats:
         damage: 2
-        maxHealth: 250
+        maxHealth: 200
+        attackSpeed: 1
+        armor: 0
+      health: 0
+      currentXP: 0
+      currentXpToLevelUp: 10
+      level: 1
+      merge: 1
+    - so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
+      currentStats:
+        damage: 2
+        maxHealth: 200
         attackSpeed: 1
         armor: 0
       health: 0
@@ -3095,27 +2813,38 @@ MonoBehaviour:
       merge: 1
     - so: {fileID: 0}
       currentStats:
-        damage: 2
-        maxHealth: 250
-        attackSpeed: 1
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
         armor: 0
       health: 0
       currentXP: 0
-      currentXpToLevelUp: 10
-      level: 1
-      merge: 1
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
     - so: {fileID: 0}
       currentStats:
-        damage: 2
-        maxHealth: 250
-        attackSpeed: 1
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
         armor: 0
       health: 0
       currentXP: 0
-      currentXpToLevelUp: 10
-      level: 1
-      merge: 1
-    level: 0
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
+    - so: {fileID: 0}
+      currentStats:
+        damage: 0
+        maxHealth: 0
+        attackSpeed: 0
+        armor: 0
+      health: 0
+      currentXP: 0
+      currentXpToLevelUp: 0
+      level: 0
+      merge: 0
+    level: 1
     room:
       so: {fileID: 0}
       gemGen: 0
@@ -3515,7 +3244,7 @@ GameObject:
   - component: {fileID: 1562521215}
   m_Layer: 9
   m_Name: Slot (7)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4389,7 +4118,7 @@ GameObject:
   - component: {fileID: 1881713777}
   m_Layer: 9
   m_Name: Slot (2)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4692,7 +4421,7 @@ GameObject:
   - component: {fileID: 1978151882}
   m_Layer: 9
   m_Name: Slot (1)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4924,7 +4653,7 @@ GameObject:
   - component: {fileID: 2028819607}
   m_Layer: 9
   m_Name: Slot (8)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5032,7 +4761,7 @@ GameObject:
   - component: {fileID: 2035093845}
   m_Layer: 9
   m_Name: Slot (3)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5334,7 +5063,7 @@ GameObject:
   - component: {fileID: 2123969462}
   m_Layer: 9
   m_Name: Slot (6)
-  m_TagString: Slot
+  m_TagString: SlotTaken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
