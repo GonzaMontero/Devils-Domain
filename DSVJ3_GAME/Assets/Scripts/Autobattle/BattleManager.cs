@@ -41,6 +41,13 @@ public class BattleManager : MonoBehaviour
         playerParty.ResetParty();
         levelM.ResetLevel();
     }
+    public void NextLevel()
+    {
+        player.level++;
+        enemyParty.ResetParty();
+        playerParty.ResetParty();
+        levelM.ResetLevel();
+    }
     public bool ReadyForBattle()
     {
         return playerParty.characters.Count > 0 && enemyParty.characters.Count > 0;
@@ -80,7 +87,6 @@ public class BattleManager : MonoBehaviour
     {
         GiveRewards();
         SaveAllies(); //save player characters to play in next stage
-        player.level++;
         PlayerPartyWon?.Invoke();
     }
     void OnEnemyWon()

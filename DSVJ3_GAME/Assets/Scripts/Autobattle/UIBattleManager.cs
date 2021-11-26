@@ -6,10 +6,9 @@ using System.Collections;
 public class UIBattleManager : MonoBehaviour
 {
 	[SerializeField] BattleManager battleManager;
-	[SerializeField] GameObject resetButton;
-	[SerializeField] TextMeshProUGUI resetButtonText;
-	[SerializeField] GameObject victoryImage;
-	[SerializeField] GameObject defeatImage;
+	[SerializeField] GameObject victoryScreen;
+	[SerializeField] GameObject defeatScreen;
+	[SerializeField] GameObject exitButton;
     [SerializeField] Image playButtonImage;
 	[SerializeField] Button playButton;
     [SerializeField] float noCharactersWarningDuration;
@@ -40,13 +39,23 @@ public class UIBattleManager : MonoBehaviour
     }
     public void ResetLevel()
     {
-        //Disable Game Over UI
-        resetButton.SetActive(false);
-        defeatImage.SetActive(false);
-        victoryImage.SetActive(false);
-        
         //Reset Battle
         battleManager.ResetLevel();
+
+        RemoveGameOverUI();
+    }
+    public void NextLevel()
+    {
+        //Reset Battle
+        battleManager.NextLevel();
+
+        RemoveGameOverUI();
+    }
+    void RemoveGameOverUI()
+    {
+        //Disable Game Over UI
+        victoryScreen.SetActive(false);
+        defeatScreen.SetActive(false);
 
         //Enable Start UI
         playButton.enabled = true;
@@ -68,14 +77,14 @@ public class UIBattleManager : MonoBehaviour
     //Event Receivers
     void OnDefeat()
     {
-        resetButtonText.text = "Try Again!";
-        resetButton.SetActive(true);
-        defeatImage.SetActive(true);
+        exitButton.SetActive(false);
+        victoryScreen.SetActive(false);
+        defeatScreen.SetActive(true);
     }
     void OnVictory()
     {
-        resetButtonText.text = "Next Level";
-        resetButton.SetActive(true);
-        victoryImage.SetActive(true);
+        exitButton.SetActive(false);
+        victoryScreen.SetActive(true);
+        defeatScreen.SetActive(false);
     }
 }
