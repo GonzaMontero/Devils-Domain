@@ -7456,10 +7456,10 @@ MonoBehaviour:
     tutorialStep: 1
     characters: []
     lineup:
-    - so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
+    - so: {fileID: 11400000, guid: 1e1fdeb973bc42148adf9a4075969558, type: 2}
       currentStats:
-        damage: 2
-        maxHealth: 200
+        damage: 3
+        maxHealth: 80
         attackSpeed: 1
         armor: 0
       health: 0
