@@ -87,6 +87,7 @@ public class BattleManager : MonoBehaviour
     {
         GiveRewards();
         SaveAllies(); //save player characters to play in next stage
+        AkSoundEngine.SetState("Autobattle", "Win");
         PlayerPartyWon?.Invoke();
     }
     void OnEnemyWon()

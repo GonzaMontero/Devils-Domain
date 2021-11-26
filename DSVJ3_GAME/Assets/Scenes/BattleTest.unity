@@ -1238,9 +1238,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleManager: {fileID: 474282603}
-  victoryScreen: {fileID: 0}
-  defeatScreen: {fileID: 0}
-  exitButton: {fileID: 0}
+  victoryScreen: {fileID: 2052553289}
+  defeatScreen: {fileID: 597887016}
+  exitButton: {fileID: 1628045381}
   playButtonImage: {fileID: 657806280}
   playButton: {fileID: 657806279}
   noCharactersWarningDuration: 1
@@ -2369,7 +2369,7 @@ PrefabInstance:
     - target: {fileID: 5316152679476991229, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.4
+      value: 27.55
       objectReference: {fileID: 0}
     - target: {fileID: 5316152679476991229, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
         type: 3}
@@ -3071,17 +3071,17 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 0}
+    - so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
+        damage: 4
+        maxHealth: 80
+        attackSpeed: 1
         armor: 0
       health: 0
       currentXP: 0
-      currentXpToLevelUp: 0
-      level: 0
-      merge: 0
+      currentXpToLevelUp: 10
+      level: 1
+      merge: 1
     - so: {fileID: 0}
       currentStats:
         damage: 2
@@ -3162,7 +3162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1495553234}
   setLevel1Character: 0
-  level1CharacterLineupIndex: 1
+  level1CharacterLineupIndex: 2
   addGold: 0
   addGoldQuantity: 0
   addGems: 0
@@ -3415,7 +3415,7 @@ PrefabInstance:
     - target: {fileID: 5316152679476991229, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.099998
+      value: 20.39
       objectReference: {fileID: 0}
     - target: {fileID: 5316152679476991229, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
         type: 3}
@@ -3643,6 +3643,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1628045381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1663911304956243188, guid: 521c8dc7131aa934eb539a3043b56b5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1663911305883867298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1656788118 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1889147241, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
@@ -4224,7 +4230,7 @@ PrefabInstance:
     - target: {fileID: 5316152679476991229, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.399998
+      value: 13.69
       objectReference: {fileID: 0}
     - target: {fileID: 5316152679476991229, guid: 30d8437e1b4dfa54baedbe97c19fffcc,
         type: 3}

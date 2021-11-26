@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 AkSoundEngine.PostEvent("MenuMusic", gameObject);
                 break;
             case SceneLoader.Scenes.autobattle:
+                AkSoundEngine.SetState("Autobattle", "Combat");
+                AkSoundEngine.PostEvent("AutobattleMusic", gameObject);
                 break;
             case SceneLoader.Scenes.idle:
                 AkSoundEngine.SetState("Music", "Idle");
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 AkSoundEngine.SetState("Music", "Menu");
                 break;
             case SceneLoader.Scenes.autobattle:
+                AkSoundEngine.SetState("Autobattle", "None");
                 break;
             default:
                 break;
@@ -55,6 +58,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void LoadAutobattle()
     {
+        if (currentScene == SceneLoader.Scenes.menu)
+        {
+            AkSoundEngine.SetState("Music", "None");
+        }
         currentScene = SceneLoader.Scenes.autobattle;
         SceneLoader.LoadScene(currentScene);
     }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad30f2dfc9857d5428e997aefdf2c97a, type: 3}
+  m_Name: Psycho
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 0bc426f191cd6a448abcedd5622e09d0, type: 3}
+  gachaSprite: {fileID: 21300000, guid: 857ee32f343e425449d919589696f42c, type: 3}
+  gachaLVLUpSprite: {fileID: 21300000, guid: 89bdb998d5fdf55429484d25d9bf3b85, type: 3}
+  lineupFaceSprite: {fileID: 21300000, guid: 4e0bea86684bad943be78309e3b51b24, type: 3}
+  animatorOverride: {fileID: 22100000, guid: 572aa3b90573e774593f1c4b2732c3f7, type: 2}
+  isMale: 0
+  baseStats:
+    damage: 3
+    maxHealth: 80
+    attackSpeed: 1
+    armor: 0
+  baseXpToLevelUp: 10
+  xpToLevelUpModifier: 1
+  numberOfStars: 3
+  attackType: 2

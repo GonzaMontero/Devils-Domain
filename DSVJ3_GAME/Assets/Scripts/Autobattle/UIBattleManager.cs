@@ -60,6 +60,7 @@ public class UIBattleManager : MonoBehaviour
         //Enable Start UI
         playButton.enabled = true;
         playButtonImage.color = Color.white;
+	    playButton.gameObject.SetActive(true);
     }
     IEnumerator ResetButtonColor(Image buttonImage)
     {
@@ -77,12 +78,14 @@ public class UIBattleManager : MonoBehaviour
     //Event Receivers
     void OnDefeat()
     {
+	    playButton.gameObject.SetActive(false);
         exitButton.SetActive(false);
         victoryScreen.SetActive(false);
         defeatScreen.SetActive(true);
     }
     void OnVictory()
     {
+	    playButton.gameObject.SetActive(false);
         exitButton.SetActive(false);
         victoryScreen.SetActive(true);
         defeatScreen.SetActive(false);

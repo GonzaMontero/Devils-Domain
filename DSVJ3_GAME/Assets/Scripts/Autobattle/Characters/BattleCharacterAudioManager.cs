@@ -27,13 +27,13 @@ public class BattleCharacterAudioManager : MonoBehaviour
         switch (attackSwitch)
         {
             case AttackType.melee:
-            AkSoundEngine.SetSwitch("Attack", "Blunt", gameObject);
+                AkSoundEngine.SetSwitch("Attack", "Blunt", gameObject);
                 break;
             case AttackType.assasin:
-            AkSoundEngine.SetSwitch("Attack", "Sword", gameObject);
+                AkSoundEngine.SetSwitch("Attack", "Sword", gameObject);
                 break;
             case AttackType.ranged:
-            AkSoundEngine.SetSwitch("Attack", "Spell", gameObject); 
+                AkSoundEngine.SetSwitch("Attack", "Spell", gameObject);
                 break;
             default:
                 break;
