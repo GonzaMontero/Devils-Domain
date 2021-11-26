@@ -30,6 +30,14 @@ public class EnemyParty : PartyManager
         //if (!generateRandomEnemies) return;
         //GenerateEnemies();
     }
+    private void GetSOs()
+    {
+        //Set Path according to the correct tier;
+        SetSOsPath();
+
+        //Get character SOs to generate enemies
+        characterSOs = Resources.LoadAll<BattleCharacterSO>(SOsPath);
+    }
     //Methods
     public override void ResetParty()
     {
@@ -48,11 +56,29 @@ public class EnemyParty : PartyManager
     {
         SOsPath = "Scriptable Objects/Characters/Allies/" + charactersTier + " Star";
     }
-    public void GenerateEnemies()
+    public void GenerateEnemies(int minLevel, int maxLevel)
     {
+        if (characterSOs == null)
+        {
+            GetSOs();
+        }
         for (short i = 0; i < 5; i++)
         {
+            int randomLevel;
+            if (minLevel > 3)
+            {
+                randomLevel = UnityEngine.Random.Range(minLevel - 2, maxLevel + 1);
+            }
+            else
+            {
+                randomLevel = UnityEngine.Random.Range(minLevel, maxLevel + 1);
+            }
+            
             GenerateRandomEnemy();
+            for(short j = 0; j < randomLevel; j++)
+            {
+                characters[i].ReceiveXP(characters[i].publicData.currentXpToLevelUp+1);
+            }
         }
     }
     void GenerateEnemy(BattleCharacterData data)

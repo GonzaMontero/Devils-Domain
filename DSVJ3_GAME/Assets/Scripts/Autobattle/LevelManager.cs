@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] EnemyHolder[] levels;
 
     [SerializeField] EnemyParty enemyP;
+    [SerializeField] PlayerParty playerP;
 
     int currentLevel;
     Player player;
@@ -36,7 +37,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            enemyP.GenerateEnemies();
+            enemyP.GenerateEnemies(GetLowestLevel(), GetHighestLevel());
         }
     }
 
@@ -50,7 +51,35 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            enemyP.GenerateEnemies();
+            enemyP.GenerateEnemies(GetLowestLevel(), GetHighestLevel());
         }
+    }
+
+    public int GetLowestLevel()
+    {
+        
+        int lowestLevel = int.MaxValue;
+
+        for (short i = 0; i < player.lineup.Length; i++)
+        {
+            if (player.lineup[i].level < lowestLevel)
+            {
+                lowestLevel = player.lineup[i].level;
+            }
+        }
+        return lowestLevel;
+    }
+    public int GetHighestLevel()
+    {
+        int highestLevel = int.MinValue;
+
+        for (short i = 0; i < player.lineup.Length; i++)
+        {
+            if (player.lineup[i].level > highestLevel)
+            {
+                highestLevel = player.lineup[i].level;
+            }
+        }
+        return highestLevel;
     }
 }

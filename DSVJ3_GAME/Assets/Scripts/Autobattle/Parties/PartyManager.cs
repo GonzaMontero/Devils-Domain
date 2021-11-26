@@ -44,6 +44,7 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
         }
         return (int)(battleXP * partyGoldValueMod); //battle gold = battle xp/modifier
     }
+
     public void GiveXPToParty(int xpForEachCharacter)
     {
         foreach (var character in characters)
