@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
+	<RootPaths>
+		<ProjectRoot>D:\GitHub Unity\TSDV\4to Semestre\Desarrollo\Devils-Domain\DSVJ3_GAME\DSVJ3_GAME_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\GitHub Unity\TSDV\4to Semestre\Desarrollo\Devils-Domain\DSVJ3_GAME\DSVJ3_GAME_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\GitHub Unity\TSDV\4to Semestre\Desarrollo\Devils-Domain\DSVJ3_GAME\DSVJ3_GAME_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\GitHub Unity\TSDV\4to Semestre\Desarrollo\Devils-Domain\DSVJ3_GAME\DSVJ3_GAME_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="2072138344">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3157003241" Language="SFX" Hash="3368977165">
+			<ObjectPath>\SoundBanks\Default Work Unit\TEST</ObjectPath>
+			<ShortName>TEST</ShortName>
+			<Path>TEST.bnk</Path>
+			<IncludedEvents>
+				<Event Id="180661997" Name="Attack" ObjectPath="\Events\Default Work Unit\Events\Autobattle\Attack" DurationType="OneShot" DurationMin="0.000000" DurationMax="4.712882">
+					<IncludedMemoryFiles>
+						<File Id="350264388" Language="SFX">
+							<ShortName>361485__funwithsound__sword-clash-and-slide.wav</ShortName>
+							<Path>SFX\361485__funwithsound__sword-clash-and-slide_CAD027C7.wem</Path>
+						</File>
+						<File Id="458627408" Language="SFX">
+							<ShortName>Spell.wav</ShortName>
+							<Path>SFX\Spell_10C4C929.wem</Path>
+						</File>
+						<File Id="552324908" Language="SFX">
+							<ShortName>Weapon Axe Hit Wood And Metal 01.wav</ShortName>
+							<Path>SFX\Weapon Axe Hit Wood And Metal 01_4869B118.wem</Path>
+						</File>
+						<File Id="566417537" Language="SFX">
+							<ShortName>Weapon Sword Hit Metal Off Center 01.wav</ShortName>
+							<Path>SFX\Weapon Sword Hit Metal Off Center 01_B85E59F4.wem</Path>
+						</File>
+						<File Id="586771332" Language="SFX">
+							<ShortName>Spell2.wav</ShortName>
+							<Path>SFX\Spell2_10C4C929.wem</Path>
+						</File>
+						<File Id="748336411" Language="SFX">
+							<ShortName>Weapon Axe Whip 01.wav</ShortName>
+							<Path>SFX\Weapon Axe Whip 01_7092DFB9.wem</Path>
+						</File>
+						<File Id="753301643" Language="SFX">
+							<ShortName>mixkit-sword-pierces-armor-2761.wav</ShortName>
+							<Path>SFX\mixkit-sword-pierces-armor-2761_5F2D619A.wem</Path>
+						</File>
+						<File Id="832231474" Language="SFX">
+							<ShortName>420673__sypherzent__basic-melee-hit.wav</ShortName>
+							<Path>SFX\420673__sypherzent__basic-melee-hit_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<DefaultSwitchValue>{A88EECAC-617A-47CE-8431-F0F78BB12DFD}</DefaultSwitchValue>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{5F80F9F9-1E9F-40CE-9109-FE14DC591172}">
+							<Media>
+								<File Id="458627408"/>
+								<File Id="586771332"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{A88EECAC-617A-47CE-8431-F0F78BB12DFD}">
+							<Media>
+								<File Id="748336411"/>
+								<File Id="753301643"/>
+								<File Id="832231474"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{BCEB1AB9-8C43-4D49-9D66-142672C152ED}">
+							<Media>
+								<File Id="350264388"/>
+								<File Id="552324908"/>
+								<File Id="566417537"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="641649455" Name="AutobattleMusic" ObjectPath="\Events\Default Work Unit\Events\Music\AutobattleMusic" DurationType="OneShot" DurationMin="67.500000" DurationMax="67.500000">
+					<IncludedMemoryFiles>
+						<File Id="88750968" Language="SFX">
+							<ShortName>MenuEff.wav</ShortName>
+							<Path>SFX\MenuEff_D79FB2B7.wem</Path>
+						</File>
+						<File Id="109856375" Language="SFX">
+							<ShortName>MenuDrums.wav</ShortName>
+							<Path>SFX\MenuDrums_D79FB2B7.wem</Path>
+						</File>
+						<File Id="110705312" Language="SFX">
+							<ShortName>MenuBombo.wav</ShortName>
+							<Path>SFX\MenuBombo_D79FB2B7.wem</Path>
+						</File>
+						<File Id="226547283" Language="SFX">
+							<ShortName>Menutacho.wav</ShortName>
+							<Path>SFX\Menutacho_D79FB2B7.wem</Path>
+						</File>
+						<File Id="308803157" Language="SFX">
+							<ShortName>MenuGuitarra con Genny.wav</ShortName>
+							<Path>SFX\MenuGuitarra con Genny_D79FB2B7.wem</Path>
+						</File>
+						<File Id="385968600" Language="SFX">
+							<ShortName>MenuLead.wav</ShortName>
+							<Path>SFX\MenuLead_D79FB2B7.wem</Path>
+						</File>
+						<File Id="544085715" Language="SFX">
+							<ShortName>MenuBus Reverb.wav</ShortName>
+							<Path>SFX\MenuBus Reverb_D79FB2B7.wem</Path>
+						</File>
+						<File Id="760230394" Language="SFX">
+							<ShortName>MenuCYCdh_TrashC-02.wav</ShortName>
+							<Path>SFX\MenuCYCdh_TrashC-02_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2834637694" Name="ConfirmationButton" ObjectPath="\Events\Default Work Unit\Events\Buttons\ConfirmationButton" DurationType="OneShot" DurationMin="1.043991" DurationMax="1.043991">
+					<IncludedMemoryFiles>
+						<File Id="259561782" Language="SFX">
+							<ShortName>UIFX_SCIMisc-018.wav</ShortName>
+							<Path>SFX\UIFX_SCIMisc-018_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="445985469" Name="Die" ObjectPath="\Events\Default Work Unit\Events\Autobattle\Die" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<DefaultSwitchValue>{08350762-66E3-4D39-AD53-A66E0A197A1D}</DefaultSwitchValue>
+					<SwitchContainers/>
+				</Event>
+				<Event Id="579888164" Name="ExitBackButton" ObjectPath="\Events\Default Work Unit\Events\Buttons\ExitBackButton" DurationType="OneShot" DurationMin="0.096712" DurationMax="0.096712">
+					<IncludedMemoryFiles>
+						<File Id="788373785" Language="SFX">
+							<ShortName>UIFX_SCIMisc-022.wav</ShortName>
+							<Path>SFX\UIFX_SCIMisc-022_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4027500490" Name="GachaMusic" ObjectPath="\Events\Default Work Unit\Events\Music\GachaMusic" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="674526087" Name="GoToAutobattleButton" ObjectPath="\Events\Default Work Unit\Events\Buttons\GoToAutobattleButton" DurationType="OneShot" DurationMin="0.274626" DurationMax="0.274626">
+					<IncludedMemoryFiles>
+						<File Id="668235751" Language="SFX">
+							<ShortName>UIFX_SCIMisc-003.wav</ShortName>
+							<Path>SFX\UIFX_SCIMisc-003_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4120200410" Name="GoToGachaButton" ObjectPath="\Events\Default Work Unit\Events\Buttons\GoToGachaButton" DurationType="OneShot" DurationMin="1.043991" DurationMax="1.043991">
+					<IncludedMemoryFiles>
+						<File Id="259561782" Language="SFX">
+							<ShortName>UIFX_SCIMisc-018.wav</ShortName>
+							<Path>SFX\UIFX_SCIMisc-018_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionSetState>
+						<ActionSetStateEntry Id="2607556080" Name="Menu" ObjectPath="\States\Default Work Unit\Music\Menu"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1567002330" Name="GoToIdleButton" ObjectPath="\Events\Default Work Unit\Events\Buttons\GoToIdleButton" DurationType="OneShot" DurationMin="1.043991" DurationMax="1.043991">
+					<IncludedMemoryFiles>
+						<File Id="259561782" Language="SFX">
+							<ShortName>UIFX_SCIMisc-018.wav</ShortName>
+							<Path>SFX\UIFX_SCIMisc-018_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionSetState>
+						<ActionSetStateEntry Id="1874288895" Name="Idle" ObjectPath="\States\Default Work Unit\Music\Idle"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1177290145" Name="GoToLineupButton" ObjectPath="\Events\Default Work Unit\Events\Buttons\GoToLineupButton" DurationType="OneShot" DurationMin="1.043991" DurationMax="1.043991">
+					<IncludedMemoryFiles>
+						<File Id="259561782" Language="SFX">
+							<ShortName>UIFX_SCIMisc-018.wav</ShortName>
+							<Path>SFX\UIFX_SCIMisc-018_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionSetState>
+						<ActionSetStateEntry Id="2607556080" Name="Menu" ObjectPath="\States\Default Work Unit\Music\Menu"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1464228145" Name="GoToMenuButton" ObjectPath="\Events\Default Work Unit\Events\Buttons\GoToMenuButton" DurationType="OneShot" DurationMin="1.043991" DurationMax="1.043991">
+					<IncludedMemoryFiles>
+						<File Id="259561782" Language="SFX">
+							<ShortName>UIFX_SCIMisc-018.wav</ShortName>
+							<Path>SFX\UIFX_SCIMisc-018_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionSetState>
+						<ActionSetStateEntry Id="1874288895" Name="Idle" ObjectPath="\States\Default Work Unit\Music\Idle"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3502195145" Name="LineupMusic" ObjectPath="\Events\Default Work Unit\Events\Music\LineupMusic" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetState>
+						<ActionSetStateEntry Id="2607556080" Name="Menu" ObjectPath="\States\Default Work Unit\Music\Menu"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="679636833" Name="MenuMusic" ObjectPath="\Events\Default Work Unit\Events\Music\MenuMusic" DurationType="OneShot" DurationMin="67.500000" DurationMax="67.500000">
+					<IncludedMemoryFiles>
+						<File Id="88750968" Language="SFX">
+							<ShortName>MenuEff.wav</ShortName>
+							<Path>SFX\MenuEff_D79FB2B7.wem</Path>
+						</File>
+						<File Id="109856375" Language="SFX">
+							<ShortName>MenuDrums.wav</ShortName>
+							<Path>SFX\MenuDrums_D79FB2B7.wem</Path>
+						</File>
+						<File Id="110705312" Language="SFX">
+							<ShortName>MenuBombo.wav</ShortName>
+							<Path>SFX\MenuBombo_D79FB2B7.wem</Path>
+						</File>
+						<File Id="226547283" Language="SFX">
+							<ShortName>Menutacho.wav</ShortName>
+							<Path>SFX\Menutacho_D79FB2B7.wem</Path>
+						</File>
+						<File Id="308803157" Language="SFX">
+							<ShortName>MenuGuitarra con Genny.wav</ShortName>
+							<Path>SFX\MenuGuitarra con Genny_D79FB2B7.wem</Path>
+						</File>
+						<File Id="385968600" Language="SFX">
+							<ShortName>MenuLead.wav</ShortName>
+							<Path>SFX\MenuLead_D79FB2B7.wem</Path>
+						</File>
+						<File Id="544085715" Language="SFX">
+							<ShortName>MenuBus Reverb.wav</ShortName>
+							<Path>SFX\MenuBus Reverb_D79FB2B7.wem</Path>
+						</File>
+						<File Id="760230394" Language="SFX">
+							<ShortName>MenuCYCdh_TrashC-02.wav</ShortName>
+							<Path>SFX\MenuCYCdh_TrashC-02_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="979765101" Name="Win" ObjectPath="\Events\Default Work Unit\Events\Gacha\Win" DurationType="OneShot" DurationMin="6.417823" DurationMax="6.417823">
+					<IncludedMemoryFiles>
+						<File Id="937682212" Language="SFX">
+							<ShortName>MenuexplosionColor1.wav</ShortName>
+							<Path>SFX\MenuexplosionColor1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="767731869" Name="WeaponType" ObjectPath="\Game Parameters\Default Work Unit\WeaponType"/>
+			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="1874288895" Name="Idle" ObjectPath="\States\Default Work Unit\Music\Idle" GUID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}">
+					<States/>
+				</StateGroup>
+				<StateGroup Id="2607556080" Name="Menu" ObjectPath="\States\Default Work Unit\Music\Menu" GUID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}">
+					<States/>
+				</StateGroup>
+			</StateGroups>
+			<SwitchGroups>
+				<SwitchGroup Id="180661997" Name="Attack" ObjectPath="\Switches\Default Work Unit\Attack" GUID="{982DD5EA-1937-4951-A031-3E94D799C2B6}">
+					<Switches>
+						<Switch Id="2454616260" Name="Sword" ObjectPath="\Switches\Default Work Unit\Attack\Sword" GUID="{BCEB1AB9-8C43-4D49-9D66-142672C152ED}"/>
+						<Switch Id="3376675122" Name="Blunt" ObjectPath="\Switches\Default Work Unit\Attack\Blunt" GUID="{A88EECAC-617A-47CE-8431-F0F78BB12DFD}"/>
+						<Switch Id="523506649" Name="Spell" ObjectPath="\Switches\Default Work Unit\Attack\Spell" GUID="{5F80F9F9-1E9F-40CE-9109-FE14DC591172}"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="445985469" Name="Die" ObjectPath="\Switches\Default Work Unit\Die" GUID="{84F83EE8-51A3-4257-859E-CE26BE9D0A4F}">
+					<Switches>
+						<Switch Id="84696434" Name="M" ObjectPath="\Switches\Default Work Unit\Die\M" GUID="{7833E748-DD3B-408F-9F06-6DC44B397B97}"/>
+						<Switch Id="84696441" Name="F" ObjectPath="\Switches\Default Work Unit\Die\F" GUID="{08350762-66E3-4D39-AD53-A66E0A197A1D}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

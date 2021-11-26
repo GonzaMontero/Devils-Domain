@@ -10,6 +10,30 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         player = Player.Get();
         currentScene = SceneLoader.GetCurrentScene();
+        switch (currentScene)
+        {
+            case SceneLoader.Scenes.menu:
+                AkSoundEngine.SetState("Music", "Menu");
+                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                break;
+            case SceneLoader.Scenes.credits:
+                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                break;
+            case SceneLoader.Scenes.autobattle:
+                break;
+            case SceneLoader.Scenes.idle:
+                AkSoundEngine.SetState("Music", "Idle");
+                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                break;
+            case SceneLoader.Scenes.gacha:
+                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                break;
+            case SceneLoader.Scenes.lineup:
+                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                break;
+            default:
+                break;
+        }
     }
     #endregion
 
@@ -19,6 +43,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             case SceneLoader.Scenes.idle:
                 player.SaveLogOutDate();
+                AkSoundEngine.SetState("Music", "Menu");
+                break;
+            case SceneLoader.Scenes.autobattle:
                 break;
             default:
                 break;
@@ -33,6 +60,10 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void LoadIdle()
     {
+        if (currentScene == SceneLoader.Scenes.menu)
+        {
+            AkSoundEngine.SetState("Music", "Idle");
+        }
         currentScene = SceneLoader.Scenes.idle;
         player.SaveLogInDate();
         SceneLoader.LoadScene(currentScene);

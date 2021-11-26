@@ -27,17 +27,18 @@ public class BattleCharacterAudioManager : MonoBehaviour
         switch (attackSwitch)
         {
             case AttackType.melee:
-            AkSoundEngine.SetSwitch("Attack", "Blunt", gameObject); //post sound
+            AkSoundEngine.SetSwitch("Attack", "Blunt", gameObject);
                 break;
             case AttackType.assasin:
-            AkSoundEngine.SetSwitch("Attack", "Sword", gameObject); //post sound
+            AkSoundEngine.SetSwitch("Attack", "Sword", gameObject);
                 break;
             case AttackType.ranged:
-            AkSoundEngine.SetSwitch("Attack", "Spell", gameObject); //post sound
+            AkSoundEngine.SetSwitch("Attack", "Spell", gameObject); 
                 break;
             default:
                 break;
         }
+        AkSoundEngine.PostEvent("Attack", gameObject); //post sound
     }
     void OnDeath(BattleCharacterController notNeeded)
     {

@@ -2328,7 +2328,11 @@ MonoBehaviour:
       level: 0
       merge: 0
     level: 0
-    rooms: []
+    room:
+      so: {fileID: 0}
+      gemGen: 0
+      upgradeLvl: 0
+      positionCostModifier: 1
 --- !u!4 &844216676
 Transform:
   m_ObjectHideFlags: 0
@@ -3342,7 +3346,6 @@ GameObject:
   - component: {fileID: 1149217658}
   - component: {fileID: 1149217660}
   - component: {fileID: 1149217657}
-  - component: {fileID: 1149217661}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3443,36 +3446,6 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!114 &1149217661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149217656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b11df7e5d97751245a4bdf3ecc89f81d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: ce169e4a03c552d4c8797cd2f95300ed,
-      type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
 --- !u!1 &1332040338
 GameObject:
   m_ObjectHideFlags: 0
