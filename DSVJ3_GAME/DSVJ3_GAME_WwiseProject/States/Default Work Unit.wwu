@@ -11,14 +11,14 @@
 					</ChildrenList>
 					<TransitionList>
 						<Transition>
-							<StartState Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}"/>
-							<EndState Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}"/>
+							<StartState Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}"/>
+							<EndState Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}"/>
 							<Time>1</Time>
 							<IsShared>false</IsShared>
 						</Transition>
 						<Transition>
-							<StartState Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}"/>
-							<EndState Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}"/>
+							<StartState Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}"/>
+							<EndState Name="Menu" ID="{A4F40B5F-8FDA-46FE-83E3-AE5A0A636160}"/>
 							<Time>1</Time>
 							<IsShared>false</IsShared>
 						</Transition>

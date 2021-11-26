@@ -3,7 +3,12 @@
 	<GameParameters>
 		<WorkUnit Name="Default Work Unit" ID="{0FF979A7-31CB-45EF-A432-ABADD02848E9}" PersistMode="Standalone">
 			<ChildrenList>
-				<GameParameter Name="WeaponType" ID="{72D1D49F-3BCD-423F-AAC6-BAA3D97CC0A5}"/>
+				<GameParameter Name="Position" ID="{6E1ED50A-3798-41ED-B607-93DBF4F7EB7F}">
+					<PropertyList>
+						<Property Name="BindToBuiltInParam" Type="int16" Value="1"/>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

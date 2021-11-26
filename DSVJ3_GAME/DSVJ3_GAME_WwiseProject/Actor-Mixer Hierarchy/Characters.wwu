@@ -69,6 +69,13 @@
 					</GroupingInfo>
 				</SwitchContainer>
 				<SwitchContainer Name="Attack" ID="{46BDBAAB-F522-47A5-AF9F-2E6776F74EED}" ShortID="482587390">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
@@ -91,7 +98,7 @@
 								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
-										<Value>5</Value>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 								<Property Name="PlayMechanismResetPlaylistEachPlay" Type="bool" Value="False"/>
@@ -330,7 +337,7 @@
 								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
-										<Value>5</Value>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 								<Property Name="PlayMechanismResetPlaylistEachPlay" Type="bool" Value="False"/>
@@ -713,7 +720,7 @@
 								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
-										<Value>5</Value>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 								<Property Name="PlayMechanismResetPlaylistEachPlay" Type="bool" Value="False"/>

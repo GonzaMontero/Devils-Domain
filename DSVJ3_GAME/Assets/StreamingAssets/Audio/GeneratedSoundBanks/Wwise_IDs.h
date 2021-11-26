@@ -86,7 +86,7 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
-        static const AkUniqueID WEAPONTYPE = 767731869U;
+        static const AkUniqueID POSITION = 1578750580U;
     } // namespace GAME_PARAMETERS
 
     namespace BANKS

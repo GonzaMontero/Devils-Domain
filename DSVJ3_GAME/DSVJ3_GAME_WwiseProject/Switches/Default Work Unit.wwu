@@ -12,26 +12,6 @@
 						<Switch Name="Blunt" ID="{A88EECAC-617A-47CE-8431-F0F78BB12DFD}"/>
 						<Switch Name="Spell" ID="{5F80F9F9-1E9F-40CE-9109-FE14DC591172}"/>
 					</ChildrenList>
-					<SwitchOnRTPC>
-						<GameParameterRef Name="WeaponType" ID="{72D1D49F-3BCD-423F-AAC6-BAA3D97CC0A5}"/>
-						<Curve Name="" ID="{755C1CA8-8FBB-4FDF-8E5E-67C7705FA699}">
-							<PropertyList>
-								<Property Name="Flags" Type="int32" Value="65537"/>
-							</PropertyList>
-							<PointList>
-								<Point>
-									<XPos>0</XPos>
-									<YPos>3</YPos>
-									<Flags>5</Flags>
-								</Point>
-								<Point>
-									<XPos>100</XPos>
-									<YPos>0</YPos>
-									<Flags>37</Flags>
-								</Point>
-							</PointList>
-						</Curve>
-					</SwitchOnRTPC>
 				</SwitchGroup>
 				<SwitchGroup Name="Die" ID="{84F83EE8-51A3-4257-859E-CE26BE9D0A4F}">
 					<PropertyList>

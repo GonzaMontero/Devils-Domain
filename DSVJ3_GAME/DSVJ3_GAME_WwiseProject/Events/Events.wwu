@@ -20,7 +20,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Menu" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+											<ObjectRef Name="Start" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -197,7 +197,7 @@
 								<Action Name="" ID="{BDBE18C8-8829-45A4-BAAD-4B12DFB4CC68}" ShortID="13502177">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Menu" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+											<ObjectRef Name="End" ID="{65D062C8-1CD6-446C-BC6F-7195B335686F}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -208,7 +208,7 @@
 								<Action Name="" ID="{FA017B39-890B-4464-91A5-4A179F78882A}" ShortID="419909275">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Menu" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+											<ObjectRef Name="Start" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
