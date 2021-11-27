@@ -69,7 +69,7 @@ public class BattleCharacterController : MonoBehaviour
     public void ReceiveXP(int xp)
     {
         data.currentXP += xp;
-        if (data.currentXP > data.currentXpToLevelUp)
+        if (data.currentXP >= data.currentXpToLevelUp)
         {
             LevelUp();
         }
@@ -122,9 +122,8 @@ public class BattleCharacterController : MonoBehaviour
     void LevelUp()
     {
         data.currentXP -= data.currentXpToLevelUp;
-        data.currentXpToLevelUp += data.so.xpToLevelUpModifier;
-        data.level++;
         data.LevelUp();
+        data.UpdateXpRequisites();
 
         //Keep Leveling Up until character doesn't have any more xp
         if (data.currentXP >= data.currentXpToLevelUp)

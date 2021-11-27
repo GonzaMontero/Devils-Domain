@@ -40,6 +40,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 break;
         }
     }
+    private void OnDestroy()
+    {
+        if (GameManager.Get() == this)
+        {
+            QuitGame();
+        }
+    }
 
     //Methods
     public void LoadMenu()
@@ -75,7 +82,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             AkSoundEngine.SetState("Music", "Idle");
         }
         currentScene = SceneLoader.Scenes.idle;
-        player.SaveLogInDate();
         SceneLoader.LoadScene(currentScene);
     }
     public void LoadGacha()
@@ -100,6 +106,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void QuitGame()
     {
+        if (currentScene == SceneLoader.Scenes.idle)
+        {
+            player?.SaveLogOutDate();
+        }
+        player?.SaveData();
         Application.Quit();
     }
 }

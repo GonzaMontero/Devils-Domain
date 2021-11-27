@@ -59,10 +59,6 @@ public class Player : MonoBehaviourSingleton<Player>
     {
         RecieveData();
     }
-    private void OnDestroy()
-    {
-        SaveData();
-    }
 
     //Methods
     public void SaveData()
@@ -80,18 +76,26 @@ public class Player : MonoBehaviourSingleton<Player>
     {
         FileManager<string>.DeleteFile(Application.persistentDataPath + " data.bin");
     }
-    public void SaveLogInDate()
-    {
-        data.roomLogInTime = DateTime.Now;
-    }
     public void SaveLogOutDate()
     {
-        data.roomLogOutTime = DateTime.Now;
+        data.roomLogOutTime = DateTime.Now.ToBinary().ToString();
     }
     public float GetAFKMinutes()
     {
-        TimeSpan afkTime = data.roomLogOutTime - data.roomLogInTime;
-        return((float)afkTime.TotalSeconds / 60); //calculate in minutes
+        if (data.roomLogOutTime == "") return 0;
+
+        //Get from file
+        long temp = Convert.ToInt64(data.roomLogOutTime);
+        DateTime logOutTime = DateTime.FromBinary(temp);
+
+        //Calculate span
+        TimeSpan afkTime = DateTime.Now - logOutTime;
+
+        //Save time since last checked
+        SaveLogOutDate();
+
+        //Return
+        return (float)(afkTime.TotalSeconds / 60); //calculate in minutes
     }
 
     //Event Receivers

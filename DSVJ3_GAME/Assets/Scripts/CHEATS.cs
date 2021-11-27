@@ -7,10 +7,11 @@ public class CHEATS : MonoBehaviour
     #region Editor Things
 #if UNITY_EDITOR//||true
 
-    [Header("Character Set Level 1")]
-    [Tooltip("Press this to set the character in the lineup index to level 1")]
-    [SerializeField] bool setLevel1Character = false;
-    [SerializeField] int level1CharacterLineupIndex;
+    [Header("Set Character Level")]
+    [Tooltip("Press this to set the character in the lineup index to level X")]
+    [SerializeField] bool setLeveledCharacter = false;
+    [SerializeField] int leveledCharacterLineupIndex;
+    [SerializeField] int characterLevels;
 
     [Header("Add Gold")]    
     [Tooltip("Press this to add as much gold as indicated")]
@@ -30,14 +31,15 @@ public class CHEATS : MonoBehaviour
     private void OnValidate() //You can have multiple booleans here
     {
         //SET CHARACTER LEVEL 1
-        if (setLevel1Character)
+        if (setLeveledCharacter)
         {
             // Your function here
-            player.lineup[level1CharacterLineupIndex] = SetLevel1Character(player.lineup[level1CharacterLineupIndex]);
+            BattleCharacterData data = SetCharacterLevel(player.lineup[leveledCharacterLineupIndex], characterLevels);
+            player.lineup[leveledCharacterLineupIndex] = data;
 
             //When its done set this bool to false
             //This is useful if you want to do some stuff only when clicking this "button"
-            setLevel1Character = false;
+            setLeveledCharacter = false;
             return;
         }
 
@@ -79,11 +81,16 @@ public class CHEATS : MonoBehaviour
     }
 
     //Methods
-    BattleCharacterData SetLevel1Character(BattleCharacterData characterToSet)
+    BattleCharacterData SetCharacterLevel(BattleCharacterData characterToSet, int levels)
     {
         if (!characterToSet.so) return null;
-
-        return new BattleCharacterData(characterToSet.so);
+        BattleCharacterData newCharacter = new BattleCharacterData(characterToSet.so);
+        for (int i = 1; i < levels; i++)
+        {
+            newCharacter.LevelUp();
+            newCharacter.UpdateXpRequisites();
+        }
+        return newCharacter;
     }
 #endif
     #endregion

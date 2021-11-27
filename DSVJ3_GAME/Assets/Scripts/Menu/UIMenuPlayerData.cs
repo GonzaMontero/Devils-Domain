@@ -12,15 +12,30 @@ public class UIMenuPlayerData : MonoBehaviour
     {
         //Player 
         player = Player.Get();
+        player.GemsChanged += UpdateGems;
+        player.GoldChanged += UpdateGold;
 
         //Set values 
         UpdateData();
     }
+    private void OnDestroy()
+    {
+        player.GemsChanged -= UpdateGems;
+        player.GoldChanged -= UpdateGold;
+    }
 
     void UpdateData()
     {
-        if (player.gold > 0) goldText.text = player.gold.ToString();
-        if (player.gems > 0) gemsText.text = player.gems.ToString();
+        if (player.gold > 0) UpdateGold();
+        if (player.gems > 0) UpdateGems();
         if (player.name != "") nameText.text = player.playerName;
+    }
+    void UpdateGems()
+    {
+        gemsText.text = player.gems.ToString();
+    }
+    void UpdateGold()
+    {
+        goldText.text = player.gold.ToString();
     }
 }

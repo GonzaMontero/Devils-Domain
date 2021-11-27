@@ -18,7 +18,6 @@ public class PlayerData
     public int level;
 
     //Room Data
-    public DateTime roomLogInTime;
-    public DateTime roomLogOutTime;
+    public string roomLogOutTime;
     public RoomData room;
 }

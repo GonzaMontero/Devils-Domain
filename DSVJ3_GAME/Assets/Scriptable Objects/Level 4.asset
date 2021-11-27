@@ -38,7 +38,7 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    positionInLevel: 2
+    positionInLevel: 4
   - enemy:
       so: {fileID: 11400000, guid: 1e1fdeb973bc42148adf9a4075969558, type: 2}
       currentStats:
@@ -51,4 +51,4 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 2
       merge: 1
-    positionInLevel: 4
+    positionInLevel: 2
