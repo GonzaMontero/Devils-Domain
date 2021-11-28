@@ -5,6 +5,7 @@ public class UIMenuPlayerData : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI gemsText;
+    [SerializeField] TextMeshProUGUI levelsText;
     [SerializeField] TMP_InputField nameText;
     Player player;
 
@@ -14,6 +15,7 @@ public class UIMenuPlayerData : MonoBehaviour
         player = Player.Get();
         player.GemsChanged += UpdateGems;
         player.GoldChanged += UpdateGold;
+        player.LevelChanged += UpdateLevel;
 
         //Set values 
         UpdateData();
@@ -28,8 +30,9 @@ public class UIMenuPlayerData : MonoBehaviour
     {
         if (player.gold > 0) UpdateGold();
         if (player.gems > 0) UpdateGems();
+        if (player.level > 0) UpdateLevel();
         if (player.name != "") nameText.text = player.playerName;
-    }
+    }    
     void UpdateGems()
     {
         gemsText.text = player.gems.ToString();
@@ -37,5 +40,9 @@ public class UIMenuPlayerData : MonoBehaviour
     void UpdateGold()
     {
         goldText.text = player.gold.ToString();
+    }
+    void UpdateLevel()
+    {
+        levelsText.text = player.level.ToString();
     }
 }

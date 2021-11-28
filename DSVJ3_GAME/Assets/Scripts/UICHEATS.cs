@@ -29,4 +29,8 @@ public class UICHEATS : MonoBehaviour
     {
         cheatManager.AddGold(cheatValue);
     }
+    public void OnSkipToLevel()
+    {
+        cheatManager.SetPlayerLevel(cheatValue);
+    }
 }

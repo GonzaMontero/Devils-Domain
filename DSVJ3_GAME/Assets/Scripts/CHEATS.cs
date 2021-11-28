@@ -4,6 +4,11 @@ public class CHEATS : MonoBehaviour
 {
     [SerializeField] Player player;
 
+    private void Start()
+    {
+        player = Player.Get();
+    }
+
     #region Editor Things
 #if UNITY_EDITOR//||true
 
@@ -102,5 +107,10 @@ public class CHEATS : MonoBehaviour
     public void AddGems(int gems)
     {
         player.gems += gems;
+    }
+    public void SetPlayerLevel(int level)
+    {
+        if (level < 0) level = 0;
+        player.level = level;
     }
 }

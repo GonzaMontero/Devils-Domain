@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +7,7 @@ public class Player : MonoBehaviourSingleton<Player>
     //Actions
     public Action GoldChanged;
     public Action GemsChanged;
+    public Action LevelChanged;
     //Rooms
     public RoomData room
     {
@@ -27,7 +28,7 @@ public class Player : MonoBehaviourSingleton<Player>
     public int level
     {
         get { return data.level; }
-        set { if (value < 0) value = 0; data.level = value; }
+        set { if (value < 0) value = 0; data.level = value; LevelChanged?.Invoke(); }
     }
     //Menu
     public int tutorialStep
