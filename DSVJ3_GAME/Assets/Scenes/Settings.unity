@@ -1276,6 +1276,10 @@ MonoBehaviour:
     gems: 0
     name: 
     tutorialStep: 1
+    settings:
+      generalVolume: 100
+      musicVolume: 100
+      fxVolume: 100
     characters: []
     lineup:
     - so: {fileID: 0}
@@ -1363,7 +1367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03cf1a5b13dcf8b48ad5f63b00200bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1037223175}
   setLeveledCharacter: 0
   leveledCharacterLineupIndex: 0
   characterLevels: 0

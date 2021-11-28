@@ -12,15 +12,22 @@ public class UIBattleManager : MonoBehaviour
 	[SerializeField] GameObject pauseButton;
     [SerializeField] Image playButtonImage;
 	[SerializeField] Button playButton;
+    [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] float noCharactersWarningDuration;
+    Player player;
 
     //Unity Events
     private void Start()
     {
+        player = Player.Get(); //get player
+        player.LevelChanged += OnPlayerLevelChanged; //link with level
+
+        //Link Battlemanager actions
         battleManager.PlayerPartyWon += OnVictory;
         battleManager.EnemyPartyWon += OnDefeat;
 
-        GameManager gameManager = GameManager.Get();
+        //Set level text
+        OnPlayerLevelChanged();
     }
 
     //Methods
@@ -61,6 +68,7 @@ public class UIBattleManager : MonoBehaviour
         //Enable Start UI
         exitButton.SetActive(true);
         pauseButton.SetActive(true);
+        levelText.gameObject.SetActive(true);
         playButton.enabled = true;
         playButtonImage.color = Color.white;
 	    playButton.gameObject.SetActive(true);
@@ -70,6 +78,7 @@ public class UIBattleManager : MonoBehaviour
         playButton.gameObject.SetActive(false);
         exitButton.SetActive(false);
         pauseButton.SetActive(false);
+        levelText.gameObject.SetActive(false);
     }
     IEnumerator ResetButtonColor(Image buttonImage)
     {
@@ -85,6 +94,10 @@ public class UIBattleManager : MonoBehaviour
     }
 
     //Event Receivers
+    void OnPlayerLevelChanged()
+    {
+        levelText.text = "Current Level: " + player.level;
+    }
     void OnDefeat()
     {
         RemoveGameplayUI();
