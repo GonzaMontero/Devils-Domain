@@ -10,31 +10,41 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         player = Player.Get();
         currentScene = SceneLoader.GetCurrentScene();
+
+        //Start both tracks
+        AudioManager.StartMenuMusic(gameObject);
+        AudioManager.StartAutobattleMusic(gameObject);
+        
+        //Mute the unneeded track and set the right one
         switch (currentScene)
         {
             case SceneLoader.Scenes.menu:
-                AkSoundEngine.SetState("Music", "Menu");
-                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                AudioManager.DisableAutobattleMusic(gameObject);
+                AudioManager.SetMenuMusic();
                 break;
             case SceneLoader.Scenes.credits:
-                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                AudioManager.DisableAutobattleMusic(gameObject);
+                AudioManager.SetMenuMusic();
                 break;
             case SceneLoader.Scenes.autobattle:
-                AkSoundEngine.SetState("Autobattle", "Combat");
-                AkSoundEngine.PostEvent("AutobattleMusic", gameObject);
+                AudioManager.DisableMenuMusic(gameObject);
+                AudioManager.SetAutobattleMusic();
                 break;
             case SceneLoader.Scenes.idle:
-                AkSoundEngine.SetState("Music", "Idle");
-                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                AudioManager.DisableAutobattleMusic(gameObject);
+                AudioManager.SetIdleMusic();
                 break;
             case SceneLoader.Scenes.gacha:
-                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                AudioManager.DisableAutobattleMusic(gameObject);
+                AudioManager.SetMenuMusic();
                 break;
             case SceneLoader.Scenes.lineup:
-                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                AudioManager.DisableAutobattleMusic(gameObject);
+                AudioManager.SetMenuMusic();
                 break;
             case SceneLoader.Scenes.settings:
-                AkSoundEngine.PostEvent("MenuMusic", gameObject);
+                AudioManager.DisableAutobattleMusic(gameObject);
+                AudioManager.SetMenuMusic();
                 break;
             default:
                 break;
@@ -55,10 +65,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         {
             case SceneLoader.Scenes.idle:
                 player.SaveLogOutDate();
-                AkSoundEngine.SetState("Music", "Menu");
+                AudioManager.SetMenuMusic();
                 break;
             case SceneLoader.Scenes.autobattle:
-                AkSoundEngine.SetState("Autobattle", "None");
+                AudioManager.DisableAutobattleMusic(gameObject);
+                AudioManager.StartMenuMusic(gameObject);
+                AudioManager.SetMenuMusic();
                 break;
             default:
                 break;
@@ -70,7 +82,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         if (currentScene == SceneLoader.Scenes.menu)
         {
-            AkSoundEngine.SetState("Music", "None");
+            AudioManager.DisableMenuMusic(gameObject);
+            AudioManager.StartAutobattleMusic(gameObject);
+            AudioManager.SetAutobattleMusic();
         }
         currentScene = SceneLoader.Scenes.autobattle;
         SceneLoader.LoadScene(currentScene);
@@ -79,7 +93,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         if (currentScene == SceneLoader.Scenes.menu)
         {
-            AkSoundEngine.SetState("Music", "Idle");
+            AudioManager.SetIdleMusic();
         }
         currentScene = SceneLoader.Scenes.idle;
         SceneLoader.LoadScene(currentScene);

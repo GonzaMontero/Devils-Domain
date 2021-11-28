@@ -5,6 +5,33 @@
 			<ChildrenList>
 				<WorkUnit Name="Buttons" ID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}" PersistMode="Reference"/>
 				<WorkUnit Name="Characters" ID="{3F7D5DFA-7437-427E-A27E-594D0A8976A7}" PersistMode="Reference"/>
+				<Folder Name="Win" ID="{7BE031F7-D538-4527-8AC7-DD95D9C9D149}" ShortID="999095790">
+					<ChildrenList>
+						<Sound Name="Victory" ID="{2447EE97-241E-4CE9-AE79-D9393DF2B1D6}" ShortID="1035892241">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Victory" ID="{052F96A0-A7E7-46D0-B087-4D81E2B2865F}">
+									<Language>SFX</Language>
+									<AudioFile>Victory.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="147133782"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Victory" ID="{052F96A0-A7E7-46D0-B087-4D81E2B2865F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

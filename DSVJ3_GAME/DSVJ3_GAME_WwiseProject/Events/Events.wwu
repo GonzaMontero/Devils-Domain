@@ -17,10 +17,13 @@
 								<Action Name="" ID="{32F07D15-66B4-4EFC-8312-21968D71E3B4}" ShortID="378527249">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="Delay" Type="Real64" Value="5"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="0"/>
+										<Property Name="FadeTime" Type="Real64" Value="5"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Start" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+											<ObjectRef Name="Base" ID="{117B795C-02C4-43D3-9DE5-FE302AEB95FC}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -42,6 +45,16 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Idle" ID="{7B777086-BB1B-44F6-BD7A-5C858A20EFC9}" WorkUnitID="{570EACF8-5EFC-404E-9879-63ACCE598EA3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7584E528-D2ED-4367-B597-3A8E606C4AAA}" ShortID="370756112">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Battle" ID="{72C075D4-F660-4AB0-980A-1A892AD9B76A}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -141,7 +154,7 @@
 								<Action Name="" ID="{EB95BB70-A35C-456B-9137-A34AC6FF60E1}" ShortID="378658979">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="MenuexplosionColor1" ID="{EB555DE0-2710-4C41-B2FB-D0F74FE1A78B}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+											<ObjectRef Name="Victory" ID="{2447EE97-241E-4CE9-AE79-D9393DF2B1D6}" WorkUnitID="{2FFE681A-C3B3-4A99-93E9-D10BA3B509A1}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -168,7 +181,7 @@
 								<Action Name="" ID="{DAD57191-9FB9-4844-87C4-5881572459CF}" ShortID="602995191">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Die" ID="{A6E7A0D8-91BC-4CFE-8332-6085A6FB18FA}" WorkUnitID="{3F7D5DFA-7437-427E-A27E-594D0A8976A7}"/>
+											<ObjectRef Name="DieExp" ID="{7B76B20F-8FE4-4406-9A88-A176B9D5F848}" WorkUnitID="{3F7D5DFA-7437-427E-A27E-594D0A8976A7}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -197,7 +210,7 @@
 								<Action Name="" ID="{BDBE18C8-8829-45A4-BAAD-4B12DFB4CC68}" ShortID="13502177">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="End" ID="{65D062C8-1CD6-446C-BC6F-7195B335686F}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+											<ObjectRef Name="Base" ID="{117B795C-02C4-43D3-9DE5-FE302AEB95FC}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -208,13 +221,23 @@
 								<Action Name="" ID="{FA017B39-890B-4464-91A5-4A179F78882A}" ShortID="419909275">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Start" ID="{B73333BC-6265-41C1-BC4B-EFA2AA4CBA89}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
+											<ObjectRef Name="Battle" ID="{72C075D4-F660-4AB0-980A-1A892AD9B76A}" WorkUnitID="{66C0C2B1-639F-4530-B489-57ACFE49C980}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="GachaMusic" ID="{9A20BE3A-CE36-4D7A-A048-8E5C228B12F8}"/>
+						<Event Name="GachaMusic" ID="{9A20BE3A-CE36-4D7A-A048-8E5C228B12F8}">
+							<ChildrenList>
+								<Action Name="" ID="{E9F6F0CF-F8E8-496F-9AD6-D273CFECDB6B}" ShortID="450750966">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MenuexplosionColor1" ID="{EB555DE0-2710-4C41-B2FB-D0F74FE1A78B}" WorkUnitID="{3D3472E0-393B-4BD7-893B-FD5C105931F9}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

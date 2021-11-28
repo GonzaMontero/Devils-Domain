@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +36,12 @@ public class Player : MonoBehaviourSingleton<Player>
         get { return data.tutorialStep; }
         set { if (value < 1) value = 1; data.tutorialStep = value;  }
     }
+    //Settings
+    public SettingsData settings
+    {
+        get { return data.settings; }
+        set { data.settings = value; }
+    }
     //General
     public int gold
     {
@@ -59,6 +65,9 @@ public class Player : MonoBehaviourSingleton<Player>
     private void Start()
     {
         RecieveData();
+        AudioManager.ChangeGeneralVolume(settings.generalVolume);
+        AudioManager.ChangeMusicVolume(settings.musicVolume);
+        AudioManager.ChangeFXVolume(settings.fxVolume);
     }
 
     //Methods

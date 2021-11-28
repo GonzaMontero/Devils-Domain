@@ -9,6 +9,9 @@
 						<Property Name="InitialValue" Type="Real64" Value="0"/>
 					</PropertyList>
 				</GameParameter>
+				<GameParameter Name="Volumen_FX" ID="{62695D99-3215-4048-8BD4-8049BB423356}"/>
+				<GameParameter Name="Volumen_musica" ID="{0E0DD418-21BD-41E3-847B-104BD353C16E}"/>
+				<GameParameter Name="Volumen_general" ID="{AB3F78CF-7146-45E7-AA97-DA2A287A72AC}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

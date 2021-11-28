@@ -19,6 +19,8 @@ public static class SceneLoader
                 return Scenes.gacha;
             case "Lineup":
                 return Scenes.lineup;
+            case "Settings":
+                return Scenes.settings;
             default:
                 return Scenes.menu;
         }

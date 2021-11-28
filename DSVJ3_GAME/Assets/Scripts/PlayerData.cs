@@ -12,6 +12,9 @@ public class PlayerData
     //Menu Data
     public int tutorialStep = 1;
 
+    //Settings Data
+    public SettingsData settings;
+
     //Autobattle Data
     public List<BattleCharacterData> characters;
     public BattleCharacterData[] lineup = new BattleCharacterData[6];

@@ -40,6 +40,7 @@ public class BattleManager : MonoBehaviour
         enemyParty.ResetParty();
         playerParty.ResetParty();
         levelM.ResetLevel();
+        AudioManager.SetAutobattleMusic();
     }
     public void NextLevel()
     {
@@ -47,6 +48,7 @@ public class BattleManager : MonoBehaviour
         enemyParty.ResetParty();
         playerParty.ResetParty();
         levelM.ResetLevel();
+        AudioManager.SetAutobattleMusic();
     }
     public bool ReadyForBattle()
     {
@@ -87,7 +89,7 @@ public class BattleManager : MonoBehaviour
     {
         GiveRewards();
         SaveAllies(); //save player characters to play in next stage
-        AkSoundEngine.SetState("Autobattle", "Win");
+        AudioManager.SetVictoryMusic();
         PlayerPartyWon?.Invoke();
     }
     void OnEnemyWon()

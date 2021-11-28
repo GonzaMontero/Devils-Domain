@@ -3,73 +3,42 @@
 	<AudioObjects>
 		<WorkUnit Name="Characters" ID="{3F7D5DFA-7437-427E-A27E-594D0A8976A7}" OwnerID="{2FFE681A-C3B3-4A99-93E9-D10BA3B509A1}" PersistMode="Nested">
 			<ChildrenList>
-				<SwitchContainer Name="Die" ID="{A6E7A0D8-91BC-4CFE-8332-6085A6FB18FA}" ShortID="38179994">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
-						</Reference>
-						<Reference Name="DefaultSwitchOrState">
-							<ObjectRef Name="F" ID="{08350762-66E3-4D39-AD53-A66E0A197A1D}" WorkUnitID="{147712D2-123C-4CD2-AED4-354A81467280}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
-						</Reference>
-						<Reference Name="SwitchGroupOrStateGroup">
-							<ObjectRef Name="Die" ID="{84F83EE8-51A3-4257-859E-CE26BE9D0A4F}" WorkUnitID="{147712D2-123C-4CD2-AED4-354A81467280}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<RandomSequenceContainer Name="M" ID="{70F1F4AC-A3D4-4F2E-88F5-9A3C711F3168}" ShortID="610195186">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
-								</Reference>
-							</ReferenceList>
-							<ObjectLists/>
-						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="F" ID="{664DC14E-AA93-4886-A2A5-7DE91E75A3B0}" ShortID="127026674">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
-								</Reference>
-							</ReferenceList>
-							<ObjectLists/>
-						</RandomSequenceContainer>
-					</ChildrenList>
-					<ObjectLists/>
-					<GroupingInfo>
-						<GroupingBehaviorList>
-							<GroupingBehavior>
-								<ItemRef Name="F" ID="{664DC14E-AA93-4886-A2A5-7DE91E75A3B0}"/>
-							</GroupingBehavior>
-							<GroupingBehavior>
-								<ItemRef Name="M" ID="{70F1F4AC-A3D4-4F2E-88F5-9A3C711F3168}"/>
-							</GroupingBehavior>
-						</GroupingBehaviorList>
-						<GroupingList>
-							<Grouping>
-								<SwitchRef Name="M" ID="{7833E748-DD3B-408F-9F06-6DC44B397B97}"/>
-								<ItemList>
-									<ItemRef Name="M" ID="{70F1F4AC-A3D4-4F2E-88F5-9A3C711F3168}"/>
-								</ItemList>
-							</Grouping>
-							<Grouping>
-								<SwitchRef Name="F" ID="{08350762-66E3-4D39-AD53-A66E0A197A1D}"/>
-								<ItemList>
-									<ItemRef Name="F" ID="{664DC14E-AA93-4886-A2A5-7DE91E75A3B0}"/>
-								</ItemList>
-							</Grouping>
-						</GroupingList>
-					</GroupingInfo>
-				</SwitchContainer>
 				<SwitchContainer Name="Attack" ID="{46BDBAAB-F522-47A5-AF9F-2E6776F74EED}" ShortID="482587390">
 					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="CenterPercentage" Type="int32">
+							<ValueList>
+								<Value>100</Value>
+							</ValueList>
+						</Property>
+						<Property Name="SpeakerPanning3DSpatializationMix" Type="int32">
+							<RTPCList>
+								<RTPC Name="" ID="{EC7D59B6-D630-411B-A1E2-270CFFD29480}" ShortID="595896325">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Position" ID="{6E1ED50A-3798-41ED-B607-93DBF4F7EB7F}" WorkUnitID="{0FF979A7-31CB-45EF-A432-ABADD02848E9}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{96B8F02A-E28F-4E67-AA98-CD7A14FAFC58}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-5</Value>
@@ -84,7 +53,7 @@
 							<ObjectRef Name="Blunt" ID="{A88EECAC-617A-47CE-8431-F0F78BB12DFD}" WorkUnitID="{147712D2-123C-4CD2-AED4-354A81467280}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
+							<ObjectRef Name="Fx" ID="{71219440-C3A5-41B4-99A0-EADCB7F12FF5}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
 						</Reference>
 						<Reference Name="SwitchGroupOrStateGroup">
 							<ObjectRef Name="Attack" ID="{982DD5EA-1937-4951-A031-3E94D799C2B6}" WorkUnitID="{147712D2-123C-4CD2-AED4-354A81467280}"/>
@@ -1071,6 +1040,36 @@
 						</GroupingList>
 					</GroupingInfo>
 				</SwitchContainer>
+				<Sound Name="DieExp" ID="{7B76B20F-8FE4-4406-9A88-A176B9D5F848}" ShortID="669066732">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-2</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{661D48BB-694E-4C39-8FFE-E36389374EFD}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Fx" ID="{71219440-C3A5-41B4-99A0-EADCB7F12FF5}" WorkUnitID="{1CCC6A8B-E2B3-4C36-ACBF-72718F296AD9}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Die" ID="{F1BC1D82-7C1D-434F-B58B-97E4E4FB8202}">
+							<Language>SFX</Language>
+							<AudioFile>Die.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="638129653"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="Die" ID="{F1BC1D82-7C1D-434F-B58B-97E4E4FB8202}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
