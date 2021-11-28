@@ -8,6 +8,9 @@ public class Player : MonoBehaviourSingleton<Player>
     public Action GoldChanged;
     public Action GemsChanged;
     public Action LevelChanged;
+   
+    public PlayerData templateData { private get; set; } //backupData, what is in the inspector
+    
     //Rooms
     public RoomData room
     {
@@ -59,15 +62,23 @@ public class Player : MonoBehaviourSingleton<Player>
         private set { data.name = value; }
     }
     [SerializeField] PlayerData data;
-    
+
 
     //Unity Events
     private void Start()
     {
+        templateData = data;
         RecieveData();
         AudioManager.ChangeGeneralVolume(settings.generalVolume);
         AudioManager.ChangeMusicVolume(settings.musicVolume);
         AudioManager.ChangeFXVolume(settings.fxVolume);
+    }
+    private void OnDestroy()
+    {
+        if (Player.Get() != this)
+        {
+            Player.Get().templateData = this.templateData;
+        }
     }
 
     //Methods
@@ -78,13 +89,16 @@ public class Player : MonoBehaviourSingleton<Player>
     }
     public void RecieveData()
     {
+        PlayerData temp = new PlayerData();
         string dataJSON;
         dataJSON = FileManager<string>.LoadDataFromFile(Application.persistentDataPath + " data.bin");
-        JsonUtility.FromJsonOverwrite(dataJSON, data);
+        JsonUtility.FromJsonOverwrite(dataJSON, temp);
+        data = temp;
     }
     public void DeleteData()
     {
         FileManager<string>.DeleteFile(Application.persistentDataPath + " data.bin");
+        data = templateData;
     }
     public void SaveLogOutDate()
     {
