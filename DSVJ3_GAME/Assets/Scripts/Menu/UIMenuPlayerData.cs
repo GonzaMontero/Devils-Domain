@@ -43,6 +43,6 @@ public class UIMenuPlayerData : MonoBehaviour
     }
     void UpdateLevel()
     {
-        levelsText.text = player.level.ToString();
+        levelsText.text = (player.level + 1).ToString();
     }
 }

@@ -96,7 +96,7 @@ public class UIBattleManager : MonoBehaviour
     //Event Receivers
     void OnPlayerLevelChanged()
     {
-        levelText.text = "Current Level: " + player.level;
+        levelText.text = "Current Level: " + (player.level + 1);
     }
     void OnDefeat()
     {
