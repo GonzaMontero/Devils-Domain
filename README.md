@@ -1,10 +1,10 @@
 <p align="center">
-<img src="logo.png" alt="PONER NOMBRE DEL JUEGO ACA"/>
+<img src="logo.png" alt="Devils Domain"/>
 </p>
 
-# PONER NOMBRE DEL JUEGO ACA
+# **Devils Domain**
 
-PONER LA DESCRIPCION LARGA DEL JUEGO ACA.
+The game is a Gacha/Hero collector, in which you are a demon king who wants to dominate the planet. For that purpose, you will have to gather allies and make them stronger battling against enemies as you progress through the different levels. You also have your throne room, which can be used to acquire gems, which will be needed to obtain more playable characters.
 
 This is a game being developed by students from <a href="https://www.imagecampus.edu.ar/">Image Campus</a>
 
@@ -17,14 +17,15 @@ This is a game being developed by students from <a href="https://www.imagecampus
 
 ## Credits
 
-- **Nombre Apellido** - *Programming*
-- **Nombre Apellido** - *Programming*
-- **Nombre Apellido** - *Art*
-- **Nombre Apellido** - *Art*
-- **Nombre Apellido** - *Audio*
-- **Nombre Apellido** - *Audio*
-- **Nombre Apellido** - *Testing*
-- **Nombre Apellido** - *Testing*
+- **Alejandro Insausti** - *Programming*
+- **Gonzalo Montero** - *Programming*
+- **Paula Mowszet** - *Art*
+- **Francisco Rodriguez** - *Art*
+- **Lisandra Valle** - *Audio*
+- **Delin Ravone** - *Audio*
+- **Antonio Restrepo** - *Testing*
+- **Ivan Bouza** - *Testing*
+- **Mariano Mallea** - *Testing*
 
 
 This game was also possible thanks to the support of these professors:
@@ -36,12 +37,6 @@ This game was also possible thanks to the support of these professors:
 - **Nazareno Rivero**
 - **Eugenio Taboada**
 
-
-## Acknowledgements
-
-Otras personas a las que quieran agradecerles, sino sacar este título
-
-
 ## Links
 
-Download it from itch.io: PONER LINK AL JUEGO DE ITCH ACA
+Download it from itch.io: https://kernelnin.itch.io/devils-domain
