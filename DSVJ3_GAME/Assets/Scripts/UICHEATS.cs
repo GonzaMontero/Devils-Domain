@@ -31,6 +31,6 @@ public class UICHEATS : MonoBehaviour
     }
     public void OnSkipToLevel()
     {
-        cheatManager.SetPlayerLevel(cheatValue);
+        cheatManager.SetPlayerLevel(cheatValue - 1);
     }
 }

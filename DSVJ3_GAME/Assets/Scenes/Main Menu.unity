@@ -851,7 +851,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1855164827}
-        m_MethodName: OnAddGold
+        m_MethodName: OnSkipToLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1891,7 +1891,7 @@ PrefabInstance:
     - target: {fileID: 1663911304956243189, guid: 521c8dc7131aa934eb539a3043b56b5f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.300003
+      value: 1.2999878
       objectReference: {fileID: 0}
     - target: {fileID: 1663911304956243194, guid: 521c8dc7131aa934eb539a3043b56b5f,
         type: 3}
@@ -3952,7 +3952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -24.715, y: -23.2}
+  m_AnchoredPosition: {x: -24.715027, y: -23.200012}
   m_SizeDelta: {x: 72.66673, y: 69.43823}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998668489
@@ -8626,7 +8626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -16.4, y: -5.8}
+  m_AnchoredPosition: {x: -16.400024, y: -5.799988}
   m_SizeDelta: {x: -263.91437, y: -136.69458}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1855164827
