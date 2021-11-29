@@ -73,13 +73,13 @@ public class Player : MonoBehaviourSingleton<Player>
         AudioManager.ChangeMusicVolume(settings.musicVolume);
         AudioManager.ChangeFXVolume(settings.fxVolume);
     }
-    private void OnDestroy()
-    {
-        if (Player.Get() != this)
-        {
-            Player.Get().templateData = this.templateData;
-        }
-    }
+    //private void OnDestroy()
+    //{
+    //    if (Player.Get() != this)
+    //    {
+    //        Player.Get().templateData = this.templateData;
+    //    }
+    //}
 
     //Methods
     public void SaveData()

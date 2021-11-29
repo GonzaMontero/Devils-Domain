@@ -17,12 +17,13 @@ MonoBehaviour:
   gachaLVLUpSprite: {fileID: 21300000, guid: a260a5eb998b8de43ae6dd152a96e185, type: 3}
   lineupFaceSprite: {fileID: 21300000, guid: 881888ac3f778a04090f1345f9f7cb29, type: 3}
   animatorOverride: {fileID: 22100000, guid: bd46079787aed444aae93dea3e064a2d, type: 2}
+  isMale: 0
   baseStats:
     damage: 2
     maxHealth: 200
     attackSpeed: 1
     armor: 0
-  baseXpToLevelUp: 10
+  baseXpToLevelUp: 8
   xpToLevelUpModifier: 1
   numberOfStars: 3
   attackType: 0

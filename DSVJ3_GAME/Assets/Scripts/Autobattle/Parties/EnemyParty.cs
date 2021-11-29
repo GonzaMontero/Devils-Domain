@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class EnemyParty : PartyManager
 {
-    [SerializeField] GameObject characterPrefab;
     public bool generateRandomEnemies = true;
+    [SerializeField] GameObject characterPrefab;
     [SerializeField] int charactersTierSetter = 3;
     BattleCharacterSO[] characterSOs;
     string SOsPath;
@@ -49,6 +49,14 @@ public class EnemyParty : PartyManager
         {
             characterToRemove = characters[0];
             RemoveCharacter(characters[0]);
+            Destroy(characterToRemove.gameObject);
+        }
+
+        //Clear characterDump
+        while (deadcharacters.Count > 0)
+        {
+            characterToRemove = deadcharacters[0];
+            deadcharacters.Remove(characterToRemove);
             Destroy(characterToRemove.gameObject);
         }
     }
@@ -108,10 +116,15 @@ public class EnemyParty : PartyManager
         character.GetComponent<SpriteRenderer>().sortingOrder = -(int)character.transform.position.z;
 
         character.SetData(data);
-        for(int i=1; i < data.level;i++)
+        int targetLevel = data.level;
+        character.publicData.level = 1;
+        for (int i=1; i < targetLevel; i++)
         {
             character.publicData.LevelUp();
         }
+
+        SetCharacterName(character.gameObject, "Enemy", character.publicData); //set GOs name
+
         AddCharacter(character, tileIndex);
     }
     void GenerateRandomEnemy()

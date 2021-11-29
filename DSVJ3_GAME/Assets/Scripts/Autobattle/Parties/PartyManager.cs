@@ -7,11 +7,12 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     public Action PartyLost;
     [SerializeField] internal BoxCollider2D[] characterTiles = new BoxCollider2D[9];
 	[SerializeField] internal List<BattleCharacterController> characters;
+	[SerializeField] internal List<BattleCharacterController> deadcharacters;
     internal Dictionary<int, BattleCharacterController> characterInTile;
     internal Dictionary<BattleCharacterController, int> tileOfCharacter;
     internal bool readyToBattle = false;
     PartyManager oponentManager;
-    const float partyXPValueMod = 1;
+    const float partyXPValueMod = 0.75f;
     const float partyGoldValueMod = 0.5f;
 
     //Unity Events
@@ -80,7 +81,12 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
     {
         UnlinkCharacterActions(character);
         characters.Remove(character);
+        deadcharacters.Add(character);
         RemoveCharacterInTile(tileIndex, character);
+    }
+    internal void SetCharacterName(GameObject characterGO, string party, BattleCharacterData data)
+    {
+        characterGO.name = party + "'s LVL " + data.level + " " + data.so.name;
     }
     void SortCharacters()
     {

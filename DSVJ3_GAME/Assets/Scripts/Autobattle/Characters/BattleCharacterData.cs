@@ -15,7 +15,7 @@ public class BattleCharacterData
     const float rangedMaxHealthMod = (float)1/5;
     const float rangedDamageMod = 0.5f;
     const float assassinDamageMod = (float)1/20;
-    const float assassinSpeedMod = (float)1/5;
+    const float assassinSpeedMod = 0.25f;
 
     public BattleCharacterData(BattleCharacterSO newSO, int level)
     {
@@ -48,8 +48,21 @@ public class BattleCharacterData
     }
     public void LevelUp()
     {
+        level++;
         switch (so.attackType)
         {
+            //case AttackType.melee:
+            //    currentStats.maxHealth = so.baseStats.maxHealth + ((float)level * so.baseXpToLevelUp * meleeMaxHealthMod);
+            //    currentStats.armor = (float)level * so.baseStats.armor * meleeArmor;
+            //    break;
+            //case AttackType.ranged:
+            //    currentStats.maxHealth = (int)((float)level * so.baseXpToLevelUp * so.baseStats.maxHealth * rangedMaxHealthMod);
+            //    currentStats.damage = (int)((float)level * so.baseXpToLevelUp * so.baseStats.damage * rangedDamageMod);
+            //    break;
+            //case AttackType.assasin:
+            //    currentStats.attackSpeed = (float)level * so.baseXpToLevelUp * so.baseStats.attackSpeed * assassinSpeedMod;
+            //    currentStats.damage = (int)((float)level * so.baseXpToLevelUp * so.baseStats.damage * assassinDamageMod);
+            //    break;
             case AttackType.melee:
                 currentStats.maxHealth += (int)(so.baseXpToLevelUp * meleeMaxHealthMod);
                 currentStats.armor += meleeArmor;
@@ -65,7 +78,6 @@ public class BattleCharacterData
             default:
                 break;
         }
-        level++;
         SetStartOfBattleCurrents();
     }
     public void UpdateXpRequisites()

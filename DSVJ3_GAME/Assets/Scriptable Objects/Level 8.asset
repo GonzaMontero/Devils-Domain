@@ -16,78 +16,78 @@ MonoBehaviour:
   - enemy:
       so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
-        armor: 0
+        damage: 2
+        maxHealth: 216
+        attackSpeed: 1
+        armor: 0.5
       health: 0
       currentXP: 0
-      currentXpToLevelUp: 0
+      currentXpToLevelUp: 8
       level: 3
-      merge: 0
+      merge: 1
     positionInLevel: 0
   - enemy:
       so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
-        armor: 0
-      health: 0
+        damage: 2
+        maxHealth: 216
+        attackSpeed: 1
+        armor: 0.5
+      health: -8
       currentXP: 0
-      currentXpToLevelUp: 0
+      currentXpToLevelUp: 8
       level: 3
-      merge: 0
-    positionInLevel: 1
+      merge: 1
+    positionInLevel: 7
   - enemy:
       so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
-        armor: 0
-      health: 0
+        damage: 2
+        maxHealth: 216
+        attackSpeed: 1
+        armor: 0.5
+      health: -8
       currentXP: 0
-      currentXpToLevelUp: 0
+      currentXpToLevelUp: 8
       level: 3
-      merge: 0
+      merge: 1
     positionInLevel: 2
   - enemy:
       so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
+        damage: 9
+        maxHealth: 82
+        attackSpeed: 1
         armor: 0
-      health: 0
+      health: -8
       currentXP: 0
-      currentXpToLevelUp: 0
-      level: 1
-      merge: 0
+      currentXpToLevelUp: 10
+      level: 2
+      merge: 1
     positionInLevel: 3
   - enemy:
       so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
+        damage: 9
+        maxHealth: 82
+        attackSpeed: 1
         armor: 0
-      health: 0
+      health: -16
       currentXP: 0
-      currentXpToLevelUp: 0
-      level: 1
-      merge: 0
+      currentXpToLevelUp: 10
+      level: 2
+      merge: 1
     positionInLevel: 4
   - enemy:
       so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
+        damage: 9
+        maxHealth: 82
+        attackSpeed: 1
         armor: 0
-      health: 0
+      health: -5
       currentXP: 0
-      currentXpToLevelUp: 0
-      level: 1
-      merge: 0
+      currentXpToLevelUp: 10
+      level: 2
+      merge: 1
     positionInLevel: 5

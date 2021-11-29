@@ -33,7 +33,7 @@ public class PlayerParty : PartyManager
             if (characterController.publicData != null)
             {
                 charactersToSave.Add(characterController);
-            }
+            }            
         }
         return charactersToSave;
     }
@@ -46,6 +46,7 @@ public class PlayerParty : PartyManager
         {
             RemoveCharacter(characters[0]);
         }
+        deadcharacters.Clear();
 
         //Get New one
         foreach (BattleCharacterHolder holder in holders)
@@ -95,6 +96,8 @@ public class PlayerParty : PartyManager
             BattleCharacterController characterController = character.GetComponent<BattleCharacterController>();
             characterController.SetData(player.lineup[i]);
             characterController.InitCharacter();
+
+            SetCharacterName(character, "Player", characterController.publicData); //set GOs name
         }
     }
 

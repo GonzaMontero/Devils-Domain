@@ -16,52 +16,52 @@ MonoBehaviour:
   - enemy:
       so: {fileID: 11400000, guid: b6ac5d75dcebbaf499c38734032816bb, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
+        damage: 2
+        maxHealth: 200
+        attackSpeed: 1
         armor: 0
       health: 0
       currentXP: 0
-      currentXpToLevelUp: 0
+      currentXpToLevelUp: 10
       level: 1
-      merge: 0
+      merge: 1
     positionInLevel: 0
   - enemy:
       so: {fileID: 11400000, guid: b6ac5d75dcebbaf499c38734032816bb, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
+        damage: 2
+        maxHealth: 200
+        attackSpeed: 1
         armor: 0
-      health: 0
+      health: -16
       currentXP: 0
-      currentXpToLevelUp: 0
+      currentXpToLevelUp: 10
       level: 1
-      merge: 0
+      merge: 1
     positionInLevel: 1
   - enemy:
       so: {fileID: 11400000, guid: b6ac5d75dcebbaf499c38734032816bb, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
+        damage: 2
+        maxHealth: 200
+        attackSpeed: 1
         armor: 0
-      health: 0
+      health: -16
       currentXP: 0
-      currentXpToLevelUp: 0
+      currentXpToLevelUp: 10
       level: 1
-      merge: 0
+      merge: 1
     positionInLevel: 2
   - enemy:
       so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
       currentStats:
-        damage: 0
-        maxHealth: 0
-        attackSpeed: 0
+        damage: 29
+        maxHealth: 90
+        attackSpeed: 1
         armor: 0
-      health: 0
+      health: -6
       currentXP: 0
-      currentXpToLevelUp: 0
-      level: 1
-      merge: 0
+      currentXpToLevelUp: 10
+      level: 6
+      merge: 1
     positionInLevel: 4
