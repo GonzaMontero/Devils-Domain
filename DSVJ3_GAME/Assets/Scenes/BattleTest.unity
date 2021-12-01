@@ -1080,7 +1080,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ccf0e62cbb2b241b1cb80fa7581320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
+  menuButtons:
+  - {fileID: 1628045381}
+  pauseButtons:
   - {fileID: 632207532}
 --- !u!114 &246436250
 MonoBehaviour:

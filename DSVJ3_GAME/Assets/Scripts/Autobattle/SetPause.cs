@@ -1,29 +1,47 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SetPause : MonoBehaviour
 {
     private bool pause;
-    [SerializeField] GameObject[] buttons;
+    [SerializeField] GameObject[] menuButtons;
+    [SerializeField] GameObject[] pauseButtons;
+
+    private void Start()
+    {
+        Time.timeScale = 1; //set time scale to 1, in case the game was paused since exit
+    }
+    private void OnDestroy()
+    {
+        Time.timeScale = 1; //set time scale to 1, in case the game was paused while quitting
+    }
 
     public void Pause()
     {
         if (!pause)
         {
             Time.timeScale = 0;
-            for (int i = 0; i < buttons.Length; i++)
+
+            foreach (var button in menuButtons)
             {
-                buttons[i].SetActive(true);
+                button.SetActive(false);
+            }
+            for (int i = 0; i < pauseButtons.Length; i++)
+            {
+                pauseButtons[i].SetActive(true);
             }
             pause = true;
         }
         else
         {
             Time.timeScale = 1;
-            for (int i = 0; i < buttons.Length; i++)
+
+            foreach (var button in menuButtons)
             {
-                buttons[i].SetActive(false);
+                button.SetActive(true);
+            }
+            for (int i = 0; i < pauseButtons.Length; i++)
+            {
+                pauseButtons[i].SetActive(false);
             }
             pause = false;
         }
