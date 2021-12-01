@@ -121,7 +121,7 @@ public class PlayerParty : PartyManager
 
         //update character sorting order
         int slotSortNumber = slotCollider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
-        character.GetComponent<SpriteRenderer>().sortingOrder = slotSortNumber + 1;
+        character.GetComponent<BattleCharacterSpriteManager>().SetSpriteOrder(slotSortNumber + 1);
     }
     void OnCharacterRemoved(BattleCharacterController character)
     {
@@ -139,5 +139,8 @@ public class PlayerParty : PartyManager
         {
             characterTiles[oldSlotIndex].tag = "Slot";
         }
+
+        //update character sorting order
+        character.GetComponent<BattleCharacterSpriteManager>().SetSpriteOrder(100);
     }
 }

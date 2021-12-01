@@ -3,12 +3,14 @@
 public class BattleCharacterSpriteManager : MonoBehaviour
 {
 	[SerializeField] BattleCharacterController controller;
+	SpriteRenderer spriteRenderer;
 	Animator animator;
 
     //Unity Events
     private void Start()
     {
         //Get Components
+        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
         //Link Actions
@@ -23,13 +25,20 @@ public class BattleCharacterSpriteManager : MonoBehaviour
     }
 
     //Methods
+    public void SetSpriteOrder(int order, string layer = null)
+    {
+        spriteRenderer.sortingOrder = order;
+
+        if (layer == null) return;
+        spriteRenderer.sortingLayerName = layer;
+    }
     void SetSpriteAndAnimations()
     {
         if (!controller.publicData.so) return; //if character not initialized, return
 
         if (controller.publicData.so.sprite)
         {
-            GetComponent<SpriteRenderer>().sprite = controller.publicData.so.sprite;
+            spriteRenderer.sprite = controller.publicData.so.sprite;
         }
         if (controller.publicData.so.animatorOverride)
         {

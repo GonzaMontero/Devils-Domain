@@ -67,12 +67,11 @@ public class BattleCharacterHolder : MonoBehaviour
         slotHitted = Physics2D.Raycast(pos, Vector2.down, boxCollider.size.y / 4, slotsMask);
         if (slotHitted && !slotHitted.transform.CompareTag("SlotTaken"))
         {
-            //Debug.Log("Collided");
             UpdateSlotColor(slotHitted);
         }
-        else
+        else if(!slotHitted)
         {
-            //Debug.Log("Not Collided");
+            ResetOldSlotColor();
         }
     }
     void GetSlotPos()
