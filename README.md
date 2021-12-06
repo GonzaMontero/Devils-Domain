@@ -26,6 +26,7 @@ This is a game being developed by students from <a href="https://www.imagecampus
 - **Antonio Restrepo** - *Testing*
 - **Ivan Bouza** - *Testing*
 - **Mariano Mallea** - *Testing*
+- **Mariano Martin Rey Ordoñez** - *Testing*
 
 
 This game was also possible thanks to the support of these professors:
