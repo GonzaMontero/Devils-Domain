@@ -107,7 +107,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.403
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
@@ -154,11 +154,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Magic Dreams SDF
+  m_Name: Magic Dreams Red SDF
   m_EditorClassIdentifier: 
-  hashCode: 1323954012
+  hashCode: -1994481201
   material: {fileID: -4463713180967291025}
-  materialHashCode: 164297980
+  materialHashCode: -1728105841
   m_Version: 1.1.0
   m_SourceFontFileGUID: 80567e3c3aeaeea4b8d95efa726dd7a8
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 80567e3c3aeaeea4b8d95efa726dd7a8,

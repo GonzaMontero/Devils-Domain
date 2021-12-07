@@ -2,21 +2,31 @@
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class UIBattleCharacter : MonoBehaviour
 {
+    class DamageText
+    {
+        public Transform transform;
+        public TextMeshProUGUI text;
+        public int damage;
+        public float duration;
+    }
+
     [SerializeField] BattleCharacterController controller;
-    [SerializeField] GameObject damageTextPrefab; 
-    [SerializeField] Transform healthBar; 
-    [SerializeField] Transform damageTextEmpty; 
+    [SerializeField] GameObject damageTextPrefab;
+    [SerializeField] Transform healthBar;
+    [SerializeField] Transform damageTextEmpty;
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] int damageTextQuantity;
     [SerializeField] float damageTextSpeed;
     [SerializeField] float damageTextDuration;
+    [SerializeField] float damageTextChangeDuration;
     [SerializeField] float damageXRange;
-    List<Transform> activeDamageTexts;
-    List<Transform> inactiveDamageTexts;
+    [SerializeField] List<DamageText> activeDamageTexts;
+    List<DamageText> inactiveDamageTexts;
 
     //Unity Events
     private void Start()
@@ -25,13 +35,9 @@ public class UIBattleCharacter : MonoBehaviour
         LinkActions();
 
         //Instantiate all damage text
-        activeDamageTexts = new List<Transform>();
-        inactiveDamageTexts = new List<Transform>();
+        activeDamageTexts = new List<DamageText>();
+        inactiveDamageTexts = new List<DamageText>();
         InitDamagePopUps();
-
-        //Set Defaults
-        //OnLevelUp();
-        //Debug.Log(this);
     }
     private void OnDisable()
     {
@@ -58,33 +64,37 @@ public class UIBattleCharacter : MonoBehaviour
     }
     void InitDamagePopUps()
     {
-        Transform newDamageText;
+        DamageText newDamageText;
         for (int i = 0; i < damageTextQuantity; i++)
         {
-            newDamageText = Instantiate(damageTextPrefab, damageTextEmpty).transform;
-            newDamageText.gameObject.SetActive(false);
+            newDamageText = new DamageText();
+            newDamageText.transform = Instantiate(damageTextPrefab, damageTextEmpty).transform;
+            newDamageText.transform.gameObject.SetActive(false);
+            newDamageText.text = newDamageText.transform.GetComponent<TextMeshProUGUI>();
+            newDamageText.duration = 0;
             inactiveDamageTexts.Add(newDamageText);
         }
     }
-    void DeactivateDamagePopUp(Transform damagePopUp)
+    void DeactivateDamagePopUp(DamageText damagePopUp)
     {
         if (activeDamageTexts.Count < 1) return;
 
         //Deactivate
         inactiveDamageTexts.Add(damagePopUp);
-        damagePopUp.gameObject.SetActive(false);
-
+        damagePopUp.transform.gameObject.SetActive(false);
+        damagePopUp.duration = 0;
+        
         //Remove from actives
         activeDamageTexts.Remove(damagePopUp);
     }
-    Transform ActivateDamagePopUp()
+    DamageText ActivateDamagePopUp()
     {
         if (inactiveDamageTexts.Count < 1) return null;
 
         //Activate
         activeDamageTexts.Add(inactiveDamageTexts[0]);
-        inactiveDamageTexts[0].gameObject.SetActive(true);
-        
+        inactiveDamageTexts[0].transform.gameObject.SetActive(true);
+
         //Remove from inactives
         inactiveDamageTexts.RemoveAt(0);
 
@@ -125,35 +135,48 @@ public class UIBattleCharacter : MonoBehaviour
 
     IEnumerator ActivateDamageText(int damage)
     {
+        DamageText damageText;
+
+        if (activeDamageTexts.Count > 0)
+        {
+            damageText = activeDamageTexts[activeDamageTexts.Count - 1];
+            if (damageText.duration < damageTextChangeDuration)
+            {
+                damageText.damage += damage;
+                damageText.text.text = damageText.damage.ToString();
+                yield break;
+            }
+        }
+
         if (inactiveDamageTexts.Count < 1) yield break;
-        
+
         //Activate damage text and get text
-        TextMeshProUGUI damageText = ActivateDamagePopUp().GetComponent<TextMeshProUGUI>();
+        damageText = ActivateDamagePopUp();
 
         //Set og pos
         damageText.transform.position = levelText.transform.position;
         damageText.transform.Translate(Vector2.up);
         damageText.transform.Translate(Vector2.right * Random.Range(-damageXRange, damageXRange));
-        
+
         //Set text
-        damageText.text = damage.ToString();
-        
+        damageText.damage = damage;
+        damageText.text.text = damage.ToString();
+
         //Fade out and move up
-        float damageCounter = 0;
         do
         {
-            damageCounter += Time.deltaTime;
-            
+            damageText.duration += Time.deltaTime;
+
             //Make the alpha smaller as the counter goes up (1>0)
-            damageText.alpha = 1 - damageCounter / damageTextDuration; 
-            
+            damageText.text.alpha = 1 - damageText.duration / damageTextDuration;
+
             //Make the text go up slower as the counter goes up (5>0)
-            damageText.transform.Translate(Vector2.up * Time.deltaTime * (damageTextSpeed - damageTextSpeed * (damageCounter / damageTextDuration))); 
+            damageText.transform.Translate(Vector2.up * Time.deltaTime * (damageTextSpeed - damageTextSpeed * (damageText.duration / damageTextDuration)));
             yield return null;
-        } while (damageCounter < damageTextDuration);
+        } while (damageText.duration < damageTextDuration);
 
         //Deactivate text
-        DeactivateDamagePopUp(damageText.transform);
+        DeactivateDamagePopUp(damageText);
         yield break;
     }
 }

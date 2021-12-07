@@ -741,9 +741,10 @@ MonoBehaviour:
   damageTextEmpty: {fileID: 8076928020559257878}
   healthText: {fileID: 1126222648538537768}
   levelText: {fileID: 2413510801035675824}
-  damageTextQuantity: 50
+  damageTextQuantity: 10
   damageTextSpeed: 5
   damageTextDuration: 2
+  damageTextChangeDuration: 0.75
   damageXRange: 2
 --- !u!1 &7773030781509195178
 GameObject:
