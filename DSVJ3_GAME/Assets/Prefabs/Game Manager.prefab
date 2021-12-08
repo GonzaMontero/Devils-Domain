@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3947546103524491493}
   - component: {fileID: 3947546103524491494}
   - component: {fileID: 3947546103524491492}
+  - component: {fileID: -2478470459510934580}
   - component: {fileID: 3947546103524491499}
   m_Layer: 0
   m_Name: Game Manager
@@ -142,6 +143,19 @@ MonoBehaviour:
       gemGen: 0
       upgradeLvl: 0
       positionCostModifier: 1
+--- !u!114 &-2478470459510934580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947546103524491495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bdb89fb27e1ab428c78650f8894403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minLoadSeconds: 0.5
 --- !u!114 &3947546103524491499
 MonoBehaviour:
   m_ObjectHideFlags: 0

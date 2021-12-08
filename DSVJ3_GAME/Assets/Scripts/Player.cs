@@ -93,9 +93,13 @@ public class Player : MonoBehaviourSingleton<Player>
         string dataJSON;
         dataJSON = FileManager<string>.LoadDataFromFile(Application.persistentDataPath + " data.bin");
         JsonUtility.FromJsonOverwrite(dataJSON, temp);
-        if (temp.lineup.Length > 0)
+        if (temp.lineup[0].so != null)
         {
             data = temp;
+        }
+        else
+        {
+            data = templateData;
         }
     }
     public void DeleteData()

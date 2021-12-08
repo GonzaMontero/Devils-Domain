@@ -187,6 +187,10 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Victory" ID="{B6A2B3D2-0A8E-4152-BE77-C02EA78B63E6}"/>
+						<Event Name="Defeat" ID="{139FDF1C-F8E5-4548-8EE2-B1C04EF86F69}"/>
+						<Event Name="NextLevel" ID="{CB2D0089-6BF7-403B-A294-42B15B5C6BAE}"/>
+						<Event Name="Retry" ID="{E19B2F15-EBD2-4A21-BB92-0D4C525B4C9D}"/>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{7646D7E2-F0A4-4199-A32C-26442F5243AE}" ShortID="858881127">

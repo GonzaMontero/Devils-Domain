@@ -27,31 +27,35 @@ public static class SceneLoader
     }
     public static void LoadScene(Scenes sceneToLoad)
     {
+        string sceneName = "Menu";
+
         switch (sceneToLoad)
         {
             case Scenes.menu:
-        SceneManager.LoadScene("Main Menu");
+                sceneName = "Main Menu";
                 break;
             case Scenes.credits:
-                SceneManager.LoadScene("Credits");
+                sceneName = "Credits";
                 break;
             case Scenes.autobattle:
-        SceneManager.LoadScene("BattleTest");
+                sceneName = "BattleTest";
                 break;
             case Scenes.idle:
-        SceneManager.LoadScene("Rooms");
+                sceneName = "Rooms";
                 break;
             case Scenes.gacha:
-        SceneManager.LoadScene("Gacha");
+                sceneName = "Gacha";
                 break;
             case Scenes.lineup:
-        SceneManager.LoadScene("Lineup");
+                sceneName = "Lineup";
                 break;
             case Scenes.settings:
-                SceneManager.LoadScene("Settings");
+                sceneName = "Settings";
                 break;
             default:
                 break;
         }
+
+        ASyncSceneLoader.Get().StartLoad(sceneName);
     }
 }
