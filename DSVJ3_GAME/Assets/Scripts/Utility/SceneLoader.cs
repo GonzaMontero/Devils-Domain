@@ -38,7 +38,7 @@ public static class SceneLoader
                 sceneName = "Credits";
                 break;
             case Scenes.autobattle:
-                sceneName = "BattleTest";
+                sceneName = "Autobattle";
                 break;
             case Scenes.idle:
                 sceneName = "Rooms";

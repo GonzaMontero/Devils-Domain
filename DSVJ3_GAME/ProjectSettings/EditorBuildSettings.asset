@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: ab869b7db6acf60479719bd307ef6bfe
   - enabled: 1
-    path: Assets/Scenes/BattleTest.unity
+    path: Assets/Scenes/Autobattle.unity
     guid: 58605ef10f5885e42a02a6dd7714e897
   - enabled: 1
     path: Assets/Scenes/Gacha.unity

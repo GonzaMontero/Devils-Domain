@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SetPause : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
     private bool pause;
     [SerializeField] GameObject[] menuButtons;
