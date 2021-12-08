@@ -49,12 +49,24 @@ public class Player : MonoBehaviourSingleton<Player>
     public int gold
     {
         get { return data.gold; }
-        set { data.gold = value; if (data.gold < 0) data.gold = 0; GoldChanged?.Invoke(); }
+        set 
+        { 
+            if (value < 0) value = 0; 
+            else if (value > 99999) value = 99999;
+            data.gold = value; 
+            GoldChanged?.Invoke();
+        }
     }
     public int gems
     {
         get { return data.gems; }
-        set { data.gems = value; if (data.gems < 0) data.gems = 0; GemsChanged?.Invoke(); }
+        set
+        {
+            if (value < 0) value = 0;
+            else if (value > 99999) value = 99999;
+            data.gems = value;
+            GemsChanged?.Invoke();
+        }
     }
     public string playerName
     {

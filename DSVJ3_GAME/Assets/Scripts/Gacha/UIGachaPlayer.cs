@@ -15,6 +15,6 @@ public class UIGachaPlayer : MonoBehaviour
 
     void OnGemsChanged()
     {
-		gemsText.text = "Gems: " + player.publicGems;
+		gemsText.text = player.publicGems.ToString();
     }
 }

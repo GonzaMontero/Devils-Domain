@@ -70,11 +70,11 @@ public class UIRoomManager : MonoBehaviour
     }
     void OnGoldUpdated()
     {
-        goldText.text = "Gold: " + player.gold;
+        goldText.text = player.gold.ToString();
     }
     void OnGemsUpdated()
     {
-        gemsText.text = "Gems: " + player.gems;
+        gemsText.text = player.gems.ToString();
     }
     void OnNotEnoughGoldForUpgrade()
     {
