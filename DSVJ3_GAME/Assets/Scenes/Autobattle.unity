@@ -2315,6 +2315,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2d2127f4633b0794d8917e8c6e63bc60, type: 2}
   - {fileID: 11400000, guid: d58b4cf230317b74494f6f32764a82ae, type: 2}
   - {fileID: 11400000, guid: 18cbfd525e5013946905475b3e8b6ee8, type: 2}
+  - {fileID: 11400000, guid: 2ef56225d0e51274593728b6e514671e, type: 2}
+  - {fileID: 11400000, guid: 73a64c23b0a28d8499c3806973711beb, type: 2}
   enemyP: {fileID: 2026957188}
   playerP: {fileID: 162186393}
 --- !u!1 &840878673

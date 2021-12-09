@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad30f2dfc9857d5428e997aefdf2c97a, type: 3}
+  m_Name: Knight
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 003957ea23d2a3a49a208a6fec32b4c8, type: 3}
+  gachaSprite: {fileID: 0}
+  gachaLVLUpSprite: {fileID: 0}
+  lineupFaceSprite: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: 956ecc28394ad5248bb0439e995eee30, type: 2}
+  isMale: 1
+  baseStats:
+    damage: 2
+    maxHealth: 350
+    attackSpeed: 1
+    armor: 0.1
+  baseXpToLevelUp: 12
+  xpToLevelUpModifier: 1
+  numberOfStars: 5
+  attackType: 0
