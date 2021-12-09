@@ -6,6 +6,7 @@ public class UIRoom : MonoBehaviour
     public RoomController controller;
     [SerializeField] TextMeshProUGUI gemText;
     [SerializeField] TextMeshProUGUI costText;
+    [SerializeField] GameObject[] upgrades;
     Transform roomUI;
 
     void Start()
@@ -23,7 +24,13 @@ public class UIRoom : MonoBehaviour
     void OnRoomUpdate()
     {
         if (controller.GetGemGen() <= 0) { return; }
-        gemText.text = "Gems: " + controller.GetGemGen().ToString();
-        costText.text = "Cost: " + controller.GetUpgradeCost().ToString();
+        //gemText.text = "Gems: " + controller.GetGemGen().ToString();
+        //costText.text = "Cost: " + controller.GetUpgradeCost().ToString();
+        
+        for (int i = 0; i < controller.GetData().upgradeLvl; i++)
+        {
+            if (i >= upgrades.Length) return;
+            upgrades[i].SetActive(true);
+        }
     }
 }
