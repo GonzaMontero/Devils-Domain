@@ -24,7 +24,7 @@ public class GachaRates : MonoBehaviour
     private void Start()
     {
         p = Player.Get();
-        BattleCharacterSO[] allCharacters = Resources.LoadAll<BattleCharacterSO>("Scriptable Objects/Characters");
+        BattleCharacterSO[] allCharacters = Resources.LoadAll<BattleCharacterSO>("Scriptable Objects/Characters/Allies");
 
         for (int i = 0; i < allCharacters.Length; i++)
         {

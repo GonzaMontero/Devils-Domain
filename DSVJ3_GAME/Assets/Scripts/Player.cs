@@ -105,7 +105,7 @@ public class Player : MonoBehaviourSingleton<Player>
         string dataJSON;
         dataJSON = FileManager<string>.LoadDataFromFile(Application.persistentDataPath + " data.bin");
         JsonUtility.FromJsonOverwrite(dataJSON, temp);
-        if (temp.lineup[0].so != null)
+        if (temp.lineup[0] != null && temp.lineup[0].so != null)
         {
             data = temp;
         }
