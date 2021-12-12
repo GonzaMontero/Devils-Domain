@@ -18,12 +18,12 @@ public class Player : MonoBehaviourSingleton<Player>
         set { data.room = value; }
     }
     //Characters
-    public List<BattleCharacterData> characters
+    public List<CharacterData> characters
     {
         get { return data.characters; }
         set { data.characters = value; }
     }
-    public BattleCharacterData[] lineup
+    public CharacterData[] lineup
     {
         get { return data.lineup; }
         set { data.lineup = value; }
@@ -147,9 +147,9 @@ public class Player : MonoBehaviourSingleton<Player>
         playerName = name;
     }
 
-    public void SwapPositions(int positionInArray, BattleCharacterData characterToSwap)
+    public void SwapPositions(int positionInArray, CharacterData characterToSwap)
     {
-        BattleCharacterData placeHolder;
+        CharacterData placeHolder;
         placeHolder = lineup[positionInArray];      
         lineup[positionInArray] = characterToSwap;
 

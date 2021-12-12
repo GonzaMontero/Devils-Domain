@@ -17,6 +17,8 @@ MonoBehaviour:
   gachaLVLUpSprite: {fileID: 21300000, guid: 8da0cade667085d4ba30194794b09cd0, type: 3}
   lineupFaceSprite: {fileID: 21300000, guid: f016ea2604efb9e42afbea9e71118a21, type: 3}
   animatorOverride: {fileID: 22100000, guid: 4ba1042a619ed6e41ac8f78c084b0906, type: 2}
+  isMale: 0
+  index: 4
   baseStats:
     damage: 2
     maxHealth: 250

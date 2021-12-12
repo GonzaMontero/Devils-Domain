@@ -69,7 +69,7 @@ public class BattleManager : MonoBehaviour
         if (playerParty.characters.Count < 1) return;
         
         //Init lists
-        BattleCharacterData[] charactersToSave = new BattleCharacterData[6];
+        CharacterData[] charactersToSave = new CharacterData[6];
         List<BattleCharacterController> characters = playerParty.GetParty();
         
         //get datas

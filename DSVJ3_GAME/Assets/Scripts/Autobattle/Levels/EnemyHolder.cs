@@ -7,7 +7,7 @@ public class EnemyHolder : ScriptableObject
     [Serializable]
     public struct EnemyInLevel
     {
-        public BattleCharacterData enemy;
+        public CharacterData enemy;
         public int positionInLevel;
     }
 

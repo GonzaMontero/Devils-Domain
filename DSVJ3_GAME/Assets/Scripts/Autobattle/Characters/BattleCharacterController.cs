@@ -13,9 +13,9 @@ public class BattleCharacterController : MonoBehaviour
     public Action LeveledUp;
     public Action Set;
     public BattleCharacterController target;
-    public BattleCharacterData publicData { get { return data; } }
+    public CharacterData publicData { get { return data; } }
     [SerializeField] States current;
-    [SerializeField] BattleCharacterData data;
+    [SerializeField] CharacterData data;
     [SerializeField] float despawnTimer;
     [SerializeField] float minAttackChargeMod;
     [SerializeField] float maxAttackChargeMod;
@@ -43,7 +43,7 @@ public class BattleCharacterController : MonoBehaviour
         current = States.idle;
         Set?.Invoke();
     }
-    public void SetData(BattleCharacterData data)
+    public void SetData(CharacterData data)
     {
         this.data = data;
         InitCharacter();

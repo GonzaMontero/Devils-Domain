@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BattleCharacterSpriteManager : MonoBehaviour
+public class CharacterSpriteManager : MonoBehaviour
 {
 	[SerializeField] BattleCharacterController controller;
 	SpriteRenderer spriteRenderer;

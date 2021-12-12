@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class BattleCharacterHolder : MonoBehaviour
+public class CharacterHolder : MonoBehaviour
 {
     public Action<BoxCollider2D, BattleCharacterController> CharacterPositioned;
     public Action<BattleCharacterController> CharacterRemoved;

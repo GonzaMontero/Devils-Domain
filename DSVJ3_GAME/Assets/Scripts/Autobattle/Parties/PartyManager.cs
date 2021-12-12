@@ -84,7 +84,7 @@ public class PartyManager : MonoBehaviour, IComparer<BattleCharacterController>
         deadcharacters.Add(character);
         RemoveCharacterInTile(tileIndex, character);
     }
-    internal void SetCharacterName(GameObject characterGO, string party, BattleCharacterData data)
+    internal void SetCharacterName(GameObject characterGO, string party, CharacterData data)
     {
         characterGO.name = party + "'s LVL " + data.level + " " + data.so.name;
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3947546103524491493}
   - component: {fileID: 3947546103524491494}
   - component: {fileID: 3947546103524491492}
+  - component: {fileID: 8566862142515684558}
   - component: {fileID: -2478470459510934580}
   - component: {fileID: 3947546103524491499}
   m_Layer: 0
@@ -70,7 +71,7 @@ MonoBehaviour:
       fxVolume: 100
     characters: []
     lineup:
-    - so: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268, type: 2}
+    - indexSO: 5
       currentStats:
         damage: 4
         maxHealth: 80
@@ -81,7 +82,7 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 11400000, guid: b6ac5d75dcebbaf499c38734032816bb, type: 2}
+    - indexSO: 0
       currentStats:
         damage: 2
         maxHealth: 200
@@ -92,7 +93,7 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 11400000, guid: f9335712f3dd9314bba641cc31f198ef, type: 2}
+    - indexSO: 2
       currentStats:
         damage: 2
         maxHealth: 200
@@ -103,7 +104,7 @@ MonoBehaviour:
       currentXpToLevelUp: 10
       level: 1
       merge: 1
-    - so: {fileID: 0}
+    - indexSO: -1
       currentStats:
         damage: 0
         maxHealth: 0
@@ -114,7 +115,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 0}
+    - indexSO: -1
       currentStats:
         damage: 0
         maxHealth: 0
@@ -125,7 +126,7 @@ MonoBehaviour:
       currentXpToLevelUp: 0
       level: 0
       merge: 0
-    - so: {fileID: 0}
+    - indexSO: -1
       currentStats:
         damage: 0
         maxHealth: 0
@@ -143,6 +144,18 @@ MonoBehaviour:
       gemGen: 0
       upgradeLvl: 0
       positionCostModifier: 1
+--- !u!114 &8566862142515684558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947546103524491495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427340a969fa500459af05ad6751fcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-2478470459510934580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,11 +182,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3947546103524491492}
-  setLeveledCharacter: 0
-  leveledCharacterLineupIndex: 0
+  levelSO: {fileID: 0}
+  characterSO: {fileID: 0}
+  characterIndex: 0
   characterLevels: 0
+  addCurrencyQuantity: 0
+  setLeveledCharacter: 0
+  addCharacterToPool: 0
+  addCharacterToLineup: 0
+  addCharacterToLevel: 0
   addGold: 0
-  addGoldQuantity: 0
   addGems: 0
-  addGemsQuantity: 0
   deleteData: 0

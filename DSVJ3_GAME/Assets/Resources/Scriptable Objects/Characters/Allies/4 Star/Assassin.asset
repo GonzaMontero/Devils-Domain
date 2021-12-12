@@ -18,12 +18,13 @@ MonoBehaviour:
   lineupFaceSprite: {fileID: 21300000, guid: e2f555933b7ee394381aa7b6d78c3ed4, type: 3}
   animatorOverride: {fileID: 22100000, guid: 78f244c5d0ab22e468767db5a311e3ed, type: 2}
   isMale: 0
+  index: 3
   baseStats:
-    damage: 10
+    damage: 5
     maxHealth: 50
     attackSpeed: 1
     armor: 0
   baseXpToLevelUp: 10
-  xpToLevelUpModifier: 2
+  xpToLevelUpModifier: 1
   numberOfStars: 4
   attackType: 1

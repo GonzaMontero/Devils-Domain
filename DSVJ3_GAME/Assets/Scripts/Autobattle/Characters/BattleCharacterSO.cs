@@ -13,6 +13,7 @@ public class BattleCharacterSO : ScriptableObject
     public Sprite lineupFaceSprite;
     public AnimatorOverrideController animatorOverride;
     public bool isMale;
+    public int index;
 
     [Header("In-game Variables")]
     public Stats baseStats;

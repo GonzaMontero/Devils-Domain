@@ -18,6 +18,7 @@ MonoBehaviour:
   lineupFaceSprite: {fileID: 0}
   animatorOverride: {fileID: 22100000, guid: 956ecc28394ad5248bb0439e995eee30, type: 2}
   isMale: 1
+  index: 7
   baseStats:
     damage: 2
     maxHealth: 350

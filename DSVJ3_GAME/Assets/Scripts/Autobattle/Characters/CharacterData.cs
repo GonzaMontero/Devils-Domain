@@ -1,7 +1,12 @@
 ﻿[System.Serializable]
-public class BattleCharacterData
+public class CharacterData
 {
-    public BattleCharacterSO so;
+    public BattleCharacterSO so
+    {
+        get { if (indexSO < 0) return null; return CharacterDataManager.Get().characters[indexSO]; }
+        set { if (value == null) { indexSO = -1; return; } indexSO = value.index; }
+    }
+    public int indexSO = -1;
     public Stats currentStats;
     public int health;
     public int currentXP;
@@ -17,9 +22,9 @@ public class BattleCharacterData
     const float assassinDamageMod = (float)1/20;
     const float assassinSpeedMod = 0.25f;
 
-    public BattleCharacterData(BattleCharacterSO newSO, int level)
+    public CharacterData(BattleCharacterSO newSO, int level)
     {
-        so = newSO;
+        indexSO = newSO.index;
         SetLevel1Currents();
 
         for (int i = 1; i < level; i++)
@@ -27,14 +32,14 @@ public class BattleCharacterData
             LevelUp();
         }
     }
-    public BattleCharacterData(BattleCharacterSO newSO)
+    public CharacterData(BattleCharacterSO newSO)
     {
-        so = newSO;
+        indexSO = newSO.index;
         SetLevel1Currents();
     }
     public void SetLevel1Currents()
     {
-        if (!so) return; //If there is no so (no character template), return
+        if (indexSO < 0) return; //If there is no so (no character template), return
 
         currentStats = so.baseStats;
         currentXP = 0;

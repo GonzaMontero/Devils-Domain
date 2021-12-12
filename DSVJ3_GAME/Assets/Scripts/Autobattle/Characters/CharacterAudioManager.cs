@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BattleCharacterAudioManager : MonoBehaviour
+public class CharacterAudioManager : MonoBehaviour
 {
 	[SerializeField] BattleCharacterController controller;
     [SerializeField] AttackType attackSwitch;

@@ -16,8 +16,8 @@ public class PlayerData
     public SettingsData settings;
 
     //Autobattle Data
-    public List<BattleCharacterData> characters;
-    public BattleCharacterData[] lineup = new BattleCharacterData[6];
+    public List<CharacterData> characters;
+    public CharacterData[] lineup = new CharacterData[6];
     public int level;
 
     //Room Data

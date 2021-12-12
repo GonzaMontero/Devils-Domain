@@ -6792,6 +6792,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 59b4b0bce52c20a48a640cc6f6b46779,
         type: 2}
+    - target: {fileID: 4819522678446044700, guid: a1d43dc743b507249b22b33b7b4eeebf,
+        type: 3}
+      propertyPath: data.indexSO
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8819088222611747339, guid: a1d43dc743b507249b22b33b7b4eeebf,
         type: 3}
       propertyPath: m_Name
@@ -9448,6 +9453,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3947546103524491499, guid: d229d67134c194a49af29de19a6f20bf,
+        type: 3}
+      propertyPath: characterSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 19725ab4cbf28fa4db6eb9c9b040c268,
+        type: 2}
+    - target: {fileID: 3947546103524491499, guid: d229d67134c194a49af29de19a6f20bf,
+        type: 3}
+      propertyPath: characterIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3947546103524491499, guid: d229d67134c194a49af29de19a6f20bf,
+        type: 3}
+      propertyPath: characterLevels
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3947546103524491499, guid: d229d67134c194a49af29de19a6f20bf,
+        type: 3}
+      propertyPath: setLeveledCharacter
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d229d67134c194a49af29de19a6f20bf, type: 3}

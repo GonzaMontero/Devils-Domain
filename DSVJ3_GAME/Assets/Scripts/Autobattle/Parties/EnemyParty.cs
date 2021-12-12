@@ -89,7 +89,7 @@ public class EnemyParty : PartyManager
             }
         }
     }
-    void GenerateEnemy(BattleCharacterData data)
+    void GenerateEnemy(CharacterData data)
     {       
         int tileIndex = Random.Range(0, characterTiles.Length);
 
@@ -107,7 +107,7 @@ public class EnemyParty : PartyManager
         character.SetData(data);
         AddCharacter(character, tileIndex);
     }
-    void GenerateEnemy(BattleCharacterData data, int tileIndex)
+    void GenerateEnemy(CharacterData data, int tileIndex)
     {
         BattleCharacterController character;
         character = Instantiate(characterPrefab, transform).GetComponent<BattleCharacterController>();
@@ -130,7 +130,7 @@ public class EnemyParty : PartyManager
     void GenerateRandomEnemy()
     {
         int soIndex = Random.Range(0, characterSOs.Length);
-        BattleCharacterData data = new BattleCharacterData(characterSOs[soIndex]);
+        CharacterData data = new CharacterData(characterSOs[soIndex]);
         GenerateEnemy(data);
     }
     public void SetCharacters(EnemyHolder.EnemyInLevel[] enemies)

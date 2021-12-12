@@ -73,7 +73,7 @@ public class GachaRates : MonoBehaviour
     }
     private void AddToPlayer(BattleCharacterSO roll)
     {
-        BattleCharacterData newData = new BattleCharacterData(roll);
+        CharacterData newData = new CharacterData(roll);
 
         for(short i = 0; i < p.lineup.Length; i++)
         {

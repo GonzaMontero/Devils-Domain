@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerParty : PartyManager
 {
-    [SerializeField] List<BattleCharacterHolder> holders;
+    [SerializeField] List<CharacterHolder> holders;
 
     //Unity Events
     private void Start()
     {
         GetCharacters();
 
-        foreach (BattleCharacterHolder holder in holders)
+        foreach (CharacterHolder holder in holders)
         {
             holder.CharacterPositioned += OnCharacterPositioned;
             holder.CharacterRemoved += OnCharacterRemoved;
@@ -49,7 +49,7 @@ public class PlayerParty : PartyManager
         deadcharacters.Clear();
 
         //Get New one
-        foreach (BattleCharacterHolder holder in holders)
+        foreach (CharacterHolder holder in holders)
         {
             if (holder != null)
             {
@@ -121,7 +121,7 @@ public class PlayerParty : PartyManager
 
         //update character sorting order
         int slotSortNumber = slotCollider.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
-        character.GetComponent<BattleCharacterSpriteManager>().SetSpriteOrder(slotSortNumber + 1);
+        character.GetComponent<CharacterSpriteManager>().SetSpriteOrder(slotSortNumber + 1);
     }
     void OnCharacterRemoved(BattleCharacterController character)
     {
@@ -141,6 +141,6 @@ public class PlayerParty : PartyManager
         }
 
         //update character sorting order
-        character.GetComponent<BattleCharacterSpriteManager>().SetSpriteOrder(100);
+        character.GetComponent<CharacterSpriteManager>().SetSpriteOrder(100);
     }
 }
