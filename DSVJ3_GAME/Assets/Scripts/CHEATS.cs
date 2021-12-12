@@ -23,7 +23,7 @@ public class CHEATS : MonoBehaviour
     [Header("Currency Vars")]
     [SerializeField] int addCurrencyQuantity;
 
-    [Header("Set Character Level")]
+    [Header("Set Character Level - ONLY RUNTIME")]
     [Tooltip("Press this to set the character in the lineup index to level X")]
     [SerializeField] bool setLeveledCharacter = false;
 
